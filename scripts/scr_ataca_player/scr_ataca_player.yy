@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_ataca_player",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_ataca_player",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

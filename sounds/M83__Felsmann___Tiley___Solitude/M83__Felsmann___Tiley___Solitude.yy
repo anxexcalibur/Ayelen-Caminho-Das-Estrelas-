@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"M83__Felsmann___Tiley___Solitude",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":222.40652,
+  "name":"M83__Felsmann___Tiley___Solitude",
+  "parent":{
+    "name":"Ayelen Caminho Das Estrelas",
+    "path":"Ayelen Caminho Das Estrelas.yyp",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"M83__Felsmann___Tiley___Solitude.mp3",
+  "type":0,
+  "volume":1.0,
+}
