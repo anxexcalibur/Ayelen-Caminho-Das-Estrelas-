@@ -162,6 +162,16 @@ controla_menu = function(_menu){
                     _menu[_sel][2](_arg);
                 }
                 break;
+			case menu_acoe.ajustes_saves:
+				alterando = !alterando;
+                //Rodando o metodo
+                if(!alterando)
+                {
+                    //saçvandoo o argumento do menu
+                    var _arg = _menu[_sel][3];
+                    _menu[_sel][2](_arg);
+                }
+                break;
         }
     }
     
@@ -179,43 +189,42 @@ inicia_jogo = function() {
 fecha_jogo = function() {
     game_end();
 }
-function remover_colchetes(texto) {
-    var novo_texto = "";
-    var tamanho = string_length(texto);
-    
-    for (var i = 1; i <= tamanho; i++) {
-        var caractere = string_char_at(texto, i);
-        if (caractere != "[" && caractere != "]") {
-            novo_texto += caractere;
-        }
-    }
-    
-    return novo_texto;
-}
+
 function listar_saves() {
     var save_list = [];
-    var file = file_find_first("*.sav", 0); // Procurar arquivos com extensão .sav
-	var file = file_text_open_read(file); // Abre o arquivo para leitura
-    var nome_jogador = "";
-	
-	if (!file_text_eof(file)) {
-        nome_jogador = file_text_read_string(file);
-    }
-	tratado = remover_colchetes(nome_jogador)
+    var file_name = file_find_first("*.sav", 0); // Encontra o primeiro arquivo .sav
 
-    while (file != "") {
-        array_push(save_list, tratado); // Adiciona o nome do arquivo à lista
-        file = file_find_next();
+    while (file_name != "") {
+        var file_id = file_text_open_read(file_name); // Abre o arquivo para leitura
+
+        if (file_id != -1) {
+            // Ler todas as linhas do arquivo
+            while (!file_text_eof(file_id)) {
+                var linha = file_text_readln(file_id);
+                
+                // Verifica se a linha começa e termina com colchetes
+                var inicio_colchete = string_pos("[", linha);
+                var fim_colchete = string_pos("]", linha);
+                
+                if (inicio_colchete > 0 && fim_colchete > inicio_colchete) {
+                    // Extrai o nome do jogador entre os colchetes
+                    var jogador = string_copy(linha, inicio_colchete + 1, fim_colchete - inicio_colchete - 1);
+                    array_push(save_list, jogador);
+                }
+            }
+            
+            // Fecha o arquivo após a leitura
+            file_text_close(file_id);
+        } else {
+            show_debug_message("Erro ao abrir o arquivo " + file_name);
+        }
+
+        file_name = file_find_next(); // Procura o próximo arquivo .sav
     }
+
     file_find_close(); // Fecha a busca de arquivos
     return save_list;
-	
-	
 }
-
-var saves = listar_saves();
-
-
 
 carregar_jogo = function(filename) {
     if (file_exists(filename)) {
@@ -244,9 +253,7 @@ ajusta_tela = function(_valor) {
             break;
     }
 }
-teste = function (){
- show_message("funcionou")
-}
+
 ajusta_dificuldade = function(_valor) {
     switch (_valor) {
         case 0:
@@ -281,45 +288,58 @@ menus_lista = {
     opcoes: 1,
     tela: 2,
     dificuldade: 3,
-    save: 4, // Novo índice para o menu de saves
+    carregar: 4, // Novo índice para o menu de saves
     pause: 5
 };
 
-//Texto - Ação - Conteúdo da Ação
-menu_principal = [
-    ["Iniciar", menu_acoe.roda_metodo, inicia_jogo],
-    ["Carregar", menu_acoe.carrega_menu, menus_lista.carregar],
-    ["Opções", menu_acoe.carrega_menu, menus_lista.opcoes],
-    ["Sair", menu_acoe.roda_metodo, fecha_jogo]
-];
+atualizar_menu_principal = function() {
+    var _menu = [
+        ["Iniciar", menu_acoe.roda_metodo, inicia_jogo]
+    ];
+    
+    var save_files = listar_saves();
+    if (array_length(save_files) > 0) {
+        array_push(_menu, ["Carregar", menu_acoe.carrega_menu, menus_lista.carregar]);
+    }
+    
+    array_push(_menu, ["Opções", menu_acoe.carrega_menu, menus_lista.opcoes]);
+    array_push(_menu, ["Sair", menu_acoe.roda_metodo, fecha_jogo]);
+    
+    return _menu;
+};
 
+// Inicializar a lista de saves
+var saves = listar_saves();
+
+// Definir os menus
+menu_principal = atualizar_menu_principal();
 menu_opcoes = [
     ["Tipo de Janela", menu_acoe.carrega_menu, menus_lista.tela],
     ["Dificuldade", menu_acoe.carrega_menu, menus_lista.dificuldade],
     ["Voltar", menu_acoe.carrega_menu, menus_lista.principal]
 ];
-
 menu_dificuldade = [
     ["Dificuldade", menu_acoe.ajustes_menu, ajusta_dificuldade, 1, ["Fácil", "Normal", "Difícil", "Impossível"]],
     ["Voltar", menu_acoe.carrega_menu, menus_lista.opcoes]
 ];
-
 menu_tela = [
     ["Tipo de Tela", menu_acoe.ajustes_menu, ajusta_tela, 1, ["Tela cheia", "Janela"]],
     ["Voltar", menu_acoe.carrega_menu, menus_lista.opcoes]
 ];
-
 menu_pause = [
     ["Voltar", menu_acoe.carrega_menu, menus_lista.principal],
     ["Sair", menu_acoe.roda_metodo, fecha_jogo]
 ];
 menu_carregar = [
-	["Saves", menu_acoe.ajustes_saves,teste, 0,saves],
-	["Voltar", menu_acoe.carrega_menu,menus_lista.principal]
+    ["Saves", menu_acoe.ajustes_saves, teste, 0, saves],
+    ["Voltar", menu_acoe.carrega_menu, menus_lista.principal]
 ];
+
 // Salvando todos os meus menus
-menus = [menu_principal, menu_opcoes,menu_carregar, menu_tela, menu_dificuldade,  menu_pause];
+menus = [menu_principal, menu_opcoes, menu_carregar, menu_tela, menu_dificuldade, menu_pause];
 
 // Salvando a seleção de cada menu
 menus_sel = array_create(array_length(menus), 0);
 alterando = false;
+
+show_message(saves);
