@@ -1,18 +1,58 @@
 // @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // Criando meu Menu
-
+// Variável para armazenar o nome digitado pelo jogador
+global.nome_jogador = "";
 var current_room;
 current_room = room;
 // Seleção do menu
 sel = 0;
 marg_val = 32;
 marg_total = 32;
+global.nome_jogador = "";
 // Controlando a pag do menu
 pag = 0;
 
 #region Metodos
 // Desenha menu
+// Função para desenhar o campo de entrada
+desenha_input_nome = function() {
+    draw_set_font(fnt_menu); // Define a fonte
+    draw_set_halign(fa_center); // Alinha o texto no centro horizontalmente
+    draw_set_valign(fa_middle); // Alinha o texto no centro verticalmente
+    
+    var input_x = display_get_gui_width() / 2; // Posição X central
+    var input_y = display_get_gui_height() / 2 - 40; // Posição Y acima do centro
+    
+    // Desenha o texto "Digite seu nome:"
+    draw_text(input_x, input_y - 20, "Digite seu nome:");
+    
+    // Desenha a caixa de entrada (retângulo)
+    draw_rectangle(input_x - 100, input_y, input_x + 100, input_y + 30, false);
+    
+    // Desenha o nome que o jogador está digitando
+    draw_text(input_x, input_y + 15, global.nome_jogador);
+}
+
+// Função para capturar a entrada do jogador
+captura_input_nome = function() {
+    // Captura as teclas pressionadas
+    var key = keyboard_key; // Tecla pressionada
+    
+    // Verifica se é uma tecla de letra ou de espaço
+    if ((key >= vk_a && key <= vk_z) || (key >= vk_0 && key <= vk_9) || key == vk_space) {
+        // Adiciona a letra ou espaço ao nome do jogador
+        global.nome_jogador += chr(key);
+    } else if (key == vk_backspace) {
+        // Remove o último caractere se pressionar backspace
+        if (string_length(global.nome_jogador) > 0) {
+            global.nome_jogador = string_delete(global.nome_jogador, string_length(global.nome_jogador), 1);
+        }
+    } else if (key == vk_enter) {
+        // Se pressionar enter, inicia o jogo
+        alarm[0] = 5; // Dispara o alarme para iniciar o jogo
+    }
+}
 desenha_menu = function(_menu){
     // Desenhando meu menu
     // Pegando o tamanho do meu menu
