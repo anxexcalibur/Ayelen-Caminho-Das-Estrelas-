@@ -56,15 +56,21 @@ captura_input_nome = function() {
 fist_save = function(){
 	alarm[1] = 5;
 }
-salvar_jogo = function(nome_jogador) {
+salvar_jogo = function(nome_jogador, x, y) {
+    // Verifica se x e y foram fornecidos, caso contrário define valores padrão
+    if (argument_count < 3) {
+        x = 60;
+        y = 240;
+    }
+
     // Cria ou abre o arquivo de save "save.sav" para escrita
     var file_id = file_text_open_write("save.sav");
     
     if (file_id != -1) {
         // Escreve os dados do jogador no arquivo de save
         file_text_write_string(file_id, "[" + string(nome_jogador) + "]\n");
-        file_text_write_string(file_id, "x_atual=" + string(obj_player.x) + "\n");
-        file_text_write_string(file_id, "y_atual=" + string(obj_player.y) + "\n");
+        file_text_write_string(file_id, "x_atual=" + string(x) + "\n");
+        file_text_write_string(file_id, "y_atual=" + string(y) + "\n");
         file_text_write_string(file_id, "vida_atual=" + string(obj_player.vida_atual) + "\n");
         file_text_write_string(file_id, "sala_atual=" + string(current_room) + "\n");
         
@@ -73,6 +79,7 @@ salvar_jogo = function(nome_jogador) {
         show_debug_message("Erro ao abrir o arquivo save.sav para escrita.");
     }
 }
+
 
 desenha_menu = function(_menu){
     // Desenhando meu menu
