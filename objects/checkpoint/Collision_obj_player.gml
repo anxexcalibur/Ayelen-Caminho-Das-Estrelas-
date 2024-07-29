@@ -1,13 +1,11 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // Se a animação inicial não foi jogada e ainda não começou
-if (!animation_played && !animation_started) {
-    // Iniciar a animação
-    animation_started = true;
-    sprite_index = spr_checkpoint;
-    image_index = 0;
-    image_speed = 1;  // Ajuste conforme a velocidade desejada para o sprite de animação
+if image_index	==1
+{
+	exit;
 }
+image_index = 1
  
 
 ini_open("saves.ini");
