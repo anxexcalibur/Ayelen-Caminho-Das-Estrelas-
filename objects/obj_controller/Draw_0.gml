@@ -57,8 +57,12 @@ if (game_over)
         draw_set_valign(-1); // Restaura o alinhamento vertical padrão
         draw_set_halign(-1); // Restaura o alinhamento horizontal padrão
     }
+    
+    // Restaura a transparência padrão após o desenho do "Game Over"
+    draw_set_alpha(1);
 }
 else
 {
-    
+    // Certifique-se de redefinir a transparência caso o jogo não esteja em estado de "game over"
+    draw_set_alpha(1);
 }

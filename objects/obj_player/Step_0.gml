@@ -26,6 +26,11 @@ if (keyboard_check_pressed(vk_escape) && menu_existe == false) {
         global.game_paused = true;
     }
 }
+if(vida_atual > max_vida)
+{
+	max_vida++;
+	
+}
 
 if (distance_to_object(obj_par_npcs) <= 10) {
     if (keyboard_check_pressed(ord("F")) && global.dialogo == false) {
@@ -296,6 +301,9 @@ switch (estado) {
                 estado = "morto"; 
             }
         }
+		if max_vida > 10 {
+			max_vida--;
+		}
         break;
     }
     
@@ -315,6 +323,12 @@ switch (estado) {
                 game_over = true;
             }
         }
+		if (keyboard_check(vk_enter)) {
+			carregar_checkpoint(global.nome_jogador)
+			estado = "parado"
+			morreu = false;
+			
+		}
         break;
     }
     
@@ -324,9 +338,7 @@ switch (estado) {
 }
 
 // Reinicia a sala quando a tecla Enter é pressionada
-if (keyboard_check(vk_tab)) {
-    game_restart();
-}
+
 
 // Criando meu Rastro
 if (tempo_dash % 3 == 0) {
@@ -340,3 +352,18 @@ if (tempo_dash % 3 == 0) {
 if (global.dash_cooldown > 0) {
     global.dash_cooldown--;
 }
+// Verifica se os sprites estão definidos
+if (!sprite_exists(molduraHealthbar)) {
+    show_debug_message("Sprite molduraHealthbar não existe.");
+} else {
+    show_debug_message("Sprite molduraHealthbar está definido.");
+}
+
+if (!sprite_exists(sHealthbar)) {
+    show_debug_message("Sprite sHealthbar não existe.");
+} else {
+    show_debug_message("Sprite sHealthbar está definido.");
+}
+
+// Verifica as coordenadas da barra de vida
+show_debug_message("Coordenadas da barra de vida: (" + string(healthbar_x) + ", " + string(healthbar_y) + ")");

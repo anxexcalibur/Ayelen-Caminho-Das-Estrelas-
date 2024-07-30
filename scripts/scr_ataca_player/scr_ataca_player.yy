@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_ataca_player",
   "isCompatibility":false,
   "isDnD":false,

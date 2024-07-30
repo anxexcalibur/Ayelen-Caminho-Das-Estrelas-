@@ -53,7 +53,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.1.152",
+    "IDEVersion":"2024.6.2.162",
   },
   "name":"Ayelen Caminho Das Estrelas",
   "resources":[
@@ -66,6 +66,7 @@
     {"id":{"name":"checkpoint","path":"objects/checkpoint/checkpoint.yy",},},
     {"id":{"name":"obj_arvore","path":"objects/obj_arvore/obj_arvore.yy",},},
     {"id":{"name":"obj_block","path":"objects/obj_block/obj_block.yy",},},
+    {"id":{"name":"obj_bloco_mortal","path":"objects/obj_bloco_mortal/obj_bloco_mortal.yy",},},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
     {"id":{"name":"obj_caracol","path":"objects/obj_caracol/obj_caracol.yy",},},
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},},
@@ -89,6 +90,7 @@
     {"id":{"name":"obj_textbox","path":"objects/obj_textbox/obj_textbox.yy",},},
     {"id":{"name":"obj_totem","path":"objects/obj_totem/obj_totem.yy",},},
     {"id":{"name":"obj_trasicao","path":"objects/obj_trasicao/obj_trasicao.yy",},},
+    {"id":{"name":"obj_vida","path":"objects/obj_vida/obj_vida.yy",},},
     {"id":{"name":"obj_wall_slide","path":"objects/obj_wall_slide/obj_wall_slide.yy",},},
     {"id":{"name":"Porta","path":"objects/Porta/Porta.yy",},},
     {"id":{"name":"Casa_guarani_1","path":"rooms/Casa_guarani_1/Casa_guarani_1.yy",},},
@@ -159,6 +161,8 @@
     {"id":{"name":"Sprite23","path":"sprites/Sprite23/Sprite23.yy",},},
     {"id":{"name":"Sprite24","path":"sprites/Sprite24/Sprite24.yy",},},
     {"id":{"name":"Sprite30","path":"sprites/Sprite30/Sprite30.yy",},},
+    {"id":{"name":"Sprite56","path":"sprites/Sprite56/Sprite56.yy",},},
+    {"id":{"name":"Sprite57","path":"sprites/Sprite57/Sprite57.yy",},},
     {"id":{"name":"test_room","path":"sprites/test_room/test_room.yy",},},
     {"id":{"name":"tl_back_ground","path":"tilesets/tl_back_ground/tl_back_ground.yy",},},
     {"id":{"name":"tl_chao","path":"tilesets/tl_chao/tl_chao.yy",},},
