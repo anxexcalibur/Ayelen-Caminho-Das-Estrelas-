@@ -55,6 +55,7 @@ switch(estado)
 	case "morto":{
 		if(sprite_index != spr_snake_dead){
 			//iniciando o for preciso para see estado
+			pontuar(3);
 			sprite_index = spr_snake_dead
 			image_index = 0;
 		}

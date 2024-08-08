@@ -9,7 +9,7 @@ if(outro){
 		if(outro.vida_atual > 0 ){
 			outro.estado = "hit";
 			outro.vida_atual -= obj_player.ataque;
-			show_debug_log(outro.vida_atual)
+			
 			
 			if(estado = "ataque aereo down"){
 				outro.vida_atual -= 3;
@@ -21,6 +21,7 @@ if(outro){
 			instance_destroy();
 			
 		}
+		
 	}
 }
 

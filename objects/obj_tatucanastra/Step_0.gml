@@ -42,12 +42,56 @@ switch(estado)
 			var direcao =  choose(-2,2);
 			velh = direcao;
 			
-			
-			
 		}
+		if(place_meeting(x,y,obj_player))
+			if(obj_player.estado = "defesa")
+				{
+				 velh =	 -velh	
+				}
 		if(random(timer_estado) > 200)
 		{
 			estado = choose ("parado","parado","movendo")
 		}
+		break;
+	}
+	case "hit":{
+		
+		if(sprite_index != spr_tatucanastra_hit){
+			image_index = 0;
+			sprite_index = spr_tatucanastra_hit;
+			vida_atual -= obj_player.id.ataque;
+			screenshake(1)
+		}
+		
+		
+		//condição de troca de estado
+		if(vida_atual <= 0)
+		{
+			//checando se ele ainda tem vida
+			if(image_index > image_number-1)
+			{
+				estado ="morto"
+			}
+			
+		}
+		break
+	}
+	case "morto":
+	{
+		
+		if(sprite_index != spr_tatucanastra_morto){
+			pontuar(6);
+			//iniciando o for preciso para see estado
+			sprite_index = spr_tatucanastra_morto
+			image_index = 0;
+		}
+		;              
+		//morrendo de verdade
+		if (image_index > image_number - 1) {
+            instance_destroy();
+            
+        }
+		
+		break
 	}
 }

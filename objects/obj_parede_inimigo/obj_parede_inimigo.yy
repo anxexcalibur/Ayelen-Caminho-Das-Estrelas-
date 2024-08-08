@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite24",
-    "path":"sprites/Sprite24/Sprite24.yy",
+    "name":"espinhos",
+    "path":"sprites/espinhos/espinhos.yy",
   },
   "spriteMaskId":null,
   "visible":false,

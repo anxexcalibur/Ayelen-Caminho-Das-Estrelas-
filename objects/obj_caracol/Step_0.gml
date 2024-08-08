@@ -76,9 +76,11 @@ switch(estado)
 	}
 	case "morto":{
 		if(sprite_index != spr_caracol_morto){
+			pontuar(3);
 			//iniciando o for preciso para see estado
 			sprite_index = spr_caracol_morto
 			image_index = 0;
+			
 		}
 		;              
 		//morrendo de verdade
@@ -86,6 +88,7 @@ switch(estado)
             instance_destroy();
             
         }
+		
 	}
 		
 }

@@ -70,3 +70,8 @@ function valor_ac(_anim,_animar = false,_chan = 0)
 	
 	return _val;
 }
+
+function pontuar(valor = 3)
+{
+	global.pontuacao += valor 
+}
