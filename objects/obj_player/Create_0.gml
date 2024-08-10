@@ -82,16 +82,7 @@ alarm[0] = 0;
 // Define o tempo de invencibilidade após receber dano
 inv_tempo = 180;
 
-// Inicializa as constelações no jogo
-global.constelacao_atual = 0;
-global.estrelas_coletadas = 0;
 
-// Define uma lista de constelações com nomes e números totais de estrelas
-global.constelacoes = [
-    {nome: "Homem Velho", total: 6},
-    {nome: "Anta do Norte", total: 10},
-    {nome: "Veado", total: 8}
-];
 
 // Inicializa a pontuação global do jogo
 global.pontuacao = 0;
