@@ -1,3 +1,4 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-instance_destroy(); // Destrói o objeto quando o alarme tocar
+// Evento Alarm[1]
+/// @description Destrói o sistema de partículas após a animação
+part_system_destroy(part_system); // Destrói o sistema de partículas
+instance_destroy(); // Destrói o objeto
