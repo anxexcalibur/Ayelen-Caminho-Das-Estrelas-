@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_life",
+    "path":"sprites/spr_life/spr_life.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

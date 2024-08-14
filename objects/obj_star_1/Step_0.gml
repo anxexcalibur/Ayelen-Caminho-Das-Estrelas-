@@ -1,42 +1,45 @@
-
 if (place_meeting(x, y, obj_player)) { 
     if (keyboard_check_pressed(ord("F"))) { 
         ativou = true;
+		
         sprite_index = spr_star_bruta;
         image_speed = 1;
         alarm[0] = room_speed;
         screenshake(30); 
-        //funcionando
-        global.estrelas_coletadas++;
-		
 
-        // Identifica a estrela e constelação
+        // Atualiza o número de estrelas coletadas
+        global.estrelas_coletadas++;
+        
+        // Identifica a estrela e a constelação
         var star_index = global.estrelas_coletadas;
         var star_name = "";
         var constellation_name = "";
         var complete_message = "";
 
         if (star_index <= 6) {
-            constellation_name ="Homem Velho";
-            star_name =  string(global.estrelas[star_index].nome);
-        } else if (star_index <= 16 and star_index >= 7 ) {
+            constellation_name = "Homem Velho";
+            star_name = "Estrela " + string(star_index); // Assumindo um nome padrão para estrelas
+        } else if (star_index <= 16) {
             constellation_name = "Anta do Norte";
-            star_name = string(global.estrelas[star_index].nome);
-        } else if (star_index <= 40 and star_index >= 17) {
-            constellation_name = string(global.estrelas[star_index].nome);
-            star_name = "Estrela " + string(star_index - global.constelacoes[0].total - global.constelacoes[1].total);
+            star_name = "Estrela " + string(star_index); // Assumindo um nome padrão para estrelas
+        } else if (star_index <= 24) {
+            constellation_name = "Constelação 3"; // Nome para a terceira constelação
+            star_name = "Estrela " + string(star_index); // Assumindo um nome padrão para estrelas
         }
 
         complete_message = "Recuperou o artefato: " + star_name + " da constelação " + constellation_name;
-		var instancia_message = instance_create_layer(room_width / 2, room_height / 2, "Messages", obj_message);
-		obj_message.text = complete_message;
-		
-        // Verifica constelação completa
-      
-
+        
+        // Atualiza o obj_message existente
+        var message_instance = instance_find(obj_message, 0);
+        if (message_instance != noone) {
+            message_instance.text = complete_message;
+            message_instance.alpha = 1; // Torna a mensagem visível
+            message_instance.mostra_message = true; // Ativa a exibição da mensagem
+        }
+        
         // Partículas
         part_particles_create(part_system, x, y, part_type, 5);
-        alarm[1] = room_speed; 
+        alarm[1] = room_speed; // Configura o alarme para destruir o objeto
     }
 } 
 
@@ -55,4 +58,3 @@ if (ativou) {
         image_speed = 1;
     }
 }
-

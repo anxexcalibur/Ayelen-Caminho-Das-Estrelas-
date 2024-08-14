@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"obj_vida",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_vida",
   "overriddenProperties":[],
@@ -28,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite57",
-    "path":"sprites/Sprite57/Sprite57.yy",
+    "name":"spr_life",
+    "path":"sprites/spr_life/spr_life.yy",
   },
   "spriteMaskId":null,
   "visible":true,

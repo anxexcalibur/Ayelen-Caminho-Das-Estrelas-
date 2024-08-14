@@ -352,18 +352,3 @@ if (tempo_dash % 3 == 0) {
 if (global.dash_cooldown > 0) {
     global.dash_cooldown--;
 }
-// Verifica se os sprites estão definidos
-if (!sprite_exists(molduraHealthbar)) {
-    show_debug_message("Sprite molduraHealthbar não existe.");
-} else {
-    show_debug_message("Sprite molduraHealthbar está definido.");
-}
-
-if (!sprite_exists(sHealthbar)) {
-    show_debug_message("Sprite sHealthbar não existe.");
-} else {
-    show_debug_message("Sprite sHealthbar está definido.");
-}
-
-// Verifica as coordenadas da barra de vida
-show_debug_message("Coordenadas da barra de vida: (" + string(healthbar_x) + ", " + string(healthbar_y) + ")");

@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite57",
-    "path":"sprites/Sprite57/Sprite57.yy",
+    "name":"Sprite23",
+    "path":"sprites/Sprite23/Sprite23.yy",
   },
   "spriteMaskId":null,
   "visible":true,
