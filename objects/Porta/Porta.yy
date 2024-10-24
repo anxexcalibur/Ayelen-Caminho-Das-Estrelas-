@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite23",
-    "path":"sprites/Sprite23/Sprite23.yy",
+    "name":"spr_baiacu",
+    "path":"sprites/spr_baiacu/spr_baiacu.yy",
   },
   "spriteMaskId":null,
   "visible":false,

@@ -1,8 +1,13 @@
 /// @description Inserir descrição aqui
-
+//ultimate dela
+resistencia = 0;
+global.balas = 100
+distance_block = 0
+_tile = layer_tilemap_get_id("Tile_3")
+pode_desenhar = false
 // Inicializa o gerador de números aleatórios para garantir que os resultados das funções de randomização sejam diferentes a cada execução do jogo
 randomize();
-
+hitbaiacu = false;
 // Variável para controlar se o jogador morreu
 morreu = false 
 //Variável que indica se a vida max passou dos 10
@@ -36,7 +41,7 @@ vida_atual = max_vida;
 
 // Variável para controlar se o jogador está recebendo dano
 recebendohit = true;
-
+congelado = false	
 // Define a velocidade máxima horizontal do jogador
 max_velh = 3;
 
@@ -50,7 +55,7 @@ mostra_estado = true;
 dano = noone;
 
 // Define o valor do ataque do jogador
-ataque = 1;
+ataque = 30;
 
 // Variável para controlar se o jogador pode realizar certas ações
 posso = true;
@@ -63,7 +68,8 @@ healthbar_width = 200;
 
 // Define a altura da barra de vida
 healthbar_height = 24;
-
+// Key
+key_shoot = keyboard_check_pressed(ord("X"));
 // Calcula a posição x da barra de vida com base na largura da tela e da barra
 healthbar_x = (400 / 2) - (healthbar_width / 2);
 

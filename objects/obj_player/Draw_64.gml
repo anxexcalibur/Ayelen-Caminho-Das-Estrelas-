@@ -59,6 +59,14 @@ if (!morreu) {
     // Desenha o texto da pontuação do jogador em verde claro
     draw_set_color(make_color_rgb(144, 238, 144));  // Define a cor do texto para verde claro
     draw_text(texto_x, texto_y, "Pontuação: " + string(global.pontuacao));
+	
+	// Desenha o texto da pontuação do jogador em verde claro
+	draw_set_color(make_color_rgb(0, 0, 139));  // Define a cor da sombra para azul escuro
+    draw_text(texto_x + 2, texto_y + 20, "Projetil: " + string(global.balas));
+	
+    draw_set_color(make_color_rgb(144, 238, 144));  // Define a cor do texto para verde claro
+    draw_text(texto_x-1, texto_y + 20 , "Projetil: " + string(global.balas));
+	
 
     // Redefine as configurações de desenho para os valores padrão
     draw_set_color(c_white);  // Redefine a cor do texto para a cor padrão

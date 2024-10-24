@@ -11,8 +11,8 @@
   "name":"obj_message",
   "overriddenProperties":[],
   "parent":{
-    "name":"Coletaveis",
-    "path":"folders/Objetos/Coletaveis.yy",
+    "name":"Tela",
+    "path":"folders/Objetos/Tela.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -37,5 +37,5 @@
     "path":"sprites/spr_life/spr_life.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

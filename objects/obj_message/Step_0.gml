@@ -13,9 +13,12 @@ if (mostra_message) {
     y = cam_y + cam_h / 2;
 
     // Atualiza o alfa para fazer a mensagem desaparecer gradualmente
-    alpha -= (1 / (room_speed * 2)); // Duração de 2 segundos
+    alpha -= (1 / (room_speed * 4)); // Duração de 2 segundos
     if (alpha <= 0) {
         alpha = 0; // Garante que a opacidade não se torne negativa
         mostra_message = false; // Não exibe mais a mensagem
-    }
+    }else if(alpha >=1 ){
+		alpha +=(1 / (room_speed * 4)) 
+	}
 }
+

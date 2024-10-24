@@ -327,9 +327,15 @@ menus_lista = {
 };
 
 atualizar_menu_principal = function() {
-    var _menu = [
-        ["Iniciar", menu_acoe.roda_metodo, inicia_jogo]
-    ];
+	if room ==  rm_menu{ 
+		var _menu = [
+		  ["Iniciar", menu_acoe.roda_metodo, inicia_jogo]
+		 ];
+	}else{
+		var _menu = [
+		  ["Voltar Pro Menu", menu_acoe.roda_metodo, inicia_jogo]
+		 ];
+	}
     
     var save_files = listar_saves();
     if (array_length(save_files) > 0) {
@@ -337,7 +343,7 @@ atualizar_menu_principal = function() {
     }
     
     array_push(_menu, ["Opções", menu_acoe.carrega_menu, menus_lista.opcoes]);
-    array_push(_menu, ["Sair", menu_acoe.roda_metodo, fecha_jogo]);
+    array_push(_menu, ["Sair do Jogo", menu_acoe.roda_metodo, fecha_jogo]);
     
     return _menu;
 }
@@ -367,6 +373,7 @@ menu_carregar = [
 ];
 
 // Salvando todos os meus menus
+
 menus = [menu_principal, menu_opcoes, menu_carregar, menu_tela, menu_dificuldade, menu_pause];
 
 // Salvando a seleção de cada menu

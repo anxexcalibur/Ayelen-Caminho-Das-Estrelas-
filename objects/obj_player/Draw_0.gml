@@ -7,6 +7,9 @@
 
 // Inherit the parent event
 event_inherited();
- 
+// Starting from the player's position
+
+
+
 
 

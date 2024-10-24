@@ -8,8 +8,8 @@
   "name":"obj_vida",
   "overriddenProperties":[],
   "parent":{
-    "name":"Tela",
-    "path":"folders/Objetos/Tela.yy",
+    "name":"Coletaveis",
+    "path":"folders/Objetos/Coletaveis.yy",
   },
   "parentObjectId":null,
   "persistent":false,

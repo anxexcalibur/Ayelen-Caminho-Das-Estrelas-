@@ -5,7 +5,7 @@ if (place_meeting(x, y, obj_player)) {
         sprite_index = spr_star_bruta;
         image_speed = 1;
         alarm[0] = room_speed;
-        screenshake(30); 
+        screenshake(10); 
 
         // Atualiza o número de estrelas coletadas
         global.estrelas_coletadas++;
@@ -18,21 +18,23 @@ if (place_meeting(x, y, obj_player)) {
 
         if (star_index <= 6) {
             constellation_name = "Homem Velho";
-            star_name = "Estrela " + string(star_index); // Assumindo um nome padrão para estrelas
+            star_name = "Estrela " + string(global.estrelas[star_index].nome); // Assumindo um nome padrão para estrelas
         } else if (star_index <= 16) {
             constellation_name = "Anta do Norte";
-            star_name = "Estrela " + string(star_index); // Assumindo um nome padrão para estrelas
+            star_name = "Estrela " + string(global.estrelas[star_index].nome); // Assumindo um nome padrão para estrelas
         } else if (star_index <= 24) {
             constellation_name = "Constelação 3"; // Nome para a terceira constelação
-            star_name = "Estrela " + string(star_index); // Assumindo um nome padrão para estrelas
+            star_name = "Estrela " + string(global.estrelas[star_index].nome); // Assumindo um nome padrão para estrelas
         }
 
-        complete_message = "Recuperou o artefato: " + star_name + " da constelação " + constellation_name;
+        complete_message = "Recuperou o artefato: " + star_name
+		
         
         // Atualiza o obj_message existente
         var message_instance = instance_find(obj_message, 0);
         if (message_instance != noone) {
-            message_instance.text = complete_message;
+            message_instance.text1 = complete_message;
+			message_instance.text2 =  " da constelação " + constellation_name;
             message_instance.alpha = 1; // Torna a mensagem visível
             message_instance.mostra_message = true; // Ativa a exibição da mensagem
         }

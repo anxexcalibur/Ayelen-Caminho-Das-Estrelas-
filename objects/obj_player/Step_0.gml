@@ -11,21 +11,33 @@ jump = keyboard_check_pressed(vk_space);
 var chao = place_meeting(x, y + 1, obj_block);
 attack = keyboard_check_pressed(ord("J"));
 esquiva = keyboard_check_pressed(ord("L"));
+attack_projetil = keyboard_check_pressed(ord("H"));
 
 // Checando se eu já dei o dash
 dei_dash = false;
 
 defesa = false;
 var resert_bonus = 0;
-var estou_na_parede = place_meeting(x - 1, y, obj_block);
+var estou_na_parede = place_meeting(x - 1, y,obj_block);
 
-if (keyboard_check_pressed(vk_escape) && menu_existe == false) {
-    if (keyboard_check_pressed(vk_escape)) {
-        instance_create_layer(x, y, "Sensores", obj_menu);
-        menu_existe = true;
-        global.game_paused = true;
+if (keyboard_check_pressed(vk_escape)) {
+    // Se o menu já existe, feche o menu
+    if (menu_existe) {
+        // Destroi o menu
+        with (obj_menu) {
+            instance_destroy();
+        }
+        menu_existe = false; // O menu não existe mais
+        global.game_paused = false; // O jogo é retomado
+    } 
+    // Se o menu não existe, abra o menu
+    else {
+        menu_existe = true; // Marca que o menu existe
+        instance_create_layer(x, y, "Sensores", obj_menu); // Cria o menu
+        global.game_paused = true; // Pausa o jogo
     }
 }
+
 if(vida_atual > max_vida)
 {
 	max_vida++;
@@ -48,7 +60,11 @@ if (keyboard_check(ord("K"))) {
 }
 
 // Cálculo da velocidade horizontal
-velh = (right - left) * max_velh;
+if global.game_paused == false{
+	velh = (right - left) * max_velh;
+}else{
+	velh = 0;
+}
 
 // Verificando se o jogador está morto
 if (vida_atual <= 0) {
@@ -78,21 +94,29 @@ if (!variable_global_exists("dash_cooldown")) {
 
 // Iniciando a máquina de estados
 switch (estado) {
+	
+	
     // Estado: Parado
     case "parado": {
         // Comportamento do estado
+		//errro
+		if global.balas  > 0 and attack_projetil{
+			estado = "ataque projetil"
+			
+			global.balas--
+		}
         sprite_index = spr_player;
         if (defesa) {
             estado = "defesa";
         }
         // Condições de troca de estado
-        if (right || left) {
+        if (right || left and global.game_paused == false) {
             estado = "movendo";
-        } else if (jump || !chao) {
+        } else if (jump || !chao and global.game_paused == false) {
             estado = "pulando";
             velv = (-max_velv * jump);
             image_index = 0;
-        } else if (attack) {
+        } else if (attack and global.game_paused == false) {
             inicia_ataque(chao);
         }
         break;
@@ -227,12 +251,52 @@ switch (estado) {
         }
         if (image_index >= 2) {
             if (image_xscale == 1) {
-                instance_create_layer(x + 28, y - 12, layer, obj_hit_box);
+                instance_create_layer(x + 40, y - 12, layer, obj_hit_box);
             } else if (image_xscale == -1) {
-                instance_create_layer(x - 28, y - 12, layer, obj_hit_box);
+                instance_create_layer(x - 40, y - 12, layer, obj_hit_box);
             }
         }
         if (image_index > image_number - 1) {
+            estado = "parado";
+            velh = 0;
+            posso = true;
+        }
+        if (esquiva && !dei_dash && global.dash_cooldown <= 0) {
+            estado = "dash";
+        }
+        break;
+    }
+	case "ataque projetil": { 
+		var flipped = direction;
+		var gun_x = (x+4)*(flipped)
+		var _xx = x+ lengthdir_x(15, image_angle)
+		var y_offset = lengthdir_y(-20,image_angle)
+		
+		
+        velh = 0;
+		
+        if (sprite_index != spr_player_attack_projetil) {
+            image_index = 0;
+            sprite_index = spr_player_attack_projetil;
+        }
+        if (image_index > 3) {
+			
+			
+	            with  (instance_create_layer(_xx -10,y-30,layer,obj_shoot)){
+				
+				
+					//velocidade
+					speed = 5;
+					//direcao
+					direction  = -90 + 90 *other.image_xscale
+					//anglo
+					image_angle = direction;
+				}
+			
+        }
+		
+        if (image_index > image_number - 1) {
+			
             estado = "parado";
             velh = 0;
             posso = true;
@@ -246,6 +310,7 @@ switch (estado) {
     // Estado: Defesa
     case "defesa": {
         velh = 0;
+		resistencia += 0.2
         if (sprite_index != spr_player35) {
             image_index = 0;
             sprite_index = spr_player35;
@@ -287,6 +352,11 @@ switch (estado) {
     
     // Estado: Dano
     case "hit": {
+		
+		
+		if(hitbaiacu == true){
+			vida_atual -= obj_boss_baiacu.ataque
+		}
         if (sprite_index != spr_player_hit) {
             sprite_index = spr_player_hit;
             image_index = 0;
@@ -295,10 +365,12 @@ switch (estado) {
         if (vida_atual > 0) {
             if (image_index >= image_number - 1) {
                 estado = "parado";
+				hitbaiacu = false
             }
         } else {
             if (image_index >= image_number - 1) {
                 estado = "morto"; 
+				hitbaiacu = false
             }
         }
 		if max_vida > 10 {
@@ -352,3 +424,5 @@ if (tempo_dash % 3 == 0) {
 if (global.dash_cooldown > 0) {
     global.dash_cooldown--;
 }
+
+

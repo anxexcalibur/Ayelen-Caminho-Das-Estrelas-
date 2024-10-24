@@ -1,10 +1,9 @@
 if (mostra_message) {
-    // Evento Draw do obj_message
     draw_set_font(fnt_message);
 
     // Calcula a largura e altura do texto
-    var text_width = string_width(text);
-    var text_height = string_height(text);
+    var text_width = string_width(text1);
+    var text_height = string_height(text1);
 
     // Posições da câmera
     var camera_x = camera_get_view_x(view_camera[0]);
@@ -12,18 +11,19 @@ if (mostra_message) {
 
     // Sombra do Texto
     var shadow_offset = 2; // Deslocamento da sombra
-    var shadow_color = make_color_rgb(0, 0, 0); // Cor da sombra (preto)
+    var shadow_color = make_color_rgb(0, 0, 139); // Cor da sombra
 
-    // Desenhar sombra
+    // Desenhar sombra com opacidade
     draw_set_color(shadow_color);
+    draw_set_alpha(alpha); // Aplica a opacidade
     draw_text(camera_x + (view_wview[0] / 2) + shadow_offset - text_width / 2, 
-              camera_y + (view_hview[0] / 2) + shadow_offset - text_height / 2, text);
+              camera_y + (view_hview[0] / 2) + shadow_offset - text_height / 2, text1);
 
     // Texto Principal
     var main_color = make_color_rgb(46, 139, 87); // Verde Menta
-    draw_set_color(main_color);
+    draw_set_color(make_color_rgb(144, 238, 144));
     draw_text(camera_x + (view_wview[0] / 2) - text_width / 2, 
-              camera_y + (view_hview[0] / 2) - text_height / 2, text);
+              camera_y + (view_hview[0] / 2) - text_height / 2, text1);
 
     // Restaurar cor e opacidade
     draw_set_color(c_white); // Restaura a cor padrão

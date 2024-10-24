@@ -1,5 +1,18 @@
-/// @description Inserir descrição aqui
+ /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
+
+
+
+
+
+
+
+
+
+
+
+
 direc = 0
 hit = false;
 sprite_morrendo = 0;
@@ -25,3 +38,5 @@ mostra_estado = false;
 
 estado = "parado";
 global.game_paused = false;
+// Evento Create do obj_entidade
+dano_aplicado = false; // Variável para controlar se o dano já foi aplicado
