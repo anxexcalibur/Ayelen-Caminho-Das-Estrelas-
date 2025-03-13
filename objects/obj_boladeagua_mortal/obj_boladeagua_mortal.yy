@@ -12,8 +12,8 @@
   "name":"obj_boladeagua_mortal",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"boss_baiacu",
+    "path":"folders/Objetos/Inimigos/boss_baiacu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -10,8 +10,8 @@
   "name":"obj_block",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Colisores",
+    "path":"folders/Objetos/Colisores.yy",
   },
   "parentObjectId":{
     "name":"obj_pai_cenarios",

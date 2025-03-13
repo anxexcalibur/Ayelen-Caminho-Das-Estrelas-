@@ -12,8 +12,8 @@
   "name":"obj_boss_baiacu",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inimigos",
-    "path":"folders/Objetos/Inimigos.yy",
+    "name":"boss_baiacu",
+    "path":"folders/Objetos/Inimigos/boss_baiacu.yy",
   },
   "parentObjectId":{
     "name":"obj_entidade",

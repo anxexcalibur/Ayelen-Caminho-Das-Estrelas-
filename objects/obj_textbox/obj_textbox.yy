@@ -13,8 +13,8 @@
   "name":"obj_textbox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Tela",
+    "path":"folders/Objetos/Tela.yy",
   },
   "parentObjectId":null,
   "persistent":false,

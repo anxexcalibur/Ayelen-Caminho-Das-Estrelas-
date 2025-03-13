@@ -10,7 +10,7 @@ if(obj_player.estado =="defesa"){
 	
 }else{
 	if alarm[0] <= 0{
-		vida_atual -=30;
+		vida_atual -= 3;
 		alarm[0] = inv_tempo;
 	}
 	estado = "hit";

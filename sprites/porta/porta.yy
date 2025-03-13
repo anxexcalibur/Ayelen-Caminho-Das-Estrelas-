@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Cenario",
-    "path":"folders/Objetos/Cenario.yy",
+    "name":"Ayelen Caminho Das Estrelas",
+    "path":"Ayelen Caminho Das Estrelas.yyp",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

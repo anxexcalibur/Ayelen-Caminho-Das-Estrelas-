@@ -4,6 +4,70 @@ function scr_funcoes(){
 
 }
 
+/// @function salvar_jogador(obj)
+/// @desc Salva os dados do jogador no arquivo save.sav
+/// @param obj - O objeto jogador cujos dados serão salvos
+function salvar_itens() {
+    // Define o nome do arquivo que armazenará os itens de todos os jogadores
+    var filename = "_itens.ini";  // Usando um único arquivo para todos os jogadores
+    var file = file_text_open_write(filename);
+
+    // Escreve a seção com o nome do jogador
+    file_text_write_string(file, "[" + global.nome_jogador + "]\n");
+
+    // Obtém as chaves e escreve os pares chave=valor dos itens
+    var keys = ds_map_keys_to_array(global.itens_coletados);
+    var tamanho = array_length(keys);
+
+    for (var i = 0; i < tamanho; i++) {
+        var key = keys[i];
+        var value = global.itens_coletados[? key];
+        file_text_write_string(file, key + "=\"" + string(value) + "\"\n");
+    }
+
+    // Fecha o arquivo após a escrita
+    file_text_close(file);
+
+    // Exibe uma mensagem indicando que o salvamento foi realizado com sucesso
+  
+}
+
+function salvar_jogador(_obj) {
+    ini_open("save.sav");
+    ini_write_real(global.nome_jogador, "x_atual", _obj.x);
+    ini_write_real(global.nome_jogador, "y_atual", _obj.y - 50);
+    ini_write_real(global.nome_jogador, "vida_atual", _obj.vida_atual);
+    ini_write_real(global.nome_jogador, "sala_atual", room);
+    ini_write_real(global.nome_jogador, "etapa_historia", _obj.etapa_historia);
+	ini_write_real(global.nome_jogador, "pontuacao", global.pontuacao);
+	
+    ini_close();
+	// salvando o estado dos itens
+	salvar_itens()
+    /*var nome_jogador = global.nome_jogador;
+    var filename = nome_jogador + "_itens.ini";
+    var file = file_text_open_write(filename);
+    
+    // Escreve a seção com o nome do jogador
+    file_text_write_string(file, "[" + nome_jogador + "]\n");
+    
+    // Obtém as chaves e escreve os pares chave=valor
+    var keys = ds_map_keys_to_array(global.itens_coletados);
+    var tamanho = array_length(keys);
+
+    for (var i = 0; i < tamanho; i++) {
+        var key = keys[i];
+        var value = global.itens_coletados[? key];
+        file_text_write_string(file, key + "=\"" + string(value) + "\"\n");
+    }
+    
+   file_text_close(file);*/
+   
+
+	
+}
+
+
 global.dificuldade = 1;
 //Enumerator para definir as minhas açoes possiveis no menu
 enum menu_acoe
@@ -74,4 +138,26 @@ function valor_ac(_anim,_animar = false,_chan = 0)
 function pontuar(valor = 3)
 {
 	global.pontuacao += valor 
+}
+//essa função mostr ao inicativo dse objetos interativos
+function scr_exclamacao()
+{
+    // Se o jogador está perto do NPC
+    if (distance_to_object(obj_player) < 32) 
+    {
+        // Se ainda não existe um ponto de interrogação para este NPC
+        if (!instance_exists(interrogacao)) 
+        {
+            interrogacao = instance_create_layer(x, y, "instances", obj_interrogacao);
+        }
+    } 
+    else 
+    {
+        // Se a interrogação desse NPC existir, destrói
+        if (instance_exists(interrogacao)) 
+        {
+            with (interrogacao) instance_destroy();
+            interrogacao = noone; // Zera a variável para evitar bugs
+        }
+    }
 }

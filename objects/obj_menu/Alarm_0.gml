@@ -6,3 +6,4 @@
     room_goto(rm_username);
 	global.name_input_active = true;
 //}
+     

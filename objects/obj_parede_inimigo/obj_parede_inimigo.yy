@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"espinhos",
-    "path":"sprites/espinhos/espinhos.yy",
+    "name":"parede",
+    "path":"sprites/parede/parede.yy",
   },
   "spriteMaskId":null,
   "visible":false,

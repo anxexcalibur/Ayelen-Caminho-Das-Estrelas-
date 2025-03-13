@@ -1,0 +1,1 @@
+estado_npc = obj_player.etapa_historia 

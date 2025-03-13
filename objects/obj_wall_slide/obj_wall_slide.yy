@@ -10,8 +10,8 @@
   "name":"obj_wall_slide",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Colisores",
+    "path":"folders/Objetos/Colisores.yy",
   },
   "parentObjectId":{
     "name":"obj_pai_cenarios",
@@ -40,8 +40,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"parede",
-    "path":"sprites/parede/parede.yy",
+    "name":"spr_water_wall",
+    "path":"sprites/spr_water_wall/spr_water_wall.yy",
   },
   "spriteMaskId":null,
   "visible":true,

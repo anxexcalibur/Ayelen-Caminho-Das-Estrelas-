@@ -1,4 +1,4 @@
-/// @description Inserir descrição aqui
+ /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // Evento Alarm[0]
 nome_max = 30;
@@ -74,26 +74,7 @@ salvar_jogo = function(nome_jogador, x, y) {
         show_debug_message("Erro ao abrir o arquivo save.sav para escrita.");
     }
 }
-carregar_jogo = function(_jogador) {
-     // Obtém o nome do jogador selecionado na lista
-	// Verifica se o objeto obj_player ainda não existe na cena
-    
-    // Cria uma nova instância de obj_player
-    instance_create_layer(0, 0, "Instances", obj_player);
-   
-    
 
-    if (file_exists("save.sav")) { // Verifica se o arquivo de save existe
-        ini_open("save.sav"); // Abre o arquivo de save
-        obj_player.x = ini_read_real(_jogador, "x_atual", 0);
-        obj_player.y = ini_read_real(_jogador, "y_atual", 0);
-        obj_player.vida_atual = ini_read_real(_jogador, "vida_atual", 0);
-        room_goto(ini_read_real(_jogador, "sala_atual", 0));
-        ini_close(); // Fecha o arquivo de save
-    } else {
-        show_message("Arquivo de save não encontrado!");
-    }
-}
 
 
 

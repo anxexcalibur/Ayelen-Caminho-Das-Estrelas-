@@ -29,13 +29,13 @@ switch(estado)
 			// O player está à esquerda do objeto
 				lado_certo = -1
 				image_xscale = lado_certo ;
-				show_debug_message("Player está à esquerda");
+				
 				velocidade_projetil = -2
 			} else {
 				// O player está à direita do objeto
 				lado_certo = 1
 				image_xscale = lado_certo ;
-				show_debug_message("Player está à direita");
+				
 				velocidade_projetil = 2
 			}
 			

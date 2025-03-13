@@ -1,10 +1,16 @@
 /// @description Inserir descrição aqui
+//variavel em referencia aos itens coletaveis
+global.itens_coletados = ds_map_create();
+
 //ultimate dela
 resistencia = 0;
+global.nivel_do_jogo = 0
 global.balas = 100
 distance_block = 0
 _tile = layer_tilemap_get_id("Tile_3")
 pode_desenhar = false
+//variavel que controla a etapa da historia
+etapa_historia = 1;
 // Inicializa o gerador de números aleatórios para garantir que os resultados das funções de randomização sejam diferentes a cada execução do jogo
 randomize();
 hitbaiacu = false;
@@ -89,7 +95,6 @@ alarm[0] = 0;
 inv_tempo = 180;
 
 
-
 // Inicializa a pontuação global do jogo
 global.pontuacao = 0;
 
@@ -109,7 +114,7 @@ inicia_ataque = function(chao) {
         // Se a tecla "S" está sendo pressionada
         if (keyboard_check(ord("S"))) {
             // Define o estado do jogador como "ataque aéreo para baixo"
-            estado = "ataque aereo down";
+            estado = "ataque aereo baixo";
             // Define a velocidade horizontal como 0
             velh = 0;
             // Define o índice da imagem como 0 (para iniciar a animação do ataque)
@@ -126,7 +131,7 @@ inicia_ataque = function(chao) {
 // Função para aplicar a gravidade ao jogador
 aplica_gravidade = function() {
     // Verifica se o jogador está colidindo com o chão
-    var chao = place_meeting(x, y + 1, obj_block);
+    var chao = place_meeting(x, y + 1, obj_pai_cenarios);
     // Se o jogador não está no chão
     if (!chao) {
         // Se a velocidade vertical é menor que o dobro da velocidade máxima vertical

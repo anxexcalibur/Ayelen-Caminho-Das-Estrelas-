@@ -1,6 +1,13 @@
 if (place_meeting(x, y, obj_player)) { 
     if (keyboard_check_pressed(ord("F"))) { 
         ativou = true;
+		with(obj_player){
+			switch(etapa_historia){
+				case 7:
+					etapa_historia = 8
+ 				break;
+			}
+		}
 		
         sprite_index = spr_star_bruta;
         image_speed = 1;
@@ -10,7 +17,7 @@ if (place_meeting(x, y, obj_player)) {
         // Atualiza o número de estrelas coletadas
         global.estrelas_coletadas++;
         
-        // Identifica a estrela e a constelação
+        // Identifica a estrela e a constelação 
         var star_index = global.estrelas_coletadas;
         var star_name = "";
         var constellation_name = "";
@@ -31,12 +38,15 @@ if (place_meeting(x, y, obj_player)) {
 		
         
         // Atualiza o obj_message existente
-        var message_instance = instance_find(obj_message, 0);
+        var message_instance = obj_message;
+		show_debug_message(complete_message)
+
         if (message_instance != noone) {
             message_instance.text1 = complete_message;
 			message_instance.text2 =  " da constelação " + constellation_name;
             message_instance.alpha = 1; // Torna a mensagem visível
             message_instance.mostra_message = true; // Ativa a exibição da mensagem
+			
         }
         
         // Partículas

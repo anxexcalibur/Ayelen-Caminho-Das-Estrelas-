@@ -12,8 +12,8 @@
   "name":"obj_hit_inimigos",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Hit boxes",
+    "path":"folders/Objetos/Hit boxes.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -12,8 +12,8 @@
   "name":"obj_block_move_vertical",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Colisores",
+    "path":"folders/Objetos/Colisores.yy",
   },
   "parentObjectId":{
     "name":"obj_block",

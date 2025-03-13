@@ -7,7 +7,7 @@ var _velv = sign(velv);
 
 repeat(abs(velh))
 {
-	if (place_meeting(x + _velh,y,obj_block))
+	if (place_meeting(x + _velh,y,obj_block) or place_meeting(x + _velh,y,obj_wall_invisivel))
 	{
 		velh = 0;
 		break;
@@ -18,7 +18,7 @@ repeat(abs(velh))
 //vertical 
 repeat(abs(velv))
 {
-	if(place_meeting(x,y +_velv,obj_block))
+	if(place_meeting(x,y +_velv,obj_block) or place_meeting(x + _velh,y,obj_wall_invisivel))
 	{
 		velv = 0;
 		break;

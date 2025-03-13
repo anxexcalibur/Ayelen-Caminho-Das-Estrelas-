@@ -1,5 +1,19 @@
 /// @description Controle do jogador
 event_inherited();
+test = keyboard_check_pressed(ord("R"));
+if test {
+	show_message(etapa_historia)
+}
+//etapa do jogo, controla a direção da  seta
+switch(etapa_historia){
+	case 1:
+		global.alvo_x = obj_sensor.x
+		global.alvo_y = obj_sensor.y
+		if instance_exists(obj_seta){
+			obj_seta.status = true
+		}
+	break	
+}
 // Checando se o objeto transição existe
 if (instance_exists(obj_trasicao)) exit;
 
@@ -15,7 +29,7 @@ attack_projetil = keyboard_check_pressed(ord("H"));
 
 // Checando se eu já dei o dash
 dei_dash = false;
-
+//variavel que verifica se a habilidade de defesa foi desbloqueada
 defesa = false;
 var resert_bonus = 0;
 var estou_na_parede = place_meeting(x - 1, y,obj_block);
@@ -43,7 +57,7 @@ if(vida_atual > max_vida)
 	max_vida++;
 	
 }
-
+//codigo que verifica e controla quando exibir os dialogos dentro do jogo, obs transforma em função
 if (distance_to_object(obj_par_npcs) <= 10) {
     if (keyboard_check_pressed(ord("F")) && global.dialogo == false) {
         var _npc = instance_nearest(x, y, obj_par_npcs);
@@ -52,8 +66,8 @@ if (distance_to_object(obj_par_npcs) <= 10) {
     }
 }
 
-// Lógica da defesa
-if (keyboard_check(ord("K"))) {
+// desbloquea a habilidade de defesa
+if (keyboard_check(ord("K"))and etapa_historia >= 6) {
     defesa = true;
 } else {
     defesa = false;
@@ -62,6 +76,8 @@ if (keyboard_check(ord("K"))) {
 // Cálculo da velocidade horizontal
 if global.game_paused == false{
 	velh = (right - left) * max_velh;
+}else if instance_exists(obj_dialogo){
+	velh = 0;
 }else{
 	velh = 0;
 }
@@ -75,7 +91,7 @@ if (vida_atual <= 0) {
 if (estado == "defesa" && place_meeting(x, y, obj_projetil2)) {
     instance_create_layer(x - 15, y - 20, instances, obj_projetil);
 }
-
+// animação o player sofrer dano
 if (alarm > 0) {
     if (image_alpha >= 1) {
         alfa_hit = -0.5;
@@ -207,7 +223,8 @@ switch (estado) {
     }
     
     // Estado: Ataque Aéreo para Baixo
-    case "ataque aereo down": { 
+	//codigo vinculado com on_block_quebra
+    case "ataque aereo baixo": { 
         aplica_gravidade();
         velv += 0.3;
         velh = 0;
@@ -310,7 +327,7 @@ switch (estado) {
     // Estado: Defesa
     case "defesa": {
         velh = 0;
-		resistencia += 0.2
+		resistencia += 0.5
         if (sprite_index != spr_player35) {
             image_index = 0;
             sprite_index = spr_player35;
@@ -403,7 +420,16 @@ switch (estado) {
 		}
         break;
     }
-    
+	case "cha": {
+    sprite_index = spr_player_cha;
+		obj_seta.alarm[0] = 10
+    if (image_index == sprite_get_number(spr_player_cha) - 1) {
+		
+        estado = "parado"; // Volta para "parado" quando a animação termina
+    }
+    break;
+}
+
     default:
         estado = "parado";
         break;

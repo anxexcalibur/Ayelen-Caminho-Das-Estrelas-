@@ -56,7 +56,7 @@ captura_input_nome = function() {
 fist_save = function(){
 	alarm[1] = 5;
 }
-salvar_jogo = function(nome_jogador, x, y) {
+function salvar_jogo(nome_jogador, x, y, etapa_historia) {
     // Verifica se x e y foram fornecidos, caso contrário define valores padrão
     if (argument_count < 3) {
         x = 60;
@@ -73,11 +73,13 @@ salvar_jogo = function(nome_jogador, x, y) {
         file_text_write_string(file_id, "y_atual=" + string(y) + "\n");
         file_text_write_string(file_id, "vida_atual=" + string(obj_player.vida_atual) + "\n");
         file_text_write_string(file_id, "sala_atual=" + string(current_room) + "\n");
+        file_text_write_string(file_id, "etapa_historia=" + string(obj_player.etapa_historia) + "\n");
         
         file_text_close(file_id); // Fecha o arquivo de save
     } else {
         show_debug_message("Erro ao abrir o arquivo save.sav para escrita.");
     }
+	
 }
 
 
@@ -226,6 +228,10 @@ controla_menu = function(_menu){
 inicia_jogo = function() {
     alarm[0] = 5;
 }
+volta_menu = function(){
+	instance_destroy(obj_player)
+	room_goto(rm_menu)
+}
 
 fecha_jogo = function() {
     game_end();
@@ -265,28 +271,85 @@ function listar_saves() {
 // Inicializar a lista de saves
 saves = listar_saves();
 
+function carregar_itens() {
+    // Define o nome do arquivo que contém os itens salvos de todos os jogadores
+    var filename = "_itens.ini";  // Arquivo único para todos os jogadores
+    
+    // Verifica se o arquivo existe
+    if (file_exists(filename)) {
+        var file = file_text_open_read(filename);  // Abre o arquivo para leitura
+        var in_section = false;
+
+        // Limpa o ds_map atual para carregar os dados salvos
+        
+
+        // Lê o arquivo linha por linha
+        while (!file_text_eof(file)) {
+            var linha = file_text_readln(file);
+
+            // Verifica se estamos na seção correta do jogador
+            if (string_starts_with(linha, "[")) {
+                in_section = (linha == "[" + global.nome_jogador + "]");
+                continue;
+            }
+
+            // Se estivermos na seção do jogador, processa a linha
+            if (in_section) {
+                var igual_pos = string_pos("=", linha);
+                if (igual_pos > 0) {
+                    var key = string_copy(linha, 1, igual_pos - 1);  // Extrai a chave
+                    var value = string_delete(linha, 1, igual_pos);  // Extrai o valor
+
+                    // Remove as aspas do valor
+                    value = string_replace_all(value, "\"", "");
+
+                    // Adiciona o par chave-valor ao ds_map
+                    global.itens_coletados[? key] = value;
+                }
+            }
+        }
+
+        // Fecha o arquivo após a leitura
+        file_text_close(file);
+
+        // Exibe uma mensagem indicando que os itens foram carregados com sucesso
+        show_message("Itens carregados com sucesso!");
+    } else {
+        show_message("Arquivo de itens não encontrado!");
+    }
+}
+
+
+
+
 carregar_jogo = function(_value) {
     var jogador = saves[_value]; // Obtém o nome do jogador selecionado na lista
-	global.nome_jogador = jogador; // Armazena o nome do save atual na variável global
+    global.nome_jogador = jogador; // Armazena o nome do save atual na variável global
     
-	// Verifica se o objeto obj_player ainda não existe na cena
+    // Verifica se o objeto obj_player ainda não existe na cena
     if (!instance_exists(obj_player)) {
         // Cria uma nova instância de obj_player
         instance_create_layer(0, 0, "Instances", obj_player);
     }
-    
 
     if (file_exists("save.sav")) { // Verifica se o arquivo de save existe
         ini_open("save.sav"); // Abre o arquivo de save
         obj_player.x = ini_read_real(jogador, "x_atual", 0);
         obj_player.y = ini_read_real(jogador, "y_atual", 0);
         obj_player.vida_atual = ini_read_real(jogador, "vida_atual", 0);
+        obj_player.etapa_historia = ini_read_real(jogador, "etapa_historia", 0); // Adiciona a etapa da história
+        global.pontuacao = ini_read_real(jogador, "pontuacao", 0)
         room_goto(ini_read_real(jogador, "sala_atual", 0));
         ini_close(); // Fecha o arquivo de save
     } else {
         show_message("Arquivo de save não encontrado!");
     }
-}
+    
+    // Carregando os itens
+   carregar_itens();
+};
+
+
 
 ajusta_tela = function(_valor) {
     switch(_valor){
@@ -333,7 +396,7 @@ atualizar_menu_principal = function() {
 		 ];
 	}else{
 		var _menu = [
-		  ["Voltar Pro Menu", menu_acoe.roda_metodo, inicia_jogo]
+		  ["Voltar Pro Menu", menu_acoe.roda_metodo, volta_menu]
 		 ];
 	}
     
@@ -380,4 +443,4 @@ menus = [menu_principal, menu_opcoes, menu_carregar, menu_tela, menu_dificuldade
 menus_sel = array_create(array_length(menus), 0);
 alterando = false;
 
-show_message(saves);
+
