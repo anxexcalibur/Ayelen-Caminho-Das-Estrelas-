@@ -1,6 +1,7 @@
 // Verifica se o jogo acabou
 if (game_over)
 {
+	
     // Pegando algumas informações sobre a câmera
     var x1 = camera_get_view_x(view_camera[0]); // Coordenada x da câmera
     var w = camera_get_view_width(view_camera[0]); // Largura da câmera

@@ -28,7 +28,7 @@ cam.alvo = id;
 vel_dash = 10
 
 // Define a duração do dash em frames
-duracao_dash = 10;
+duracao_dash = 8;
 
 // Inicializa o contador de tempo do dash com a duração definida
 tempo_dash = duracao_dash;

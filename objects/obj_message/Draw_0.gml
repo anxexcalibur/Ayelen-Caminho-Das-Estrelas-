@@ -23,19 +23,8 @@ if (mostra_message) {
     draw_set_alpha(1);
 
     // Reduzir o alpha para desaparecer gradualmente
-    tempo_decorrido += delta_time; // delta_time garante a contagem consistente ao longo do tempo
+    // delta_time garante a contagem consistente ao longo do tempo
 
     // Fase de aumento de alpha
-    if (tempo_decorrido < tempo_espera) {
-        alpha = lerp(alpha, 1, 0.02); // Aumenta alpha gradualmente até 1
-    }
-    // Fase de redução de alpha
-    else {
-        // Reduzir o alpha gradualmente usando lerp
-        alpha = lerp(alpha, 0, 0.02); // Interpola entre alpha atual e 0, com uma taxa de 0.02
-    }
-
-    if (alpha <= 0.01) { // Quando o alpha for bem próximo de 0, esconde a mensagem
-        mostra_message = false;
-    }
+   
 }

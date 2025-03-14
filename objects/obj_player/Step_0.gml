@@ -356,7 +356,7 @@ switch (estado) {
             var _dir = point_direction(0, 0, (right - left), (_down - _up));
             velh = lengthdir_x(vel_dash, _dir);
             velv = lengthdir_y(vel_dash, _dir);
-            global.dash_cooldown = 35;  // Ajuste o valor conforme necessário para o tempo de cooldown do dash
+            global.dash_cooldown = 65;  // Ajuste o valor conforme necessário para o tempo de cooldown do dash
         }
         dei_dash = true;
         image_index = 0;
