@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>No Início dos Tempos: A Saga de Ka'tupytã</title>
+    <title>A Saga de Ka'tupytã</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,9 +57,9 @@
         <div class="section">
             <h2>✨ Características do Projeto</h2>
             <ul>
-                <li>🔮 <strong>Mitologia e Tradição</strong>: Uma narrativa inspirada nos deuses e espíritos do panteão tupi.</li>
+                <li>🔮 <strong>Mitologia e Tradição</strong>: Inspirado nos deuses e espíritos do panteão tupi.</li>
                 <li>🛡️ <strong>Protagonista Forte</strong>: Ayelen, a escolhida da Estrela Dalva, guiada pelos ancestrais.</li>
-                <li>🛰 <strong>Exploração e Descoberta</strong>: O jogador desvenda templos, lendas e mistérios ocultos.</li>
+                <li>🛰 <strong>Exploração e Descoberta</strong>: Templos, lendas e mistérios ocultos esperam ser revelados.</li>
                 <li>🌟 <strong>Sistema de Constelações</strong>: Três templos representam as constelações Homem-Velho, Anta-Norte e Veado.</li>
                 <li>🧠 <strong>Conflito e Redenção</strong>: A traição de Ubiratã e a luta pela restauração das insígnias.</li>
             </ul>
@@ -86,7 +86,7 @@
             <h2>📚 Objetivos do Projeto</h2>
             <p>- Criar um universo imersivo baseado na mitologia tupi.<br>
                - Desenvolver um enredo envolvente com personagens profundos.<br>
-               - Explorar elementos culturais de forma respeitosa e autêntica.</p>
+               - Explorar elementos culturais de forma respeitosa e autêutica.</p>
         </div>
 
         <div class="section">
@@ -111,4 +111,3 @@
     </div>
 </body>
 </html>
-
