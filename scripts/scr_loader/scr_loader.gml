@@ -1,5 +1,9 @@
 function carrega_jogo2(_jogador, _sala,_etapa) {
     // Verifica se uma instância de obj_player já existe na cena
+	if (audio_is_playing(snd_background_catcines)) {
+	                audio_stop_sound(snd_background_catcines);  // Para a música de protótipo
+					audio_play_sound(snd_background,1,true)
+				}
     if (!instance_exists(obj_player)) {
         // Cria uma nova instância de obj_player
         var inst_player = instance_create_layer(0, 0, "Instances", obj_player);

@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_andando",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.441729,
+  "name":"snd_andando",
+  "parent":{
+    "name":"walk",
+    "path":"folders/Sons/walk.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_andando.ogg",
+  "type":0,
+  "volume":0.51,
+}

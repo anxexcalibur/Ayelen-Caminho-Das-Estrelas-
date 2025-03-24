@@ -3,6 +3,43 @@
 function scr_funcoes(){
 
 }
+// Função para gerenciar a música de fundo
+function gerenciar_musica(nome_musica) {
+    audio_pause_all();  // Pausa qualquer música tocando
+
+    // Para as músicas atuais, se estiverem tocando
+    if (audio_is_playing(snd_background)) {
+        audio_stop_sound(snd_background);  // Para a música de protótipo
+    }
+    if (audio_is_playing(snd_background_catcines)) {
+        audio_stop_sound(snd_background_catcines);  // Para a música de catcine
+    }
+
+    // Verifica qual música deve ser tocada com base no parâmetro
+    switch (nome_musica) {
+        case "prototipo":
+            if (global.current_music != "prototipo") {
+                audio_play_sound(snd_background, 1, true);  // Toca a música de protótipo em loop
+                global.current_music = "prototipo";  // Atualiza a música atual
+            }
+            break;
+
+        case "catcine":
+            if (global.current_music != "catcine") {
+                audio_play_sound(snd_background_catcines, 1, true);  // Toca a música de catcine em loop
+                global.current_music = "catcine";  // Atualiza a música atual
+            }
+            break;
+
+        case "none":
+            global.current_music = "none";  // Nenhuma música tocando
+            break;
+		
+
+        default:
+            global.current_music = "none";  // Caso não haja música correspondente
+    }
+}
 
 /// @function salvar_jogador(obj)
 /// @desc Salva os dados do jogador no arquivo save.sav

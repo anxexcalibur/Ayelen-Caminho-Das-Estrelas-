@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":42.1978,
+  "duration":49.31651,
   "name":"snd_background",
   "parent":{
     "name":"Sons",
@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"snd_background.ogg",
   "type":0,
-  "volume":1.0,
+  "volume":0.47,
 }

@@ -113,6 +113,7 @@ desenha_menu = function(_menu){
         if(menus_sel[pag] == i){
             _cor = c_green;
             _marg_x = marg_val;
+			
         }
         var _texto = _menu[i][0];
         draw_text_color(20 + _marg_x,(_alt / 2) - _alt_menu / 2 + (i * _espaco_y), _texto, _cor, _cor, _cor, _cor, 1);
@@ -175,6 +176,11 @@ controla_menu = function(_menu){
         
             // Avisando que pode animar
             _animar = true;
+			 // Tocando o som do menu
+	        with(obj_sound) {
+	            alarm[0] = 2;
+				MenuSound = MenuSound.HOVER;
+	        }
         
         }
     } else {
@@ -194,8 +200,15 @@ controla_menu = function(_menu){
     // O que fazer quando apertar o enter
     if (_avanca)
     {
+		with(obj_sound){
+				alarm[0] =1;
+				MenuSound = MenuSound.SELECT
+					
+			}
+			
         switch(_menu[_sel][1])
         {
+			
             // Caso seja 0, ele roda um método
             case menu_acoe.roda_metodo:
             _menu[_sel][2]();
@@ -229,6 +242,11 @@ inicia_jogo = function() {
     alarm[0] = 5;
 }
 volta_menu = function(){
+	
+	 if (audio_is_playing(snd_background)) {
+	                audio_stop_sound(snd_background);  // Para a música de protótipo
+	            }
+				
 	instance_destroy(obj_player)
 	room_goto(rm_menu)
 }

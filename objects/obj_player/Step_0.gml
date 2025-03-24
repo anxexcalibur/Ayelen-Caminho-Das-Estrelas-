@@ -158,17 +158,30 @@ switch (estado) {
     
     // Estado: Pulando
     case "pulando": {
-        if (velv > 0) {
-            sprite_index = spr_player_fall;
-            if (image_index >= image_number - 1) {
-                image_index = image_number - 1;
-            }
-        } else {
-            sprite_index = spr_player_jump;
-            if (image_index >= image_number - 1) {
-                image_index = image_number - 1;
-            }
-        }
+		if place_meeting(x,y,obj_vida){
+	        if (velv > 0) {
+	            sprite_index = spr_player_fall_cura;
+	            if (image_index >= image_number - 1) {
+	                image_index = image_number - 1;
+	            }
+	        } else {
+	            sprite_index = spr_player_jump;
+	            if (image_index >= image_number - 1) {
+	                image_index = image_number - 1;
+	            }
+	        }
+		}else{
+			 if (velv > 0) {
+	            sprite_index = spr_player_fall;
+	            if (image_index >= image_number - 1) {
+	                image_index = image_number - 1;
+	            }
+	        } else {
+	            sprite_index = spr_player_jump;
+	            if (image_index >= image_number - 1) {
+	                image_index = image_number - 1;
+	         
+		}
         if (attack) {
             inicia_ataque(chao);
         }

@@ -1,3 +1,3 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-//musica ambiente
+// Inicializar a música para o estado correto
+
+	
