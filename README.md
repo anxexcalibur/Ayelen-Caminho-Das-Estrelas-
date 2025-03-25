@@ -1,7 +1,7 @@
 # ⚜️ A Saga Ayelen
 
 ## 🌐 Visão Geral  
-Ayelen é um projeto narrativo inspirado nas mitologias e lendas tupi-guarani, trazendo uma história rica sobre o embate entre luz e trevas, a luta pela harmonia e o destino de uma vila protegida pelas constelações. A protagonista, **Ayelen**, é a guerreira destinada a restaurar o equilíbrio e salvar seu povo da destruição.
+Ayelen é um projeto  sobre a criação de um jogo narrativo inspirado nas mitologias e lendas tupi-guarani, trazendo uma história rica sobre o embate entre luz e trevas, a luta pela harmonia e o destino de uma vila protegida pelas constelações. A protagonista, **Ayelen**, é a guerreira destinada a restaurar o equilíbrio e salvar seu povo da destruição.
 
 ## ✨ Características do Projeto  
 - 🔮 **Metodologia baseada na jornada do herói**  
@@ -44,9 +44,7 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
     4.9. Documentação ⭕  
     5.0. Apresentação ⭕  
 
-## 📸 Sugestões de Prints  
-
-Aqui estão algumas sugestões de prints que podem ser incluídos para ilustrar o progresso do projeto:
+## 📸 Prints  
 
 1. **Tela Inicial do Jogo**: Um print da tela de início, onde o jogador pode ver o menu principal e escolher suas opções (iniciar jogo, continuar, etc.).
 
