@@ -1,56 +1,76 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Saga de Ka'tupytã</title>
-</head>
-<body>
-    <h1>⚜️ A Saga de Ka'tupytã</h1>
+# ⚜️ A Saga Ayelen
 
-    <h2>🌐 Visão Geral</h2>
-    <p>Ka'tupytã é um projeto narrativo inspirado nas mitologias e lendas tupi-guarani, trazendo uma história rica sobre o embate entre luz e trevas, a luta pela harmonia e o destino de uma vila protegida pelas constelações. A protagonista, <strong>Ayelen</strong>, é a guerreira destinada a restaurar o equilíbrio e salvar seu povo da destruição.</p>
+## 🌐 Visão Geral  
+Ayelen é um projeto narrativo inspirado nas mitologias e lendas tupi-guarani, trazendo uma história rica sobre o embate entre luz e trevas, a luta pela harmonia e o destino de uma vila protegida pelas constelações. A protagonista, **Ayelen**, é a guerreira destinada a restaurar o equilíbrio e salvar seu povo da destruição.
 
-    <h2>✨ Características do Projeto</h2>
-    <ul>
-        <li>🔮 <strong>Mitologia e Tradição</strong>: Inspirado nos deuses e espíritos do panteão tupi.</li>
-        <li>🛡️ <strong>Protagonista Forte</strong>: Ayelen, a escolhida da Estrela Dalva, guiada pelos ancestrais.</li>
-        <li>🛰 <strong>Exploração e Descoberta</strong>: Templos, lendas e mistérios ocultos esperam ser revelados.</li>
-        <li>🌟 <strong>Sistema de Constelações</strong>: Três templos representam as constelações Homem-Velho, Anta-Norte e Veado.</li>
-        <li>🧠 <strong>Conflito e Redenção</strong>: A traição de Ubiratã e a luta pela restauração das insígnias.</li>
-    </ul>
+## ✨ Características do Projeto  
+- 🔮 **Metodologia baseada na jornada do herói**  
+- 🔮 **Mitologia e Tradição**: Inspirado nos deuses e espíritos do panteão tupi.  
+- 🛡️ **Protagonista Forte**: Ayelen, a escolhida da Estrela Dalva, guiada pelos ancestrais.  
+- 🛰 **Exploração e Descoberta**: Templos, lendas e mistérios ocultos esperam ser revelados.  
+- 🌟 **Sistema de Constelações**: Três templos representam as constelações Homem-Velho, Anta-Norte e Veado.  
+- 🧠 **Conflito e Redenção**: A traição de Ubiratã e a luta pela restauração das insígnias.
 
-    <h2>🔄 Contextualização</h2>
-    <p>A história começa com Tupã, o criador do cosmos, e sua batalha contra Anhangá, o Deus dos Infernos. A vila de Ka'tupytã prosperou sob a proteção da deusa Bianca, que lhes concedeu três templos sagrados. No entanto, a corrupção se infiltra quando <strong>Ubiratã</strong>, tomado pela ganância e magia negra, rouba as insígnias do templo da deusa.</p>
-    <p>Agora, com a vila à beira da destruição, os anciões evocam uma profecia: apenas <strong>Ayelen</strong>, guiada pela luz da Estrela Dalva, pode restaurar o equilíbrio e impedir o avanço das trevas.</p>
+## 🔄 Contextualização  
+A história começa com Tupã, o criador do cosmo. A vila de Ka'tupytã prosperou sob a proteção da deusa Bianca (fictícia), que lhes concedeu três templos sagrados. No entanto, a corrupção se infiltra quando **Ubiratã**, tomado pela ganância e magia negra, rouba as insígnias do templo da deusa.
 
-    <h2>🎬 Personagens Principais</h2>
-    <ul>
-        <li>🌟 <strong>Ayelen</strong> - A Guerreira da Luz</li>
-        <li>🌌 <strong>Tupã</strong> - O Criador</li>
-        <li>🌜 <strong>Bianca</strong> - A Deusa da Astronomia</li>
-        <li>🔥 <strong>Anhangá</strong> - O Deus das Trevas</li>
-        <li>⚔️ <strong>Ubiratã</strong> - O Guerreiro Caído</li>
-    </ul>
+Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: apenas **Ayelen**, guiada pela luz da Estrela Dalva, pode restaurar o equilíbrio e impedir o avanço das trevas.
 
-    <h2>📚 Objetivos do Projeto</h2>
-    <p>- Criar um universo imersivo baseado na mitologia tupi.<br>
-       - Desenvolver um enredo envolvente com personagens profundos.<br>
-       - Explorar elementos culturais de forma respeitosa e autêntica.</p>
+## 🎬 Personagens Principais  
+- 🌟 **Ayelen** - A Guerreira da Luz  
+- 🌌 **Tupã** - O Criador  
+- 🌜 **Bianca** - A Deusa da Astronomia  
+- 🔥 **Anhangá** - O Deus das Trevas  
+- ⚔️ **Ubiratã** - O Guerreiro Caído
 
-    <h2>✅ Planejamento e Roadmap</h2>
-    <ol>
-        <li>Definição do Mundo e da Mitologia ✅</li>
-        <li>Criação das Personagens ⭕</li>
-        <li>Desenvolvimento do Enredo ⭕</li>
-        <li>Prototipação do Jogo (se aplicável) ⭕</li>
-    </ol>
+## 📚 Objetivos do Projeto  
+- Criar um universo imersivo baseado na mitologia tupi.  
+- Desenvolver um enredo envolvente com personagens profundos.  
+- Explorar elementos culturais de forma respeitosa e autêntica.
 
-    <h2>📈 Contribuição</h2>
-    <p>Sinta-se à vontade para sugerir melhorias, contribuir com ideias ou colaborar com o projeto! Qualquer feedback é bem-vindo.</p>
+## ✅ Planejamento e Roadmap  
+1. Definição do Mundo e da Mitologia ✅  
+2. Criação das Personagens ✅  
+3. Desenvolvimento do Enredo ✅  
+4. Prototipação do Jogo 🛠️  
+    4.1. Criação dos sistemas de recompensa e objetivos ✅  
+    4.2. Criação do menu + sistema de diálogos e cutscenes ✅  
+    4.3. Criação do sistema de luta do player e inimigos ✅  
+    4.4. Criação e refinamento de jogabilidade ✅  
+    4.5. Criação e batalha com o primeiro chefe ✅  
+    4.6. Design de níveis até o primeiro chefe 🛠️  
+    4.7. Sistema de design de som 🛠️  
+    4.8. Testes e finalização da prototipação ⭕  
+    4.9. Documentação ⭕  
+    5.0. Apresentação ⭕  
 
-    <h2>✨ Contato</h2>
-    <p>Quer saber mais ou colaborar? Entre em contato via <a href="https://github.com/NebulaMystic">GitHub</a> ou e-mail: <a href="mailto:contato@ka-tupyta.com">contato@ka-tupyta.com</a>.</p>
-</body>
-</html>
+## 📸 Sugestões de Prints  
+
+Aqui estão algumas sugestões de prints que podem ser incluídos para ilustrar o progresso do projeto:
+
+1. **Tela Inicial do Jogo**: Um print da tela de início, onde o jogador pode ver o menu principal e escolher suas opções (iniciar jogo, continuar, etc.).
+
+   ![Tela Inicial](https://link_da_imagem_da_tela_inicial.com)
+
+2. **Personagem Ayelen em Ação**: Uma captura da personagem Ayelen em movimento, com o cenário de fundo e detalhes de sua armadura ou armas.
+
+   ![Personagem Ayelen](https://link_da_imagem_da_personagem.com)
+
+3. **Sistema de Diálogos**: Um print mostrando a interface do sistema de diálogos, com a interação entre Ayelen e outros personagens.
+
+   ![Sistema de Diálogos](https://link_da_imagem_do_sistema_de_dialogos.com)
+
+4. **Batalha Contra o Chefe**: Uma captura do combate contra o primeiro chefe, mostrando a jogabilidade e a intensidade do confronto.
+
+   ![Batalha contra o Chefe](https://link_da_imagem_da_batalha.com)
+
+5. **Exploração de Templos**: Imagem do ambiente do jogo enquanto Ayelen explora um templo, com elementos de mistério e exploração.
+
+   ![Exploração de Templos](https://link_da_imagem_da_exploracao.com)
+
+## 📈 Contribuição  
+Sinta-se à vontade para sugerir melhorias, contribuir com ideias ou colaborar com o projeto! Qualquer feedback é bem-vindo.
+
+## ✨ Contato  
+Quer saber mais ou colaborar? Entre em contato via [GitHub](https://github.com/NebulaMystic) ou e-mail: [galvao.ti.solutions@gmail.com](mailto:galvao.ti.solutions@gmail.com) ou [gdszcoimbra@gmail.com](mailto:gdszcoimbra@gmail.com).
 
