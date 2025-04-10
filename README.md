@@ -1,14 +1,14 @@
 # ⚜️ A Saga Ayelen
 
 ## 🌐 Visão Geral  
-Ayelen é um projeto  sobre a criação de um jogo narrativo inspirado nas mitologias e lendas tupi-guarani, trazendo uma história rica sobre o embate entre luz e trevas, a luta pela harmonia e o destino de uma vila protegida pelas constelações. A protagonista, **Ayelen**, é a guerreira destinada a restaurar o equilíbrio e salvar seu povo da destruição.
+Ayelen é um projeto sobre a criação de um protótipo de jogo baseado em narrativas inspiradas nas mitologias e lendas tupi-guaranis, trazendo uma história rica sobre o embate entre luz e trevas, a luta pela harmonia e o destino de uma vila protegida pelas constelações. A protagonista, **Ayelen**, é a guerreira destinada a restaurar o equilíbrio e salvar seu povo da destruição.
 
 ## ✨ Características do Projeto  
 - 🔮 **Metodologia baseada na jornada do herói**  
 - 🔮 **Mitologia e Tradição**: Inspirado nos deuses e espíritos do panteão tupi.  
 - 🛡️ **Protagonista Forte**: Ayelen, a escolhida da Estrela Dalva, guiada pelos ancestrais.  
-- 🛰 **Exploração e Descoberta**: Templos, lendas e mistérios ocultos esperam ser revelados.  
-- 🌟 **Sistema de Constelações**: Três templos representam as constelações Homem-Velho, Anta-Norte e Veado.  
+- 🛰 **Exploração e Descoberta**: Plataformas, lendas e mistérios ocultos aguardam ser revelados.  
+- 🌟 **Objetivo: Recuperar insígnias roubadas**: Três templos representam as constelações Homem-Velho, Anta-Norte e Veado.  
 - 🧠 **Conflito e Redenção**: A traição de Ubiratã e a luta pela restauração das insígnias.
 
 ## 🔄 Contextualização  
@@ -20,13 +20,13 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
 - 🌟 **Ayelen** - A Guerreira da Luz  
 - 🌌 **Tupã** - O Criador  
 - 🌜 **Bianca** - A Deusa da Astronomia  
-- 🔥 **Anhangá** - O Deus das Trevas  
 - ⚔️ **Ubiratã** - O Guerreiro Caído
 
 ## 📚 Objetivos do Projeto  
 - Criar um universo imersivo baseado na mitologia tupi.  
 - Desenvolver um enredo envolvente com personagens profundos.  
-- Explorar elementos culturais de forma respeitosa e autêntica.
+- Explorar elementos culturais de forma respeitosa e autêntica.  
+- Fomentar a curiosidade de forma educativa sobre a flora da América do Sul e a cultura tupi-guarani.
 
 ## ✅ Planejamento e Roadmap  
 1. Definição do Mundo e da Mitologia ✅  
@@ -36,7 +36,7 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
     4.1. Criação dos sistemas de recompensa e objetivos ✅  
     4.2. Criação do menu + sistema de diálogos e cutscenes ✅  
     4.3. Criação do sistema de luta do player e inimigos ✅  
-    4.4. Criação e refinamento de jogabilidade ✅  
+    4.4. Criação e refinamento da jogabilidade ✅  
     4.5. Criação e batalha com o primeiro chefe ✅  
     4.6. Design de níveis até o primeiro chefe 🛠️  
     4.7. Sistema de design de som 🛠️  
@@ -66,9 +66,6 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
 
    ![Exploração de Templos](https://link_da_imagem_da_exploracao.com)
 
-## 📈 Contribuição  
-Sinta-se à vontade para sugerir melhorias, contribuir com ideias ou colaborar com o projeto! Qualquer feedback é bem-vindo.
 
 ## ✨ Contato  
 Quer saber mais ou colaborar? Entre em contato via [GitHub](https://github.com/NebulaMystic) ou e-mail: [galvao.ti.solutions@gmail.com](mailto:galvao.ti.solutions@gmail.com) ou [gdszcoimbra@gmail.com](mailto:gdszcoimbra@gmail.com).
-
