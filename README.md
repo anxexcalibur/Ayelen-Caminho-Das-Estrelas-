@@ -56,7 +56,7 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
   ![Sistema de Diálogo - Print4](assets/print4.PNG)
 
 - **Tela de Game Over**:  
-  ![Tela de Game Over](assets/print 5.PNG)
+  ![Tela de Game Over](assets/print5.PNG)
 
 
 ## 📈 Contribuição  
