@@ -98,7 +98,9 @@ with(obj_player){
     }
 	 
 	 if place_meeting(x, y, obj_vida){
-		 if spri
+		 if sprite_index != spr_player_fall_cura{
+			sprite_index = spr_player_fall_cura
+		 }
 		if (!audio_is_playing(snd_cura)) {
                 audio_play_sound(snd_cura, 2, false);  // Toca o som de "chá"
             }

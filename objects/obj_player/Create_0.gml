@@ -1,7 +1,7 @@
 /// @description Inserir descrição aqui
 //variavel em referencia aos itens coletaveis
 global.itens_coletados = ds_map_create();
-
+particulas_ativas = false;
 //ultimate dela
 resistencia = 0;
 global.nivel_do_jogo = 0

@@ -8,7 +8,7 @@ if (colisao)
 
 	with(obj_player)
 	{
-		if !place_meeting(x+other.velh,y,obj_block){
+		if !place_meeting(x+other.velh,y,obj_block) or!place_meeting(x+other.velh,y,obj_block_limite){
 			x+= other.velh;
 		}
 	
@@ -16,7 +16,7 @@ if (colisao)
 }
 
 
-if(instance_place(x+velh,y,obj_block)){
+if(instance_place(x+velh,y,obj_block) or  instance_place(x+velh,y,obj_block) ){
 	dir *= -1;
 }
 x+=velh

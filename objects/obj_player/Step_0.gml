@@ -141,6 +141,14 @@ switch (estado) {
     // Estado: Movendo
     case "movendo": {
         sprite_index = spr_player_run;
+		if (place_meeting(x,y,obj_vida)){
+	        if (velv > 0) {
+	            sprite_index = spr_player_cura;
+	            if (image_index >= image_number - 1) {
+	                image_index = image_number - 1;
+	            }
+	        }
+	    } 
         if (defesa) {
             estado = "defesa";
         }
@@ -157,58 +165,45 @@ switch (estado) {
     }
     
     // Estado: Pulando
-    case "pulando": {
-		if place_meeting(x,y,obj_vida){
-	        if (velv > 0) {
-	            sprite_index = spr_player_fall_cura;
-	            if (image_index >= image_number - 1) {
-	                image_index = image_number - 1;
-	            }
-	        } else {
-	            sprite_index = spr_player_jump;
-	            if (image_index >= image_number - 1) {
-	                image_index = image_number - 1;
-	            }
-	        }
-		}else{
-			 if (velv > 0) {
-	            sprite_index = spr_player_fall;
-	            if (image_index >= image_number - 1) {
-	                image_index = image_number - 1;
-	            }
-	        } else {
-	            sprite_index = spr_player_jump;
-	            if (image_index >= image_number - 1) {
-	                image_index = image_number - 1;
-	         
-		}
-        if (attack) {
-            inicia_ataque(chao);
-        }
-        if (chao) {
-            estado = "parado";
-            velh = 0;
-        }
-        var wall = place_meeting(x - 1, y, obj_wall_slide) || place_meeting(x + 1, y, obj_wall_slide);
-        if (wall) {
-            if (jump) {
-                velv = -max_velv;
+   case "pulando": {
+    if (place_meeting(x,y,obj_vida)){
+        if (velv > 0) {
+            sprite_index = spr_player_fall_cura;
+            if (image_index >= image_number - 1) {
+                image_index = image_number - 1;
             }
-            sprite_index = spr_player_wall;
-            if (velv > 1) {
-                velv = 3;
-            } else {
-                aplica_gravidade();
-            }
+        }
+    } 
+
+    if (attack) {
+        inicia_ataque(chao);
+    }
+
+    if (chao) {
+        estado = "parado";
+        velh = 0;
+    }
+
+    var wall = place_meeting(x - 1, y, obj_wall_slide) || place_meeting(x + 1, y, obj_wall_slide);
+    if (wall) {
+        if (jump) {
+            velv = -max_velv;
+        }
+        sprite_index = spr_player_wall;
+        if (velv > 1) {
+            velv = 3;
         } else {
             aplica_gravidade();
         }
-        if (esquiva && !dei_dash && global.dash_cooldown <= 0) {
-            estado = "dash";
-        }
-        break;
+    } else {
+        aplica_gravidade();
     }
-    
+
+    if (esquiva && !dei_dash && global.dash_cooldown <= 0) {
+        estado = "dash";
+    }
+    break;
+}
     // Estado: Ataque Aéreo
     case "ataque aereo": {
         aplica_gravidade();
@@ -442,7 +437,23 @@ switch (estado) {
     }
     break;
 }
-
+	case "cura":
+	{ 
+		
+		var tipoCura = "simples";
+		
+		velh=0;
+		 if (sprite_index != spr_player_cura) {
+            image_index = 0;
+            sprite_index = spr_player_cura;
+        }
+		
+		if (image_index == sprite_get_number(spr_player_cura) - 1) {
+		
+			estado = "parado"; // Volta para "parado" quando a animação termina
+		}
+		break;
+	}
     default:
         estado = "parado";
         break;
@@ -463,5 +474,5 @@ if (tempo_dash % 3 == 0) {
 if (global.dash_cooldown > 0) {
     global.dash_cooldown--;
 }
-
-
+	
+	

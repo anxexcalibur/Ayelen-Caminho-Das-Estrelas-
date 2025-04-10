@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.0,
+  "duration":1.609002,
   "name":"snd_cura",
   "parent":{
     "name":"Sons",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_cura.wav",
+  "soundFile":"snd_cura.ogg",
   "type":0,
-  "volume":0.45,
+  "volume":0.98,
 }
