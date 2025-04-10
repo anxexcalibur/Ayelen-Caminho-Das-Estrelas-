@@ -43,28 +43,21 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
     4.8. Testes e finalização da prototipação ⭕  
     4.9. Documentação ⭕  
     5.0. Apresentação ⭕  
+## 📸 Prints
 
-## 📸 Prints  
+- **Menu Inicial**:  
+  ![Menu Inicial](assets/print11.PNG)
 
-1. **Tela Inicial do Jogo**: Um print da tela de início, onde o jogador pode ver o menu principal e escolher suas opções (iniciar jogo, continuar, etc.).
+- **Catcine**:  
+  ![Catcine](assets/print2.PNG)
 
-   ![Tela Inicial](https://link_da_imagem_da_tela_inicial.com)
+- **Sistema de Diálogo com NPC**:  
+  ![Sistema de Diálogo - Print3](assets/print3.PNG)  
+  ![Sistema de Diálogo - Print4](assets/print4.PNG)
 
-2. **Personagem Ayelen em Ação**: Uma captura da personagem Ayelen em movimento, com o cenário de fundo e detalhes de sua armadura ou armas.
+- **Tela de Game Over**:  
+  ![Tela de Game Over](assets/print5.png)
 
-   ![Personagem Ayelen](https://link_da_imagem_da_personagem.com)
-
-3. **Sistema de Diálogos**: Um print mostrando a interface do sistema de diálogos, com a interação entre Ayelen e outros personagens.
-
-   ![Sistema de Diálogos](https://link_da_imagem_do_sistema_de_dialogos.com)
-
-4. **Batalha Contra o Chefe**: Uma captura do combate contra o primeiro chefe, mostrando a jogabilidade e a intensidade do confronto.
-
-   ![Batalha contra o Chefe](https://link_da_imagem_da_batalha.com)
-
-5. **Exploração de Templos**: Imagem do ambiente do jogo enquanto Ayelen explora um templo, com elementos de mistério e exploração.
-
-   ![Exploração de Templos](https://link_da_imagem_da_exploracao.com)
 
 ## 📈 Contribuição  
 Sinta-se à vontade para sugerir melhorias, contribuir com ideias ou colaborar com o projeto! Qualquer feedback é bem-vindo.
