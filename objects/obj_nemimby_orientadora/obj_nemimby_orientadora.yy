@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"nemimby_spr",
-    "path":"sprites/nemimby_spr/nemimby_spr.yy",
+    "name":"spr_npc_xama",
+    "path":"sprites/spr_npc_xama/spr_npc_xama.yy",
   },
   "spriteMaskId":null,
   "visible":true,

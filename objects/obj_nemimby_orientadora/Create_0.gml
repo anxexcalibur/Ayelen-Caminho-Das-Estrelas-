@@ -3,3 +3,4 @@
 nome = "Ancianemimby";
 estado_npc = 0;
 interrogacao = noone;
+face = spr_xama_rosto;

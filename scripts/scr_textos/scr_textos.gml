@@ -38,7 +38,7 @@ function scr_textos(){
 	
 				case 4:
 				    ds_grid_add_text("O caminho à sua frente é sombrio, Ayelen, mas também repleto de esperança.", spr_piata_rosto, 0, "Piatã");
-				    ds_grid_add_text("Os antigos sussurram sobre o 'Coração da Noite', um lugar escondido onde a luz nunca tocou.", spr_piata_rosto, 0, "Piatã");
+				    ds_grid_add_text("Os antigos sussurram sobre o 'caverna de ', um lugar escondido onde a luz nunca tocou.", spr_piata_rosto, 0, "Piatã");
 
 				    ds_grid_add_text("'Coração da Noite'? Esse nome parece... inquietante. O que encontrarei lá?", spr_ayelen_face, 1, "Ayelen");
 				    ds_grid_add_text("Lá repousam os ecos de nossos ancestrais e, com eles, respostas que o mundo ainda desconhece.", spr_piata_rosto, 0, "Piatã");
@@ -82,6 +82,13 @@ function scr_textos(){
 						ds_grid_add_text("E, se eu cair, sei que você estará lá, bianca estará lá, para me ajudar a levantar. Isso já me faz sentir um pouco mais forte..", spr_ayelen_face, 1, "Ayelen");
 					break;
 					}
+					case 6:
+						ds_grid_add_text("Vamos Filha, não tenha medo, os Deuses estão com você, não tema, nossa vila precisa de você", spr_piata_rosto, 0, "Piatã");
+						ds_grid_add_text("Não me sinto pronta, pai, mas irei ...", spr_ayelen_face, 1, "Ayelen");
+						ds_grid_add_text("não se preocupe filha, você vai ser preparada ao longo da jornada!", spr_piata_rosto, 0, "Piatã");
+						ds_grid_add_text(" ...", spr_ayelen_face, 1, "Ayelen"); 
+						 // Avança para outro estado após progresso
+					break;
 			}
 		break;
 		case "Ancianemimby":
@@ -89,84 +96,89 @@ function scr_textos(){
 				switch (obj_nemimby_orientadora.estado_npc) {
 					
 					case 0:{
-						ds_grid_add_text("Encontre seu pai ayelen", spr_orientadora_rosto, 0, "Nemimby");
+						ds_grid_add_text("Encontre seu pai ayelen", spr_xama_rosto, 0, "Nemimby");
 					
 					break;
 					}
 					case 1:{
-						ds_grid_add_text("Encontre seu pai ayelen", spr_orientadora_rosto, 0, "Nemimby");
+						ds_grid_add_text("Encontre seu pai ayelen", spr_xama_rosto, 0, "Nemimby");
 						break;
 					}
 					case 2:
-						ds_grid_add_text("Ayelen, o véu entre os mundos está mais tênue esta noite. O chamado dos ancestrais ecoa em meu espírito.", spr_orientadora_rosto, 0, "Nemimby");
+						ds_grid_add_text("Ayelen, o véu entre os mundos está mais tênue esta noite. O chamado dos ancestrais ecoa em meu espírito.", spr_xama_rosto, 0, "Nemimby");
 						ds_grid_add_text("É como se o vento sussurrasse segredos antigos. Estou pronta, Nemimby. O que devemos fazer agora?", spr_ayelen_face, 1, "Ayelen");
             
-			            ds_grid_add_text("Primeiro, precisamos da harmonia. Respire fundo, Ayelen, e permita que a floresta cante em sua alma.", spr_orientadora_rosto, 0, "Nemimby");
+			            ds_grid_add_text("Primeiro, precisamos da harmonia. Respire fundo, Ayelen, e permita que a floresta cante em sua alma.", spr_xama_rosto, 0, "Nemimby");
 			            ds_grid_add_text("O som das folhas, o pulsar do chão... Sim, sinto a conexão se fortalecendo. Estou pronta para o próximo passo.", spr_ayelen_face, 1, "Ayelen");
             
-					    ds_grid_add_text("Muito bem. Agora, ofereça sua intenção ao universo, com sinceridade e coragem. Só então a bebida nos guiará pelo caminho oculto.", spr_orientadora_rosto, 0, "Nemimby");
+					    ds_grid_add_text("Muito bem. Agora, ofereça sua intenção ao universo, com sinceridade e coragem. Só então a bebida nos guiará pelo caminho oculto.", spr_xama_rosto, 0, "Nemimby");
 					    ds_grid_add_text("Minha intenção é clara: quero respostas, Nemimby. Quero entender o que o céu e a terra esperam de mim.", spr_ayelen_face, 1, "Ayelen");
             
-						ds_grid_add_text("Então segure firme, Ayelen. O ritual começa agora. Não tema o que verá. Tudo é parte do aprendizado.", spr_orientadora_rosto, 0, "Nemimby");
-						ds_grid_add_text("vá até a fogueira e beba o chá", spr_orientadora_rosto, 0, "Nemimby");
+						ds_grid_add_text("Então segure firme, Ayelen. O ritual começa agora. Não tema o que verá. Tudo é parte do aprendizado.", spr_xama_rosto, 0, "Nemimby");
+						ds_grid_add_text("vá até a fogueira e beba o chá", spr_xama_rosto, 0, "Nemimby");
 						obj_player.etapa_historia++;
 					
 					break;
 					case 3:
 						
-							ds_grid_add_text("O caminho à sua frente é sombrio, Ayelen, mas também repleto de esperança.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Os antigos sussurram sobre o 'Coração da Noite', um lugar escondido onde a luz nunca tocou.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("O caminho à sua frente é sombrio, Ayelen, mas também repleto de esperança.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Os antigos sussurram sobre o 'Coração da Noite', um lugar escondido onde a luz nunca tocou.", spr_xama_rosto, 0, "Nemimby");
 							ds_grid_add_text("'Coração da Noite'? Esse nome parece... inquietante. O que encontrarei lá?", spr_ayelen_face, 1, "Ayelen");
 
-							ds_grid_add_text("Lá repousam os ecos de nossos ancestrais e, com eles, respostas que o mundo ainda desconhece.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Mas Ayelen, a escuridão que mora ali testa não apenas a coragem, mas a verdade dentro de cada um.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Lá repousam os ecos de nossos ancestrais e, com eles, respostas que o mundo ainda desconhece.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Mas Ayelen, a escuridão que mora ali testa não apenas a coragem, mas a verdade dentro de cada um.", spr_xama_rosto, 0, "Nemimby");
 
 							ds_grid_add_text("Então não é a escuridão que devemos temer, mas o que ela revela de nós mesmos...", spr_ayelen_face, 1, "Ayelen");
-							ds_grid_add_text("Sim, filha das estrelas. Muitos chegaram lá, mas poucos regressaram com o coração íntegro.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Sim, filha das estrelas. Muitos chegaram lá, mas poucos regressaram com o coração íntegro.", spr_xama_rosto, 0, "Nemimby");
 
 							ds_grid_add_text("O que preciso para chegar até o 'Coração da Noite'?", spr_ayelen_face, 1, "Ayelen");
-							ds_grid_add_text("Precisamos dos Olhos de Tupã, pedras sagradas espalhadas pela floresta antiga, há muito tempo protegidas pelas sentinelas de madeira.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Precisamos dos Olhos de Tupã, pedras sagradas espalhadas pela floresta antiga, há muito tempo protegidas pelas sentinelas de madeira.", spr_xama_rosto, 0, "Nemimby");
 
 							ds_grid_add_text("Sentinelas de madeira? Você fala dos antigos Espíritos das Raízes, não fala?", spr_ayelen_face, 1, "Ayelen");
 
-							ds_grid_add_text("Sim. Eles observam e guardam. Você precisará de paciência e respeito; só assim revelarão a você o caminho adormecido.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Sim. Eles observam e guardam. Você precisará de paciência e respeito; só assim revelarão a você o caminho adormecido.", spr_xama_rosto, 0, "Nemimby");
 
 							ds_grid_add_text("E se falhar em conquistá-los?", spr_ayelen_face, 1, "Ayelen");
 
-							ds_grid_add_text("Então as árvores se fecharão ao seu redor, e o tempo se tornará uma prisão onde até a luz esquece de existir.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Então as árvores se fecharão ao seu redor, e o tempo se tornará uma prisão onde até a luz esquece de existir.", spr_xama_rosto, 0, "Nemimby");
 
 							ds_grid_add_text("Vou encontrar os Olhos de Tupã e retornarei com o caminho para o Coração da Noite. Confie em mim.", spr_ayelen_face, 1, "Ayelen");
 
-							ds_grid_add_text("O céu e a terra andam com você, Ayelen. Escute a floresta... e jamais caminhe sozinha no silêncio.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("O céu e a terra andam com você, Ayelen. Escute a floresta... e jamais caminhe sozinha no silêncio.", spr_xama_rosto, 0, "Nemimby");
 							obj_player.etapa_historia++;
 						break;
 						case 4:
-							ds_grid_add_text("Ayelen, chegou a hora de seguir o seu caminho.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Lembre-se: o mundo à sua frente está cheio de desafios.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Mas também está cheio de aliados... e lições a serem aprendidas.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Ayelen, chegou a hora de seguir o seu caminho.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Lembre-se: o mundo à sua frente está cheio de desafios.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Mas também está cheio de aliados... e lições a serem aprendidas.", spr_xama_rosto, 0, "Nemimby");
 
-							ds_grid_add_text("Você nunca está sozinha. A força das estrelas está com você.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Escute a floresta, sinta o vento, olhe para o céu.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Você nunca está sozinha. A força das estrelas está com você.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Escute a floresta, sinta o vento, olhe para o céu.", spr_xama_rosto, 0, "Nemimby");
 
-							ds_grid_add_text("Sempre que a dúvida invadir, lembre-se do que é sagrado para você.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("E confie no seu coração, pois ele conhece o caminho.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Sempre que a dúvida invadir, lembre-se do que é sagrado para você.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("E confie no seu coração, pois ele conhece o caminho.", spr_xama_rosto, 0, "Nemimby");
 
-							ds_grid_add_text("O céu e a terra andam com você, Ayelen.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Que a luz das estrelas a guie... até que nos encontremos novamente.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("O céu e a terra andam com você, Ayelen.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Que a luz das estrelas a guie... até que nos encontremos novamente.", spr_xama_rosto, 0, "Nemimby");
 						break;
 						case 5:
-							ds_grid_add_text("Ayelen, chegou a hora de seguir o seu caminho.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Lembre-se: o mundo à sua frente está cheio de desafios.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Mas também está cheio de aliados... e lições a serem aprendidas.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Ayelen, chegou a hora de seguir o seu caminho.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Lembre-se: o mundo à sua frente está cheio de desafios.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Mas também está cheio de aliados... e lições a serem aprendidas.", spr_xama_rosto, 0, "Nemimby");
 
-							ds_grid_add_text("Você nunca está sozinha. A força das estrelas está com você.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Escute a floresta, sinta o vento, olhe para o céu.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Você nunca está sozinha. A força das estrelas está com você.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Escute a floresta, sinta o vento, olhe para o céu.", spr_xama_rosto, 0, "Nemimby");
 
-							ds_grid_add_text("Sempre que a dúvida invadir, lembre-se do que é sagrado para você.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("E confie no seu coração, pois ele conhece o caminho.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("Sempre que a dúvida invadir, lembre-se do que é sagrado para você.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("E confie no seu coração, pois ele conhece o caminho.", spr_xama_rosto, 0, "Nemimby");
 
-							ds_grid_add_text("O céu e a terra andam com você, Ayelen.", spr_orientadora_rosto, 0, "Nemimby");
-							ds_grid_add_text("Que a luz das estrelas a guie... até que nos encontremos novamente.", spr_orientadora_rosto, 0, "Nemimby");
+							ds_grid_add_text("O céu e a terra andam com você, Ayelen.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Que a luz das estrelas a guie... até que nos encontremos novamente.", spr_xama_rosto, 0, "Nemimby");
+						break;
+						case 6:
+							ds_grid_add_text("Ayelen, Oque está fazendo aqui ?.", spr_xama_rosto, 0, "Nemimby");
+							ds_grid_add_text("Apresse-te: o mundo à sua frente está cheio de desafios.", spr_xama_rosto, 0, "Nemimby");
+													
 						break;
 				 }
 

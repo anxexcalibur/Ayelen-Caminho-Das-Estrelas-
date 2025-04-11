@@ -97,8 +97,15 @@ if (mostrando_dialogo) {
 			
 			 exibe = false
 			 count_space = 0
-			 carrega_jogo2(global.nome_jogador,rm_prototipo)
-			 instance_destroy()
+			if room == rm_catcine_2{
+				carrega_jogo2(global.nome_jogador,rm_prototipo,4)
+			// Fim do diálogo, termina a exibição
+				instance_destroy()
+			}else{
+				carrega_jogo2(global.nome_jogador,rm_prototipo,1)
+			// Fim do diálogo, termina a exibição
+				instance_destroy()
+			}
 		}
        
     }
@@ -114,10 +121,15 @@ if (mostrando_dialogo) {
             imagem_dialogo = dialogos[dialogo_atual].imagem;  // Atualiza a imagem do diálogo
         } else {
             mostrando_dialogo = false;
-			
-			 carrega_jogo2(global.nome_jogador,rm_prototipo,1)
+			if room == rm_catcine_2{
+				carrega_jogo2(global.nome_jogador,rm_prototipo,4)
 			// Fim do diálogo, termina a exibição
-			instance_destroy()
+				instance_destroy()
+			}else{
+				carrega_jogo2(global.nome_jogador,rm_prototipo,1)
+			// Fim do diálogo, termina a exibição
+				instance_destroy()
+			}
 	   }
     }
 }
