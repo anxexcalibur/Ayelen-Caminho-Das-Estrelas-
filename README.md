@@ -63,7 +63,8 @@ Interfaces que propiciam ao jogador a imersão na mitologia e na história, atra
 Diálogo 1
 
 Diálogo 2
-![Diálogo 2](./assets/dialogo 2.PNG)
+![Diálogo 2](./assets/)
+![Descrição da imagem](./assets/dialogo 2.png)
 
 ☠️ Tela de Game Over
 O espectro da derrota: uma tela que sinaliza o fim momentâneo da aventura, evocando um sentimento de fracasso, mas também a oportunidade de renascimento.
