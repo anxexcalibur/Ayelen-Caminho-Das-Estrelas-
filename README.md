@@ -43,27 +43,61 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
     4.8. Testes e finalização da prototipação ⭕    
     5.0. Apresentação ⭕  
 
-## 📸 Prints  
+### 🎞️ Catcine  
+Cena cinematográfica que introduz a história e cria um clima imersivo para o jogador.
 
-1. **Tela Inicial do Jogo**: Um print da tela de início, onde o jogador pode ver o menu principal e escolher suas opções (iniciar jogo, continuar, etc.).
+![Catcine](./assets/catcine.PNG)
 
-   ![Tela Inicial](https://link_da_imagem_da_tela_inicial.com)
+### 🎞️ Catcine 2  
+Continuação da narrativa visual, aprofundando o enredo e as emoções dos personagens.
 
-2. **Personagem Ayelen em Ação**: Uma captura da personagem Ayelen em movimento, com o cenário de fundo e detalhes de sua armadura ou armas.
+![Catcine 2](./assets/caticine2.PNG)
 
-   ![Personagem Ayelen](https://link_da_imagem_da_personagem.com)
+### 💬 Diálogo  
+Interface de diálogo que permite ao jogador conhecer mais sobre a mitologia e personagens.
 
-3. **Sistema de Diálogos**: Um print mostrando a interface do sistema de diálogos, com a interação entre Ayelen e outros personagens.
+![Diálogo](./assets/dialogo.PNG)
 
-   ![Sistema de Diálogos](https://link_da_imagem_do_sistema_de_dialogos.com)
+### 💬 Diálogo 2  
+Cena de conversa importante que revela detalhes cruciais da trama e conflitos.
 
-4. **Batalha Contra o Chefe**: Uma captura do combate contra o primeiro chefe, mostrando a jogabilidade e a intensidade do confronto.
+![Diálogo 2](./assets/dialogo2.PNG)
+### ☠️ Tela de Game Over  
+Tela que sinaliza a derrota temporária, incentivando o jogador a tentar novamente.
 
-   ![Batalha contra o Chefe](https://link_da_imagem_da_batalha.com)
+![Game Over](./assets/game_over.PNG)
 
-5. **Exploração de Templos**: Imagem do ambiente do jogo enquanto Ayelen explora um templo, com elementos de mistério e exploração.
+### ⚔️ Gameplay 1  
+Momento de ação em combate, mostrando Ayelen e um inimigo próximo.
 
-   ![Exploração de Templos](https://link_da_imagem_da_exploracao.com)
+![Gameplay 1](./assets/gameplay1.PNG)
+
+### ⚔️ Gameplay 2  
+Outra cena dinâmica do gameplay, com destaque para os cenários.
+
+![Gameplay 2](./assets/gameplay2.PNG)
+
+### ⚔️ Gameplay 3  
+Captura da jogabilidade, mostrando as plataformas.
+
+![Gameplay 3](./assets/gameplay3.PNG)
+
+### 📜 Menu Principal  
+Tela inicial onde o jogador pode iniciar a aventura ou continuar seu progresso.
+
+![Menu](./assets/menu.png)
+
+### 🌟 Sistema de Artefatos  
+Interface que interage com o cenário, ensinando e educando o jogador.
+
+![Sistema de Artefatos](./assets/sistema_de_artefatos.PNG)
+
+### 📈 Sistema de Níveis  
+Visualização panorâmica do nível 1.
+
+![Sistema de Níveis](./assets/sistema_de_niveis.PNG)
+
+
 
 ## 📈 Contribuição  
 Sinta-se à vontade para sugerir melhorias, contribuir com ideias ou colaborar com o projeto! Qualquer feedback é bem-vindo.
