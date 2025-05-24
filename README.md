@@ -45,25 +45,56 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
 
 ## 📸 Prints  
 
-1. **Tela Inicial do Jogo**: Um print da tela de início, onde o jogador pode ver o menu principal e escolher suas opções (iniciar jogo, continuar, etc.).
+1🖼️ Tela Inicial do Jogo
+A epítome da jornada: onde o jogador contempla o menu principal, escolhendo entre o início da travessia ou a continuação de sua saga.
 
-   ![Tela Inicial](https://link_da_imagem_da_tela_inicial.com)
 
-2. **Personagem Ayelen em Ação**: Uma captura da personagem Ayelen em movimento, com o cenário de fundo e detalhes de sua armadura ou armas.
+🎞️ Cutscenes e Momentos Narrativos
+Cenas cinematográficas que introduzem e aprofundam a narrativa, compondo a tessitura dramática e os vínculos entre os personagens.
 
-   ![Personagem Ayelen](https://link_da_imagem_da_personagem.com)
+Catcine 1
 
-3. **Sistema de Diálogos**: Um print mostrando a interface do sistema de diálogos, com a interação entre Ayelen e outros personagens.
+Catcine 2
+![Catcine 2](./assets/caticine 2.PNG)
 
-   ![Sistema de Diálogos](https://link_da_imagem_do_sistema_de_dialogos.com)
+💬 Sistema de Diálogos
+Interfaces que propiciam ao jogador a imersão na mitologia e na história, através de conversas reveladoras e, por vezes, carregadas de um tom lúgubre, refletindo a tensão entre luz e trevas.
 
-4. **Batalha Contra o Chefe**: Uma captura do combate contra o primeiro chefe, mostrando a jogabilidade e a intensidade do confronto.
+Diálogo 1
 
-   ![Batalha contra o Chefe](https://link_da_imagem_da_batalha.com)
+Diálogo 2
+![Diálogo 2](./assets/dialogo 2.PNG)
 
-5. **Exploração de Templos**: Imagem do ambiente do jogo enquanto Ayelen explora um templo, com elementos de mistério e exploração.
+☠️ Tela de Game Over
+O espectro da derrota: uma tela que sinaliza o fim momentâneo da aventura, evocando um sentimento de fracasso, mas também a oportunidade de renascimento.
+![Game Over](./assets/game over.PNG)
 
-   ![Exploração de Templos](https://link_da_imagem_da_exploracao.com)
+⚔️ Gameplay e Combates
+Instantâneos que capturam Ayelen em plena ação, revelando a dinâmica do sistema de combate e a exploração dos cenários intricados.
+
+Gameplay 1
+![Gameplay 1](./assets/gameplay 1.PNG)
+
+Gameplay 2
+![Gameplay 2](./assets/game play2.PNG)
+
+Gameplay 3
+![Gameplay 3](./assets/gameplay 3.PNG)
+
+📜 Menu de Opções
+Interface onde o jogador administra sua jornada, ajustando configurações e decidindo seus próximos passos.
+
+🌿 Progresso e Sistema de Artefatos
+Representações do avanço do jogador, evidenciando a coleta de artefatos e o desbloqueio de novos níveis — símbolos do domínio e da superação dos desafios.
+
+Progresso na Fase 3
+
+Sistema de Artefatos
+![Sistema de Artefatos](./assets/sistema de artefatos.PNG)
+
+Sistema de Níveis
+![Sistema de Níveis](./assets/sistema de niveis.PNG)
+
 
 ## 📈 Contribuição  
 Sinta-se à vontade para sugerir melhorias, contribuir com ideias ou colaborar com o projeto! Qualquer feedback é bem-vindo.
