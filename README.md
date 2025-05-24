@@ -40,8 +40,7 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
     4.5. Criação e batalha com o primeiro chefe ✅  
     4.6. Design de níveis até o primeiro chefe 🛠️  
     4.7. Sistema de design de som 🛠️  
-    4.8. Testes e finalização da prototipação ⭕  
-    4.9. Documentação ⭕  
+    4.8. Testes e finalização da prototipação ⭕    
     5.0. Apresentação ⭕  
 
 ## 📸 Prints  
@@ -70,5 +69,5 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
 Sinta-se à vontade para sugerir melhorias, contribuir com ideias ou colaborar com o projeto! Qualquer feedback é bem-vindo.
 
 ## ✨ Contato  
-Quer saber mais ou colaborar? Entre em contato via [GitHub](https://github.com/NebulaMystic) ou e-mail: [galvao.ti.solutions@gmail.com](mailto:galvao.ti.solutions@gmail.com) ou [gdszcoimbra@gmail.com](mailto:gdszcoimbra@gmail.com).
-
+Quer saber mais ou colaborar? Entre em contato via [GitHub](https://github.com/NebulaMystic) ou e-mail: [galvao.ti.solutions@gmail.com](mailto:galvao.ti.solutions@gmail.com) ou [gdszcoimbra@gmail.com](mailto:gdszcoimbra@gmail.com).ou 
+fernando.costa2@estudante.ifb.edu.br(mailto:fernando.costa2@estudante.ifb.edu.br) martinhago225@gmail.com (mailto:martinhago225@gmail.com) 
