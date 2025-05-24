@@ -62,24 +62,23 @@ Interface de diálogo que permite ao jogador conhecer mais sobre a mitologia e p
 Cena de conversa importante que revela detalhes cruciais da trama e conflitos.
 
 ![Diálogo 2](./assets/dialogo2.PNG)
-
 ### ☠️ Tela de Game Over  
 Tela que sinaliza a derrota temporária, incentivando o jogador a tentar novamente.
 
 ![Game Over](./assets/game_over.PNG)
 
 ### ⚔️ Gameplay 1  
-Momento da ação em combate, mostrando Ayelen em luta contra os inimigos.
+Momento de ação em combate, mostrando Ayelen e um inimigo próximo.
 
 ![Gameplay 1](./assets/gameplay1.PNG)
 
 ### ⚔️ Gameplay 2  
-Outra cena dinâmica do gameplay, com destaque para os cenários e desafios.
+Outra cena dinâmica do gameplay, com destaque para os cenários.
 
 ![Gameplay 2](./assets/gameplay2.PNG)
 
 ### ⚔️ Gameplay 3  
-Captura da jogabilidade intensa com uso de habilidades e movimentação.
+Captura da jogabilidade, mostrando as plataformas.
 
 ![Gameplay 3](./assets/gameplay3.PNG)
 
@@ -88,16 +87,16 @@ Tela inicial onde o jogador pode iniciar a aventura ou continuar seu progresso.
 
 ![Menu](./assets/menu.png)
 
-
 ### 🌟 Sistema de Artefatos  
-Interface que exibe os artefatos coletados e seu impacto na jornada.
+Interface que interage com o cenário, ensinando e educando o jogador.
 
 ![Sistema de Artefatos](./assets/sistema_de_artefatos.PNG)
 
 ### 📈 Sistema de Níveis  
-Visualização do progresso do jogador através dos níveis conquistados.
+Visualização panorâmica do nível 1.
 
 ![Sistema de Níveis](./assets/sistema_de_niveis.PNG)
+
 
 
 ## 📈 Contribuição  
