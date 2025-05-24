@@ -4,6 +4,7 @@ function carrega_jogo2(_jogador, _sala,_etapa) {
 	                audio_stop_sound(snd_background_catcines);  // Para a música de protótipo
 					audio_play_sound(snd_background,1,true)
 				}
+	
     if (!instance_exists(obj_player)) {
         // Cria uma nova instância de obj_player
         var inst_player = instance_create_layer(0, 0, "Instances", obj_player);
@@ -21,7 +22,8 @@ function carrega_jogo2(_jogador, _sala,_etapa) {
 			// Determina a sala: usa _sala se fornecida, ou a sala salva
             var sala_atual = is_undefined(_sala) ? ini_read_real(_jogador, "sala_atual", room) : _sala;
             ini_close(); // Fecha o arquivo de save
-
+			//carrega inten
+			
             // Move para a sala especificada
             room_goto(sala_atual);
         } else {
@@ -32,4 +34,5 @@ function carrega_jogo2(_jogador, _sala,_etapa) {
         // Mensagem se o jogador já estiver na cena
         show_message("O jogador já está presente na cena!");
     }
+	
 }

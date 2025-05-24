@@ -42,8 +42,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"parede",
-    "path":"sprites/parede/parede.yy",
+    "name":"spr_horizontal_move",
+    "path":"sprites/spr_horizontal_move/spr_horizontal_move.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -28,4 +28,13 @@ if global.game_paused{
 	with(obj_block_move_vertical){
 		velv = 0
 	}
+}else{
+	with(obj_projetil2){
+			speed = 1
+			
+		}
+}
+
+if instance_exists(obj_menu){
+	global.dialogo = false;
 }

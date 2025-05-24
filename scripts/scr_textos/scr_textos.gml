@@ -241,6 +241,18 @@ function scr_textos(){
 			
 			
 		break;
+		case "ceramica":
+			ds_grid_add_text("Sistema: Os povos indígenas foram os primeiros ceramistas do território brasileiro, desenvolvendo técnicas sofisticadas de produção muito antes da chegada dos europeus. ", spr_sistema, 0, "arbusto");
+			ds_grid_add_text("Sistema: Usando recursos naturais como argila, fibras vegetais e pigmentos orgânicos, criaram recipientes resistentes para armazenar alimentos, cozinhar, transportar água e até mesmo realizar rituais sagrados. ", spr_sistema, 0, "arbusto");
+			ds_grid_add_text("Sistema: A cerâmica não era apenas uma ferramenta, mas uma linguagem visual que transmitia valores, cosmologias e modos de vida. ", spr_sistema, 0, "arbusto");
+		
+		break;
+		case "estatua_bianca":
+		    ds_grid_add_text("Sistema: Estátua referente à matriarca, deusa das estrelas e constelações que protege a vila.", spr_sistema, 0, "arbusto");
+		    ds_grid_add_text("Sistema: Para os povos indígenas Tupi-Guarani, estátuas e figuras cerâmicas não eram apenas arte — elas representavam entidades espirituais, ancestrais e forças da natureza. Serviam como proteção simbólica, marca de território e conexão com o mundo espiritual.", spr_sistema, 0, "arbusto");
+			ds_grid_add_text("Sistema: Serviam como proteção simbólica, marca de território e conexão com o mundo espiritual.", spr_sistema, 0, "arbusto");
+		break;
+
 		case "Ayran":
 			switch(obj_player.etapa_historia){
 				case 6: 

@@ -15,7 +15,7 @@
     "name":"obj_item_pai",
     "path":"objects/obj_item_pai/obj_item_pai.yy",
   },
-  "persistent":false,
+  "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
   "physicsFriction":0.2,

@@ -1,4 +1,4 @@
-/// @description Controle do jogador
+ /// @description Controle do jogador
 event_inherited();
 test = keyboard_check_pressed(ord("R"));
 if test {
@@ -49,6 +49,12 @@ if (keyboard_check_pressed(vk_escape)) {
         menu_existe = true; // Marca que o menu existe
         instance_create_layer(x, y, "Sensores", obj_menu); // Cria o menu
         global.game_paused = true; // Pausa o jogo
+		if(instance_exists(obj_dialogo)){
+			with(obj_dialogo){
+				instance_destroy();
+			}
+		}
+		
     }
 }
 
@@ -424,7 +430,12 @@ switch (estado) {
 			carregar_checkpoint(global.nome_jogador)
 			estado = "parado"
 			morreu = false;
-			
+			if (instance_exists(obj_controller)) {
+            with (obj_controller) {
+                game_over = false;
+				instance_destroy()
+            }
+        }
 		}
         break;
     }

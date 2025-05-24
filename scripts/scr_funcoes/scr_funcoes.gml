@@ -44,30 +44,56 @@ function gerenciar_musica(nome_musica) {
 /// @function salvar_jogador(obj)
 /// @desc Salva os dados do jogador no arquivo save.sav
 /// @param obj - O objeto jogador cujos dados serão salvos
+
+function salvar_progresso() {
+    var buffer = buffer_create(1024, buffer_fixed, 1);
+    
+    // Salva número total de estrelas coletadas
+    buffer_write(buffer, buffer_u32, global.estrelas_coletadas);
+    
+    // Salva progresso das constelações (quantas estrelas coletadas em cada)
+    for (var i = 0; i < array_length(global.constelacoes); i++) {
+        buffer_write(buffer, buffer_u32, global.constelacoes[i].coletadas);
+    }
+    
+    buffer_save(buffer, "savefile.dat");
+    buffer_delete(buffer);
+}
+
+function carregar_progresso() {
+    if (file_exists("savefile.dat")) {
+        var buffer = buffer_load("savefile.dat");
+        
+        global.estrelas_coletadas = buffer_read(buffer, buffer_u32);
+        
+        for (var i = 0; i < array_length(global.constelacoes); i++) {
+            global.constelacoes[i].coletadas = buffer_read(buffer, buffer_u32);
+        }
+        
+        buffer_delete(buffer);
+    } else {
+        global.estrelas_coletadas = 0;
+        for (var i = 0; i < array_length(global.constelacoes); i++) {
+            global.constelacoes[i].coletadas = 0;
+        }
+    }
+}
+
+
 function salvar_itens() {
-    // Define o nome do arquivo que armazenará os itens de todos os jogadores
-    var filename = "_itens.ini";  // Usando um único arquivo para todos os jogadores
-    var file = file_text_open_write(filename);
+    ini_open("_itens.sav");  // Arquivo de save de itens
 
-    // Escreve a seção com o nome do jogador
-    file_text_write_string(file, "[" + global.nome_jogador + "]\n");
-
-    // Obtém as chaves e escreve os pares chave=valor dos itens
     var keys = ds_map_keys_to_array(global.itens_coletados);
     var tamanho = array_length(keys);
 
     for (var i = 0; i < tamanho; i++) {
         var key = keys[i];
-        var value = global.itens_coletados[? key];
-        file_text_write_string(file, key + "=\"" + string(value) + "\"\n");
+        ini_write_real("coletados", key, 1);  // Marca no arquivo como coletado
     }
 
-    // Fecha o arquivo após a escrita
-    file_text_close(file);
-
-    // Exibe uma mensagem indicando que o salvamento foi realizado com sucesso
-  
+    ini_close();
 }
+
 
 function salvar_jogador(_obj) {
     ini_open("save.sav");
@@ -79,8 +105,12 @@ function salvar_jogador(_obj) {
 	ini_write_real(global.nome_jogador, "pontuacao", global.pontuacao);
 	
     ini_close();
+	
+
 	// salvando o estado dos itens
-	salvar_itens()
+	salvar_itens();
+	salvar_progresso()
+
     /*var nome_jogador = global.nome_jogador;
     var filename = nome_jogador + "_itens.ini";
     var file = file_text_open_write(filename);
@@ -103,6 +133,8 @@ function salvar_jogador(_obj) {
 
 	
 }
+
+
 
 
 global.dificuldade = 1;

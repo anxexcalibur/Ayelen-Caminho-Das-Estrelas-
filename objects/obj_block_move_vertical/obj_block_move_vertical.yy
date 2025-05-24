@@ -42,8 +42,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"parede",
-    "path":"sprites/parede/parede.yy",
+    "name":"spr_vertical_move",
+    "path":"sprites/spr_vertical_move/spr_vertical_move.yy",
   },
   "spriteMaskId":null,
   "visible":true,
