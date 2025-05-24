@@ -45,42 +45,19 @@ Agora, com a vila à beira da destruição, os anciãos evocam uma profecia: ape
 
 ## 📸 Prints  
 
-1🖼️ Tela Inicial do Jogo
-A epítome da jornada: onde o jogador contempla o menu principal, escolhendo entre o início da travessia ou a continuação de sua saga.
+![Catcine](./assets/catcine.PNG)  
+![Catcine 2](./assets/caticine 2.PNG)  
+![Diálogo 2](./assets/dialogo 2.PNG)  
+![Diálogo](./assets/dialogo.PNG)  
+![Game Over](./assets/game over.PNG)  
+![Game Play 2](./assets/game play2.PNG)  
+![Gameplay 1](./assets/gameplay 1.PNG)  
+![Gameplay 3](./assets/gameplay 3.PNG)  
+![Menu](./assets/menu.png)  
+![Print 11](./assets/print11.PNG)  
+![Sistema de Artefatos](./assets/sistema de artefatos.PNG)  
+![Sistema de Níveis](./assets/sistema de niveis.PNG)  
 
-
-🎞️ Cutscenes e Momentos Narrativos
-Cenas cinematográficas que introduzem e aprofundam a narrativa, compondo a tessitura dramática e os vínculos entre os personagens.
-
-Catcine 1
-
-Catcine 2
-![Catcine 2](./assets/caticine 2.PNG)
-
-💬 Sistema de Diálogos
-Interfaces que propiciam ao jogador a imersão na mitologia e na história, através de conversas reveladoras e, por vezes, carregadas de um tom lúgubre, refletindo a tensão entre luz e trevas.
-
-Diálogo 1
-
-Diálogo 2
-![Diálogo 2](./assets/)
-![Descrição da imagem](./assets/dialogo 2.png)
-
-☠️ Tela de Game Over
-O espectro da derrota: uma tela que sinaliza o fim momentâneo da aventura, evocando um sentimento de fracasso, mas também a oportunidade de renascimento.
-![Game Over](./assets/game over.PNG)
-
-⚔️ Gameplay e Combates
-Instantâneos que capturam Ayelen em plena ação, revelando a dinâmica do sistema de combate e a exploração dos cenários intricados.
-
-Gameplay 1
-![Gameplay 1](./assets/gameplay 1.PNG)
-
-Gameplay 2
-![Gameplay 2](./assets/game play2.PNG)
-
-Gameplay 3
-![Gameplay 3](./assets/gameplay 3.PNG)
 
 📜 Menu de Opções
 Interface onde o jogador administra sua jornada, ajustando configurações e decidindo seus próximos passos.
