@@ -98,7 +98,7 @@ if (mostrando_dialogo) {
 			 exibe = false
 			 count_space = 0
 			if room == rm_catcine_2{
-				carrega_jogo2(global.nome_jogador,rm_prototipo,4)
+				carrega_jogo2(global.nome_jogador,rm_prototipo,4,1273,322);
 			// Fim do diálogo, termina a exibição
 				instance_destroy()
 			}else{
@@ -122,7 +122,7 @@ if (mostrando_dialogo) {
         } else {
             mostrando_dialogo = false;
 			if room == rm_catcine_2{
-				carrega_jogo2(global.nome_jogador,rm_prototipo,4)
+				carrega_jogo2(global.nome_jogador,rm_prototipo,4,1273,322);
 			// Fim do diálogo, termina a exibição
 				instance_destroy()
 			}else{

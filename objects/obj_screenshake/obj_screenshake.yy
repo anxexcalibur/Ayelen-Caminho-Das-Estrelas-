@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Tela",
-    "path":"folders/Objetos/Tela.yy",
+    "path":"folders/Tela.yy",
   },
   "parentObjectId":null,
   "persistent":false,

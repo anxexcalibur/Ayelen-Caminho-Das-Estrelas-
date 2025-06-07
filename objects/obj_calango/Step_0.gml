@@ -48,9 +48,9 @@ switch(estado)
 	}
 	case "hit":{
 		
-		if(sprite_index != spr_caracol_dano){
+		if(sprite_index != spr_calango_hit){
 			image_index = 0;
-			sprite_index = spr_caracol_dano;
+			sprite_index = spr_calango_hit;
 			screenshake(1)
 			vida_atual -= obj_player.ataque
 		}

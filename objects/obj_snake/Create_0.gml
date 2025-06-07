@@ -1,22 +1,29 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
 
-
-
-
-
-// Inherit the parent event
 event_inherited();
-lado_certo = 1;
-velocidade_projetil = 2;
-hit =false
-max_vida = 2 * global.dificuldade;
-vida_atual = max_vida;
-estado = "parado"
-max_velh = 3;
-max_velv = 7;
-massa = 2;
-direc = 0;
-mostra_estado = true;
-ataque = 3 * global.dificuldade; // Ou outro valor apropriado, dependendo do comportamento do objeto
-velv = 3;
+/// @description Inicialização da cobra inimiga
+
+// Estados possíveis: "parado", "atirando", "hit", "morto"
+estado = "parado";
+
+// Vida
+vida_atual = 3;
+
+// Direção inicial (1 = direita, -1 = esquerda)
+lado_certo = -1;
+
+// Velocidade vertical
+velv = 0;
+max_velv = 10;
+massa = 1;
+alvo_x = 0; // ← ADICIONE ESSAS LINHAS
+alvo_y = 0;
+
+// Cooldown entre tiros
+tiro_cooldown = 0;
+
+// Flag para controlar se já atirou neste ciclo de animação
+atirou = false;
+
+// Define sprite inicial
+sprite_index = spr_snake;
+image_xscale = lado_certo;

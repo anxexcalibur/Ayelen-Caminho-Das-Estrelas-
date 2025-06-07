@@ -149,6 +149,11 @@ desenha_menu = function(_menu){
     // Resetando os meus draw set 
     draw_set_font(-1);
     define_align(-1,-1);
+	draw_set_color(c_white);
+	draw_set_alpha(1);
+	draw_set_font(-1);
+	
+
 }
 
 controla_menu = function(_menu){
@@ -176,16 +181,17 @@ controla_menu = function(_menu){
         
             // Avisando que pode animar
             _animar = true;
-			 // Tocando o som do menu
-	        with(obj_sound) {
-	            alarm[0] = 2;
-				MenuSound = MenuSound.HOVER;
-	        }
-        
+
+            // Tocando o som do menu
+            with(obj_sound) {
+                alarm[0] = 2;
+                MenuSound = MenuSound.HOVER;
+            }
         }
     } else {
         // Ou seja, eu estou alterando as opções
         _animar = false;
+
         // Se eu apertar para esquerda ou para direita
         if(_right || _left){
             // Achando meu limite
@@ -195,32 +201,39 @@ controla_menu = function(_menu){
             // Garantindo que eu não vou sair do limite
             menus[pag][_sel][3] = clamp(menus[pag][_sel][3], 0, _limite);
         }
+
+        // ✅ Se eu apertar ESC enquanto estou alterando, simplesmente cancela a alteração
+        if (_recua) {
+            alterando = false;
+            with(obj_sound){
+                alarm[0] = 1;
+                //MenuSound = MenuSound.BACK;
+            }
+        }
     }
     
     // O que fazer quando apertar o enter
     if (_avanca)
     {
-		with(obj_sound){
-				alarm[0] =1;
-				MenuSound = MenuSound.SELECT
-					
-			}
-			
+        with(obj_sound){
+            alarm[0] =1;
+            MenuSound = MenuSound.SELECT
+        }
+        
         switch(_menu[_sel][1])
         {
-			
             // Caso seja 0, ele roda um método
             case menu_acoe.roda_metodo:
-            _menu[_sel][2]();
-            break;
+                _menu[_sel][2]();
+                break;
             // Mudar o valor da página
             case menu_acoe.carrega_menu:
-            pag = _menu[_sel][2];
-            break;
+                pag = _menu[_sel][2];
+                break;
             case menu_acoe.ajustes_menu:
             case menu_acoe.ajustes_saves:
                 alterando = !alterando;
-                // Rodando o método
+                // Rodando o método se eu finalizei a alteração
                 if(!alterando)
                 {
                     // Salvando o argumento do menu
@@ -236,6 +249,7 @@ controla_menu = function(_menu){
         marg_val = marg_total * valor_ac(ac_margem, _up ^^ _down, 0);
     }
 }
+
 #endregion
 
 inicia_jogo = function() {
@@ -404,7 +418,8 @@ menus_lista = {
     tela: 2,
     dificuldade: 3,
     carregar: 4, // Novo índice para o menu de saves
-    pause: 5
+    pause: 5,
+	controles: 6 
 };
 
 atualizar_menu_principal = function() {
@@ -431,10 +446,20 @@ atualizar_menu_principal = function() {
 
 // Definir os menus
 menu_principal = atualizar_menu_principal();
+// menu_controles: cada item = [nome_acao, "", descrição_tecla]
+ajustes_controle = [
+    ["Mover",  "Setas ou WASD"],
+    ["Pular",  "Espaço"],
+    ["Interagir",  "Tecla F"],
+    ["Pausar",  "Esc"]
+];
+
 menu_opcoes = [
     ["Tipo de Janela", menu_acoe.carrega_menu, menus_lista.tela],
     ["Dificuldade", menu_acoe.carrega_menu, menus_lista.dificuldade],
-    ["Voltar", menu_acoe.carrega_menu, menus_lista.principal]
+    ["Voltar", menu_acoe.carrega_menu, menus_lista.principal],
+	 ["Controle", menu_acoe.ajustes_menu, ajusta_tela, 1, ["Movimento - AWSD ", "Ataque Simples - k","Dash - L","Ataque para Baixo -  "]],
+
 ];
 menu_dificuldade = [
     ["Dificuldade", menu_acoe.ajustes_menu, ajusta_dificuldade, 1, ["Fácil", "Normal", "Difícil", "Impossível"]],

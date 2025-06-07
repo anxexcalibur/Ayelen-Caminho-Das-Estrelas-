@@ -1,6 +1,13 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-speed = obj_snake.velocidade_projetil*global.dificuldade;
+/// @description Inicialização do projétil
+
+// Define a direção padrão (caso a cobra não defina)
+direcao = 1;
+
+// Define a velocidade base (ajustável)
+vel_proj = 6;
+
 
 /// Criação do sistema de partículas
 part_sys = part_system_create();

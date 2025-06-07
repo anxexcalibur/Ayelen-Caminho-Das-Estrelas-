@@ -56,9 +56,9 @@ switch(estado)
 	}
 	case "hit":{
 		
-		if(sprite_index != spr_tatucanastra_hit){
+		if(sprite_index != spr_escorpiao_hit){
 			image_index = 0;
-			sprite_index = spr_tatucanastra_hit;
+			sprite_index = spr_escorpiao_hit;
 			vida_atual -= obj_player.id.ataque;
 			screenshake(1)
 		}
@@ -79,10 +79,10 @@ switch(estado)
 	case "morto":
 	{
 		
-		if(sprite_index != spr_tatucanastra_morto){
+		if(sprite_index != spr_escorpiao_morto_1){
 			pontuar(6);
 			//iniciando o for preciso para see estado
-			sprite_index = spr_tatucanastra_morto
+			sprite_index =  spr_escorpiao_morto_1
 			image_index = 0;
 		}
 		;              

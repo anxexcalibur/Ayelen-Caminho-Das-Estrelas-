@@ -4,8 +4,8 @@ switch(obj_player.etapa_historia){
 		if room = rm_prototipo{
 			status = true
 		
-			global.alvo_x = obj_piatan_pai_2.x;
-			global.alvo_y = obj_piatan_pai_2.y;
+			global.alvo_x = obj_pai.x;
+			global.alvo_y = obj_pai.y;
 		}
 	break;
 	case 2:
@@ -32,8 +32,8 @@ switch(obj_player.etapa_historia){
 	case 4:
 		status = true
 		if room = rm_prototipo{
-			global.alvo_x = obj_piatan_pai_2.x;
-			global.alvo_y = obj_piatan_pai_2.y;
+			global.alvo_x = obj_pai.x;
+			global.alvo_y = obj_pai.y;
 		}else{
 			status = false;
 		}
@@ -47,6 +47,10 @@ switch(obj_player.etapa_historia){
 		}else{
 			status = false;
 		}
+	break;
+	case 6:
+		status = false
+		
 	break;
 }
 

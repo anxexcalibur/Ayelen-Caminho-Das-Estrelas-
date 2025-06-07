@@ -1,6 +1,7 @@
 if (inicializar == true) {
     global.dialogo = true;
 	
+	
     var _gui = display_get_gui_width();
     var _guia = display_get_gui_height();
 

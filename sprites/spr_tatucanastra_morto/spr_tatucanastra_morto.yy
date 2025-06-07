@@ -2,9 +2,9 @@
   "$GMSprite":"",
   "%Name":"spr_tatucanastra_morto",
   "bboxMode":0,
-  "bbox_bottom":59,
+  "bbox_bottom":31,
   "bbox_left":0,
-  "bbox_right":63,
+  "bbox_right":31,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -25,7 +25,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":64,
+  "height":32,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"e43c9f08-efda-43ec-8971-0e7eb2a66e0b","blendMode":0,"displayName":"default","isLocked":false,"name":"e43c9f08-efda-43ec-8971-0e7eb2a66e0b","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -123,5 +123,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":64,
+  "width":32,
 }

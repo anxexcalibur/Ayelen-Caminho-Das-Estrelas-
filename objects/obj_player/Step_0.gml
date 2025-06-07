@@ -1,4 +1,4 @@
- /// @description Controle do jogador
+  /// @description Controle do jogador
 event_inherited();
 test = keyboard_check_pressed(ord("R"));
 if test {
@@ -16,16 +16,26 @@ switch(etapa_historia){
 }
 // Checando se o objeto transição existe
 if (instance_exists(obj_trasicao)) exit;
-
+ var chao = place_meeting(x, y + 1, obj_block);
 // Inicializando variáveis de entrada
-var right, left, jump, attack, esquiva;
-right = keyboard_check(ord("D"));
-left = keyboard_check(ord("A"));
-jump = keyboard_check_pressed(vk_space);
-var chao = place_meeting(x, y + 1, obj_block);
-attack = keyboard_check_pressed(ord("J"));
-esquiva = keyboard_check_pressed(ord("L"));
-attack_projetil = keyboard_check_pressed(ord("H"));
+if (!global.dialogo and !global.menu_existe) {
+    var right = keyboard_check(ord("D"));
+    var left = keyboard_check(ord("A"));
+    var jump = keyboard_check_pressed(vk_space);
+   
+    var attack = keyboard_check_pressed(ord("J"));
+    var esquiva = keyboard_check_pressed(ord("L"));
+    var attack_projetil = keyboard_check_pressed(ord("H"));
+} else {
+    // Se o diálogo está aberto, bloqueia o movimento e ações
+    var right = false;
+    var left = false;
+    var jump = false;
+    var attack = false;
+    var esquiva = false;
+    var attack_projetil = false;
+}
+
 
 // Checando se eu já dei o dash
 dei_dash = false;
@@ -34,29 +44,7 @@ defesa = false;
 var resert_bonus = 0;
 var estou_na_parede = place_meeting(x - 1, y,obj_block);
 
-if (keyboard_check_pressed(vk_escape)) {
-    // Se o menu já existe, feche o menu
-    if (menu_existe) {
-        // Destroi o menu
-        with (obj_menu) {
-            instance_destroy();
-        }
-        menu_existe = false; // O menu não existe mais
-        global.game_paused = false; // O jogo é retomado
-    } 
-    // Se o menu não existe, abra o menu
-    else {
-        menu_existe = true; // Marca que o menu existe
-        instance_create_layer(x, y, "Sensores", obj_menu); // Cria o menu
-        global.game_paused = true; // Pausa o jogo
-		if(instance_exists(obj_dialogo)){
-			with(obj_dialogo){
-				instance_destroy();
-			}
-		}
-		
-    }
-}
+
 
 if(vida_atual > max_vida)
 {

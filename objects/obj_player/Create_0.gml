@@ -34,7 +34,7 @@ duracao_dash = 8;
 tempo_dash = duracao_dash;
 
 // Inicializa a variável que controla a existência de menus no jogo
-menu_existe = false;
+
 
 // Chama o evento herdado (event_inherited) para garantir que o código do evento pai seja executado
 event_inherited();

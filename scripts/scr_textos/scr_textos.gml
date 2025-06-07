@@ -5,7 +5,7 @@ function scr_textos(){
 	switch (npc_nome) {
 		
 		case "Piata":
-			switch (obj_piatan_pai_2.estado_npc) {
+			switch (obj_pai.estado_npc) {
 				case 0:
 					ds_grid_add_text("btc", spr_piata_rosto, 0, "Piatã");
 					;
@@ -185,62 +185,85 @@ function scr_textos(){
 			break;
 
 		case "Poiara":
-			switch(obj_player.etapa_historia){
-				case 1:{
-					ds_grid_add_text("ayelen seu pai está te procurando.",  spr_rosto_npc_artesao, 0, "Poiara");
-				break;
-				}
-				case 2:{
-					ds_grid_add_text("ayelen seu pai está te procurando.", spr_rosto_npc_artesao, 0, "Poiara");
-				break;
-				}
-				case 3:{
-					ds_grid_add_text("ayelen seu pai está te procurando.",  spr_rosto_npc_artesao, 0, "Poiara");
-				break;
-				}
-				case 4:{
-					ds_grid_add_text("ayelen seu pai está te procurando.",  spr_rosto_npc_artesao, 0, "Poiara");
-				break;
-				}
-				
-				case 5:
-				{
-					ds_grid_add_text("Poiarã: Ah, Ayelen! Você finalmente chegou.", spr_rosto_npc_artesao, 0, "Poiarã");
-					ds_grid_add_text("Poiarã: Seu pai mencionou sua missão importante.",  spr_rosto_npc_artesao, 0, "Poiara");
-					ds_grid_add_text("Poiarã: O desconhecido testa até mesmo os mais fortes.", spr_rosto_npc_artesao, 0, "Poiara");
+    switch(obj_player.etapa_historia){
+        case 1:
+        case 2:
+        case 3:
+        case 4: {
+            ds_grid_add_text("Ayelen, seu pai está te procurando.", spr_rosto_npc_artesao, 0, "Poiarã");
+            break;
+        }
+        case 5: {
+            ds_grid_add_text("Poiarã: Ah, Ayelen! Você finalmente chegou.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: Seu pai mencionou sua missão importante.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: O desconhecido testa até mesmo os mais fortes.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: Antes que vá... quero ajudá-la.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: Esta jornada não é só de força... é de resiliência.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: Leve isto: o Escudo Verde.", spr_escudo, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: Ele irá protegê-la e devolver parte de sua energia.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: Use-o com sabedoria. Ele não durará para sempre.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: Mas, quando ativado no momento certo... pode salvar sua vida.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: Vá agora, Ayelen. O destino a aguarda.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Pressione K para ativar o escudo.", spr_sistema, 0, "Sistema");
+            obj_player.etapa_historia = 6;
+            break;
+        }
+        case 6: {
+            ds_grid_add_text("Poiarã: O tempo está bom para caminhar, mas lembre-se, cada passo ensina algo novo.", spr_rosto_npc_artesao, 0, "Poiarã");
+            ds_grid_add_text("Poiarã: Lembre-se de ouvir o som das árvores, elas têm muito a contar.", spr_rosto_npc_artesao, 0, "Poiarã");
+            break;
+        }
+    }
+    break;
 
-					ds_grid_add_text("Poiarã: Antes que vá... quero ajudá-la.",  spr_rosto_npc_artesao, 0, "Poiara");
-					ds_grid_add_text("Poiarã: Esta jornada não é só de força... é de resiliência.", spr_rosto_npc_artesao, 0, "Poiara");
+case "kaua":
+    switch(obj_player.etapa_historia){
+        case 8: {
+            ds_grid_add_text("Você se depara com um guerreiro escondido atrás de um arbusto, claramente exausto... e meio sujo de lama.", spr_sistema, 0, "Narrador");
+            ds_grid_add_text("Olá, moça! Ouvi boatos sobre a lendária Katupitan... Não me diga que é você?", spr_kaua_guarda, 0, "Kauã");
+            ds_grid_add_text("Hahaha! Talvez... Fui enviada pela minha vila. Você é da Vila do Sol? Ouvi dizer que ela foi... digamos... bem, destruída.", spr_ayelen_face, 1, "Ayelen");
+            ds_grid_add_text("Sim, infelizmente. O Caído invocou uma besta marítima das lendas com o poder dos artefatos. O infeliz fugiu e a criatura acabou com vários dos nossos guerreiros... A maioria migrou para o sul, onde temos esconderijos.", spr_kaua_guarda, 0, "Kauã");
+            ds_grid_add_text("Espera... Besta? Que papo é esse? Ela ainda está por aqui?", spr_ayelen_face, 1, "Ayelen");
+            ds_grid_add_text("Sim, senhorita! Ela se escondeu nas grutas. Mas fique tranquila, o Xamã selou a porta! Fui encarregado de guardar a chave e... entregar pra você!", spr_kaua_guarda, 0, "Kauã");
+            ds_grid_add_text("Porém... meio que deixei ela cair enquanto fugia. Está ali na frente, mas não tenho a menor coragem de voltar pra pegar!", spr_kaua_guarda, 0, "Kauã");
+            ds_grid_add_text("Beleza, pode deixar! Vou enfrentar essa fera, recuperar as insígnias e ganhar um tempinho extra pra minha vila... e talvez também pra você não morrer de medo!", spr_ayelen_face, 1, "Ayelen");
+            obj_player.etapa_historia = 9;
+            break;
+        }case 9: {
+	    ds_grid_add_text("Kauã: Sabe, Ayelen... talvez tudo isso tenha acontecido porque tinha que acontecer.", spr_kaua_guarda, 0, "Kauã");
 
-					ds_grid_add_text("Poiarã: Leve isto: o Escudo Verde.", spr_escudo, 0, "Poiara");
-					ds_grid_add_text("Poiarã: Ele irá protegê-la e devolver parte de sua energia.",  spr_rosto_npc_artesao, 0, "Poiara");
+	    ds_grid_add_text("Ayelen: Como assim? Você tá dizendo que... era destino?", spr_ayelen_face, 1, "Ayelen");
 
-					ds_grid_add_text("Poiarã: Use-o com sabedoria. Ele não durará para sempre.", spr_rosto_npc_artesao, 0, "Poiara");
-					ds_grid_add_text("Poiarã: Mas, quando ativado no momento certo... pode salvar sua vida.",  spr_rosto_npc_artesao, 0, "Poiara");
+	    ds_grid_add_text("Kauã: Não só destino. Na nossa aldeia, aprendemos que a Terra, os espíritos e nós... somos um só.", spr_kaua_guarda, 0, "Kauã");
 
-					ds_grid_add_text("Poiarã: Vá agora, Ayelen. O destino a aguarda.", spr_rosto_npc_artesao, 0, "Poiara");
-					
-					
-					ds_grid_add_text("Precione K para Ativar o escudo", spr_sistema, 0, "Sistema");
-					obj_player.etapa_historia = 6;
-					break;
-				}
-				case 6:
-				{
-					ds_grid_add_text("Poiarã: o tempo está bom para caminhar, mas lembre-se, cada passo ensina algo novo.",  spr_rosto_npc_artesao, 0, "Poiara");
-					ds_grid_add_text("Poiarã: lembre-se de ouvir o som das árvores, elas têm muito a contar.", spr_rosto_npc_artesao, 0, "Poiara");
-					break;
-				}
-				
-			}
-			   
-		break;
-		
-		case "arbusto":
-			ds_grid_add_text("Sistema: A pêra-do-cerrado (Eugenia klotzschiana) é uma fruta rara e pouco conhecida, nativa dos cerrados e campos do Brasil central e sudeste. Seu nome indígena é cabamixá-açú, que significa erva que dá fruto que aperta a língua", spr_sistema, 0, "arbusto");
-			
-			
-		break;
+	    ds_grid_add_text("Kauã: Quando esquecemos de escutar a natureza... ela fala mais alto.", spr_kaua_guarda, 0, "Kauã");
+
+	    ds_grid_add_text("Ayelen: Então... essa besta, o caos, a destruição... são respostas?", spr_ayelen_face, 1, "Ayelen");
+
+	    ds_grid_add_text("Kauã: É o que os anciões dizem. O mundo visível é só metade do que existe. O outro lado é o espírito — o Nhandereko, nosso jeito de ser.", spr_kaua_guarda, 0, "Kauã");
+
+	    ds_grid_add_text("Kauã: Quando a alma da aldeia adoece... a floresta sente, os rios respondem.", spr_kaua_guarda, 0, "Kauã");
+
+	    ds_grid_add_text("Ayelen: Então... nossa missão não é só derrotar a besta, né?", spr_ayelen_face, 1, "Ayelen");
+
+	    ds_grid_add_text("Kauã: Não. É curar o que foi ferido... em nós e na Terra.", spr_kaua_guarda, 0, "Kauã");
+
+	    ds_grid_add_text("Ayelen: Bonito... e difícil. Mas vamos lá. Por você, pela aldeia... e pelo espírito da floresta.", spr_ayelen_face, 1, "Ayelen");
+
+	    ds_grid_add_text("Kauã: Lembre-se... não é destino. É que a realidade responde à nossa alma. Se adoecemos e seguimos caminhos de trevas... consequências como essas acontecem.", spr_kaua_guarda, 0, "Kauã");
+		ds_grid_add_text("Ayelen:...", spr_ayelen_face, 1, "Ayelen");
+	    ds_grid_add_text("Ayelen: Difícil de aceitar, mas compreendo a responsabilidade que temos como grupo, falhamos com ele, o caido...", spr_ayelen_face, 1, "Ayelen");
+		ds_grid_add_text("Kauã: sim..., vá cuide se", spr_kaua_guarda, 0, "Kauã");
+    break;
+}
+
+    }
+    break;
+
+case "arbusto":
+    ds_grid_add_text("Sistema: A pêra-do-cerrado (Eugenia klotzschiana) é uma fruta rara e pouco conhecida, nativa dos cerrados e campos do Brasil central e sudeste. Seu nome indígena é cabamixá-açú, que significa 'erva que dá fruto que aperta a língua'.", spr_sistema, 0, "Sistema");
+    break;
+
 		case "ceramica":
 			ds_grid_add_text("Sistema: Os povos indígenas foram os primeiros ceramistas do território brasileiro, desenvolvendo técnicas sofisticadas de produção muito antes da chegada dos europeus. ", spr_sistema, 0, "arbusto");
 			ds_grid_add_text("Sistema: Usando recursos naturais como argila, fibras vegetais e pigmentos orgânicos, criaram recipientes resistentes para armazenar alimentos, cozinhar, transportar água e até mesmo realizar rituais sagrados. ", spr_sistema, 0, "arbusto");

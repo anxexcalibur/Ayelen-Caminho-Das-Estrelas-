@@ -1,9 +1,9 @@
- /// @description Inserir descrição aqui
+global.menu_existe = false; /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 global.checkpoint_states = [];
 // Evento Create
 global.estrelas_coletadas = 0;
-
+global.game_stop = false;
 // Constelações e estrelas
 global.constelacoes = [
     {nome: "Homem Velho", total: 6, coletadas: 0},

@@ -144,7 +144,8 @@ enum menu_acoe
 	roda_metodo,//0
 	carrega_menu,//1
 	ajustes_menu,//2
-	ajustes_saves//3
+	ajustes_saves,//3
+	ajustes_controle//4
 }
 enum menus_lista
 {
@@ -152,7 +153,8 @@ enum menus_lista
 	opcoes,
 	carregar,
 	tela,
-	dificuldade
+	dificuldade,
+	controles
 	
 }
 //Tremendo a tela
@@ -168,9 +170,9 @@ function screenshake(_treme,_dir_mode,_direcao){
 }
 //enumerator para definir as minhas açoes possiveis
 ///@function denfine_align(_vertical,_horizontal)
-function define_align(_ver,_hor){
-	draw_set_halign(_hor);
-	draw_set_valign(_ver);
+function define_align(_hor, _ver) {
+    draw_set_halign(_hor);
+    draw_set_valign(_ver);
 }
 //enum menu_acoes{
 //	roda_metodo,

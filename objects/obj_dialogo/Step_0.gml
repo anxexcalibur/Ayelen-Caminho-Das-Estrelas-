@@ -6,7 +6,7 @@ if inicializar == false{
 	alarm[0] = 4;
 }
 alpha += .03;
-if mouse_check_button_pressed(mb_left){
+if keyboard_check_released(vk_space){
 	if caractere < string_length(texto_grid[# Infos.Texto, pagina]){
 		caractere = string_length(texto_grid[# Infos.Texto, pagina])
 	}else{
@@ -16,6 +16,10 @@ if mouse_check_button_pressed(mb_left){
 			pagina++;
 		}else{
 			global.dialogo = false;
+			
+			if !instance_exists(obj_menu){
+				global.game_paused = false;
+			}
 			instance_destroy()
 		
 		}
