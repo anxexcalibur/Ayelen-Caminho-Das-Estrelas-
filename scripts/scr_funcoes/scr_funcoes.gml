@@ -3,6 +3,55 @@
 function scr_funcoes(){
 
 }
+// plataforma movel
+/// No obj_player - Script ou no próprio objeto
+function move_platform_x(dx) {
+    // Primeiro tenta mover a plataforma
+    if (place_meeting(x + dx, y, obj_block)) {
+        dir *= -1; // inverte direção se colidir com parede
+        return;
+    }
+
+    // Verifica se tem player colidindo ao lado (posição após movimento)
+    var p = instance_place(x + dx, y, obj_player);
+    if (p != noone) {
+        // Se player não está em cima da plataforma (y menor)
+        if (p.y < y) {
+            dir *= -1; // inverte direção
+            return;
+        }
+    }
+
+    // Move plataforma normalmente
+    x += dx;
+
+    // Se player estiver em cima (y >= y da plataforma), move player junto
+    var player_em_cima = instance_place(x, y - 1, obj_player);
+    if (player_em_cima != noone) {
+        player_em_cima.x += dx;
+    }
+}
+
+function player_follow_platform(inst_platform, velh) {
+    // Verifica se o player está na plataforma
+    var player_inst = instance_place(inst_platform.x, inst_platform.y, obj_player);
+
+    if (player_inst != noone) {
+        // Calcula nova posição do player junto com a plataforma
+        var new_x = player_inst.x + velh;
+
+        // Move o player junto só se não colidir com blocos
+        if (!place_meeting(new_x, player_inst.y, obj_block)) {
+            player_inst.x = new_x;
+            return true; // player foi movido com sucesso
+        } else {
+            return false; // não pode mover o player
+        }
+    }
+    return true; // sem player, sem problema
+}
+
+
 // Função para gerenciar a música de fundo
 function gerenciar_musica(nome_musica) {
     audio_pause_all();  // Pausa qualquer música tocando

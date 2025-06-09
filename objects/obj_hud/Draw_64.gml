@@ -1,16 +1,13 @@
-if (player != noone && !player.morreu && !global.dialogo && !global.menu_existe) {
-    // Margem para afastar da borda da tela
-	
-
+if (!instance_exists(obj_trasicao) && player != noone && !player.morreu && !global.dialogo && !global.menu_existe) { 
     var margem = 20;
-    
+
     // --- Barra de vida no canto superior esquerdo ---
     var healthbar_width = 200;
     var healthbar_height = 30;
-    var healthbar_x = margem +50;
-    var healthbar_y = margem +50;
+    var healthbar_x = margem + 50;
+    var healthbar_y = margem + 50;
 
-    draw_sprite(molduraHealthbar, 0, healthbar_x , healthbar_y);
+    draw_sprite(molduraHealthbar, 0, healthbar_x, healthbar_y);
 
     var barra_largura_atual = (player.vida_atual / player.max_vida) * healthbar_width;
 
@@ -43,14 +40,10 @@ if (player != noone && !player.morreu && !global.dialogo && !global.menu_existe)
 
     // --- Texto HUD no canto inferior esquerdo ---
 
-    // Pegamos altura total da GUI (tela/janela)
     var gui_height = display_get_gui_height();
 
-    // Posição base do primeiro texto na parte inferior (com margem)
     var texto_x_hud = margem;
     var texto_y_hud = gui_height - margem;
-
-    // Vamos desenhar de baixo para cima, com espaçamento vertical de 30px entre linhas
 
     // Projetil (embaixo)
     draw_set_color(make_color_rgb(0, 0, 139));
@@ -75,7 +68,6 @@ if (player != noone && !player.morreu && !global.dialogo && !global.menu_existe)
     draw_set_color(make_color_rgb(144, 238, 144));
     draw_text(texto_x_hud, texto_y_hud - 20, "Tempo do Dash: " + string(global.dash_cooldown));
 
-    // Reset padrão
     draw_set_color(c_white);
     draw_set_font(-1);
 }

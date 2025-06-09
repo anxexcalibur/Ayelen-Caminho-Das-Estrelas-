@@ -24,7 +24,7 @@
   ],
   "name":"spr_rosto_npc_artesao",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"rostos",
     "path":"folders/Sprites/rostos.yy",
@@ -80,7 +80,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":32,
-    "yorigin":35,
+    "yorigin":32,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

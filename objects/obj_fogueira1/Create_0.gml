@@ -3,6 +3,8 @@
 // Criação do sistema de partículas
 p_sys = part_system_create();
 p_type = part_type_create();
+// Crie isso no Create Event do objeto que está detectando o ritual:
+ritual_ativado = false;
 
 // Configurações do tipo de partícula
 part_type_shape(p_type, pt_shape_pixel); // Forma da partícula

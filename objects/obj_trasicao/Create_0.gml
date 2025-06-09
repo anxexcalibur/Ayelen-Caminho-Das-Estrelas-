@@ -4,3 +4,6 @@
 alpha = 0;
 //Se eu ja mudei de room
 mudei = false;
+destino = noone;
+destino_x = undefined;
+destino_y = undefined;
