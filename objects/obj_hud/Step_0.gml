@@ -3,3 +3,8 @@
 if (player == noone) {
     player = instance_find(obj_player, 0);
 }
+
+if instance_exists(obj_porta){
+	desenha_porta = obj_porta.mostrar_mensagem
+}
+

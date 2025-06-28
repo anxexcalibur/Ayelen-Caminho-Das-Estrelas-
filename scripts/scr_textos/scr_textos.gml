@@ -8,7 +8,7 @@ function scr_textos(){
 			switch (obj_pai.estado_npc) {
 				case 0:
 					ds_grid_add_text("btc", spr_piata_rosto, 0, "Piatã");
-					;
+					obj_player.etapa_historia = 1;
 				break;
 				case 1:
 					ds_grid_add_text("Ayelen, minhas forças são frágeis e o peso dos anos me consome, mas meu coração permanece firme.", spr_piata_rosto, 0, "Piatã");

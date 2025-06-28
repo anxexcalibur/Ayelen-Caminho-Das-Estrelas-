@@ -1,9 +1,11 @@
+/// @description Inicializa a estrela com todos os estados possíveis
 
-// Inicializa a estrela
+// --- Sua Lógica Original ---
 ativou = false;
-timer = 0; 
-tempo_de_ativacao = 120; 
-velocidade_subida = 5; 
+timer = 0;
+tempo_de_ativacao = 120;
+velocidade_subida = 5;
+text = "";
 
 // Cria o sistema e tipo de partículas
 part_system = part_system_create();
@@ -16,7 +18,17 @@ part_type_gravity(part_type, 0, 0);
 part_type_color1(part_type, c_yellow);
 part_type_color2(part_type, c_red, c_red);
 
-// Evento Create
-text = "";
+// --- Variáveis para a Física do Drop e Coleta por Toque ---
+vspd = 0; // Velocidade vertical
+hspd = 0; // Velocidade horizontal
+grav = 0.2; // Força da gravidade
 
+// Variáveis de Animação do Drop
+escala_final = 1.0;
+velocidade_anim = 0.1;
 
+// --- A Variável Chave: A Máquina de Estados ---
+// Define o comportamento inicial da estrela.
+// "coletavel" -> Está parada no cenário, esperando a tecla "F".
+// "animando" / "parado" -> Foi dropada e tem física.
+estado_drop = "coletavel";

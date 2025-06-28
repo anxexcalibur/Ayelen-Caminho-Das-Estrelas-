@@ -8,7 +8,7 @@ if (colisao)
 
 	with(obj_player)
 	{
-		if !place_meeting(x,y+other.velh,obj_block){
+		if !place_meeting(x,y+other.velh,obj_parede_solida_pai){
 			y+= other.velh;
 		}
 	
@@ -16,7 +16,7 @@ if (colisao)
 }
 
 
-if(instance_place(x,y+velh,obj_block)){
+if(instance_place(x,y+velh,obj_parede_solida_pai)){
 	dir *= -1;
 }
 y+=velh

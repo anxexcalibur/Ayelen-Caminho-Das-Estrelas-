@@ -1,22 +1,24 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-// Desenha o sprite normal do NPC
-draw_self();
-
-// Verifica se o player existe
+// Verifica se uma instância do jogador existe na sala
+draw_self()
 if (instance_exists(obj_player)) {
-    var player = obj_player;
-
-    // Checa se a etapa do player é 1 e se ele está próximo (ex: 100 pixels de distância)
-    if (player.etapa_historia == 1 && desenha == true && point_distance(x, y, player.x, player.y) < 100) {
-
+    // CORREÇÃO: Usa 'obj_player.x' e 'obj_player.y' diretamente para checar a distância.
+    // O GameMaker encontrará a primeira instância de obj_player.
+    if (point_distance(x, y, obj_player.x, obj_player.y) < 100) {
+        // Agora que sabemos que estamos perto, podemos desenhar o texto.
+        
         // Define alinhamento e cor do texto
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
         draw_set_color(c_white);
-        draw_set_font(fnt_dialogo); // Use a fonte que quiser, se tiver uma
+        draw_set_font(fnt_dialogo);
 
         // Desenha a mensagem acima do NPC
-        draw_text(x, y - 50, texto);
+        draw_text(x, y - 50, "F");
+
+        // Reseta as configurações de desenho para o padrão para não afetar outros textos
+        draw_set_halign(fa_left);
+        draw_set_valign(fa_top);
+        draw_set_font(-1);
+        draw_set_color(c_black); // ou a cor padrão que preferir
     }
 }

@@ -1,8 +1,12 @@
 /// @description Inserir descrição aqui
 //variavel em referencia aos itens coletaveis
+
 global.itens_coletados = ds_map_create();
 particulas_ativas = false;
 //ultimate dela
+velv= 1
+velh=1
+massa = 1
 resistencia = 0;
 global.nivel_do_jogo = 0
 global.balas = 100
@@ -11,6 +15,7 @@ _tile = layer_tilemap_get_id("Tile_3")
 pode_desenhar = false
 //variavel que controla a etapa da historia
 etapa_historia = 1;
+estado = "parado"
 // Inicializa o gerador de números aleatórios para garantir que os resultados das funções de randomização sejam diferentes a cada execução do jogo
 randomize();
 hitbaiacu = false;
@@ -37,7 +42,7 @@ tempo_dash = duracao_dash;
 
 
 // Chama o evento herdado (event_inherited) para garantir que o código do evento pai seja executado
-event_inherited();
+
 
 // Define a vida máxima do jogador
 max_vida = 10;

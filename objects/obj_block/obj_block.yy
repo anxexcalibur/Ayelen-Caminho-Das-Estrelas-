@@ -10,12 +10,12 @@
   "name":"obj_block",
   "overriddenProperties":[],
   "parent":{
-    "name":"Colisores",
-    "path":"folders/Objetos/Colisores.yy",
+    "name":"Sistema de colisão",
+    "path":"folders/Objetos/Colisores/Sistema de colisão.yy",
   },
   "parentObjectId":{
-    "name":"obj_pai_cenarios",
-    "path":"objects/obj_pai_cenarios/obj_pai_cenarios.yy",
+    "name":"obj_parede_solida_pai",
+    "path":"objects/obj_parede_solida_pai/obj_parede_solida_pai.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

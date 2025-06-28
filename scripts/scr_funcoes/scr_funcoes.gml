@@ -3,6 +3,89 @@
 function scr_funcoes(){
 
 }
+
+/// @function scr_colisao_movimento()
+/// @description Executa a lógica de colisão e movimento para uma instância.
+///              A instância que chama este script DEVE ter as variáveis velh e velv.
+
+function scr_drop_item(x_origem, y_origem, item_objeto) {
+
+    // Cria a instância do item
+    var _item = instance_create_layer(x_origem, y_origem, "Instances", item_objeto);
+    
+    // Com a instância criada, podemos definir algumas variáveis iniciais nela
+    with (_item) {
+        
+        // 1. EFEITO DE "PULO":
+        // Dá um impulso para cima (vspd negativo)
+        vspd = -4; 
+        
+        // Dá um impulso horizontal aleatório para a esquerda ou para a direita
+        hspd = random_range(-2, 2);
+        
+        // 2. EFEITO VISUAL INICIAL:
+        // Começa um pouco maior que o normal
+        image_xscale = 1.2; // Reduzido de 1.5
+        image_yscale = 1.2; // Reduzido de 1.5
+        
+        // Começa semi-transparente
+        image_alpha = 0.5;
+        
+        // Uma variável para controlar o estado, garantindo que a animação só aconteça uma vez
+        estado_drop = "animando";
+    }
+}
+function scr_colisao_movimento() {
+
+    // --- COLISÃO HORIZONTAL ---
+    // Usamos instance_place para pegar a ID da parede/porta que vamos atingir.
+    var _parede_h = instance_place(x + velh, y, obj_parede_solida_pai);
+
+    if (_parede_h != noone) {
+        // PONTO-CHAVE: Verificamos se a parede que encontramos é uma porta e se ela está aberta.
+        var _eh_porta_aberta = (_parede_h.object_index == obj_porta && _parede_h.ativou == true);
+
+        // Se NÃO for uma porta aberta (ou seja, é uma parede comum OU uma porta fechada)...
+        if (!_eh_porta_aberta) {
+            // ...então executamos a colisão pixel-a-pixel.
+            // Usamos obj_parede_solida aqui para garantir que paramos em qualquer parede, não apenas na que encontramos primeiro.
+            while (!instance_place(x + sign(velh), y,  obj_parede_solida_pai)) {
+                x += sign(velh);
+            }
+            velh = 0; // Paramos o movimento horizontal.
+        }
+    }
+    // Aplica o movimento horizontal final (que será 0 se colidiu).
+    x += velh;
+
+
+    // --- COLISÃO VERTICAL ---
+    // Usamos instance_place novamente para a colisão vertical.
+    var _parede_v = instance_place(x, y + velv, obj_parede_solida_pai);
+
+    if (_parede_v != noone) {
+        // A mesma lógica da porta aberta se aplica aqui.
+        var _eh_porta_aberta = (_parede_v.object_index == obj_porta && _parede_v.ativou == true);
+        
+        // Se NÃO for uma porta aberta...
+        if (!_eh_porta_aberta) {
+            // ...colidimos.
+            while (!instance_place(x, y + sign(velv), obj_parede_solida_pai)) {
+                y += sign(velv);
+            }
+            
+            // Se a instância que chama o script tem uma máquina de estados...
+            // e estava no estado "pulando", mudamos para "parado".
+            if (variable_instance_exists(id, "estado") && estado == "pulando" && velv > 0) {
+                estado = "parado"; 
+            }
+            velv = 0; // Paramos o movimento vertical.
+        }
+    }
+    // Aplica o movimento vertical final.
+    y += velv;
+    
+}
 // plataforma movel
 /// No obj_player - Script ou no próprio objeto
 function move_platform_x(dx) {

@@ -1,138 +1,150 @@
   /// @description Controle do jogador
-event_inherited();
-test = keyboard_check_pressed(ord("R"));
-if test {
-	show_message(etapa_historia)
-}
-//etapa do jogo, controla a direção da  seta
-switch(etapa_historia){
-	case 1:
-		global.alvo_x = obj_sensor.x
-		global.alvo_y = obj_sensor.y
-		if instance_exists(obj_seta){
-			obj_seta.status = true
-		}
-	break	
-}
-// Checando se o objeto transição existe
-if (instance_exists(obj_trasicao)) exit;
- var chao = place_meeting(x, y + 1, obj_block);
-// Inicializando variáveis de entrada
-if (!global.dialogo and !global.menu_existe) {
-    var right = keyboard_check(ord("D"));
-    var left = keyboard_check(ord("A"));
-    var jump = keyboard_check_pressed(vk_space);
-   
-    var attack = keyboard_check_pressed(ord("J"));
-    var esquiva = keyboard_check_pressed(ord("L"));
-    var attack_projetil = keyboard_check_pressed(ord("H"));
-} else {
-    // Se o diálogo está aberto, bloqueia o movimento e ações
-    var right = false;
-    var left = false;
-    var jump = false;
-    var attack = false;
-    var esquiva = false;
-    var attack_projetil = false;
-}
 
+///referente a porta
+// Impede passagem por porta fechada
 
-// Checando se eu já dei o dash
-dei_dash = false;
-//variavel que verifica se a habilidade de defesa foi desbloqueada
-defesa = false;
-var resert_bonus = 0;
-var estou_na_parede = place_meeting(x - 1, y,obj_block);
-
-
-
-if(vida_atual > max_vida)
+if (keyboard_check_pressed(ord("G")))
 {
-	max_vida++;
-	
+    // Chama a sua nova função na posição exata do jogador
+    scr_drop_item(x, y, obj_star_1);
+	show_message(global.estrelas_coletadas)
 }
-//codigo que verifica e controla quando exibir os dialogos dentro do jogo, obs transforma em função
+// Iniciando a máquina de estados
+/// @description Controle do jogador (Reorganizado)
+
+
+//==============================================================================
+// 1. CONFIGURAÇÕES E VERIFICAÇÕES GLOBAIS
+//==============================================================================
+
+// Se uma transição de tela estiver ativa, interrompe todo o código do jogador.
+if (instance_exists(obj_trasicao)) {
+    exit;
+}
+
+// Inicializações que ocorrem a cada frame.
+dei_dash = false;
+defesa = false;
+
+// Inicialização única da variável de cooldown (idealmente, isso fica no evento Create).
+if (!variable_global_exists("dash_cooldown")) {
+    global.dash_cooldown = 0;
+}
+
+// Debug para exibir a etapa da história
+if (keyboard_check_pressed(ord("R"))) {
+    show_message(etapa_historia);
+}
+
+// Lógica da história (controla a seta e outros elementos)
+switch(etapa_historia) {
+    case 1:
+        global.alvo_x = obj_sensor.x;
+        global.alvo_y = obj_sensor.y;
+        if (instance_exists(obj_seta)) {
+            obj_seta.status = true;
+        }
+        break;
+}
+
+// Lógica de interação com NPCs
 if (distance_to_object(obj_par_npcs) <= 10) {
-    if (keyboard_check_pressed(ord("F")) && global.dialogo == false) {
+    if (keyboard_check_pressed(ord("F")) && !global.dialogo) {
         var _npc = instance_nearest(x, y, obj_par_npcs);
         var _dialogo = instance_create_layer(x, y, "Dialogo", obj_dialogo);
         _dialogo.npc_nome = _npc.nome;
     }
 }
 
-// desbloquea a habilidade de defesa
-if (keyboard_check(ord("K"))and etapa_historia >= 6) {
-    defesa = true;
+
+//==============================================================================
+// 2. CAPTURA DE ENTRADAS (INPUTS)
+//==============================================================================
+
+// Inicializa as variáveis de input como falsas.
+var right = false, left = false, jump = false, attack = false, esquiva = false, attack_projetil = false;
+
+// Permite a leitura dos inputs apenas se o jogo não estiver pausado ou em diálogo.
+if (!global.dialogo && !global.menu_existe && !global.game_paused) {
+    right = keyboard_check(ord("D"));
+    left = keyboard_check(ord("A"));
+    jump = keyboard_check_pressed(vk_space);
+    attack = keyboard_check_pressed(ord("J"));
+    esquiva = keyboard_check_pressed(ord("L"));
+    attack_projetil = keyboard_check_pressed(ord("H"));
+    
+    // Habilidade de defesa (só pode ser ativada se desbloqueada)
+    if (etapa_historia >= 6) {
+        defesa = keyboard_check(ord("K"));
+    }
+}
+
+
+//==============================================================================
+// 3. MÁQUINA DE ESTADOS E LÓGICA DE JOGO
+//==============================================================================
+
+// Definições importantes para a máquina de estados
+var chao = place_meeting(x, y + 1,obj_parede_solida_pai);
+var estou_na_parede = place_meeting(x - 1, y, obj_block); // Nota: Este só checa um lado
+
+// Cálculo da velocidade horizontal desejada
+// Se o jogo estiver pausado ou em diálogo, velh será 0.
+// Cálculo da velocidade horizontal desejada
+if (!global.game_paused && !global.dialogo) {
+    velh = (right - left) * max_velh;
 } else {
-    defesa = false;
+    velh = 0;
 }
 
-// Cálculo da velocidade horizontal
-if global.game_paused == false{
-	velh = (right - left) * max_velh;
-}else if instance_exists(obj_dialogo){
-	velh = 0;
-}else{
-	velh = 0;
+if !chao and velv > 0{
+	estado = "pulando"
 }
+// ^^^^^^ FIM DO BLOCO DE CÓDIGO PARA ADICIONAR ^^^^^^
 
-// Verificando se o jogador está morto
+// Checagem de vida para forçar o estado "morto"
 if (vida_atual <= 0) {
     estado = "morto";
 }
 
-// Criando sistema se o escudo tocar o projetil da cobra
+// Lógica específica que depende de um estado (pode ficar aqui ou dentro do case)
 if (estado == "defesa" && place_meeting(x, y, obj_projetil2)) {
-    instance_create_layer(x - 15, y - 20, instances, obj_projetil);
-}
-// animação o player sofrer dano
-if (alarm > 0) {
-    if (image_alpha >= 1) {
-        alfa_hit = -0.5;
-    } else if (image_alpha <= 0) {
-        alfa_hit = 0.05;
-    }
-    image_alpha += alfa_hit;
-} else {
-    image_alpha = 1;
+    instance_create_layer(x - 15, y - 20, "instances", obj_projetil);
 }
 
-// Variável global para o cooldown do dash
-if (!variable_global_exists("dash_cooldown")) {
-    global.dash_cooldown = 0;
-}
-
-// Iniciando a máquina de estados
+// O CÉREBRO DO JOGADOR: A MÁQUINA DE ESTADOS
 switch (estado) {
-	
-	
+    
+    
+    // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    
     // Estado: Parado
-    case "parado": {
-        // Comportamento do estado
+     case "parado": {
+         // Comportamento do estado
 		//errro
 		if global.balas  > 0 and attack_projetil{
 			estado = "ataque projetil"
 			
 			global.balas--
 		}
-        sprite_index = spr_player;
-        if (defesa) {
-            estado = "defesa";
-        }
-        // Condições de troca de estado
-        if (right || left and global.game_paused == false) {
-            estado = "movendo";
-        } else if (jump || !chao and global.game_paused == false) {
-            estado = "pulando";
-            velv = (-max_velv * jump);
-            image_index = 0;
-        } else if (attack and global.game_paused == false) {
-            inicia_ataque(chao);
-        }
-        break;
-    }
-    
-    // Estado: Movendo
+         sprite_index = spr_player;
+         if (defesa) {
+             estado = "defesa";
+         }
+         // Condições de troca de estado
+         if (right || left and global.game_paused == false) {
+             estado = "movendo";
+         } else if (jump || !chao and global.game_paused == false) {
+             estado = "pulando";
+             velv = (-max_velv * jump);
+             image_index = 0;
+         } else if (attack and global.game_paused == false) {
+             inicia_ataque(chao);
+         }
+         break;
+		 
+     }
+      // Estado: Movendo
     case "movendo": {
         sprite_index = spr_player_run;
 		if (place_meeting(x,y,obj_vida)){
@@ -421,7 +433,7 @@ switch (estado) {
 			if (instance_exists(obj_controller)) {
             with (obj_controller) {
                 game_over = false;
-				instance_destroy()
+				
             }
         }
 		}
@@ -458,20 +470,63 @@ switch (estado) {
         break;
 }
 
-// Reinicia a sala quando a tecla Enter é pressionada
+  
+    
+    // (AQUI TERMINA A SUA MÁQUINA DE ESTADOS)
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-// Criando meu Rastro
-if (tempo_dash % 3 == 0) {
+
+//==============================================================================
+// 4. APLICAÇÃO FINAL DO MOVIMENTO (COLISÃO IRÁ AQUI NO FUTURO)
+//==============================================================================
+
+// ATENÇÃO: Seu código original não tinha as linhas que efetivamente movem o personagem.
+// As variáveis `velh` e `velv` eram calculadas, mas nunca aplicadas a `x` e `y`.
+// Adicionei-as aqui. Sem elas, o personagem não se move.
+// NO PRÓXIMO PASSO, VAMOS SUBSTITUIR ESTA PARTE SIMPLES PELO SISTEMA DE COLISÃO COMPLETO.
+
+// ---> Início da seção que vamos substituir
+
+
+// ---> Fim da seção que vamos substituir
+scr_colisao_movimento()
+
+//==============================================================================
+// 5. ATUALIZAÇÕES FINAIS E EFEITOS VISUAIS
+//==============================================================================
+
+// Vira o sprite para a direção do movimento
+if (velh != 0) {
+    image_xscale = sign(velh);
+}
+
+// Efeito de piscar ao sofrer dano
+if (alarm[0] > 0) { // Usando alarm[0] como exemplo para o timer de dano
+    if (image_alpha >= 1) {
+        alfa_hit = -0.5;
+    } else if (image_alpha <= 0) {
+        alfa_hit = 0.05;
+    }
+    image_alpha += alfa_hit;
+} else {
+    image_alpha = 1;
+}
+
+// Efeito de rastro do dash
+if (estado == "dash" && tempo_dash % 3 == 0) {
     var _rastro = instance_create_depth(x, y, depth + 1, obj_player_rastro);
     _rastro.sprite_index = sprite_index;
     _rastro.image_index = image_index;
     _rastro.image_speed = 0;
 }
 
-// Decrementando o cooldown do dash
+// Controle do Cooldown do Dash
 if (global.dash_cooldown > 0) {
     global.dash_cooldown--;
 }
-	
-	
+
+// Verificação de excesso de vida
+if(vida_atual > max_vida) {
+    max_vida++;
+}
