@@ -183,6 +183,8 @@
     {"name":"agua_1","order":5,"path":"sprites/agua_1/agua_1.yy",},
     {"name":"arvore1","order":3,"path":"sprites/arvore1/arvore1.yy",},
     {"name":"caverna_png","order":1,"path":"sprites/caverna_png/caverna_png.yy",},
+    {"name":"dpr_flor_Jaciuna_1","order":9,"path":"sprites/dpr_flor_Jaciuna_1/dpr_flor_Jaciuna_1.yy",},
+    {"name":"dpr_flor_Jaciuna_2","order":10,"path":"sprites/dpr_flor_Jaciuna_2/dpr_flor_Jaciuna_2.yy",},
     {"name":"dpr_flor_Jaciuna","order":3,"path":"sprites/dpr_flor_Jaciuna/dpr_flor_Jaciuna.yy",},
     {"name":"espinhos","order":16,"path":"sprites/espinhos/espinhos.yy",},
     {"name":"estatua","order":4,"path":"sprites/estatua/estatua.yy",},

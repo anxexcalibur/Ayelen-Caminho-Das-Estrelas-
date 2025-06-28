@@ -3,7 +3,9 @@
 function scr_funcoes(){
 
 }
-
+function animation_end() {
+    return image_index >= image_number - 1;
+}
 /// @function scr_colisao_movimento()
 /// @description Executa a lógica de colisão e movimento para uma instância.
 ///              A instância que chama este script DEVE ter as variáveis velh e velv.
@@ -29,7 +31,7 @@ function scr_drop_item(x_origem, y_origem, item_objeto) {
         image_yscale = 1.2; // Reduzido de 1.5
         
         // Começa semi-transparente
-        image_alpha = 0.5;
+        image_alpha = 1;
         
         // Uma variável para controlar o estado, garantindo que a animação só aconteça uma vez
         estado_drop = "animando";
@@ -177,7 +179,7 @@ function gerenciar_musica(nome_musica) {
 /// @desc Salva os dados do jogador no arquivo save.sav
 /// @param obj - O objeto jogador cujos dados serão salvos
 
-function salvar_progresso() {
+/***function salvar_progresso() {
     var buffer = buffer_create(1024, buffer_fixed, 1);
     
     // Salva número total de estrelas coletadas
@@ -209,7 +211,7 @@ function carregar_progresso() {
             global.constelacoes[i].coletadas = 0;
         }
     }
-}
+}***/
 
 
 function salvar_itens() {
@@ -234,37 +236,20 @@ function salvar_jogador(_obj) {
     ini_write_real(global.nome_jogador, "vida_atual", _obj.vida_atual);
     ini_write_real(global.nome_jogador, "sala_atual", room);
     ini_write_real(global.nome_jogador, "etapa_historia", _obj.etapa_historia);
-	ini_write_real(global.nome_jogador, "pontuacao", global.pontuacao);
-	
+    ini_write_real(global.nome_jogador, "pontuacao", global.pontuacao);
+    ini_write_real(global.nome_jogador, "estrelas_coletadas", global.estrelas_coletadas); // Adicionado para salvar as estrelas
+
     ini_close();
-	
-
-	// salvando o estado dos itens
-	salvar_itens();
-	salvar_progresso()
-
-    /*var nome_jogador = global.nome_jogador;
-    var filename = nome_jogador + "_itens.ini";
-    var file = file_text_open_write(filename);
     
-    // Escreve a seção com o nome do jogador
-    file_text_write_string(file, "[" + nome_jogador + "]\n");
+    // salvando o estado dos itens
+    // Certifique-se de que as funções salvar_itens() e salvar_progresso()
+    // estejam definidas em outro script do seu projeto.
+    salvar_itens();
     
-    // Obtém as chaves e escreve os pares chave=valor
-    var keys = ds_map_keys_to_array(global.itens_coletados);
-    var tamanho = array_length(keys);
 
-    for (var i = 0; i < tamanho; i++) {
-        var key = keys[i];
-        var value = global.itens_coletados[? key];
-        file_text_write_string(file, key + "=\"" + string(value) + "\"\n");
-    }
     
-   file_text_close(file);*/
-   
-
-	
 }
+
 
 
 

@@ -148,13 +148,13 @@ aplica_gravidade = function() {
 }
 
 // Função para carregar o checkpoint do jogador
-carregar_checkpoint = function(_value) {
+function carregar_checkpoint(_value) {
     // Obtém o nome do jogador selecionado na lista
     var jogador = _value;
     
     // Verifica se a instância do jogador ainda não existe na cena
     if (!instance_exists(obj_player)) {
-        // Cria uma nova instância do jogador na camada "Instances" na posição (0, 0)
+        // Cria uma nova instância do jogador
         instance_create_layer(0, 0, "Instances", obj_player);
     }
     
@@ -163,29 +163,32 @@ carregar_checkpoint = function(_value) {
         // Abre o arquivo de save
         ini_open("save.sav");
         
-        // Lê a posição x do jogador do arquivo de save
+        // Lê os dados do jogador do arquivo de save
         obj_player.x = ini_read_real(jogador, "x_atual", 0);
-        
-        // Lê a posição y do jogador do arquivo de save
         obj_player.y = ini_read_real(jogador, "y_atual", 0);
         
-        // Lê a vida atual do jogador do arquivo de save
         var _vida_atual = ini_read_real(jogador, "vida_atual", 0);
         
-        // Se a vida atual lida é maior ou igual a 0
+        // Lógica para restaurar a vida
         if (_vida_atual <= 0) {
-            // Define a vida atual do jogador como 1
-            obj_player.vida_atual += 2;
+            obj_player.vida_atual = 2; // Garante que o jogador não comece morto
         } else {
-            // Caso contrário, define a vida atual do jogador como o valor lido do arquivo de save
-            obj_player.vida_atual = ini_read_real(jogador, "vida_atual", 0);
+            obj_player.vida_atual = _vida_atual;
         }
+
+        // --- CARREGANDO AS ESTRELAS ---
+        // Lê o número de estrelas coletadas do arquivo de save. Se não encontrar, o padrão é 0.
+        global.estrelas_coletadas = ini_read_real(jogador, "estrelas_coletadas", 0);
         
         // Lê a sala atual do jogador do arquivo de save e muda para essa sala
-        room_goto(ini_read_real(jogador, "sala_atual", 0));
+        var sala_atual = ini_read_real(jogador, "sala_atual", room);
         
         // Fecha o arquivo de save
         ini_close();
+
+        // Vai para a sala salva
+        room_goto(sala_atual);
+        
     } else {
         // Exibe uma mensagem informando que o arquivo de save não foi encontrado
         show_message("Arquivo de save não encontrado!");

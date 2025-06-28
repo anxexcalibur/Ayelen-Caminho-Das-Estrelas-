@@ -1,28 +1,29 @@
-/// @description Movimento e colisão do projétil
+x += velocidade * direcao;
 
-// Inicializa a direção se ainda não foi definida
-if (direcao == undefined) direcao = 1;
+// Define a orientação da sprite para a direção do movimento
+image_xscale = direcao;
 
-// Define a velocidade do projétil (ajustável)
-var vel_proj = 2 * direcao;
+// --- 2. Efeito Visual ---
+// Cria um rastro de partículas de veneno
+part_particles_create(part_sys, x, y, part_tipo_veneno, 1);
 
-// Movimento horizontal
-speed += vel_proj;
+// --- 3. Colisão e Destruição ---
 
-// Destrói se sair da tela ou colidir
-if (x < view_xview[0] - 100 || x > view_xview[0] + view_wview[0] + 100) {
-    instance_destroy();
-}
-
-// Colisão com o jogador (se for um projétil inimigo)
+// Colisão com o jogador
 if (place_meeting(x, y, obj_player)) {
     with (obj_player) {
-        vida_atual -= 1; // Ou qualquer efeito de dano
+        // Aplica o dano ou efeito de veneno
+        // Exemplo: vida_atual -= 1;
     }
-    instance_destroy();
+    instance_destroy(); // Destrói o projétil
 }
 
-// Colisão com o cenário (parede, bloco, etc)
-if (place_meeting(x, y, obj_block)) {
+// Colisão com paredes ou chão
+if (place_meeting(x, y, obj_parede_solida_pai)) { // Usar um objeto pai é mais eficiente
+    instance_destroy(); // Destrói o projétil
+}
+
+// Destrói se sair da tela (para economizar memória)
+if (x < view_xview[0] - 50 || x > view_xview[0] + view_wview[0] + 50) {
     instance_destroy();
 }

@@ -222,6 +222,8 @@
     {"id":{"name":"agua_1","path":"sprites/agua_1/agua_1.yy",},},
     {"id":{"name":"arvore1","path":"sprites/arvore1/arvore1.yy",},},
     {"id":{"name":"caverna_png","path":"sprites/caverna_png/caverna_png.yy",},},
+    {"id":{"name":"dpr_flor_Jaciuna_1","path":"sprites/dpr_flor_Jaciuna_1/dpr_flor_Jaciuna_1.yy",},},
+    {"id":{"name":"dpr_flor_Jaciuna_2","path":"sprites/dpr_flor_Jaciuna_2/dpr_flor_Jaciuna_2.yy",},},
     {"id":{"name":"dpr_flor_Jaciuna","path":"sprites/dpr_flor_Jaciuna/dpr_flor_Jaciuna.yy",},},
     {"id":{"name":"espinhos","path":"sprites/espinhos/espinhos.yy",},},
     {"id":{"name":"estatua","path":"sprites/estatua/estatua.yy",},},

@@ -1,0 +1,1 @@
+id_da_estrela = 1;

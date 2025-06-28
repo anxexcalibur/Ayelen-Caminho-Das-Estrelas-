@@ -1,29 +1,22 @@
 
 event_inherited();
-/// @description Inicialização da cobra inimiga
+//==================================================================
 
-// Estados possíveis: "parado", "atirando", "hit", "morto"
+/// @description Inicializa a cobra inimiga
+
+// Variáveis de Estado
 estado = "parado";
 
-// Vida
-vida_atual = 3;
+// Atributos de Combate
+vida = 3;
+alcance_visao = 350; // Distância em que a cobra "vê" o jogador
+cooldown_ataque = 120; // Tempo em frames entre os ataques (2 segundos a 60FPS)
+timer_cooldown = 0;   // Timer atual do cooldown
 
-// Direção inicial (1 = direita, -1 = esquerda)
-lado_certo = -1;
+// Atributos de Física (se a cobra se mover ou cair)
+hspd = 0;
+vspd = 0;
+grav = 0.2;
 
-// Velocidade vertical
-velv = 0;
-max_velv = 10;
-massa = 1;
-alvo_x = 0; // ← ADICIONE ESSAS LINHAS
-alvo_y = 0;
-
-// Cooldown entre tiros
-tiro_cooldown = 0;
-
-// Flag para controlar se já atirou neste ciclo de animação
-atirou = false;
-
-// Define sprite inicial
-sprite_index = spr_snake;
-image_xscale = lado_certo;
+// Variáveis de Controle
+atirou_neste_ciclo = false; // Garante que atire apenas uma vez por animação

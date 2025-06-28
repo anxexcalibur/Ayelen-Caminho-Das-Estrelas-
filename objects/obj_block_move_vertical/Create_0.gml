@@ -1,11 +1,7 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-alarm[0]= 60
-velh = 0
-velc =1.25
-randomize();
-dir = choose(1,-1);
-//seeds compoe um elemento aleatorio
+//==================================================================
+// obj_block_pulo - Evento Create
+//==================================================================
 
-
-
+/// @description Inicializa o elevador vertical
+velc = 1.5; // Velocidade com que a plataforma se move
+dir = choose(1, -1); // 1 para baixo, -1 para cima

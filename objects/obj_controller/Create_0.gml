@@ -54,7 +54,7 @@ global.estrelas = [
 ];
 // Carrega progresso  estrela salvo
 
-carregar_progresso();
+
 if (!variable_global_exists("itens_coletados")) {
     global.itens_coletados = ds_map_create();
 }

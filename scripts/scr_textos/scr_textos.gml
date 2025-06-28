@@ -279,7 +279,11 @@ case "arbusto":
 		case "Ayran":
 			switch(obj_player.etapa_historia){
 				case 6: 
-				    ds_grid_add_text("Ayran: Ah, finalmente alguém que presta atenção nos relatos! Você não tem ideia do que acontece por aqui...", spr_rosto_guarda, 0, "protetor");
+					obj_guarda.alarm[0] = 1;
+					ds_grid_add_text("Ayran:  enfim, lutei com ele.. sobre a luta... consegui pegar isso aqui.", spr_rosto_guarda, 0, "protetor");
+				    ds_grid_add_text("Ayelen: O quê?", spr_ayelen_face, 0, "Ayelen");
+				    ds_grid_add_text("Ayran: parece um artefato Uma estrela petrificada. Dizem que tem magia e tal... mas até agora é só um belo Peso.", spr_rosto_guarda, 0, "protetor");
+				    ds_grid_add_text("Ayran: Ah, olá ayelen, finalmente alguém que presta atenção nos relatos! Você não tem ideia do que acontece por aqui...", spr_rosto_guarda, 0, "protetor");
 				    ds_grid_add_text("Ayelen: Considerando que ouvi seu nome em uma história sobre um soldado tropeçando na própria lança... tenho uma ideia sim.", spr_ayelen_face, 1, "Ayelen");
 				    ds_grid_add_text("Ayran: Ei, ei, isso é injusto! Primeiro, foi ELE quem tropeçou, não eu. Segundo, foram DUAS vezes. Terceiro... bom, eu ia dizer algo esperto aqui, mas perdi a linha de raciocínio.", spr_rosto_guarda, 0, "protetor");
 				    ds_grid_add_text("Ayelen: Como sempre, então. Mas vai, me conta logo, ouvi que você enfrentou Ubiratã.", spr_ayelen_face, 1, "Ayelen");
@@ -293,9 +297,7 @@ case "arbusto":
 				    ds_grid_add_text("Ayelen: … Então essa é a real.", spr_ayelen_face, 1, "Ayelen");
 				    ds_grid_add_text("Ayran: E o pior? Eles nem sabiam fazer um discurso decente de vilão. Que desperdício.", spr_rosto_guarda, 0, "protetor");
 				    ds_grid_add_text("Ayelen: Você realmente esperava que eles tivessem estilo?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Olha, um pouco de carisma não mata ninguém! Mas enfim, sobre a luta... consegui pegar isso aqui.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: O quê?", spr_ayelen_face, 0, "Ayelen");
-				    ds_grid_add_text("Ayran: Mostra o artefato Uma estrela petrificada. Dizem que tem magia e tal... mas até agora é só um belo peso de papel.", spr_rosto_guarda, 0, "protetor");
+				    
 				    ds_grid_add_text("Ayelen: Espera, você pegou isso na luta contra Ubiratã?!", spr_ayelen_face, 1, "Ayelen");
 				    ds_grid_add_text("Ayran: Exato! Troféu de guerra! Bom... tecnicamente ele tava segurando e eu meio que... peguei no susto.", spr_rosto_guarda, 0, "protetor");
 				    ds_grid_add_text("Ayelen: Então você roubou no meio da briga?!", spr_ayelen_face, 1, "Ayelen");
@@ -315,7 +317,7 @@ case "arbusto":
 				    ds_grid_add_text("Ayelen: Haha, valeu pelo aviso, Ayran. Agora, se me der licença, tenho um vilão para caçar.", spr_ayelen_face, 1, "Ayelen");
 				    ds_grid_add_text("Ayran: Vai com tudo, campeã! Mas se precisar de ajuda... quer dizer, tem gente melhor que eu, mas eu sou ótimo pra assistir histórias.", spr_rosto_guarda, 0, "protetor");
 				    ds_grid_add_text("Ayelen: Não duvido. Até mais!", spr_ayelen_face, 1, "Ayelen");
-				    obj_guarda.alarm[0] = 1200;
+				    
 				    obj_player.etapa_historia =7;
 				break
 				case 7:

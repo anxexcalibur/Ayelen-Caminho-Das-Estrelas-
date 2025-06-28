@@ -3,10 +3,11 @@ enum Infos{
 	Texto,
 	Retrato,
 	Lado,
-	Nome
+	Nome,
+	Acao
 }
 npc_nome = "";
-texto_grid = ds_grid_create(4,0); // quatro informaçoes
+texto_grid = ds_grid_create(5,0); // quatro informaçoes
 inicializar = false;
 alpha= 0;
 pagina = 0;
