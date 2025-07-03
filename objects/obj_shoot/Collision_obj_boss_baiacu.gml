@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-scr_aplica_dano(obj_boss_baiacu,0.5)
+
 // Código de colisão entre a lança e o chefe
 
 // Causar dano no chef

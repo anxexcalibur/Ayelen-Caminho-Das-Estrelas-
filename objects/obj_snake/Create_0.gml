@@ -1,7 +1,8 @@
 
 event_inherited();
 //==================================================================
-
+pode_levar_dano =true
+  
 /// @description Inicializa a cobra inimiga
 
 // Variáveis de Estado

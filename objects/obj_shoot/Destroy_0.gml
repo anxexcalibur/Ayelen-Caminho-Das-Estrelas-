@@ -1,4 +1,4 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-vida_atual -= obj_player.ataque;
-estado = "hit";
+// Evento Clean Up do obj_shoot
+ds_list_destroy(inimigos_acertados);

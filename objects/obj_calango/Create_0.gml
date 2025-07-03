@@ -18,3 +18,4 @@ direc = 0;
 mostra_estado = true;
 ataque = 1 * global.dificuldade; // Ou outro valor apropriado, dependendo do comportamento do objeto
 velv =3;
+ pode_levar_dano= true

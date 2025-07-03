@@ -3,6 +3,51 @@
 function scr_funcoes(){
 
 }
+/// @function draw_health_bar(x_pos, y_pos, vida_atual, max_vida, largura=40, altura=6)
+function draw_health_bar(x_pos, y_pos, vida_atual, max_vida, largura=40, altura=6) {
+    var bar_width = largura;
+    var bar_height = altura;
+    var bar_x = x_pos - bar_width / 2;
+    var bar_y = y_pos;
+
+    var vida_percent = clamp(vida_atual / max_vida, 0, 1);
+
+    // Barra de fundo (preta)
+    draw_set_color(c_black);
+    draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, false);
+
+    // Barra de vida (verde)
+    draw_set_color(c_lime);
+    draw_rectangle(bar_x + 1, bar_y + 1, bar_x + 1 + (bar_width - 2) * vida_percent, bar_y + bar_height - 1, false);
+
+    // Contorno (branco)
+    draw_set_color(c_white);
+    draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, true);
+
+    // Texto dentro da barra, texto preto
+    var texto = string(vida_atual) + " / " + string(max_vida);
+    var texto_x = x_pos;
+    var texto_y = bar_y + bar_height / 2 + 1;
+
+
+    draw_set_color(c_black);
+    // Use sua fonte pequena, se tiver, troque "fnt_pequena" pelo nome da sua fonte
+    // Se não tiver, pode comentar essa linha e usar fonte padrão
+     draw_set_font(fnt_pequena);
+
+    draw_set_halign(1); // centro horizontal
+    draw_set_valign(1); // meio vertical
+    draw_text(texto_x, texto_y, texto);
+
+    // Resetando alinhamento para padrão
+    draw_set_halign(-1); // left
+    draw_set_valign(-1); // bottom
+    draw_set_color(-1);
+     draw_set_font(-1);
+}
+
+
+
 function animation_end() {
     return image_index >= image_number - 1;
 }

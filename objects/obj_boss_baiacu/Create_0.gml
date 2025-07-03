@@ -1,23 +1,59 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
+/// @description Inicialização das variáveis do Chefe Baiacu
 
-// Inherit the parent event
 event_inherited();
+
+// --- Atributos de Combate ---
 max_vida = 100 * global.dificuldade;
-vida_atual = max_vida
-ataque = 1;
-massa = 5;
-// Inicializa a variável de atordoamento
-_atordou = false;
+vida_atual = max_vida;
+pode_levar_dano = true;
 
-// Inicializa o temporizador de stun (atordoado)
-stun_timer = 0;
-
-// Define a duração do stun em frames (exemplo: 120 frames = 2 segundos a 60 FPS)
-stun_duration = 300;
+// --- Controle de Estado e IA ---
+estado = "parado";
+ataque_estado = 0;
 timer_estado = 0;
-estado  = "parado";
+_atordou = false;
+stun_timer = 0;
+stun_duration = 300;
 
-ataque_estado =irandom(1); //0,1,2
+// --- Catálogo de Falas Aleatórias (Versão Expandida) ---
+falas_encontro = [
+    "Quem ousa perturbar meu sono eterno?",
+    "Um mortal... que audácia.",
+    "As profundezas te aguardam."
+];
+falas_ataque_distancia = [
+    "Sinta a fúria do rio!",
+    "As águas te consumirão!",
+    "Não desvie desta!"
+];
+falas_ataque_perto = [
+    "Não irá escapar!",
+    "Para trás, insolente!",
+    "Sinta minha força!"
+];
+falas_hit = [
+    "Ugh!",
+    "Apenas um arranhão...",
+    "Tolo!",
+    "Sua lâmina é fraca."
+];
+falas_provocacao = [
+    "E pensar que aquele bruxo achou que podia me controlar... Assim como você.",
+    "Meu poder esteve adormecido, não perdido.",
+    "Volte para sua vila. Este rio não te pertence."
+];
+falas_atordoado = [ // Frases para o momento de vulnerabilidade
+    "Como...? A magia... o selo do bruxo... está quebrando!",
+    "Essa força... não é de um simples mortal.",
+    "O poder... vaza... Ugh!"
+];
+falas_morte = [
+    "Enfim... livre... do feitiço...",
+    "O rio... me reclama... para o grande... silêncio...",
+    "Então... este é o poder... dos novos tempos..."
+];
 
-
+// --- Variáveis de Sistema ---
+fala_atual = "";
+fala_timer = 0;
+part_sys_morte = -1;

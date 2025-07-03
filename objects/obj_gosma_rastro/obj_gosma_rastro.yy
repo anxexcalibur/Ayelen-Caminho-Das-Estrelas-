@@ -1,24 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_snake",
+  "%Name":"obj_gosma_rastro",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_snake",
+  "name":"obj_gosma_rastro",
   "overriddenProperties":[],
   "parent":{
     "name":"Inimigos",
     "path":"folders/Objetos/Inimigos.yy",
   },
-  "parentObjectId":{
-    "name":"obj_entidade",
-    "path":"objects/obj_entidade/obj_entidade.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -37,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_snake",
-    "path":"sprites/spr_snake/spr_snake.yy",
+    "name":"spr_gosma",
+    "path":"sprites/spr_gosma/spr_gosma.yy",
   },
   "spriteMaskId":null,
   "visible":true,

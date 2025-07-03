@@ -51,3 +51,29 @@ draw_text(texto_x + 2, texto_y + 2, texto); // Desenha a sombra com deslocamento
 // Desenha o texto principal
 draw_set_color(cor_texto);
 draw_text(texto_x, texto_y, texto); // Desenha o texto na posição desejada
+// Se o timer da fala estiver ativo, desenha o texto
+if (fala_timer > 0) {
+    // Configurações da fonte e cor
+    draw_set_font(fnt_dialogo); // Troque para o nome da sua fonte
+    draw_set_color(c_white);
+    draw_set_halign(fa_center); // Alinha o texto no centro
+    draw_set_valign(fa_bottom);  // Alinha pela base
+
+    // Posição do texto (acima da cabeça do chefe)
+    var _draw_x = x;
+    var _draw_y = bbox_top - 20; // 10 pixels acima da caixa de colisão
+
+    // Desenha o texto com uma borda preta para melhor leitura
+    draw_set_color(c_black);
+    draw_text(_draw_x + 1, _draw_y, fala_atual);
+    draw_text(_draw_x - 1, _draw_y, fala_atual);
+    draw_text(_draw_x, _draw_y + 1, fala_atual);
+    draw_text(_draw_x, _draw_y - 1, fala_atual);
+    
+    draw_set_color(c_white);
+    draw_text(_draw_x, _draw_y, fala_atual);
+    
+    // Reseta o alinhamento para não afetar outros textos no jogo
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+}

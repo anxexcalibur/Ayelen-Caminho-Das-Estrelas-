@@ -1,5 +1,7 @@
 /// @description Configuração da partícula mágica verde
-
+// Evento Create do obj_shoot
+dano = obj_player.ataque; // Pega o dano do player no momento da criação
+inimigos_acertados = ds_list_create(); // Lista para evitar dano múltiplo
 // Criação do sistema de partículas e tipo de partícula
 part_system = part_system_create();
 part_type = part_type_create();

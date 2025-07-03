@@ -1,101 +1,87 @@
-   /// @description Inserir descrição aqui
+/// @description Máquina de Estados do Calango
 // Você pode escrever seu código neste editor
 
-// codigo que gera a gravidade
-event_inherited()
+// Herda o código do obj_inimigo_pai (se você estiver usando)
+event_inherited();
 	
 var _chao = place_meeting(x, y + 1, obj_block);
 
 if (!_chao) {
     if (velv < max_velv * 2) {
-        velv += GRAVIDADE * massa 
+        velv += GRAVIDADE * massa;
     }
 }
 
-
 switch(estado)
 {
-	
-	case "andando" :{
-		if place_meeting(x,y,obj_hit_box){
-				show_debug_message("estou colidindo");
+    case "andando": {
+        // NESTE ESTADO, O INIMIGO DEVE ESTAR VULNERÁVEL
+        pode_levar_dano = true;
 
-			}
-		if place_meeting(x,y,obj_parede_inimigo){
-			
-		if direc == 0 {
-			direc = 1;
-		}else if direc == 1{
-			direc = 0;
-		}
-}
-		if direc == 0{
-			x += 0.5;
-		}else if direc = 1 {
-			x -= 0.5;
-		}
-		if (direc == 0)
-		 {
-			sprite_index = spr_calango
-		 }
-		 else if (direc == 1)
-		 {
-		   sprite_index = spr_calango_esquerda
-		 }
-		 
-		 
-		 break;
-	}
-	case "hit":{
-		
-		if(sprite_index != spr_calango_hit){
-			image_index = 0;
-			sprite_index = spr_calango_hit;
-			screenshake(1)
-			vida_atual -= obj_player.ataque
-		}
-		
-		
-		//condição de troca de estado
-		if(vida_atual <= 0)
-		{
-			//checando se ele ainda tem vida
-			if(image_index > image_number-1)
-			{
-				estado ="morto"
-			}
-			
-		}
-		else
-			{
-				if(image_index > image_number-1){
-					estado = "andando"
-				}
-					
-				
-			}
-		break;
-	}
-	case "morto":{
-		if(sprite_index != spr_caracol_morto){
-			pontuar(3);
-			//iniciando o for preciso para see estado
-			sprite_index = spr_caracol_morto
-			image_index = 0;
-			
-		}
-		;              
-		//morrendo de verdade
-		if (image_index > image_number - 1) {
-	        if (irandom(99) < 10) { // 10% de chance de dropar
-	            var heart = instance_create_layer(x, y - 18, layer, obj_vida);
-	            heart.image_xscale = 0.3; // Reduz para 50% do tamanho original
-	            heart.image_yscale = 0.3;
-	        }
-			instance_destroy();
-		 }
-		
-	}
-		
-}
+        if (place_meeting(x, y, obj_parede_inimigo)) {
+            direc = !direc; // Uma forma mais simples de inverter 0 para 1 e 1 para 0
+        }
 
+        if (direc == 0) { // Andando para a direita
+            x += 0.5;
+            sprite_index = spr_calango;
+        } else { // Andando para a esquerda (direc == 1)
+            x -= 0.5;
+            sprite_index = spr_calango_esquerda;
+        }
+		
+        break;
+    }
+
+    case "hit": {
+        // AO ENTRAR NO ESTADO DE HIT, O INIMIGO FICA INVENCÍVEL
+        pode_levar_dano = false;
+        velh = 0; // Para de se mover
+
+        // Este bloco só executa uma vez, no primeiro frame do estado "hit"
+        if (sprite_index != spr_calango_hit) {
+            image_index = 0;
+            sprite_index = spr_calango_hit;
+            screenshake(1);
+            
+            // IMPORTANTE: A linha de dano foi REMOVIDA daqui.
+            // O dano deve ser aplicado pela HITBOX antes de mudar o estado.
+        }
+		
+        // Condição de troca de estado
+        if (vida_atual <= 0) {
+            // Se a vida acabou, espera a animação de hit terminar para morrer
+            if (image_index >= image_number - 1) {
+                estado = "morto";
+            }
+        } else {
+            // Se ainda tem vida, espera a animação de hit terminar para voltar a andar
+            if (image_index >= image_number - 1) {
+                estado = "andando";
+            }
+        }
+        break;
+    }
+
+    case "morto": {
+        // NO ESTADO MORTO, ELE NÃO PODE MAIS LEVAR DANO
+        pode_levar_dano = false;
+
+        if (sprite_index != spr_caracol_morto) { // OBS: Verifique se o sprite não deveria ser spr_calango_morto
+            pontuar(3);
+            sprite_index = spr_caracol_morto; // Corrija se necessário
+            image_index = 0;
+        }
+		
+        // Morrendo de verdade
+        if (image_index > image_number - 1) {
+            if (irandom(99) < 10) { // 10% de chance de dropar
+                var heart = instance_create_layer(x, y - 18, layer, obj_vida);
+                heart.image_xscale = 0.3;
+                heart.image_yscale = 0.3;
+            }
+            instance_destroy();
+        }
+        break;
+    }
+}

@@ -173,7 +173,7 @@ switch (estado) {
     // Estado: Pulando
    case "pulando": {
     if (place_meeting(x,y,obj_vida)){
-        if (velv > 0) {
+        if (velv < 0) {
             sprite_index = spr_player_fall_cura;
             if (image_index >= image_number - 1) {
                 image_index = image_number - 1;
@@ -238,148 +238,224 @@ switch (estado) {
     
     // Estado: Ataque Aéreo para Baixo
 	//codigo vinculado com on_block_quebra
-    case "ataque aereo baixo": { 
-        aplica_gravidade();
-        velv += 0.3;
-        velh = 0;
-        if (!ataque_down) {
+   case "ataque aereo down": {
+    aplica_gravidade();
+    velv += 0.3;
+    velh = 0;
+
+    // ----- LÓGICA DE IMPACTO NO CHÃO (Prioridade Máxima) -----
+    if (chao) {
+        // Se uma hitbox aérea existia, ela cumpriu sua função. Destrua-a.
+        if (instance_exists(hitbox_aerea_id)) {
+            instance_destroy(hitbox_aerea_id);
+            hitbox_aerea_id = noone; // Limpa a variável
+        }
+
+        // Reseta o ataque para o valor base após o golpe aéreo
+        ataque = 1;
+
+        // Executa a animação de finalização e o screenshake
+        if (sprite_index != spr_player_attack_down_end) {
+            sprite_index = spr_player_attack_down_end;
+            image_index = 0;
+            screenshake(8, true, 270);
+            // Você pode até criar uma última hitbox de impacto aqui, se quiser
+            // instance_create_layer(x, y, layer, obj_hitbox_impacto);
+        }
+
+        // Espera a animação de finalização acabar para voltar ao estado "parado"
+        if (image_index >= image_number - 0.1) {
+            estado = "parado";
+        }
+    }
+    // ----- LÓGICA DE QUEDA (Só executa se NÃO estiver no chão) -----
+    else {
+        // Transição da animação de início para a de loop
+        if (sprite_index != spr_player_attack_aer_down && sprite_index != spr_player_attack_down_loop) {
             sprite_index = spr_player_attack_aer_down;
             image_index = 0;
-            ataque_down = true;
         }
-        if (sprite_index == spr_player_attack_aer_down) {
-            if (image_index > image_number - 0.2) {
-                sprite_index = spr_player_attack_down_loop;
-            }
+        if (sprite_index == spr_player_attack_aer_down && image_index >= image_number - 0.1) {
+            sprite_index = spr_player_attack_down_loop;
         }
-        if (chao) {
-            if (sprite_index != spr_player_attack_down_end) {
-                sprite_index = spr_player_attack_down_end;
-                image_index = 0;
-                screenshake(8, true, 270);
-            } else {
-                if (image_index >= image_number - 0.2) {
-                    ataque_down = false;
-                    estado = "parado";
-                }
-            }
-        }
+
+        // Lógica da hitbox contínua durante o loop de queda
         if (sprite_index == spr_player_attack_down_loop) {
-            ataque += 3;
-            dano = instance_create_layer(obj_player.x, obj_player.y + 10, layer, obj_hit_box);
-        } else {
-            ataque = 1;
+            // Se a hitbox ainda não foi criada, crie UMA.
+            if (!instance_exists(hitbox_aerea_id)) {
+                ataque += 3; // Aumenta o poder do ataque
+                hitbox_aerea_id = instance_create_layer(x, y + 10, layer, obj_hit_box);
+            }
+            
+            // Se a hitbox JÁ existe, apenas atualize sua posição para seguir o player.
+            else {
+                hitbox_aerea_id.x = x;
+                hitbox_aerea_id.y = y + 10;
+            }
         }
-        break;
+    }
+    break;
+
+}
+    // Estado: Ataque
+    case "ataque": {
+    if (sprite_index != spr_player_attack) {
+        image_index = 0;
+        sprite_index = spr_player_attack;
+        
+        // **PASSO 1: Reseta a variável no início de CADA ataque**
+        hitbox_criada = false; 
+    }
+
+    // **PASSO 2: Condição para criar a hitbox APENAS UMA VEZ**
+    if (image_index >= 2 && !hitbox_criada) {
+        if (image_xscale == 1) {
+            instance_create_layer(x + 40, y - 12, layer, obj_hit_box);
+        } else if (image_xscale == -1) {
+            instance_create_layer(x - 40, y - 12, layer, obj_hit_box);
+        }
+        
+        // **PASSO 3: Avisa que a hitbox deste ataque já foi criada**
+        hitbox_criada = true;
+    }
+
+    if (image_index > image_number - 1) {
+        estado = "parado";
+        velh = 0;
+        posso = true;
+    }
+
+    if (esquiva && !dei_dash && global.dash_cooldown <= 0) {
+        estado = "dash";
     }
     
-    // Estado: Ataque
-    case "ataque": {   
-        velh = 0;
-        if (sprite_index != spr_player_attack) {
-            image_index = 0;
-            sprite_index = spr_player_attack;
-        }
-        if (image_index >= 2) {
-            if (image_xscale == 1) {
-                instance_create_layer(x + 40, y - 12, layer, obj_hit_box);
-            } else if (image_xscale == -1) {
-                instance_create_layer(x - 40, y - 12, layer, obj_hit_box);
-            }
-        }
-        if (image_index > image_number - 1) {
-            estado = "parado";
-            velh = 0;
-            posso = true;
-        }
-        if (esquiva && !dei_dash && global.dash_cooldown <= 0) {
-            estado = "dash";
-        }
-        break;
+    break;
+}
+	case "ataque projetil": {
+    // ... seu código para calcular posições ...
+    var _xx = x + lengthdir_x(15, image_angle);
+
+    if (sprite_index != spr_player_attack_projetil) {
+        image_index = 0;
+        sprite_index = spr_player_attack_projetil;
+        tiro_disparado = false; // Reinicia a flag para o próximo ataque
     }
-	case "ataque projetil": { 
-		var flipped = direction;
-		var gun_x = (x+4)*(flipped)
-		var _xx = x+ lengthdir_x(15, image_angle)
-		var y_offset = lengthdir_y(-20,image_angle)
-		
-		
-        velh = 0;
-		
-        if (sprite_index != spr_player_attack_projetil) {
-            image_index = 0;
-            sprite_index = spr_player_attack_projetil;
+
+    // Dispara o projétil UMA VEZ quando a animação atinge o frame 3
+    if (image_index >= 3 && !tiro_disparado) {
+        with (instance_create_layer(_xx - 10, y - 20, layer, obj_shoot)) {
+            speed = 5;
+            direction = -90 + 90 * other.image_xscale;
+            image_angle = direction;
         }
-        if (image_index > 3) {
-			
-			
-	            with  (instance_create_layer(_xx -10,y-30,layer,obj_shoot)){
-				
-				
-					//velocidade
-					speed = 5;
-					//direcao
-					direction  = -90 + 90 *other.image_xscale
-					//anglo
-					image_angle = direction;
-				}
-			
-        }
-		
-        if (image_index > image_number - 1) {
-			
-            estado = "parado";
-            velh = 0;
-            posso = true;
-        }
-        if (esquiva && !dei_dash && global.dash_cooldown <= 0) {
-            estado = "dash";
-        }
-        break;
+        tiro_disparado = true; // Impede que mais tiros sejam disparados
     }
+
+    // Transição para o estado parado no fim da animação
+    if (image_index > image_number - 1) {
+        estado = "parado";
+        posso = true;
+    }
+
+    // ... sua lógica de dash ...
+    break;
+}
     
     // Estado: Defesa
-    case "defesa": {
-        velh = 0;
-		resistencia += 0.5
-        if (sprite_index != spr_player35) {
-            image_index = 0;
-            sprite_index = spr_player35;
-        }
-        if (image_index > image_number - 1) {
-            image_index = image_number - 1;
-        }
-        if (!defesa) {
-            estado = "parado";
-        }
-        if (esquiva && global.dash_cooldown <= 0) {
-            estado = "dash";
-        }
-        break;
+   case "defesa": {
+    velh = 0;
+    resistencia += 0.5;
+
+    if (sprite_index != spr_player35) {
+        sprite_index = spr_player35;
+        image_index = 0;
     }
+
+    // Controle manual da animação de escudo ativo
+    var penultimo = sprite_get_number(sprite_index) - 2;
+    var ultimo = sprite_get_number(sprite_index) - 1;
+
+    // Se ainda não chegou no frame de escudo completo, deixa rodar normal
+    if (image_index < penultimo) {
+        image_speed = 1; // ou o valor desejado para animação
+    } else {
+        // Quando chega nos frames finais, trava em loop entre penúltimo e último
+        image_speed = 0;
+
+        if (floor(current_time / 6) mod 2 == 0) {
+            image_index = penultimo;
+        } else {
+            image_index = ultimo;
+        }
+    }
+
+    // Sai da defesa
+    if (!defesa) {
+        estado = "parado";
+    }
+
+    // Se quiser permitir dash na defesa
+    if (esquiva && !dei_dash && global.dash_cooldown <= 0) {
+        estado = "dash";
+    }
+
+    break;
+}
+
     
     // Estado: Dash
-    case "dash": {
-        tempo_dash--;
-        if (sprite_index != spr_player_jump) {
-            sprite_index = spr_player_jump;
-        }
-        if (!dei_dash) {
-            var _down = keyboard_check(ord("S"));
-            var _up = keyboard_check(ord("W"));
-            var _dir = point_direction(0, 0, (right - left), (_down - _up));
-            velh = lengthdir_x(vel_dash, _dir);
-            velv = lengthdir_y(vel_dash, _dir);
-            global.dash_cooldown = 65;  // Ajuste o valor conforme necessário para o tempo de cooldown do dash
-        }
-        dei_dash = true;
+   case "dash": {
+    tempo_dash--;
+
+    // Ajusta sprite do dash (exemplo usa spr_player_jump)
+    if (sprite_index != spr_player_jump) {
+        sprite_index = spr_player_jump;
         image_index = 0;
-        if (tempo_dash <= 0) {
-            estado = "parado";
-            tempo_dash = duracao_dash;
-        }
-        break;
     }
+
+    // Só executa o dash uma vez ao entrar nesse estado
+    if (!dei_dash) {
+        // Pega input WASD para dash
+        var dir_x = keyboard_check(ord("D")) - keyboard_check(ord("A"));
+        var dir_y = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+
+        // Se nenhum input, dash na direção que o player está virado
+        if (dir_x == 0 && dir_y == 0) {
+            dir_x = sign(image_xscale); // direção do sprite
+            dir_y = 0;
+        }
+
+        // Normaliza vetor direção
+        var length_dir = point_distance(0, 0, dir_x, dir_y);
+        if (length_dir != 0) {
+            dir_x /= length_dir;
+            dir_y /= length_dir;
+        }
+
+        // Define velocidades horizontais e verticais do dash
+        velh = dir_x * vel_dash;
+        velv = dir_y * vel_dash;
+
+        // Inicia cooldown global do dash
+        global.dash_cooldown = 35; // Ajuste conforme necessidade
+
+        dei_dash = true;
+    }
+
+    // Reseta a animação (se necessário)
+    image_index = 0;
+
+    // Quando acabar o tempo do dash, volta para estado parado
+    if (tempo_dash <= 0) {
+        estado = "parado";
+        tempo_dash = duracao_dash;
+        dei_dash = false; // Permite novo dash futuramente
+        velh = 0;
+        velv = 0;
+    }
+
+    break;
+}
     
     // Estado: Dano
     case "hit": {
@@ -440,11 +516,15 @@ switch (estado) {
         break;
     }
 	case "cha": {
-    sprite_index = spr_player_cha;
-		obj_seta.alarm[0] = 10
-    if (image_index == sprite_get_number(spr_player_cha) - 1) {
-		
-        estado = "parado"; // Volta para "parado" quando a animação termina
+    if (sprite_index != spr_player_cha) {
+        sprite_index = spr_player_cha;
+        image_index = 0; // reinicia animação sempre que entrar no estado
+    }
+
+    obj_seta.alarm[0] = 10;
+
+    if (image_index >= sprite_get_number(spr_player_cha) - 1) {
+        estado = "parado"; // volta quando animação terminar
     }
     break;
 }
@@ -470,7 +550,9 @@ switch (estado) {
         break;
 }
 
-  
+ if (estado != "defesa") {
+    image_speed = 1;
+} 
     
     // (AQUI TERMINA A SUA MÁQUINA DE ESTADOS)
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

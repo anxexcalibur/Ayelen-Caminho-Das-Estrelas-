@@ -9,3 +9,4 @@ massa = 2;
 
 timer_estado = 0;
 estado  = "parado";
+ pode_levar_dano = true
