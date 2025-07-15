@@ -1,4 +1,4 @@
-if (!instance_exists(obj_trasicao) && player != noone && !player.morreu && !global.dialogo && !global.menu_existe and !desenha_porta ) { 
+if (!instance_exists(obj_trasicao) && player != noone && !player.morreu && !global.dialogo && !global.menu_existe and !desenha_porta and !instance_exists(obju_transicao_2) ) { 
     var margem = 20;
 
     // --- Barra de vida no canto superior esquerdo ---

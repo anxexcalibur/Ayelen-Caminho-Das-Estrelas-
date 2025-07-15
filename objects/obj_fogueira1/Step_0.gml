@@ -15,6 +15,7 @@ if (!ritual_ativado && place_meeting(x, y, obj_player)) {
 
         // Avança a história e aciona efeitos
         screenshake(10);
-        alarm[0] = 120;
+		 
+        
     }
 }

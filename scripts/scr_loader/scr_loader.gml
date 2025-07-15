@@ -1,4 +1,4 @@
-function carrega_jogo2(_jogador, _sala, _etapa, _x, _y, _estrelas) {
+function carrega_jogo2(_jogador, _sala, _etapa, _x, _y, _direcao_transicao) {
     // Verifica se uma instância de obj_player já existe na cena
     if (audio_is_playing(snd_background_catcines)) {
         audio_stop_sound(snd_background_catcines);  // Para a música de protótipo
@@ -24,7 +24,7 @@ function carrega_jogo2(_jogador, _sala, _etapa, _x, _y, _estrelas) {
             // --- CORREÇÃO APLICADA AQUI ---
             // Agora, se _estrelas for fornecido, ele será usado corretamente.
 			
-            global.estrelas_coletadas = is_undefined(_estrelas) ? ini_read_real(_jogador, "estrelas_coletadas", 0) : _estrelas;
+           global.estrelas_coletadas = ini_read_real(_jogador, "estrelas_coletadas", 0)
             
             // Determina a sala: usa _sala se fornecida, ou a sala salva
             var sala_atual = is_undefined(_sala) ? ini_read_real(_jogador, "sala_atual", room) : _sala;
@@ -33,6 +33,8 @@ function carrega_jogo2(_jogador, _sala, _etapa, _x, _y, _estrelas) {
 
             // Move para a sala especificada
             room_goto(sala_atual);
+			instance_create_layer(x,y,"instances", obju_transicao_2);
+			obju_transicao_2.direcao = _direcao_transicao
         } else {
             show_message("Arquivo de save não encontrado!");
         }

@@ -2,7 +2,7 @@
 // Você pode escrever seu código neste editor
 // Criando meu Menu
 // Variável para armazenar o nome digitado pelo jogador
-global.nome_jogador = "";
+
 var current_room;
 current_room = room;
 // Seleção do menu
@@ -31,7 +31,7 @@ desenha_input_nome = function() {
     draw_rectangle(input_x - 100, input_y, input_x + 100, input_y + 30, false);
     
     // Desenha o nome que o jogador está digitando
-    draw_text(input_x, input_y + 15, global.nome_jogador);
+    draw_text(input_x, input_y + 15, global.player_name);
 }
 
 // Função para capturar a entrada do jogador
@@ -42,11 +42,11 @@ captura_input_nome = function() {
     // Verifica se é uma tecla de letra ou de espaço
     if ((key >= vk_a && key <= vk_z) || (key >= vk_0 && key <= vk_9) || key == vk_space) {
         // Adiciona a letra ou espaço ao nome do jogador
-        global.nome_jogador += chr(key);
+        global.player_name += chr(key);
     } else if (key == vk_backspace) {
         // Remove o último caractere se pressionar backspace
         if (string_length(global.nome_jogador) > 0) {
-            global.nome_jogador = string_delete(global.nome_jogador, string_length(global.nome_jogador), 1);
+            global.player_name = string_delete(global.player_name, string_length(global.player_name), 1);
         }
     } else if (key == vk_enter) {
         // Se pressionar enter, inicia o jogo
@@ -74,7 +74,7 @@ function salvar_jogo(nome_jogador, x, y, etapa_historia) {
         file_text_write_string(file_id, "vida_atual=" + string(obj_player.vida_atual) + "\n");
         file_text_write_string(file_id, "sala_atual=" + string(current_room) + "\n");
         file_text_write_string(file_id, "etapa_historia=" + string(obj_player.etapa_historia) + "\n");
-        
+        file_text_write_string(file_id, "estrelas_coletadas" + string(global.estrelas_coletadas) + "\n");
         file_text_close(file_id); // Fecha o arquivo de save
     } else {
         show_debug_message("Erro ao abrir o arquivo save.sav para escrita.");
@@ -254,6 +254,8 @@ controla_menu = function(_menu){
 
 inicia_jogo = function() {
     alarm[0] = 5;
+	
+	
 }
 volta_menu = function(){
 	
@@ -262,7 +264,8 @@ volta_menu = function(){
 	            }
 				
 	instance_destroy(obj_player)
-	room_goto(rm_menu)
+	instance_create_layer(x,y, "transicao",obju_transicao_2)
+	obju_transicao_2.destino = rm_menu;
 }
 
 fecha_jogo = function() {
@@ -303,74 +306,31 @@ function listar_saves() {
 // Inicializar a lista de saves
 saves = listar_saves();
 
-function carregar_itens() {
-    // Define o nome do arquivo que contém os itens salvos de todos os jogadores
-    var filename = "_itens.ini";  // Arquivo único para todos os jogadores
-    
-    // Verifica se o arquivo existe
-    if (file_exists(filename)) {
-        var file = file_text_open_read(filename);  // Abre o arquivo para leitura
-        var in_section = false;
 
-        // Limpa o ds_map atual para carregar os dados salvos
-        
-
-        // Lê o arquivo linha por linha
-        while (!file_text_eof(file)) {
-            var linha = file_text_readln(file);
-
-            // Verifica se estamos na seção correta do jogador
-            if (string_starts_with(linha, "[")) {
-                in_section = (linha == "[" + global.nome_jogador + "]");
-                continue;
-            }
-
-            // Se estivermos na seção do jogador, processa a linha
-            if (in_section) {
-                var igual_pos = string_pos("=", linha);
-                if (igual_pos > 0) {
-                    var key = string_copy(linha, 1, igual_pos - 1);  // Extrai a chave
-                    var value = string_delete(linha, 1, igual_pos);  // Extrai o valor
-
-                    // Remove as aspas do valor
-                    value = string_replace_all(value, "\"", "");
-
-                    // Adiciona o par chave-valor ao ds_map
-                    global.itens_coletados[? key] = value;
-                }
-            }
-        }
-
-        // Fecha o arquivo após a leitura
-        file_text_close(file);
-
-        // Exibe uma mensagem indicando que os itens foram carregados com sucesso
-        show_message("Itens carregados com sucesso!");
-    } else {
-        show_message("Arquivo de itens não encontrado!");
-    }
-}
 
 
 
 
 carregar_jogo = function(_value) {
     var jogador = saves[_value]; // Obtém o nome do jogador selecionado na lista
-    global.nome_jogador = jogador; // Armazena o nome do save atual na variável global
+     // Armazena o nome do save atual na variável global
     
     // Verifica se o objeto obj_player ainda não existe na cena
     if (!instance_exists(obj_player)) {
         // Cria uma nova instância de obj_player
         instance_create_layer(0, 0, "Instances", obj_player);
+		
     }
 
     if (file_exists("save.sav")) { // Verifica se o arquivo de save existe
         ini_open("save.sav"); // Abre o arquivo de save
+		global.player_name = jogador
         obj_player.x = ini_read_real(jogador, "x_atual", 0);
         obj_player.y = ini_read_real(jogador, "y_atual", 0);
         obj_player.vida_atual = ini_read_real(jogador, "vida_atual", 0);
         obj_player.etapa_historia = ini_read_real(jogador, "etapa_historia", 0); // Adiciona a etapa da história
         global.pontuacao = ini_read_real(jogador, "pontuacao", 0)
+		global.estrelas_coletadas = ini_read_real(jogador, "estrelas_coletadas", 0)
         room_goto(ini_read_real(jogador, "sala_atual", 0));
         ini_close(); // Fecha o arquivo de save
     } else {
@@ -378,7 +338,7 @@ carregar_jogo = function(_value) {
     }
     
     // Carregando os itens
-   carregar_itens();
+   
 };
 
 

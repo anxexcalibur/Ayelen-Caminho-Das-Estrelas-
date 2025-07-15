@@ -21,6 +21,15 @@ if (tempo_delay >= velocidade_texto) {
     if (indice < string_length(_texto_completo_da_linha)) {
         indice++;
         texto_atual = string_copy(_texto_completo_da_linha, 1, indice);
+		// Pega o caractere que acabou de ser adicionado
+		
+		var _som_sorteado = choose(snd_teclado1, snd_teclado2, snd_teclado3);
+        var _char_adicionado = string_char_at(_texto_completo_da_linha, indice);
+        
+        // Toca o som apenas se não for um espaço
+        if (_char_adicionado != " ") {
+            audio_play_sound(_som_sorteado, 1, false); // Use o nome do seu recurso de som
+        }
         // alarm[0] = 1; // Sua lógica de alarme
     }
 }
@@ -48,10 +57,12 @@ if (keyboard_check_pressed(vk_escape)) {
         exibe = false;
         count_space = 0;
         if (room == rm_catcine_2) {
-            carrega_jogo2(global.nome_jogador, rm_prototipo, 4, 1273, 322);
-            instance_destroy();
+           // carrega_jogo2(global.nome_jogador, rm_prototipo, 4, 1273, 322);
+		    instance_create_layer(x,y,layer,obju_transicao_2)
+            instance_destroy(); 
         } else {
-            carrega_jogo2(global.nome_jogador, rm_prototipo, 1);
+            //carrega_jogo2(global.nome_jogador, rm_prototipo, 1);
+			instance_create_layer(x,y,layer,obju_transicao_2)
             instance_destroy();
         }
     }
@@ -71,11 +82,13 @@ if (proximo_dialogo) {
         // Fim de todos os diálogos
         mostrando_dialogo = false;
         if (room == rm_catcine_2) {
-            carrega_jogo2(global.nome_jogador, rm_prototipo, 4, 1273, 322);
-            instance_destroy();
+            //carrega_jogo2(global.nome_jogador, rm_prototipo, 4, 1273, 322);
+           instance_create_layer(x,y,layer,obju_transicao_2)
+		   instance_destroy();
         } else {
-            carrega_jogo2(global.nome_jogador, rm_prototipo, 1);
-            instance_destroy();
+           // carrega_jogo2(global.nome_jogador, rm_prototipo, 1);
+           instance_create_layer(x,y,layer,obju_transicao_2)
+		   instance_destroy();
         }
     }
 }

@@ -14,6 +14,7 @@ if (num_alvos > 0) {
             if (alvo.pode_levar_dano) {
                 alvo.estado = "hit";
                 alvo.vida_atual -= obj_player.ataque;
+				audio_play_sound(snd_hit_inimigos, 2, false)
 
                 // ADICIONA o alvo na lista para não ser atingido novamente
                 ds_list_add(inimigos_acertados, alvo.id);

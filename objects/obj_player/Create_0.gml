@@ -1,11 +1,7 @@
 /// @description Inicialização do jogador
 
 // Itens e progresso
-global.itens_coletados = ds_map_create();
-global.estrelas_coletadas = 0;
-global.nivel_do_jogo = 0;
-global.balas = 10;
-global.pontuacao = 0;
+
 
 // Estados e atributos
 estado = "parado";
@@ -99,25 +95,4 @@ aplica_gravidade = function() {
     }
 };
 
-// Carregar checkpoint
-function carregar_checkpoint(_value) {
-    var jogador = _value;
 
-    if (!instance_exists(obj_player)) {
-        instance_create_layer(0, 0, "Instances", obj_player);
-    }
-
-    if (file_exists("save.sav")) {
-        ini_open("save.sav");
-        obj_player.x = ini_read_real(jogador, "x_atual", 0);
-        obj_player.y = ini_read_real(jogador, "y_atual", 0);
-        var _vida_atual = ini_read_real(jogador, "vida_atual", 0);
-        obj_player.vida_atual = (_vida_atual <= 0) ? 2 : _vida_atual;
-        global.estrelas_coletadas = ini_read_real(jogador, "estrelas_coletadas", 0);
-        var sala_atual = ini_read_real(jogador, "sala_atual", room);
-        ini_close();
-        room_goto(sala_atual);
-    } else {
-        show_message("Arquivo de save não encontrado!");
-    }
-}

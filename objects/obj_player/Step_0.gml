@@ -7,7 +7,7 @@ if (keyboard_check_pressed(ord("G")))
 {
     // Chama a sua nova função na posição exata do jogador
     scr_drop_item(x, y, obj_star_1);
-	show_message(global.estrelas_coletadas)
+	show_message("Estrelas coletadas: " + string(global.estrelas_coletadas))
 }
 // Iniciando a máquina de estados
 /// @description Controle do jogador (Reorganizado)
@@ -503,7 +503,7 @@ switch (estado) {
             }
         }
 		if (keyboard_check(vk_enter)) {
-			carregar_checkpoint(global.nome_jogador)
+			carregar_checkpoint(global.player_name)
 			estado = "parado"
 			morreu = false;
 			if (instance_exists(obj_controller)) {
@@ -524,6 +524,7 @@ switch (estado) {
     obj_seta.alarm[0] = 10;
 
     if (image_index >= sprite_get_number(spr_player_cha) - 1) {
+		obj_fogueira1.alarm[0] = 1
         estado = "parado"; // volta quando animação terminar
     }
     break;

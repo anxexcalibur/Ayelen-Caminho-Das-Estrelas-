@@ -2,14 +2,15 @@ global.menu_existe = false; /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 global.checkpoint_states = [];
 // Evento Create
+global.game_paused= false;
 global.estrelas_coletadas = 0;
 global.game_stop = false;
 // Constelações e estrelas
-global.constelacoes = [
-    {nome: "Homem Velho", total: 6, coletadas: 0},
-    {nome: "Anta do Norte", total: 10, coletadas: 0},
-    {nome: "Veado", total: 8, coletadas: 0}
-];
+global.itens_coletados = ds_map_create();
+global.nivel_do_jogo = 0;
+global.balas = 10;
+global.pontuacao = 0;
+global.player_name= "";
 global.estrelas = [
     {id: 1, nome: "Aldebaran", constelacao: "Homem Velho"},
     {id: 2, nome: "Betelgeuse", constelacao: "Homem Velho"},
@@ -53,7 +54,11 @@ global.estrelas = [
     {id: 40, nome: "Phaedrus", constelacao: "Veado"}
 ];
 // Carrega progresso  estrela salvo
-
+global.constelacoes = [
+    {nome: "Homem Velho", total: 6, coletadas: 0},
+    {nome: "Anta do Norte", total: 16, coletadas: 0},
+    {nome: "Veado", total: 24, coletadas: 0}
+];
 
 if (!variable_global_exists("itens_coletados")) {
     global.itens_coletados = ds_map_create();
@@ -87,5 +92,27 @@ function carregar_itens() {
         }
 
         ini_close();
+    }
+}
+// Carregar checkpoint
+function carregar_checkpoint(_value) {
+    var jogador = _value;
+
+    if (!instance_exists(obj_player)) {
+        instance_create_layer(0, 0, "Instances", obj_player);
+    }
+
+    if (file_exists("save.sav")) {
+        ini_open("save.sav");
+        obj_player.x = ini_read_real(jogador, "x_atual", 0);
+        obj_player.y = ini_read_real(jogador, "y_atual", 0);
+        var _vida_atual = ini_read_real(jogador, "vida_atual", 0);
+        obj_player.vida_atual = (_vida_atual <= 0) ? 2 : _vida_atual;
+        global.estrelas_coletadas = ini_read_real(jogador, "estrelas_coletadas", 0);
+        var sala_atual = ini_read_real(jogador, "sala_atual", room);
+        ini_close();
+        room_goto(sala_atual);
+    } else {
+        show_message("Arquivo de save não encontrado!");
     }
 }

@@ -5,7 +5,7 @@ if (_player_id != noone)
 {
     // --- EFEITO DE PARTÍCULAS ---
     // Cria uma "explosão" de 20 a 30 partículas na posição do bloco
-    part_particles_create(part_system, x + (sprite_width / 2), y, part_type, 25);
+   
     
     // Toca um som de "impulso" (opcional, mas recomendado)
     // audio_play_sound(snd_impulso, 10, false);

@@ -34,11 +34,7 @@ if(player && up and !place_meeting(x,y,obj_portal_levelup)){
     tran.destino_x = destino_x;
     tran.destino_y = destino_y;
 
-    // Criar a mensagem de "Level Up"
-    var levelup_message = instance_create_layer(room_width / 2, room_height / 2, "instances", obj_levelup_message);
-    levelup_message.text = "Level Up!";  // O texto da mensagem
-    
-	levelup_message.duration = 10;  // Duração de 3 segundos para mostrar a mensagem
+  
 		
     // Ajustar o nível do jogo
     switch (room) {

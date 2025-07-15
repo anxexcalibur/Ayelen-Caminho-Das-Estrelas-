@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"larva",
-    "path":"sprites/larva/larva.yy",
+    "name":"spr_water_wall",
+    "path":"sprites/spr_water_wall/spr_water_wall.yy",
   },
   "spriteMaskId":null,
   "visible":true,

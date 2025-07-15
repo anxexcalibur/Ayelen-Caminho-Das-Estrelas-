@@ -127,6 +127,9 @@ switch (estado) {
         velh = 0;
         if (sprite_index != spr_baiacu_provocando) {
             sprite_index = spr_baiacu_provocando;
+			if image_index == 1 or image_index ==3{
+				screenshake(3)
+			}  
             image_index = 0;
             if (fala_timer <= 0) {
                 var _i = irandom(array_length(falas_provocacao) - 1);

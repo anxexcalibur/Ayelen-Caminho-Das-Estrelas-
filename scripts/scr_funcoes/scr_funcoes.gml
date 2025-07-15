@@ -54,7 +54,27 @@ function animation_end() {
 /// @function scr_colisao_movimento()
 /// @description Executa a lógica de colisão e movimento para uma instância.
 ///              A instância que chama este script DEVE ter as variáveis velh e velv.
+function carregar_checkpoint(_value) {
+    var jogador = _value;
 
+    if (!instance_exists(obj_player)) {
+        instance_create_layer(0, 0, "Instances", obj_player);
+    }
+
+    if (file_exists("save.sav")) {
+        ini_open("save.sav");
+        obj_player.x = ini_read_real(jogador, "x_atual", 0);
+        obj_player.y = ini_read_real(jogador, "y_atual", 0);
+        var _vida_atual = ini_read_real(jogador, "vida_atual", 0);
+        obj_player.vida_atual = (_vida_atual <= 0) ? 2 : _vida_atual;
+        global.estrelas_coletadas = ini_read_real(jogador, "estrelas_coletadas", 0);
+        var sala_atual = ini_read_real(jogador, "sala_atual", room);
+        ini_close();
+        room_goto(sala_atual);
+    } else {
+        show_message("Arquivo de save não encontrado!");
+    }
+}
 function scr_drop_item(x_origem, y_origem, item_objeto) {
 
     // Cria a instância do item
@@ -259,37 +279,25 @@ function carregar_progresso() {
 }***/
 
 
-function salvar_itens() {
-    ini_open("_itens.sav");  // Arquivo de save de itens
 
-    var keys = ds_map_keys_to_array(global.itens_coletados);
-    var tamanho = array_length(keys);
-
-    for (var i = 0; i < tamanho; i++) {
-        var key = keys[i];
-        ini_write_real("coletados", key, 1);  // Marca no arquivo como coletado
-    }
-
-    ini_close();
-}
 
 
 function salvar_jogador(_obj) {
     ini_open("save.sav");
-    ini_write_real(global.nome_jogador, "x_atual", _obj.x);
-    ini_write_real(global.nome_jogador, "y_atual", _obj.y - 50);
-    ini_write_real(global.nome_jogador, "vida_atual", _obj.vida_atual);
-    ini_write_real(global.nome_jogador, "sala_atual", room);
-    ini_write_real(global.nome_jogador, "etapa_historia", _obj.etapa_historia);
-    ini_write_real(global.nome_jogador, "pontuacao", global.pontuacao);
-    ini_write_real(global.nome_jogador, "estrelas_coletadas", global.estrelas_coletadas); // Adicionado para salvar as estrelas
+    ini_write_real(global.player_name, "x_atual", _obj.x);
+    ini_write_real(global.player_name, "y_atual", _obj.y - 50);
+    ini_write_real(global.player_name, "vida_atual", _obj.vida_atual);
+    ini_write_real(global.player_name, "sala_atual", room);
+    ini_write_real(global.player_name, "etapa_historia", _obj.etapa_historia);
+    ini_write_real(global.player_name, "pontuacao", global.pontuacao);
+    ini_write_real(global.player_name, "estrelas_coletadas", global.estrelas_coletadas); // Adicionado para salvar as estrelas
 
     ini_close();
     
     // salvando o estado dos itens
     // Certifique-se de que as funções salvar_itens() e salvar_progresso()
     // estejam definidas em outro script do seu projeto.
-    salvar_itens();
+ 
     
 
     

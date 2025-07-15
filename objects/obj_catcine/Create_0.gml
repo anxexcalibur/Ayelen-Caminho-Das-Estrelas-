@@ -1,5 +1,5 @@
 /// @description Inicializa o sistema de diálogo
-
+pode_desenhar =true
 // --- Variáveis de Controle ---
 dialogos = [];               // Array que guarda os diálogos da sala
 dialogo_atual = 0;           // Índice do diálogo atual

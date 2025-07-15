@@ -51,13 +51,14 @@ if (game_over)
         draw_text(screen_center_x, screen_center_y, "Game Over"); // Texto "Game Over"
         
         // Desenha o texto "Pressione ENTER para resetar o jogo" abaixo do texto "Game Over"
-        draw_set_font(-1); // Restaura a fonte padrão
+        draw_set_font(fnt_pequena); // Restaura a fonte padrão
         draw_text(screen_center_x, screen_center_y + 50, "Pressione ENTER para resetar o jogo");
         
         // Restaura os ajustes de alinhamento
         draw_set_valign(-1); // Restaura o alinhamento vertical padrão
         draw_set_halign(-1); // Restaura o alinhamento horizontal padrão
-    }
+		 draw_set_font(-1);
+	}
     
     // Restaura a transparência padrão após o desenho do "Game Over"
     draw_set_alpha(1);

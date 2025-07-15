@@ -259,13 +259,24 @@ case "kaua":
 
     }
     break;
+	case"azel":
+	 
+	 ds_grid_add_text("Oque? é vocÊ? estamos perdidos ...", spr_kaua_guarda, 0, "Kauã");
+	 ds_grid_add_text("...", spr_ayelen_face, 1, "Ayelen");
+	 ds_grid_add_text("como esses anciõe enviam uma criança para ca eles ficaram louco ...", spr_kaua_guarda, 0, "Kauã");
+	 ds_grid_add_text("a situação é muito grave ?", spr_ayelen_face, 1, "Ayelen")
+	 ds_grid_add_text("Grave ??, é mais do que grave, tem um monstro acordado que matou todos os meus guerreiros", spr_kaua_guarda, 0, "Kauã");
+	 ds_grid_add_text("Eu sei..., estou com medo, mas não posso fúgir... eles me escolheram por algum motivo", spr_ayelen_face, 1, "Ayelen")
+	 ds_grid_add_text("puff, okay, vou te dar uma mágia para sua lança, nao consiguira derrota-lo assim ", spr_kaua_guarda, 0, "Kauã");
+	 ds_grid_add_text("Sistema: Você desploqueou o projetil Aperte H para atirar.", spr_sistema, 0, "Sistema");
+	break
 
 case "arbusto":
     ds_grid_add_text("Sistema: A pêra-do-cerrado (Eugenia klotzschiana) é uma fruta rara e pouco conhecida, nativa dos cerrados e campos do Brasil central e sudeste. Seu nome indígena é cabamixá-açú, que significa 'erva que dá fruto que aperta a língua'.", spr_sistema, 0, "Sistema");
     break;
 
 		case "ceramica":
-			ds_grid_add_text("Sistema: Os povos indígenas foram os primeiros ceramistas do território brasileiro, desenvolvendo técnicas sofisticadas de produção muito antes da chegada dos europeus. ", spr_sistema, 0, "arbusto");
+			ds_grid_add_text("Sistema: Os povos indígenas foram os primeiros ceramistas do território brasileiro, desenvolvendo técnicas sofisticadas de produção muito antes da chegada dos europeus. ", spr_sistema, 0, "arbusto"); 
 			ds_grid_add_text("Sistema: Usando recursos naturais como argila, fibras vegetais e pigmentos orgânicos, criaram recipientes resistentes para armazenar alimentos, cozinhar, transportar água e até mesmo realizar rituais sagrados. ", spr_sistema, 0, "arbusto");
 			ds_grid_add_text("Sistema: A cerâmica não era apenas uma ferramenta, mas uma linguagem visual que transmitia valores, cosmologias e modos de vida. ", spr_sistema, 0, "arbusto");
 		

@@ -4,3 +4,4 @@
 duration = 3;  // Tempo em segundos
 text = "";  // Texto vazio por padrão
 alpha = 1;  // Opacidade inicial
+show_draw = false

@@ -6,6 +6,7 @@ global.previous_room = room;
 obj_player.etapa_historia = 4;
 salvar_jogador(obj_player)
 // Vai para a sala da cutscene
+instance_create_layer(x,y,"transicao",obju_transicao_2);
+obju_transicao_2.destino = rm_catcine_2
 
-room_goto(rm_catcine_2);
 
