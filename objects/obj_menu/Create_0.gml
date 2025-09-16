@@ -1,8 +1,7 @@
 // @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // Criando meu Menu
-// Variável para armazenar o nome digitado pelo jogador
-
+global.menu_existe = false; 
 var current_room;
 current_room = room;
 // Seleção do menu
@@ -264,8 +263,8 @@ volta_menu = function(){
 	            }
 				
 	instance_destroy(obj_player)
-	instance_create_layer(x,y, "transicao",obju_transicao_2)
-	obju_transicao_2.destino = rm_menu;
+	instance_create_layer(x,y, "transicao",obj_transicao_2)
+	obj_transicao_2.destino = rm_menu;
 }
 
 fecha_jogo = function() {
@@ -383,7 +382,7 @@ menus_lista = {
 };
 
 atualizar_menu_principal = function() {
-	if room ==  rm_menu{ 
+	if room == rm_menu{ 
 		var _menu = [
 		  ["Iniciar", menu_acoe.roda_metodo, inicia_jogo]
 		 ];

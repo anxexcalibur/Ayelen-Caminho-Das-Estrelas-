@@ -1,4 +1,5 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-//Alterando a seleção
-controla_menu(menus[pag]);
+if room == rm_menu  {
+	controla_menu(menus[pag]);
+}else if global.menu_existe{
+	controla_menu(menus[pag]);
+}

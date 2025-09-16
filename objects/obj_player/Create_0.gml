@@ -1,8 +1,10 @@
 /// @description Inicialização do jogador
 
 // Itens e progresso
-
-
+if (!variable_global_exists("pontuacao")) {
+    global.pontuacao = 0;
+}
+pontuacao = global.pontuacao
 // Estados e atributos
 estado = "parado";
 velv = 1;

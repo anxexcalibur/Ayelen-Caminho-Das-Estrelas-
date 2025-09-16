@@ -7,8 +7,8 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {"name":"inst_449D6C2","path":"rooms/rm_catcine/rm_catcine.yy",},
-    {"name":"inst_324E50EC","path":"rooms/rm_catcine/rm_catcine.yy",},
     {"name":"inst_27A53787","path":"rooms/rm_catcine/rm_catcine.yy",},
+    {"name":"inst_324E50EC","path":"rooms/rm_catcine/rm_catcine.yy",},
   ],
   "isDnd":false,
   "layers":[

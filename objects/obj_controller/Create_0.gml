@@ -1,4 +1,9 @@
-global.menu_existe = false; /// @description Inserir descrição aqui
+
+// Referência ao jogador
+desenha_porta = false
+desenha_npc = false
+//variavel de controle
+player = instance_find(obj_player, 0);
 // Você pode escrever seu código neste editor
 global.checkpoint_states = [];
 // Evento Create
@@ -64,7 +69,11 @@ if (!variable_global_exists("itens_coletados")) {
     global.itens_coletados = ds_map_create();
 }
 
+// No Evento Create do obj_controller
 
+// Adicione estas duas novas variáveis globais. Apague a antiga "global.menu_existe".
+global.menu_ativo = false;      // A nova variável TOGGLE. Controla se o menu está visível agora.
+global.menu_permitido = false;  // A variável de REGRA. Define se o menu PODE ser aberto na sala atual.
 game_over = false;
 valor = 0;// variavel que serve para animar o retangulo 
 contador = 0  //cariavel para controlar o trandparencia do string "game over"

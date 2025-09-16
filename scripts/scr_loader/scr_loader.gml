@@ -7,8 +7,8 @@ function carrega_jogo2(_jogador, _sala, _etapa, _x, _y, _direcao_transicao) {
 
     if (!instance_exists(obj_player)) {
         // Cria uma nova instância de obj_player
-        var inst_player = instance_create_layer(0, 0, "Instances", obj_player);
-
+       
+		var inst_player = instance_create_layer(0, 0, "Instances", obj_player);
         if (file_exists("save.sav")) {
             ini_open("save.sav"); // Abre o arquivo de save
 
@@ -19,7 +19,7 @@ function carrega_jogo2(_jogador, _sala, _etapa, _x, _y, _direcao_transicao) {
             // Outros dados do jogador
             inst_player.vida_atual = ini_read_real(_jogador, "vida_atual", 100); // Vida padrão = 100
             inst_player.etapa_historia = is_undefined(_etapa) ? ini_read_real(_jogador, "etapa_historia", 1) : _etapa;
-            global.pontuacao = ini_read_real(_jogador, "pontuacao", global.pontuacao);
+            inst_player.pontuacao = ini_read_real(_jogador, "pontuacao", global.pontuacao);
             
             // --- CORREÇÃO APLICADA AQUI ---
             // Agora, se _estrelas for fornecido, ele será usado corretamente.
@@ -33,8 +33,8 @@ function carrega_jogo2(_jogador, _sala, _etapa, _x, _y, _direcao_transicao) {
 
             // Move para a sala especificada
             room_goto(sala_atual);
-			instance_create_layer(x,y,"instances", obju_transicao_2);
-			obju_transicao_2.direcao = _direcao_transicao
+			instance_create_layer(x,y,"instances", obj_transicao_2);
+			obj_transicao_2.direcao = _direcao_transicao
         } else {
             show_message("Arquivo de save não encontrado!");
         }

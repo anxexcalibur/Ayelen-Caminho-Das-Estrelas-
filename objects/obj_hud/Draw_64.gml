@@ -1,6 +1,7 @@
-if (!instance_exists(obj_trasicao) && player != noone && !player.morreu && !global.dialogo && !global.menu_existe and !desenha_porta and !instance_exists(obju_transicao_2) ) { 
+var _draw_hud = !instance_exists(obj_trasicao) && instance_exists(obj_player) && !global.dialogo  and !instance_exists(obj_transicao_2) and !global.menu_existe and !obj_controller.game_over
+if (_draw_hud) { 
     var margem = 20;
-
+	var _player = obj_player
     // --- Barra de vida no canto superior esquerdo ---
     var healthbar_width = 200;
     var healthbar_height = 30;
@@ -9,14 +10,14 @@ if (!instance_exists(obj_trasicao) && player != noone && !player.morreu && !glob
 
     draw_sprite(molduraHealthbar, 0, healthbar_x, healthbar_y);
 
-    var barra_largura_atual = (player.vida_atual / player.max_vida) * healthbar_width;
+    var barra_largura_atual = (_player.vida_atual / _player.max_vida) * healthbar_width;
 
     draw_sprite_stretched(sHealthbar, 0, healthbar_x, healthbar_y, barra_largura_atual, healthbar_height);
 
     draw_sprite(molduraHealthbar, 0, healthbar_x, healthbar_y);
 
     // Texto da vida, alinhado dentro da barra
-    var texto_vida = string(player.vida_atual) + " / " + string(player.max_vida);
+    var texto_vida = string(_player.vida_atual) + " / " + string(_player.max_vida);
     var texto_x = healthbar_x + 40;
     var texto_y = healthbar_y + healthbar_height / 2 + 8;
 

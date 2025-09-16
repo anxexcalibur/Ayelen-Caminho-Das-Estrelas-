@@ -17,9 +17,7 @@ if keyboard_check_released(vk_space){
 		}else{
 			global.dialogo = false;
 			
-			if !instance_exists(obj_menu){
-				global.game_paused = false;
-			}
+			
 			instance_destroy()
 		
 		}

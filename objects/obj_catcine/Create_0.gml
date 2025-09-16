@@ -20,48 +20,61 @@ exibe = false;               // Sua variável para a mensagem "Esc"
 // Fazer isso no Create é mais eficiente do que no Step
 switch(room) {
     case rm_catcine:
-        dialogos = [
-            {texto: "No crepúsculo dos primórdios, onde o tempo dançava em nebulosas incertezas", imagem: spr_2},
-            {texto: "Tupã, o grande criador, desceu dos céus em meio a relâmpagos e trovões, conferindo vida ao infinito.", imagem: spr_2, palavra_chave: "Tupã", cor_chave: c_yellow}, // Exemplo de efeito
-            {texto: "Com seu toque divino, moldou a beleza e a perfeição, criando a terra, os mares, as florestas e todos os seres vivos que habitam o mundo.", imagem: spr_3},
-            {texto: "Para iluminar sua criação, Tupã criou Guaraci, o deus Sol, que trouxe luz e calor ao dia, e Jaci, a deusa Lua, que trouxe suavidade e encanto às noites.", imagem: spr_4},
-            {texto: "Guaraci e Jaci, irmãos e amantes, revezavam-se no céu, garantindo o ciclo eterno de dia e noite.", imagem: spr_4_1},
-            {texto: "Contudo, para manter o equilíbrio, Tupã criou Anhangá, espírito protetor dos animais e florestas.", imagem: spr_5},
-            {texto: "Anhangá pode assumir diversas formas para enganar os caçadores, e embora temido pelos humanos, fazia parte do equilíbrio necessário.", imagem: spr_6},
-            {texto: "Em meio a esse equilíbrio, surgiu uma deusa chamada Bianca, Deusa das constelações, uma das criações de Tupã.", imagem: spr_8},
-            {texto: "Seus olhos celestiais encontraram a vila guerreira de Katupytã, onde a harmonia reinava e a natureza era reverenciada.", imagem: spr_9},
-            {texto: "Impressionada pela devoção daquela comunidade, Bianca desceu dos céus em uma noite enluarada, trazendo bênçãos aos guerreiros que prometeram proteger a harmonia.", imagem: spr_10},
-            {texto: "Bianca instruiu os habitantes a construírem três templos, representando as constelações sob seu domínio:", imagem: spr_11},
-            {texto: "Homem-Velho, Anta-Norte e Veado.", imagem: spr_12},
-            {texto: "Esses templos sagrados garantiram a proteção de Katupytã por gerações, enquanto a sabedoria dos ancestrais era passada de geração em geração.", imagem: spr_12},
-            {texto: "Entretanto, forças sombrias conspiravam. Jurupari, um espírito que visitava os sonhos, trazendo pesadelos e presságios...", imagem: spr_16},
-            {texto: "Aproveitando-se das fraquezas humanas, Jurupari semeou discórdia e corrupção entre os habitantes de Katupytã.", imagem: spr_17},
-            {texto: "Ubiratã, um guerreiro outrora respeitado, sucumbiu à ganância e aos sussurros de Jurupari, desviando-se do caminho da luz.", imagem: spr_18},
-            {texto: "Influenciado por promessas de poder, ele roubou as sagradas insígnias do templo de Bianca...", imagem: spr_19},
-            {texto: "...deixando a vila vulnerável a invasores estrangeiros que buscavam dominar aquelas terras em nome de deuses desconhecidos.", imagem: spr_19},
-            {texto: "Desesperados, os anciãos da vila recorreram a antigas profecias que falavam de uma guerreira iluminada, guiada pela Estrela Dalva.", imagem: spr_21},
-            {texto: "Nascida sob a proteção de Bianca, ela veio ao mundo com os Angá-mirim despertos, os sete pontos de força que conectam o corpo, a alma e o espírito.", imagem: spr_22},
-            {texto: "Com a terra firmando seus passos, a água guiando suas emoções, o fogo ardendo em sua coragem, e o ar dando voz ao seu destino...", imagem: spr_23},
-            {texto: "...ela traria um novo amanhecer onde a harmonia triunfaria sobre o caos.", imagem: spr_dialogoimage},
-        ];
+       dialogos = [
+    {texto: "No início, Tupã criou a vida, moldou a terra, os mares e os seres vivos.", imagem: spr_catcine_1},
+    {texto: "Para iluminar sua criação, Tupã deu origem a Guaraci, o deus Sol, e Jaci, a deusa Lua.", imagem: spr_catcine_2},
+    {texto: "Guaraci e Jaci revezavam-se no céu, mantendo o ciclo eterno de dia e noite.", imagem: spr_catcine_3},
+    {texto: "Tupã criou Anhangá para proteger a natureza, guardião dos animais e florestas.", imagem: spr_catcine_5},
+    {texto: "Em meio a este equilíbrio, Bianca, Deusa das Constelações, observava os povos da Terra.", imagem: spr_catcine_6},
+    {texto: "Ao encontrar a aldeia de Katupytã, abençoou o povo", imagem: spr_catcine_7},
+	{texto:" e instruiu a construção de três templos: Homem-Velho, Anta-Norte e Veado.", imagem: spr_catcine_8},
+	{texto:" Criando um veu de invisibilidade e proteção", imagem: spr_catcine_8_1},
+    {texto: "Nos tempos antigos, os videntes previram que em eras de caos surgiriam dois espíritos, filhos do céu, para definir o destino do mundo.", imagem: spr_catcine_9},
+    {texto: "Eles seriam diferentes, mas complementares, e viriam com os Angá-mirim despertos.", imagem: spr_catcine_10},
+    {texto: "Assim nasceram Ayelen e Ubiratã. Ela com os Angá-mirim de cima, ele com os de baixo.", imagem: spr_catcine_11},
+    {texto: "Ayelen treinou também os de baixo, tornando-se forte e destemida, completa em espírito e corpo.", imagem: spr_catcine_12},
+    {texto: "Ubiratã, por sua vez, não desenvolveu compaixão nem luz, e seu coração permaneceu endurecido.", imagem: spr_catcine_13},
+    {texto: "A harmonia da vila se quebrou quando o pai de Ubiratã comandante, movido por luxúria e ego, matou o tio de Ayelen em uma revolta pelo poder ", imagem: spr_catcine_14_1},
+    {texto: "O comandante do exército formou aliados e tentou tomar o poder, mas foi derrotado pelo pai de Ayelen.", imagem: spr_catcine_15},
+    {texto: "Ubiratã, tomado pelo ódio e ressentimento, exilou-se, carregando fúria contra a vila.", imagem:spr_catcine_16 },
+	{texto: "Sozinho, ele roubou as insígnias sagradas dos templos, desfazendo o véu de proteção invisível que mantinha a aldeia segura.", imagem: spr_catcine_17},
+    {texto: "Enquanto isso, rumores de invasões de povos em nome de um deus desconhecido se aproximavam, ameaçando a aldeia desprotegida.", imagem: spr_catcine_18},
+    {texto: "Ayelen, filha do líder da vila, viu seu amigo de infância se tornar inimigo, dividida entre amor e dever recebeu o dom da cura e de depretrificar a mágia de ubiratã.", imagem: spr_catcine_19}
+    
+];
+
         break;
         
     case rm_catcine_2:
         dialogos = [
-            {texto: "Em uma noite enluarada, Ayelen se preparava para o ritual sagrado com o chá de ayahuasca, como os anciãos da vila lhe haviam instruído.", imagem: spr_cha_1},
-            {texto: "Ao beber o chá, seus sentidos começaram a se expandir. O ar ao seu redor se tornava vibrante, cheio de luzes que dançavam como estrelas cadentes.", imagem:  spr_cha_2},
-            {texto: "Foi quando uma presença tomou conta da sala. Araci, a mãe do dia, manifestou-se, e seus olhos refletiam estrelas distantes.", imagem:  spr_cha_3},
-            {texto: "'Ayelen, filha da luz, você é chamada para uma missão. Você carrega dentro de si os Angá-mirim, os sete pontos de força.'", imagem: spr_cha_4, palavra_chave: "Angá-mirim", cor_chave: c_aqua}, // Exemplo de efeito
-            {texto: "Ayelen, ainda atordoada, questionou: 'Mas... como posso ser eu a restaurar o que foi roubado? Sou apenas uma guerreira.'", imagem: spr_cha_5},
-            {texto: "Araci sorriu: 'Você não é apenas uma guerreira, Ayelen. Você é a ponte entre os mundos. Sua força reside na harmonia dos elementos dentro de si.'", imagem: spr_cha_6},
-            {texto: "'Quando você harmonizar esses elementos, será capaz de restaurar as insígnias e trazer o equilíbrio ao seu mundo.'", imagem: spr_cha_222},
-            {texto: "A fogueira brilhou intensamente. Ayelen sentiu uma onda de energia percorrer seu corpo, e os Angá-mirim dentro dela começaram a brilhar.", imagem: spr_cha_8},
-            {texto: "Araci então estendeu uma pedra luminosa: 'Esta pedra contém a essência dos Angá-mirim. Carregue-a, e ela será seu guia.'", imagem: spr_cha_9},
-            {texto: "'Lembre-se, a verdadeira força não está no corpo, mas na harmonia entre seu espírito e os elementos que residem em seu ser.'", imagem: spr_cha_10},
-            {texto: "Ayelen, agora ciente de seu poder e de seu papel crucial, sentiu sua mente clarear.", imagem: spr_cha_11},
-            {texto: "'Eu irei. A paz e a harmonia precisam retornar, e eu serei a portadora dessa luz.'", imagem: spr_cha_12},
-            {texto: "Araci sorriu uma última vez, e sua presença se dissipou. Ayelen despertou do transe, com a pedra em mãos e a certeza de que a jornada estava prestes a começar.", imagem: spr_cha_13}
-        ];
+    {texto: "Em uma noite enluarada, Ayelen se preparava para o ritual sagrado.", imagem: spr_cha_1},
+    {texto: "Ela seguia os ensinamentos antigos da teko'a, com o coração tranquilo.", imagem: spr_cha_2},
+    {texto: "Ao beber o chá, seus sentidos se expandiram.", imagem: spr_cha_2},
+    {texto: "Luzes e cores dançavam ao seu redor como constelações vivas.", imagem: spr_cha_2},
+    {texto: "Uma presença tomou conta da sala. Araci, a mãe do dia, apareceu.", imagem: spr_cha_3},
+    {texto: "Seus olhos refletiam a vastidão do céu, brilhando com mistério.", imagem: spr_cha_3},
+    {texto: "'Ayelen, filha da luz, o destino da teko'a repousa em suas mãos.'", imagem: spr_cha_4, palavra_chave: "Angá-mirim", cor_chave: c_aqua},
+    {texto: "'Você carrega os Angá-mirim, os sete pontos de força.'", imagem: spr_cha_4},
+    {texto: "Ayelen, assustada, perguntou: 'Como posso restaurar o que foi roubado?'", imagem: spr_cha_5},
+    {texto: "'Sou apenas uma guerreira da aldeia.'", imagem: spr_cha_5},
+    {texto: "Araci respondeu: 'Você não é apenas uma guerreira.'", imagem: spr_cha_6},
+    {texto: "'Você é a ponte entre o mundo visível e o invisível.'", imagem: spr_cha_6},
+    {texto: "'Sua força está na harmonia dos elementos que habitam seu ser.'", imagem: spr_cha_6},
+    {texto: "'Quando equilibrar esses elementos, poderá recuperar as insígnias.'", imagem: spr_cha_222},
+    {texto: "'E proteger a teko'a do caos que se aproxima.'", imagem: spr_cha_222},
+    {texto: "A fogueira brilhou intensamente. Uma onda de energia percorreu Ayelen.", imagem: spr_cha_8},
+    {texto: "Seus Angá-mirim começaram a pulsar com luz própria.", imagem: spr_cha_8},
+    {texto: "Araci estendeu uma pedra luminosa: 'Esta pedra guarda a essência dos Angá-mirim.'", imagem: spr_cha_9},
+    {texto: "'Ela guiará seus passos e iluminará sua jornada.'", imagem: spr_cha_9},
+    {texto: "'Lembre-se, a verdadeira força não está no corpo,'", imagem: spr_cha_10},
+    {texto: "'mas na união de espírito, mente e elementos da vida.'", imagem: spr_cha_10},
+    {texto: "Ayelen sentiu sua mente clarear, percebendo seu papel crucial.", imagem: spr_cha_11},
+    {texto: "'Irei. Trazer paz e harmonia à teko'a é minha missão.'", imagem: spr_cha_12},
+    {texto: "'Serei a portadora da luz.'", imagem: spr_cha_12},
+    {texto: "Araci sorriu e se desvaneceu. Ayelen despertou do transe com a pedra em mãos.", imagem: spr_cha_13},
+    {texto: "Ela estava pronta para iniciar a jornada que mudaria seu destino.", imagem: spr_cha_13}
+];
+
         break;
 }
 

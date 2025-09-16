@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"catcine 2",
-    "path":"folders/Sprites/Catcines/catcine 2.yy",
+    "path":"folders/catcine 2.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
