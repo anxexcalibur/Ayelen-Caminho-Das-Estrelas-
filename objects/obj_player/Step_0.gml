@@ -7,7 +7,7 @@ if (keyboard_check_pressed(ord("G")))
 {
     // Chama a sua nova função na posição exata do jogador
     scr_drop_item(x, y, obj_star_1);
-	show_message("Estrelas coletadas: " + string(global.estrelas_coletadas))
+	//show_message("Estrelas coletadas: " + string(global.estrelas_coletadas))
 }
 // Iniciando a máquina de estados
 /// @description Controle do jogador (Reorganizado)
@@ -33,7 +33,7 @@ if (!variable_global_exists("dash_cooldown")) {
 
 // Debug para exibir a etapa da história
 if (keyboard_check_pressed(ord("R"))) {
-    show_message(etapa_historia);
+   // show_message(etapa_historia);
 }
 
 // Lógica da história (controla a seta e outros elementos)

@@ -15,7 +15,7 @@ if _key_esc_capture {
 	global.menu_existe = !global.menu_existe;
 } 
 
-
+scr_checkRoom(global.items_coletados);
 
 
 

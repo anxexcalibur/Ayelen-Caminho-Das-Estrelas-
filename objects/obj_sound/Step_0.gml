@@ -114,6 +114,8 @@ with(obj_player){
 /// Seção: Controle de Música do Jogo
 switch(room)
 {
+	case rm_menu:
+		global.current_music = "main theme";
     case rm_prototipo:
         global.current_music = "lv1";
         break;

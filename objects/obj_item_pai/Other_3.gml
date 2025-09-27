@@ -1,4 +1,4 @@
-// Verifica se existe o ds_map global.itens_coletados antes de salvar
+ // Verifica se existe o ds_map global.itens_coletados antes de salvar
 /*if (global.itens_coletados) {
     // Abre o arquivo para escrita (arquivo de texto)
     var file = file_text_open_write("itens_coletados.json");

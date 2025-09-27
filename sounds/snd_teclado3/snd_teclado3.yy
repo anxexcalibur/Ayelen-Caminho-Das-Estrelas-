@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"snd_teclado3.mp3",
   "type":0,
-  "volume":0.46,
+  "volume":0.25,
 }

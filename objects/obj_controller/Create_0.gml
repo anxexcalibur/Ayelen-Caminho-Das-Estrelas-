@@ -6,6 +6,7 @@ desenha_npc = false
 player = instance_find(obj_player, 0);
 // Você pode escrever seu código neste editor
 global.checkpoint_states = [];
+global.items_coletados = [];
 // Evento Create
 global.game_paused= false;
 global.estrelas_coletadas = 0;

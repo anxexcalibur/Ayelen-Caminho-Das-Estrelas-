@@ -11,7 +11,7 @@
 
 
 
-
+estado = "parado"
 
 direc = 0
 hit = false;

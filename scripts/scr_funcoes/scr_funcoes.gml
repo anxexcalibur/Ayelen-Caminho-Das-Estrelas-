@@ -3,6 +3,74 @@
 function scr_funcoes(){
 
 }
+/// @function scr_addItem(array, item_id)
+/// @description Adiciona um item a um array se ele ainda não existir.
+/// @param {Array} array O array para modificar.
+/// @param {Any} item_id O id do item para adicionar.
+/// @return {Array} O array modificado.
+
+function scr_addItem(_array, _id_item) {
+
+    // 1. Garante que o ID a ser adicionado seja uma string para consistência
+    var id_str = string(_id_item);
+
+    // 2. Verifica se o item JÁ EXISTE no array
+    // A função array_contains() retorna 'true' se encontrar, e 'false' se não.
+    // O '!' na frente inverte o resultado (NOT), então o código executa se o item NÃO for encontrado.
+    if (!array_contains(_array, id_str)) {
+        
+        // 3. Se não existe, adiciona o item ao final do array
+        array_push(_array, id_str);
+        show_message("Item " + id_str + " adicionado com sucesso!");
+    } else {
+        // Opcional: uma mensagem para saber que o item já existia
+        show_message("O item " + id_str + " já está no array.");
+    }
+    
+    // 4. (Opcional) Mostra todos os itens atuais do array para debug
+    // Usamos string_join para juntar todos os elementos do array em uma única string, separados por ", "
+    show_message("Itens atuais: " + string_join(", ", _array));
+
+    // 5. Retorna o array atualizado
+    return _array;
+}
+
+
+/// @function scr_checkRoom(collected_items_array)
+/// @description Verifica todos os itens na sala (baseados em obj_item_pai)
+///              e destrói aqueles cujo ID já está no array de itens coletados.
+/// @param {Array} collected_items_array   O array que armazena os IDs dos itens que o jogador já coletou.
+
+function scr_checkRoom(_collected_items_array) {
+
+    // A instrução 'with' é a forma mais eficiente de aplicar uma lógica
+    // a todas as instâncias de um objeto (e seus filhos) na sala.
+    with (obj_item_pai) {
+    
+        // 1. VERIFICAÇÃO DE SEGURANÇA:
+        // Checa se a variável 'id_item' existe nesta instância antes de tentar lê-la.
+        // Isso previne erros caso você, acidentalmente, coloque um objeto na sala
+        // que não tenha essa variável configurada.
+        if (variable_instance_exists(id, "id_item")) {
+        
+            // 2. CONVERSÃO PARA STRING:
+            // Garante que o ID do item seja uma string. Isso é crucial para que
+            // a comparação com os dados do array (que também são strings) funcione 100% das vezes.
+            var _current_item_id = string(id_item);
+            
+            // 3. A LÓGICA PRINCIPAL:
+            // A função array_contains() retorna 'true' se o ID do item atual
+            // for encontrado dentro do array de itens já coletados.
+            if (array_contains(_collected_items_array, _current_item_id)) {
+            
+                // 4. DESTRUIR A INSTÂNCIA:
+                // Se o ID foi encontrado, o item já foi coletado anteriormente.
+                // O comando instance_destroy() remove o objeto da sala.
+                instance_destroy();
+            }
+        }
+    }
+}
 /// @function draw_health_bar(x_pos, y_pos, vida_atual, max_vida, largura=40, altura=6)
 function draw_health_bar(x_pos, y_pos, vida_atual, max_vida, largura=40, altura=6) {
     var bar_width = largura;
@@ -68,6 +136,7 @@ function carregar_checkpoint(_value) {
         var _vida_atual = ini_read_real(jogador, "vida_atual", 0);
         obj_player.vida_atual = (_vida_atual <= 0) ? 2 : _vida_atual;
         global.estrelas_coletadas = ini_read_real(jogador, "estrelas_coletadas", 0);
+		
         var sala_atual = ini_read_real(jogador, "sala_atual", room);
         ini_close();
         room_goto(sala_atual);
@@ -229,6 +298,12 @@ function gerenciar_musica(nome_musica) {
                 global.current_music = "catcine";  // Atualiza a música atual
             }
             break;
+		 case "main theme":
+           if (global.current_music != "main theme") {
+                audio_play_sound(snd_maintheme, 1, true);  // Toca a música de protótipo em loop
+                global.current_music = "main theme";  // Atualiza a música atual
+            }
+            break;
 
         case "none":
             global.current_music = "none";  // Nenhuma música tocando
@@ -292,7 +367,37 @@ function salvar_jogador(_obj) {
     ini_write_real(global.player_name, "pontuacao", global.pontuacao);
     ini_write_real(global.player_name, "estrelas_coletadas", global.estrelas_coletadas); // Adicionado para salvar as estrelas
 
-    ini_close();
+
+var _array = global.items_coletados;
+
+// 1. Inicia uma string vazia ANTES do loop.
+var _inventory_item = "";
+var _tamanho_array = array_length(_array);
+
+// 2. O loop FOR constrói a string completa.
+for (var i = 0; i < _tamanho_array; i++)
+{
+	_inventory_item += string(_array[i]);
+	
+	// Adiciona o separador, exceto no último item.
+	if (i < _tamanho_array - 1)
+	{
+		_inventory_item += ", ";
+	}
+}
+
+//show_message(_inventory_item)
+// 3. DEPOIS que o loop termina, a string está pronta!
+//    AGORA é o momento de salvá-la no arquivo.
+
+// Opcional: Para testar, você pode mostrar a string final aqui.
+// Note que eu removi o show_message de dentro do loop, pois ele
+// iria pausar o jogo para cada item adicionado.
+//how_message("String final salva: " + _inventory_item);
+
+// --- FIM DA LÓGICA DO INVENTÁRIO ---
+   
+   ini_close();
     
     // salvando o estado dos itens
     // Certifique-se de que as funções salvar_itens() e salvar_progresso()

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":24.662268,
+  "duration":132.12,
   "name":"snd_background_catcines",
   "parent":{
     "name":"Sons",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_background_catcines.ogg",
+  "soundFile":"snd_background_catcines.mp3",
   "type":0,
-  "volume":1.0,
+  "volume":0.58,
 }

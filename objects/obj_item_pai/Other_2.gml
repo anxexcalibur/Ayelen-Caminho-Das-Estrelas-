@@ -17,7 +17,3 @@
     file_text_close(file);
 }
 */
-if (ds_map_exists(global.itens_coletados, id_item)) {
-    // O item já foi coletado, então destrói a instância
-    instance_destroy();
-}
