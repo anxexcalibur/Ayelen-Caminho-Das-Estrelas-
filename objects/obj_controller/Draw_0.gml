@@ -65,6 +65,8 @@ if (game_over)
 }
 else
 {
+	
+
     // Certifique-se de redefinir a transparência caso o jogo não esteja em estado de "game over"
     draw_set_alpha(1);
 }

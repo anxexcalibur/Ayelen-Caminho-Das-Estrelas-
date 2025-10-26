@@ -6,7 +6,7 @@
 if (keyboard_check_pressed(ord("G")))
 {
     // Chama a sua nova função na posição exata do jogador
-    scr_drop_item(x, y, obj_star_1);
+    show_message(instance_exists(obj_controller))
 	//show_message("Estrelas coletadas: " + string(global.estrelas_coletadas))
 }
 // Iniciando a máquina de estados
@@ -65,20 +65,32 @@ if (distance_to_object(obj_par_npcs) <= 10) {
 var right = false, left = false, jump = false, attack = false, esquiva = false, attack_projetil = false;
 
 // Permite a leitura dos inputs apenas se o jogo não estiver pausado ou em diálogo.
-if (!global.dialogo && !global.menu_existe && !global.game_paused) {
-    right = keyboard_check(ord("D"));
-    left = keyboard_check(ord("A"));
-    jump = keyboard_check_pressed(vk_space);
-    attack = keyboard_check_pressed(ord("J"));
-    esquiva = keyboard_check_pressed(ord("L"));
-    attack_projetil = keyboard_check_pressed(ord("H"));
+if instance_exists(obj_controller){
+	if (!global.dialogo && !global.menu_existe && !global.game_paused) {
+	    right = keyboard_check(ord("D"));
+	    left = keyboard_check(ord("A"));
+	    jump = keyboard_check_pressed(vk_space);
+	    attack = keyboard_check_pressed(ord("J"));
+	    esquiva = keyboard_check_pressed(ord("L"));
+	    attack_projetil = keyboard_check_pressed(ord("H"));
     
-    // Habilidade de defesa (só pode ser ativada se desbloqueada)
-    if (etapa_historia >= 6) {
-        defesa = keyboard_check(ord("K"));
-    }
-}
+	    // Habilidade de defesa (só pode ser ativada se desbloqueada)
+	    if (etapa_historia >= 6) {
+	        defesa = keyboard_check(ord("K"));
+	    }
+	}
+	
+	
+// Cálculo da velocidade horizontal desejada
+// Se o jogo estiver pausado ou em diálogo, velh será 0.
+// Cálculo da velocidade horizontal desejada
 
+if (!global.game_paused && !global.dialogo) {
+    velh = (right - left) * max_velh;
+} else {
+    velh = 0;
+}
+}
 
 //==============================================================================
 // 3. MÁQUINA DE ESTADOS E LÓGICA DE JOGO
@@ -88,14 +100,6 @@ if (!global.dialogo && !global.menu_existe && !global.game_paused) {
 var chao = place_meeting(x, y + 1,obj_parede_solida_pai);
 var estou_na_parede = place_meeting(x - 1, y, obj_block); // Nota: Este só checa um lado
 
-// Cálculo da velocidade horizontal desejada
-// Se o jogo estiver pausado ou em diálogo, velh será 0.
-// Cálculo da velocidade horizontal desejada
-if (!global.game_paused && !global.dialogo) {
-    velh = (right - left) * max_velh;
-} else {
-    velh = 0;
-}
 
 if !chao and velv > 0{
 	estado = "pulando"
@@ -332,32 +336,31 @@ switch (estado) {
     break;
 }
 	case "ataque projetil": {
-    // ... seu código para calcular posições ...
     var _xx = x + lengthdir_x(15, image_angle);
 
     if (sprite_index != spr_player_attack_projetil) {
         image_index = 0;
         sprite_index = spr_player_attack_projetil;
-        tiro_disparado = false; // Reinicia a flag para o próximo ataque
+        tiro_disparado = false;
     }
 
-    // Dispara o projétil UMA VEZ quando a animação atinge o frame 3
-    if (image_index >= 3 && !tiro_disparado) {
+    // Só atira se tiver tiros disponíveis
+    if (image_index >= 3 && !tiro_disparado && qtd_tiros > 0) {
         with (instance_create_layer(_xx - 10, y - 20, layer, obj_shoot)) {
             speed = 5;
             direction = -90 + 90 * other.image_xscale;
             image_angle = direction;
         }
-        tiro_disparado = true; // Impede que mais tiros sejam disparados
+
+        qtd_tiros -= 1; // consome um tiro
+        tiro_disparado = true;
     }
 
-    // Transição para o estado parado no fim da animação
     if (image_index > image_number - 1) {
         estado = "parado";
         posso = true;
     }
 
-    // ... sua lógica de dash ...
     break;
 }
     

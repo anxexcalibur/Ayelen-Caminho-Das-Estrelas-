@@ -6,8 +6,7 @@ aperto_enter = 0;
 alarm[0]=1;
 // Defina uma variável global para armazenar o nome
 // Initialization
-global.player_name = "";
-global.name_input_active = false;
+
 
 
 draw_input_name = function() {
@@ -38,10 +37,10 @@ draw_input_name = function() {
 	draw_set_color(-1)
     draw_text(room_width / 2, y + sprite_height + 40, "Pressione Enter Para continuar");
 	
-	global.nome_jogador = keyboard_string;
+	global.player_name = keyboard_string;
 	if room == rm_username &&  keyboard_check(vk_enter)
 	{
-		if string_length(global.nome_jogador) >= 3  
+		if string_length(global.player_name) >= 3  
 		{
 			alarm[2] = 5
 		
@@ -50,30 +49,7 @@ draw_input_name = function() {
 	}
 	show_debug_message(global.name_input_active)
 }
-salvar_jogo = function(nome_jogador, x, y) {
-    // Verifica se x e y foram fornecidos, caso contrário define valores padrão
-    if (argument_count < 3) {
-        x = 60;
-        y = 240;
-    }
 
-    // Abre o arquivo de save "save.sav" para adicionar conteúdo ao final
-    var file_id = file_text_open_append("save.sav");
-    
-    if (file_id != -1) {
-        // Escreve os dados do jogador no arquivo de save
-        file_text_write_string(file_id, "[" + string(nome_jogador) + "]\n");
-        file_text_write_string(file_id, "x_atual=" + string(x) + "\n");
-        file_text_write_string(file_id, "y_atual=" + string(y) + "\n");
-        file_text_write_string(file_id, "vida_atual=" + string(10) + "\n");
-        file_text_write_string(file_id, "sala_atual=" +"1.000000" + "\n");
-        file_text_write_string(file_id, "\n"); // Adiciona uma linha em branco para separar os registros
-        
-        file_text_close(file_id); // Fecha o arquivo de save
-    } else {
-        show_debug_message("Erro ao abrir o arquivo save.sav para escrita.");
-    }
-}
 
 
 

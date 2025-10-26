@@ -4,6 +4,7 @@ event_inherited();
 pode_levar_dano =true
   
 /// @description Inicializa a cobra inimiga
+if (!variable_instance_exists(id, "estado")) estado = "parado";
 
 // Variáveis de Estado
 estado = "parado";

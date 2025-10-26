@@ -1,4 +1,6 @@
-
+fmsg_active = false;
+msg_text   = "";
+msg_timer  = 0;
 // Referência ao jogador
 desenha_porta = false
 desenha_npc = false
@@ -9,14 +11,17 @@ global.checkpoint_states = [];
 global.items_coletados = [];
 // Evento Create
 global.game_paused= false;
-global.estrelas_coletadas = 0;
+
 global.game_stop = false;
 // Constelações e estrelas
 global.itens_coletados = ds_map_create();
 global.nivel_do_jogo = 0;
 global.balas = 10;
-global.pontuacao = 0;
-global.player_name= "";
+if instance_exists(obj_player){
+global.estrelas_coletadas = obj_player.estrelas_coletadas;
+global.pontuacao = obj_player.pontuacao;
+global.player_name = obj_player.nome_player;
+}
 global.estrelas = [
     {id: 1, nome: "Aldebaran", constelacao: "Homem Velho"},
     {id: 2, nome: "Betelgeuse", constelacao: "Homem Velho"},
@@ -119,10 +124,16 @@ function carregar_checkpoint(_value) {
         var _vida_atual = ini_read_real(jogador, "vida_atual", 0);
         obj_player.vida_atual = (_vida_atual <= 0) ? 2 : _vida_atual;
         global.estrelas_coletadas = ini_read_real(jogador, "estrelas_coletadas", 0);
+		//global.items_coletados = ini_read_real(jogador, "items_coletados", 0);
         var sala_atual = ini_read_real(jogador, "sala_atual", room);
         ini_close();
         room_goto(sala_atual);
     } else {
         show_message("Arquivo de save não encontrado!");
     }
+}
+function show_message_custom(_text, _duration) {
+    obj_controller.msg_active = true;
+    obj_controller.msg_text   = _text;
+    obj_controller.msg_timer  = _duration;
 }

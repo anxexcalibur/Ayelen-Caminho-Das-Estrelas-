@@ -12,7 +12,9 @@ ini_write_real(global.nome_jogador,"vida_atual",other.vida_atual)
 
 ini_close();*/
 // Salva as informações do jogador
-salvar_jogador(obj_player);
+var _nome_secao = obj_player.nome_player
+show_message(_nome_secao)
+salvar_checkpoint(_nome_secao);
 // Iniciar a animação se ainda não começou
 if (!animation_started) {
     animation_started = true;

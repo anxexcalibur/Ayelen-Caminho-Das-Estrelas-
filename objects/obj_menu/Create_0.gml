@@ -1,6 +1,8 @@
 // @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // Criando meu Menu
+global.player_name = "";
+global.name_input_active = false;
 global.menu_existe = false; 
 var current_room;
 current_room = room;
@@ -36,6 +38,7 @@ desenha_input_nome = function() {
 // Função para capturar a entrada do jogador
 captura_input_nome = function() {
     // Captura as teclas pressionadas
+	var _name_player
     var key = keyboard_key; // Tecla pressionada
     
     // Verifica se é uma tecla de letra ou de espaço
@@ -49,6 +52,7 @@ captura_input_nome = function() {
         }
     } else if (key == vk_enter) {
         // Se pressionar enter, inicia o jogo
+		nome_do_jogador = global.player_name
         alarm[0] = 5; // Dispara o alarme para iniciar o jogo
     }
 }
@@ -318,23 +322,27 @@ carregar_jogo = function(_value) {
     if (!instance_exists(obj_player)) {
         // Cria uma nova instância de obj_player
         instance_create_layer(0, 0, "Instances", obj_player);
-		
-    }
-
-    if (file_exists("save.sav")) { // Verifica se o arquivo de save existe
+		obj_player.nome_player = jogador
+		if (file_exists("save.sav")) { // Verifica se o arquivo de save existe
         ini_open("save.sav"); // Abre o arquivo de save
-		global.player_name = jogador
+		
+		var _sala_atual = ini_read_real(obj_player.nome_player, "sala_atual", room);
+		
         obj_player.x = ini_read_real(jogador, "x_atual", 0);
         obj_player.y = ini_read_real(jogador, "y_atual", 0);
         obj_player.vida_atual = ini_read_real(jogador, "vida_atual", 0);
         obj_player.etapa_historia = ini_read_real(jogador, "etapa_historia", 0); // Adiciona a etapa da história
-        global.pontuacao = ini_read_real(jogador, "pontuacao", 0)
-		global.estrelas_coletadas = ini_read_real(jogador, "estrelas_coletadas", 0)
-        room_goto(ini_read_real(jogador, "sala_atual", 0));
+        obj_player.pontuacao = ini_read_real(jogador, "pontuacao", 0)
+		 obj_player.estrelas_coletadas = ini_read_real(jogador, "estrelas_coletadas", 0)
+        room_goto(_sala_atual);
         ini_close(); // Fecha o arquivo de save
     } else {
         show_message("Arquivo de save não encontrado!");
     }
+		
+    }
+	
+    
     
     // Carregando os itens
    

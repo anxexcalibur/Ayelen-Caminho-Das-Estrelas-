@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+var _nome_jogador // variavel para puxar o nome do obj_menu
 if instance_exists(obj_catcine){
 	obj_catcine.pode_desenhar = false;
 }
@@ -13,16 +14,25 @@ if direcao{
 			
 			 
 			direcao = false;
-			
+			_nome_jogador  = global.player_name;
+			global.player_name = ""; // limpa a variavel do menu
+			show_message(global.player_name)
+			carrega_jogo_3(
+    _nome_jogador, 
+    undefined, 
+    undefined, 
+    undefined, 
+    undefined, 
+    false);
 			
 			if instance_exists(obj_catcine){
 				obj_catcine.pode_desenhar = false
 			}else{
-				carrega_jogo2(global.player_name, rm_prototipo, 1,53,323,);
+				
+				//carrega_jogo2(global.player_name, rm_prototipo, 1,53,323,);
 			}
 		}else if room == rm_catcine_2{
-		  
-		  carrega_jogo2(global.player_name, rm_prototipo, 4, 1273, 322,);
+			
 			direcao = false;
 			if instance_exists(obj_catcine){
 				obj_catcine.pode_desenhar = false

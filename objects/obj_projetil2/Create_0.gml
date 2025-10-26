@@ -1,9 +1,8 @@
-
-/// @description Inicializa o projétil de veneno
-
-// Variáveis de Movimento
-direcao = 1;    // Será definido pela cobra (1 para direita, -1 para esquerda)
-velocidade = 8; // Velocidade do projétil
+/// @description Inicialização do projétil da cobra
+velocidade = 6;
+direcao = 1; 
+sprite_index = spr_snake_shoot; // substitui pelo sprite correto
+image_angle = 0;
 
 // --- Partículas de Veneno (Seu código) ---
 part_sys = part_system_create();

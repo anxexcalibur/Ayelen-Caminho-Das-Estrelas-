@@ -1,5 +1,6 @@
-if !instance_exists(obj_transicao_2) and room != rm_catcine and room !=rm_catcine_2 {
-	if global.menu_existe || room == rm_menu{
+
+if !instance_exists(obj_transicao_2) {
+	if global.menu_existe{
 		desenha_menu(menus[pag]);
 		if instance_exists(obj_dialogo) {
 	    with (obj_dialogo) {

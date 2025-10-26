@@ -1,9 +1,17 @@
 /// @description Inicialização do jogador
-
+nome_player = ""
+pontuacao = 0
+estrelas_coletadas = 0
 // Itens e progresso
 if (!variable_global_exists("pontuacao")) {
     global.pontuacao = 0;
 }
+// Número máximo de projéteis que o jogador pode disparar
+qtd_tiros = 0; // começa sem poder atirar
+
+// Quantos tiros o jogador pode disparar atualmente
+
+
 pontuacao = global.pontuacao
 // Estados e atributos
 estado = "parado";
@@ -31,7 +39,7 @@ vida_atual = max_vida;
 // Adicione esta linha junto com suas outras variáveis
 hitbox_aerea_id = noone;
 // Ataque
-ataque = 30;
+ataque = 3;
 
 // Dash
 vel_dash = 10;

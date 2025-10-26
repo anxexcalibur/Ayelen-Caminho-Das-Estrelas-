@@ -48,10 +48,10 @@ if (_draw_hud) {
 
     // Projetil (embaixo)
     draw_set_color(make_color_rgb(0, 0, 139));
-    draw_text(texto_x_hud + 2, texto_y_hud - 20 + 2, "Projetil: " + string(global.balas));
+    draw_text(texto_x_hud + 2, texto_y_hud - 20 + 2, "Insígnias: " + string(global.estrelas_coletadas));
 
     draw_set_color(make_color_rgb(144, 238, 144));
-    draw_text(texto_x_hud, texto_y_hud - 20, "Projetil: " + string(global.balas));
+    draw_text(texto_x_hud, texto_y_hud - 20, "Insígnias: " + string(global.estrelas_coletadas));
 
     // Pontuação (acima)
     texto_y_hud -= 30;
@@ -71,4 +71,10 @@ if (_draw_hud) {
 
     draw_set_color(c_white);
     draw_set_font(-1);
+	texto_y_hud -= 30; // desce mais um "passo" no HUD
+		draw_set_color(make_color_rgb(0, 0, 139)); // sombra
+		draw_text(texto_x_hud + 2, texto_y_hud - 20 + 2, "Tiros: " + string(_player.qtd_tiros));
+
+		draw_set_color(make_color_rgb(144, 238, 144)); // cor principal
+		draw_text(texto_x_hud, texto_y_hud - 20, "Tiros: " + string(_player.qtd_tiros));
 }

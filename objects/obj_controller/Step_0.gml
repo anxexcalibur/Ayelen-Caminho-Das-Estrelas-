@@ -9,13 +9,9 @@ if instance_exists(obj_porta){
 	desenha_porta = obj_porta.mostrar_mensagem
 }
 
-var _room_atual = room
-var _key_esc_capture = keyboard_check_pressed(vk_escape)
-if _key_esc_capture {
-	global.menu_existe = !global.menu_existe;
-} 
 
 scr_checkRoom(global.items_coletados);
+
 
 
 

@@ -356,57 +356,53 @@ function carregar_progresso() {
 
 
 
+function salvar_checkpoint(_secao_save) {
+    
+    // 1. Validação (Garantia de Segurança)
+    //    Mesmo que a gente saiba que ele existe, é uma boa prática
+    //    gastar 1 microssegundo para verificar.
+    if (!instance_exists(obj_player)) {
+        show_debug_message("⚠ ERRO ao salvar: salvar_checkpoint foi chamado, mas obj_player não existe!");
+        return;
+    }
 
-function salvar_jogador(_obj) {
     ini_open("save.sav");
-    ini_write_real(global.player_name, "x_atual", _obj.x);
-    ini_write_real(global.player_name, "y_atual", _obj.y - 50);
-    ini_write_real(global.player_name, "vida_atual", _obj.vida_atual);
-    ini_write_real(global.player_name, "sala_atual", room);
-    ini_write_real(global.player_name, "etapa_historia", _obj.etapa_historia);
-    ini_write_real(global.player_name, "pontuacao", global.pontuacao);
-    ini_write_real(global.player_name, "estrelas_coletadas", global.estrelas_coletadas); // Adicionado para salvar as estrelas
 
+    // 2. Coleta os dados direto do obj_player e das globais
+    var _x = obj_player.x;
+    var _y = obj_player.y - 50; // Seu offset original
+    var _vida = obj_player.vida_atual;
+    var _etapa = obj_player.etapa_historia;
+    var _tiros = obj_player.qtd_tiros;
+    
+    // 3. Escreve os dados do jogador
+    ini_write_real(_secao_save, "x_atual", _x);
+    ini_write_real(_secao_save, "y_atual", _y);
+    ini_write_real(_secao_save, "vida_atual", _vida);
+    ini_write_real(_secao_save, "sala_atual", room);
+    ini_write_real(_secao_save, "etapa_historia", _etapa);
+    ini_write_real(_secao_save, "qtd_tiros", _tiros); // Chave correta
 
-var _array = global.items_coletados;
+    // 4. Escreve os dados globais
+    ini_write_real(_secao_save, "pontuacao", global.pontuacao);
+    ini_write_real(_secao_save, "estrelas_coletadas", global.estrelas_coletadas);
 
-// 1. Inicia uma string vazia ANTES do loop.
-var _inventory_item = "";
-var _tamanho_array = array_length(_array);
-
-// 2. O loop FOR constrói a string completa.
-for (var i = 0; i < _tamanho_array; i++)
-{
-	_inventory_item += string(_array[i]);
-	
-	// Adiciona o separador, exceto no último item.
-	if (i < _tamanho_array - 1)
-	{
-		_inventory_item += ", ";
-	}
+    // 5. Salva o inventário (Método JSON - O mais seguro)
+    if (is_variable_global("items_coletados")) {
+        var _inventory_json = json_stringify(global.items_coletados);
+        ini_write_string(_secao_save, "inventario", _inventory_json);
+    } else {
+        // Se a global não existir por algum motivo, salva um array vazio
+        ini_write_string(_secao_save, "inventario", "[]"); 
+    }
+    
+    ini_close();
+    
+    show_debug_message("CHECKPOINT: Jogo salvo na seção [" + _secao_save + "]");
 }
 
-//show_message(_inventory_item)
-// 3. DEPOIS que o loop termina, a string está pronta!
-//    AGORA é o momento de salvá-la no arquivo.
 
-// Opcional: Para testar, você pode mostrar a string final aqui.
-// Note que eu removi o show_message de dentro do loop, pois ele
-// iria pausar o jogo para cada item adicionado.
-//how_message("String final salva: " + _inventory_item);
 
-// --- FIM DA LÓGICA DO INVENTÁRIO ---
-   
-   ini_close();
-    
-    // salvando o estado dos itens
-    // Certifique-se de que as funções salvar_itens() e salvar_progresso()
-    // estejam definidas em outro script do seu projeto.
- 
-    
-
-    
-}
 
 
 

@@ -59,10 +59,36 @@ if (keyboard_check_pressed(vk_escape)) {
         exibe = false;
         count_space = 0;
         if (room == rm_catcine_2) {
+			// registrando o primeiro save
+			show_message("Criando save inicial manual para: " + global.player_name);
+
+				
            // carrega_jogo2(global.nome_jogador, rm_prototipo, 4, 1273, 322);
+			
 		    instance_create_layer(x,y,layer,obj_transicao_2)
             instance_destroy(); 
-        } else {
+        } else if room == rm_catcine {
+			show_message(global.player_name)
+			ini_open("save.sav");
+				//glovalplayer_name existe no menu tem que ser zerado depois
+				// Escreve os valores iniciais exatos que você definiu
+				ini_write_real(global.player_name, "x_atual", 128.923584);
+				ini_write_real(global.player_name, "y_atual", 328.504913);
+				ini_write_real(global.player_name, "vida_atual", 10.000000);
+				ini_write_real(global.player_name, "sala_atual", 3.000000); // Certifique-se que '3' é o ID da sala correta
+				ini_write_real(global.player_name, "etapa_historia", 1.000000);
+				ini_write_real(global.player_name, "pontuacao", 0.000000);
+				ini_write_real(global.player_name, "estrelas_coletadas", 0.000000);
+				ini_write_real(global.player_name, "qtd_tiros", 4.000000);
+
+				// ADIÇÃO IMPORTANTE:
+				// Adicione a chave do inventário como vazia para
+				// garantir que sua função de carregar não dê erro.
+				ini_write_string(global.player_name, "inventario", ""); //ainda nao sei se vou usar
+
+				ini_close();
+
+				show_debug_message("Save inicial criado. Chamando transição...");
             //carrega_jogo2(global.nome_jogador, rm_prototipo, 1);
 			instance_create_layer(x,y,layer,obj_transicao_2)
             instance_destroy();
