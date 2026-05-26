@@ -1,8 +1,8 @@
 {
-  "$GMProject":"",
+  "$GMProject":"v1",
   "%Name":"Ayelen Caminho Das Estrelas",
   "AudioGroups":[
-    {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
     "children":[],
@@ -74,11 +74,14 @@
     {"$GMFolder":"","%Name":"Pulando","folderPath":"folders/Sprites/Player/Pulando.yy","name":"Pulando","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"rostos","folderPath":"folders/Sprites/rostos.yy","name":"rostos","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
+  "ForcedPrefabProjectReferences":[
+    {"link":"io.gamemaker.sdfshaders-1.0.0","name":"io.gamemaker.sdfshaders-1.0.0","path":"io.gamemaker.sdfshaders-1.0.0.yyp",},
+  ],
   "IncludedFiles":[],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.8.1.171",
+    "IDEVersion":"2026.0.0.15",
   },
   "name":"Ayelen Caminho Das Estrelas",
   "resources":[

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"dpr_flor_Jaciuna",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,9 +12,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"7626a458-5dcf-4408-a2d6-ac95cd632b5d","name":"7626a458-5dcf-4408-a2d6-ac95cd632b5d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"c482a225-b02b-4cbb-97a8-2e1eaba4756d","name":"c482a225-b02b-4cbb-97a8-2e1eaba4756d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"5295706b-65f9-43ae-9d59-55c687897dc7","name":"5295706b-65f9-43ae-9d59-55c687897dc7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7626a458-5dcf-4408-a2d6-ac95cd632b5d","name":"7626a458-5dcf-4408-a2d6-ac95cd632b5d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c482a225-b02b-4cbb-97a8-2e1eaba4756d","name":"c482a225-b02b-4cbb-97a8-2e1eaba4756d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5295706b-65f9-43ae-9d59-55c687897dc7","name":"5295706b-65f9-43ae-9d59-55c687897dc7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -34,7 +34,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"",
+    "$GMSequence":"v1",
     "%Name":"dpr_flor_Jaciuna",
     "autoRecord":true,
     "backdropHeight":768,
@@ -70,15 +70,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7626a458-5dcf-4408-a2d6-ac95cd632b5d","path":"sprites/dpr_flor_Jaciuna/dpr_flor_Jaciuna.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"12b5f33a-184e-431c-b1d9-e65e3d3f72f1","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c482a225-b02b-4cbb-97a8-2e1eaba4756d","path":"sprites/dpr_flor_Jaciuna/dpr_flor_Jaciuna.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f80f1020-9156-4db4-9c63-fd65a7918a68","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5295706b-65f9-43ae-9d59-55c687897dc7","path":"sprites/dpr_flor_Jaciuna/dpr_flor_Jaciuna.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"6e32172b-0833-4707-ab4b-a886e3bae5a3","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"7626a458-5dcf-4408-a2d6-ac95cd632b5d","path":"sprites/dpr_flor_Jaciuna/dpr_flor_Jaciuna.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"12b5f33a-184e-431c-b1d9-e65e3d3f72f1","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"c482a225-b02b-4cbb-97a8-2e1eaba4756d","path":"sprites/dpr_flor_Jaciuna/dpr_flor_Jaciuna.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"f80f1020-9156-4db4-9c63-fd65a7918a68","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"5295706b-65f9-43ae-9d59-55c687897dc7","path":"sprites/dpr_flor_Jaciuna/dpr_flor_Jaciuna.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"6e32172b-0833-4707-ab4b-a886e3bae5a3","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_tatucanastra_parado",
   "bboxMode":0,
   "bbox_bottom":27,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"1dc56a4c-9e3a-416e-b159-8392c61de882","name":"1dc56a4c-9e3a-416e-b159-8392c61de882","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"2c977918-ff26-4a5a-bc38-0dc3c49d12ee","name":"2c977918-ff26-4a5a-bc38-0dc3c49d12ee","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"1dc56a4c-9e3a-416e-b159-8392c61de882","name":"1dc56a4c-9e3a-416e-b159-8392c61de882","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2c977918-ff26-4a5a-bc38-0dc3c49d12ee","name":"2c977918-ff26-4a5a-bc38-0dc3c49d12ee","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -33,7 +33,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"",
+    "$GMSequence":"v1",
     "%Name":"spr_tatucanastra_parado",
     "autoRecord":true,
     "backdropHeight":768,
@@ -69,12 +69,8 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1dc56a4c-9e3a-416e-b159-8392c61de882","path":"sprites/spr_tatucanastra_parado/spr_tatucanastra_parado.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"8f827a60-ffb1-4bd9-be1c-38d6971ebe19","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2c977918-ff26-4a5a-bc38-0dc3c49d12ee","path":"sprites/spr_tatucanastra_parado/spr_tatucanastra_parado.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"5a5342f7-58b9-4a2f-b548-bbef24c9b96c","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"1dc56a4c-9e3a-416e-b159-8392c61de882","path":"sprites/spr_tatucanastra_parado/spr_tatucanastra_parado.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"8f827a60-ffb1-4bd9-be1c-38d6971ebe19","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"2c977918-ff26-4a5a-bc38-0dc3c49d12ee","path":"sprites/spr_tatucanastra_parado/spr_tatucanastra_parado.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"5a5342f7-58b9-4a2f-b548-bbef24c9b96c","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

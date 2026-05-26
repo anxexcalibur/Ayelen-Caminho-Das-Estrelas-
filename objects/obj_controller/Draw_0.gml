@@ -1,72 +1,108 @@
-// Verifica se o jogo acabou
+/// @description Tela de Game Over - Tema Indígena
 if (game_over)
 {
-	
-    // Pegando algumas informações sobre a câmera
-    var x1 = camera_get_view_x(view_camera[0]); // Coordenada x da câmera
-    var w = camera_get_view_width(view_camera[0]); // Largura da câmera
-    var x2 = x1 + w; // Coordenada x final da câmera
-    var meio_w = x1 + (w / 2); // Centro da câmera em relação ao eixo x
-    var y1 = camera_get_view_y(view_camera[0]); // Coordenada y da câmera
-    var h = camera_get_view_height(view_camera[0]); // Altura da câmera
-    var y2 = y1 + h; // Coordenada y final da câmera
-    var meio_h = y2 + h / 2; // Centro da câmera em relação ao eixo y
+    var cam_x = camera_get_view_x(view_camera[0]);
+    var cam_y = camera_get_view_y(view_camera[0]);
+    var cam_w = camera_get_view_width(view_camera[0]);
+    var cam_h = camera_get_view_height(view_camera[0]);
+    var cam_cx = cam_x + cam_w / 2;
+    var cam_cy = cam_y + cam_h / 2;
     
-    var qtd = h * 0.15; // Quantidade para desenhar como 15% da tela
+    var bar_h = cam_h * 0.15;
     
-    valor = lerp(valor, 1, 0.05); // Interpola linearmente o valor atual para 1 com uma taxa de mudança de 0.05
+    // Animação
+    valor = lerp(valor, 1, 0.04);
     
-    // Desenha um retângulo escuro sobre a tela para indicar o estado de "game over"
-    draw_set_color(c_black); // Cor do desenho: preto
-    draw_set_alpha(valor - 0.3); // Transparência do desenho um pouco menor que 'valor'
-    draw_rectangle(x1, y1, x2, y2, false); // Retângulo cobrindo toda a tela
+    // --- FUNDO ESTRELADO ESCURO ---
+    draw_set_alpha(clamp(valor, 0, 0.85));
+    draw_set_color(make_color_rgb(10, 5, 20)); // Roxo bem escuro
+    draw_rectangle(cam_x, cam_y, cam_x + cam_w, cam_y + cam_h, false);
     
-    // Desenha um retângulo mais escuro na parte superior da tela para dar destaque ao texto
-    draw_set_alpha(1); // Restaura a transparência padrão
-    draw_rectangle(x1, y1, x2, y1 + qtd * valor, false); // Retângulo na parte superior da tela
-    
-    // Desenha um retângulo mais escuro na parte inferior da tela para dar destaque ao texto
-    draw_rectangle(x1, y2, x2, y2 - qtd * valor, false); // Retângulo na parte inferior da tela
-    
-    // Dando um delay para exibir "Game Over"
-    if (valor >= .65)
+    // Estrelas piscando (simples)
+    draw_set_color(make_color_rgb(255, 255, 200));
+    for (var i = 0; i < 20; i++)
     {
-        contador = lerp(contador, 1, .01);
+        var sx = cam_x + 50 + (i * 47) % cam_w;
+        var sy = cam_y + 30 + (i * 73) % cam_h;
+        var brilho = 0.3 + 0.4 * sin(current_time / 1000 + i);
+        draw_set_alpha(valor * brilho);
+        draw_point(sx, sy);
+    }
+    
+    // --- BARRAS COM PADRÃO INDÍGENA ---
+    draw_set_alpha(1);
+    
+    // Barra superior
+    draw_set_color(make_color_rgb(30, 10, 5)); // Marrom escuro
+    draw_rectangle(cam_x, cam_y, cam_x + cam_w, cam_y + bar_h * valor, false);
+    
+    // Barra inferior
+    draw_rectangle(cam_x, cam_y + cam_h - bar_h * valor, cam_x + cam_w, cam_y + cam_h, false);
+    
+    // Linhas decorativas (grafismo)
+    draw_set_color(make_color_rgb(180, 100, 30)); // Laranja queimado
+    draw_line_width(cam_x, cam_y + bar_h * valor, cam_x + cam_w, cam_y + bar_h * valor, 3);
+    draw_line_width(cam_x, cam_y + cam_h - bar_h * valor, cam_x + cam_w, cam_y + cam_h - bar_h * valor, 3);
+    
+    // Triângulos decorativos (padrão indígena)
+    var tri_w = 20;
+    for (var tx = cam_x; tx < cam_x + cam_w; tx += tri_w * 2)
+    {
+        // Superior
+        draw_triangle(tx, cam_y + bar_h * valor, tx + tri_w, cam_y + bar_h * valor, tx + tri_w/2, cam_y + bar_h * valor - 12, false);
+        draw_triangle(tx + tri_w, cam_y + bar_h * valor, tx + tri_w * 2, cam_y + bar_h * valor, tx + tri_w * 1.5, cam_y + bar_h * valor - 12, false);
+        
+        // Inferior
+        draw_triangle(tx, cam_y + cam_h - bar_h * valor, tx + tri_w, cam_y + cam_h - bar_h * valor, tx + tri_w/2, cam_y + cam_h - bar_h * valor + 12, false);
+        draw_triangle(tx + tri_w, cam_y + cam_h - bar_h * valor, tx + tri_w * 2, cam_y + cam_h - bar_h * valor, tx + tri_w * 1.5, cam_y + cam_h - bar_h * valor + 12, false);
+    }
+    
+    // --- TEXTO ---
+    if (valor >= 0.6)
+    {
+        contador = lerp(contador, 1, 0.02);
         draw_set_alpha(contador);
         
-        // Calcula as coordenadas do centro da tela com base na posição da câmera
-        var screen_center_x = camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) / 2;
-        var screen_center_y = camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) / 2;
+        // Frase temática
+        draw_set_font(fnt_pequena);
+        draw_set_color(make_color_rgb(255, 200, 100)); // Dourado
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_text(cam_cx, cam_cy - 80, "As estrelas recolheram sua luz...");
         
-        // Define a fonte e o alinhamento para desenhar o texto "Game Over"
-        draw_set_color(c_white); // Cor do texto: branco
-        draw_set_font(fnt_game_over); // Fonte: "Game Over"
-        draw_set_valign(fa_middle); // Alinhamento vertical: centralizado
-        draw_set_halign(fa_center); // Alinhamento horizontal: centralizado
+        // Título
+        draw_set_font(fnt_game_over);
         
-        // Desenha o texto "Game Over" com sombra
-        draw_set_color(c_red); // Cor da sombra: vermelho
-        draw_text(screen_center_x + 3, screen_center_y + 1, "Game Over"); // Sombra do texto "Game Over"
-        draw_set_color(c_white); // Restaura a cor do texto para branco
-        draw_text(screen_center_x, screen_center_y, "Game Over"); // Texto "Game Over"
+        // Sombra
+        draw_set_color(make_color_rgb(100, 30, 0));
+        draw_text(cam_cx + 4, cam_cy - 25 + 3, "A JORNADA TERMINOU");
         
-        // Desenha o texto "Pressione ENTER para resetar o jogo" abaixo do texto "Game Over"
-        draw_set_font(fnt_pequena); // Restaura a fonte padrão
-        draw_text(screen_center_x, screen_center_y + 50, "Pressione ENTER para resetar o jogo");
+        // Texto principal (dourado)
+        draw_set_color(make_color_rgb(255, 180, 40));
+        draw_text(cam_cx, cam_cy - 25, "A JORNADA TERMINOU");
         
-        // Restaura os ajustes de alinhamento
-        draw_set_valign(-1); // Restaura o alinhamento vertical padrão
-        draw_set_halign(-1); // Restaura o alinhamento horizontal padrão
-		 draw_set_font(-1);
-	}
+        // Linha decorativa
+        var line_w = 250 * contador;
+        draw_set_color(make_color_rgb(255, 150, 30));
+        draw_line_width(cam_cx - line_w/2, cam_cy + 10, cam_cx + line_w/2, cam_cy + 10, 2);
+        
+        // Instrução piscante
+        var alpha_pisca = 0.5 + 0.5 * sin(current_time / 500);
+        draw_set_alpha(contador * alpha_pisca);
+        draw_set_font(fnt_pequena);
+        draw_set_color(make_color_rgb(255, 220, 150));
+        draw_text(cam_cx, cam_cy + 55, "Pressione ENTER para renascer");
+        
+        draw_set_halign(-1);
+        draw_set_valign(-1);
+        draw_set_font(-1);
+    }
     
-    // Restaura a transparência padrão após o desenho do "Game Over"
     draw_set_alpha(1);
 }
 else
 {
-	
-
-    // Certifique-se de redefinir a transparência caso o jogo não esteja em estado de "game over"
+    valor = 0;
+    contador = 0;
     draw_set_alpha(1);
 }

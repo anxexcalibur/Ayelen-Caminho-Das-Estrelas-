@@ -358,9 +358,6 @@ function carregar_progresso() {
 
 function salvar_checkpoint(_secao_save) {
     
-    // 1. Validação (Garantia de Segurança)
-    //    Mesmo que a gente saiba que ele existe, é uma boa prática
-    //    gastar 1 microssegundo para verificar.
     if (!instance_exists(obj_player)) {
         show_debug_message("⚠ ERRO ao salvar: salvar_checkpoint foi chamado, mas obj_player não existe!");
         return;
@@ -368,31 +365,27 @@ function salvar_checkpoint(_secao_save) {
 
     ini_open("save.sav");
 
-    // 2. Coleta os dados direto do obj_player e das globais
     var _x = obj_player.x;
-    var _y = obj_player.y - 50; // Seu offset original
+    var _y = obj_player.y - 50;
     var _vida = obj_player.vida_atual;
     var _etapa = obj_player.etapa_historia;
     var _tiros = obj_player.qtd_tiros;
     
-    // 3. Escreve os dados do jogador
     ini_write_real(_secao_save, "x_atual", _x);
     ini_write_real(_secao_save, "y_atual", _y);
     ini_write_real(_secao_save, "vida_atual", _vida);
     ini_write_real(_secao_save, "sala_atual", room);
     ini_write_real(_secao_save, "etapa_historia", _etapa);
-    ini_write_real(_secao_save, "qtd_tiros", _tiros); // Chave correta
+    ini_write_real(_secao_save, "qtd_tiros", _tiros);
 
-    // 4. Escreve os dados globais
     ini_write_real(_secao_save, "pontuacao", global.pontuacao);
     ini_write_real(_secao_save, "estrelas_coletadas", global.estrelas_coletadas);
 
-    // 5. Salva o inventário (Método JSON - O mais seguro)
-    if (is_variable_global("items_coletados")) {
-        var _inventory_json = json_stringify(global.items_coletados);
+    // CORRIGIDO: nome da função + nome da global
+    if (variable_global_exists("itens_coletados")) {
+        var _inventory_json = json_stringify(global.itens_coletados);
         ini_write_string(_secao_save, "inventario", _inventory_json);
     } else {
-        // Se a global não existir por algum motivo, salva um array vazio
         ini_write_string(_secao_save, "inventario", "[]"); 
     }
     

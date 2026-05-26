@@ -39,10 +39,22 @@ if (keyboard_check_pressed(ord("R"))) {
 // Lógica da história (controla a seta e outros elementos)
 switch(etapa_historia) {
     case 1:
-        global.alvo_x = obj_sensor.x;
-        global.alvo_y = obj_sensor.y;
-        if (instance_exists(obj_seta)) {
-            obj_seta.status = true;
+        // Busca a instância do sensor
+        var _sensor = instance_find(obj_sensor, 0);
+        if (_sensor != noone) {
+            global.alvo_x = _sensor.x;
+            global.alvo_y = _sensor.y;
+        } else {
+            // Fallback: usa a posição do player ou valores padrão
+            global.alvo_x = x;
+            global.alvo_y = y;
+            // Opcional: show_debug_message("Sensor não encontrado na room!");
+        }
+        
+        // Ativa a seta se existir
+        var _seta = instance_find(obj_seta, 0);
+        if (_seta != noone) {
+            _seta.status = true;
         }
         break;
 }

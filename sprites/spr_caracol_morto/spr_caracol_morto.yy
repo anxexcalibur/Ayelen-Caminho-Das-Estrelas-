@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_caracol_morto",
   "bboxMode":0,
   "bbox_bottom":31,
@@ -12,11 +12,11 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"9451e028-9803-4d92-bf9a-515838a483b8","name":"9451e028-9803-4d92-bf9a-515838a483b8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"2fcf2681-27a7-4753-ad76-e8ad94a5c0bd","name":"2fcf2681-27a7-4753-ad76-e8ad94a5c0bd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"c7e8ad3e-d628-41df-996a-4dc1359e9a58","name":"c7e8ad3e-d628-41df-996a-4dc1359e9a58","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"261b37c0-f70d-4fa9-873a-3e9488638115","name":"261b37c0-f70d-4fa9-873a-3e9488638115","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"9c6ae9d3-976f-4a6e-8d5d-5ade1515f531","name":"9c6ae9d3-976f-4a6e-8d5d-5ade1515f531","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9451e028-9803-4d92-bf9a-515838a483b8","name":"9451e028-9803-4d92-bf9a-515838a483b8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2fcf2681-27a7-4753-ad76-e8ad94a5c0bd","name":"2fcf2681-27a7-4753-ad76-e8ad94a5c0bd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c7e8ad3e-d628-41df-996a-4dc1359e9a58","name":"c7e8ad3e-d628-41df-996a-4dc1359e9a58","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"261b37c0-f70d-4fa9-873a-3e9488638115","name":"261b37c0-f70d-4fa9-873a-3e9488638115","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9c6ae9d3-976f-4a6e-8d5d-5ade1515f531","name":"9c6ae9d3-976f-4a6e-8d5d-5ade1515f531","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -37,7 +37,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"",
+    "$GMSequence":"v1",
     "%Name":"spr_caracol_morto",
     "autoRecord":true,
     "backdropHeight":768,
@@ -73,21 +73,11 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9451e028-9803-4d92-bf9a-515838a483b8","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f23278e9-1694-43bd-85a8-479b04f84c7f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2fcf2681-27a7-4753-ad76-e8ad94a5c0bd","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"818767d3-1c37-4b61-bfde-f688ecd9df2c","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c7e8ad3e-d628-41df-996a-4dc1359e9a58","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"63b090ee-c7da-4ecf-b69c-9342b90d4e34","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"261b37c0-f70d-4fa9-873a-3e9488638115","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"806e90c2-8222-4868-af34-2f98e9b1f8ae","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9c6ae9d3-976f-4a6e-8d5d-5ade1515f531","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"effd740a-b876-4e3d-8a88-c46199fa28a5","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"9451e028-9803-4d92-bf9a-515838a483b8","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"f23278e9-1694-43bd-85a8-479b04f84c7f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"2fcf2681-27a7-4753-ad76-e8ad94a5c0bd","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"818767d3-1c37-4b61-bfde-f688ecd9df2c","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"c7e8ad3e-d628-41df-996a-4dc1359e9a58","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"63b090ee-c7da-4ecf-b69c-9342b90d4e34","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"261b37c0-f70d-4fa9-873a-3e9488638115","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"806e90c2-8222-4868-af34-2f98e9b1f8ae","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"9c6ae9d3-976f-4a6e-8d5d-5ade1515f531","path":"sprites/spr_caracol_morto/spr_caracol_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"effd740a-b876-4e3d-8a88-c46199fa28a5","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

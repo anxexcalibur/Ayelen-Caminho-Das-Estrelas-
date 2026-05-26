@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_tatucanastra_morto",
   "bboxMode":0,
   "bbox_bottom":31,
@@ -12,16 +12,16 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"a958d1f2-4338-49b9-90d0-8864905942d3","name":"a958d1f2-4338-49b9-90d0-8864905942d3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"f902582c-dca1-48d9-be41-1be72a7e732f","name":"f902582c-dca1-48d9-be41-1be72a7e732f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"262c85da-cd6a-4457-8370-47b088703c7a","name":"262c85da-cd6a-4457-8370-47b088703c7a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"f379a536-a9c7-499b-9917-a716e67775fe","name":"f379a536-a9c7-499b-9917-a716e67775fe","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"cd4c8ef1-0592-405c-afc3-c8651dac8cad","name":"cd4c8ef1-0592-405c-afc3-c8651dac8cad","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"aef9cde7-750b-4d00-b7e1-0ec48e03e1d1","name":"aef9cde7-750b-4d00-b7e1-0ec48e03e1d1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"35088f1f-15ae-4908-ab42-0023364275d7","name":"35088f1f-15ae-4908-ab42-0023364275d7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"5627beef-4925-45cc-8be2-59eed4d88622","name":"5627beef-4925-45cc-8be2-59eed4d88622","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"31fc97c2-e599-42cb-97ca-cbcb43e52847","name":"31fc97c2-e599-42cb-97ca-cbcb43e52847","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"95e843da-2a83-4c09-9096-45f8c04bedd5","name":"95e843da-2a83-4c09-9096-45f8c04bedd5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a958d1f2-4338-49b9-90d0-8864905942d3","name":"a958d1f2-4338-49b9-90d0-8864905942d3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f902582c-dca1-48d9-be41-1be72a7e732f","name":"f902582c-dca1-48d9-be41-1be72a7e732f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"262c85da-cd6a-4457-8370-47b088703c7a","name":"262c85da-cd6a-4457-8370-47b088703c7a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f379a536-a9c7-499b-9917-a716e67775fe","name":"f379a536-a9c7-499b-9917-a716e67775fe","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"cd4c8ef1-0592-405c-afc3-c8651dac8cad","name":"cd4c8ef1-0592-405c-afc3-c8651dac8cad","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"aef9cde7-750b-4d00-b7e1-0ec48e03e1d1","name":"aef9cde7-750b-4d00-b7e1-0ec48e03e1d1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"35088f1f-15ae-4908-ab42-0023364275d7","name":"35088f1f-15ae-4908-ab42-0023364275d7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5627beef-4925-45cc-8be2-59eed4d88622","name":"5627beef-4925-45cc-8be2-59eed4d88622","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"31fc97c2-e599-42cb-97ca-cbcb43e52847","name":"31fc97c2-e599-42cb-97ca-cbcb43e52847","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"95e843da-2a83-4c09-9096-45f8c04bedd5","name":"95e843da-2a83-4c09-9096-45f8c04bedd5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -42,7 +42,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"",
+    "$GMSequence":"v1",
     "%Name":"spr_tatucanastra_morto",
     "autoRecord":true,
     "backdropHeight":768,
@@ -78,36 +78,16 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a958d1f2-4338-49b9-90d0-8864905942d3","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e6723536-cd29-4fd8-af67-5508299f7367","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f902582c-dca1-48d9-be41-1be72a7e732f","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"988610a6-c089-4079-a170-7d1878fbc41d","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"262c85da-cd6a-4457-8370-47b088703c7a","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"0b6e649f-d8ca-4034-9b04-d660787c7db4","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f379a536-a9c7-499b-9917-a716e67775fe","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"09185a56-dba4-45f0-94ba-9942b404a386","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"cd4c8ef1-0592-405c-afc3-c8651dac8cad","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"28d48420-0f6f-4956-a846-18f8e46f1ac1","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"aef9cde7-750b-4d00-b7e1-0ec48e03e1d1","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c0038d00-54a4-4a63-8526-d0c0243743c4","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"35088f1f-15ae-4908-ab42-0023364275d7","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"fa6f5a76-304d-4357-be01-14442f875e67","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5627beef-4925-45cc-8be2-59eed4d88622","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"ea1c1eef-0e08-4547-a724-f4fdf7d810b1","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"31fc97c2-e599-42cb-97ca-cbcb43e52847","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"402e5079-6417-4596-be4e-071bce0d4978","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"95e843da-2a83-4c09-9096-45f8c04bedd5","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"53d3e5f5-3795-4de5-bcf4-e950b0c56a39","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a958d1f2-4338-49b9-90d0-8864905942d3","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e6723536-cd29-4fd8-af67-5508299f7367","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f902582c-dca1-48d9-be41-1be72a7e732f","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"988610a6-c089-4079-a170-7d1878fbc41d","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"262c85da-cd6a-4457-8370-47b088703c7a","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"0b6e649f-d8ca-4034-9b04-d660787c7db4","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f379a536-a9c7-499b-9917-a716e67775fe","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"09185a56-dba4-45f0-94ba-9942b404a386","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"cd4c8ef1-0592-405c-afc3-c8651dac8cad","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"28d48420-0f6f-4956-a846-18f8e46f1ac1","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"aef9cde7-750b-4d00-b7e1-0ec48e03e1d1","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"c0038d00-54a4-4a63-8526-d0c0243743c4","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"35088f1f-15ae-4908-ab42-0023364275d7","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"fa6f5a76-304d-4357-be01-14442f875e67","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"5627beef-4925-45cc-8be2-59eed4d88622","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"ea1c1eef-0e08-4547-a724-f4fdf7d810b1","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"31fc97c2-e599-42cb-97ca-cbcb43e52847","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"402e5079-6417-4596-be4e-071bce0d4978","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"95e843da-2a83-4c09-9096-45f8c04bedd5","path":"sprites/spr_tatucanastra_morto/spr_tatucanastra_morto.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"53d3e5f5-3795-4de5-bcf4-e950b0c56a39","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
