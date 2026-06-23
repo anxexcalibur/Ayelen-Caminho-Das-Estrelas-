@@ -53,13 +53,14 @@ if (keyboard_check_pressed(vk_escape)) {
         exibe = false;
         count_space = 0;
         
-        // Cria save inicial só na primeira cutscene
+        // Salva o progresso baseado na sala atual
         if (room == rm_catcine) {
+            // Save inicial da cutscene 1
             ini_open("save.sav");
             ini_write_real(global.player_name, "x_atual", 128.923584);
             ini_write_real(global.player_name, "y_atual", 328.504913);
             ini_write_real(global.player_name, "vida_atual", 10.000000);
-            ini_write_real(global.player_name, "sala_atual", rm_prototipo); // CORRIGIDO!
+            ini_write_real(global.player_name, "sala_atual", rm_prototipo);
             ini_write_real(global.player_name, "etapa_historia", 1.000000);
             ini_write_real(global.player_name, "pontuacao", 0.000000);
             ini_write_real(global.player_name, "estrelas_coletadas", 0.000000);
@@ -67,8 +68,12 @@ if (keyboard_check_pressed(vk_escape)) {
             ini_write_string(global.player_name, "inventario", "");
             ini_close();
         }
+        else if (room == rm_catcine_2) {
+            // Save da cutscene 2 - mantém pontuação e avança etapa
+            salvar_progresso_cutscene_2();
+        }
         
-        // Garante que o fade vai fechar
+        // Cria transição para sair
         var _trans = instance_create_layer(x, y, layer, obj_transicao_2);
         _trans.direcao = true;
         instance_destroy();
@@ -83,13 +88,40 @@ if (proximo_dialogo) {
     dialogo_atual++;
     
     if (dialogo_atual < array_length(dialogos)) {
+        // Ainda tem diálogo, apenas reseta para o próximo
         texto_atual = "";
         indice = 0;
         imagem_dialogo = dialogos[dialogo_atual].imagem;
     } else {
+        // ACABOU O DIÁLOGO
         mostrando_dialogo = false;
+        
+        // Salva o progresso baseado na sala atual
+        if (room == rm_catcine) {
+            // Save inicial da cutscene 1
+            ini_open("save.sav");
+            ini_write_real(global.player_name, "x_atual", 128.923584);
+            ini_write_real(global.player_name, "y_atual", 328.504913);
+            ini_write_real(global.player_name, "vida_atual", 10.000000);
+            ini_write_real(global.player_name, "sala_atual", rm_prototipo);
+            ini_write_real(global.player_name, "etapa_historia", 1.000000);
+            ini_write_real(global.player_name, "pontuacao", 0.000000);
+            ini_write_real(global.player_name, "estrelas_coletadas", 0.000000);
+            ini_write_real(global.player_name, "qtd_tiros", 4.000000);
+            ini_write_string(global.player_name, "inventario", "");
+            ini_close();
+        }
+        else if (room == rm_catcine_2) {
+            // Save da cutscene 2 - mantém pontuação e avança etapa
+            salvar_progresso_cutscene_2();
+        }
+        
+        // Cria transição de saída
         var _trans = instance_create_layer(x, y, layer, obj_transicao_2);
-        _trans.direcao = true;
-        instance_destroy();
+		
+	       _trans.direcao = true;
+			_trans.        
+        // Marca para destruir após um pequeno delay
+        alarm[0] = 2;
     }
 }

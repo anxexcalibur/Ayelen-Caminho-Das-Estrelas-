@@ -8,7 +8,7 @@
     "TileSerialiseData":[],
   },
   "name":"tl_decoracao_chao",
-  "out_columns":5,
+  "out_columns":41,
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
@@ -18,8 +18,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"spr_terreno1",
-    "path":"sprites/spr_terreno1/spr_terreno1.yy",
+    "name":"spr_caverna_terreno",
+    "path":"sprites/spr_caverna_terreno/spr_caverna_terreno.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
@@ -34,5 +34,5 @@
   "tileWidth":16,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":21,
+  "tile_count":1650,
 }

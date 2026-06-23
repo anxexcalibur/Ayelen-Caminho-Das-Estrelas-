@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.308277,
+  "duration":1.3082767,
   "exportDir":"",
   "name":"snd_unlock_door",
   "parent":{

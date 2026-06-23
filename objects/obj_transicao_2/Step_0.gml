@@ -36,6 +36,50 @@ if direcao{
 		} else if room == rm_catcine_2 {
 			direcao = false;
 			
+			// ========== CARREGAR SAVE DA CUTSCENE 2 NA POSIÇÃO (1270, 311) ==========
+			_nome_jogador = global.player_name;
+			
+			// Verifica se tem um save para o jogador
+			ini_open("save.sav");
+			var save_existe = ini_section_exists(_nome_jogador);
+			ini_close();
+			
+			if (save_existe && _nome_jogador != "" && _nome_jogador != undefined) {
+				// Destroi player persistente antes de carregar
+				if (instance_exists(obj_player)) {
+					instance_destroy(obj_player);
+				}
+				
+				// Carrega o jogo com as coordenadas específicas (1270, 311)
+			carrega_jogo_3(
+        _nome_jogador,           // 1: nome
+        rm_prototipo,            // 2: sala
+        4,                       // 3: etapa
+        1270,                    // 4: posição X
+        311,                     // 5: posição Y
+        false                    // 6: direção da transição
+    );
+				show_debug_message("✅ Cutscene 2: Save carregado para: " + _nome_jogador + " na posição (1270, 311)");
+			} else {
+				// Se não tem save, vai para o protótipo na posição especificada
+				show_debug_message("⚠ Cutscene 2: Save não encontrado para " + string(_nome_jogador) + ", criando novo jogador");
+				
+				// Cria o jogador se não existir
+				if (!instance_exists(obj_player)) {
+					instance_create_layer(1270, 311, "Instances", obj_player);
+				} else {
+					obj_player.x = 1270;
+					obj_player.y = 311;
+				}
+				
+				// Vai para a sala destino
+				if (room_exists(destino)) {
+					room_goto(destino);
+				} else {
+					room_goto(rm_prototipo);
+				}
+			}
+			
 			if instance_exists(obj_catcine){
 				obj_catcine.pode_desenhar = false;
 			}
@@ -44,7 +88,7 @@ if direcao{
 			if(room_exists(destino)){
 				room_goto(destino);
 				
-				if (instance_exists(obj_player) && room != Casa_guarani_1) {
+				if (instance_exists(obj_player) && room != rm_cabana) {
 					obj_player.x = destino_x;
 					obj_player.y = destino_y;
 				}

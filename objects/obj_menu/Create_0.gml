@@ -86,6 +86,9 @@ function salvar_jogo(nome_jogador, x, y, etapa_historia) {
 }
 
 
+// =======================================================
+// MÉTODO ATUALIZADO: CORES CORRIGIDAS (SEM VERDE/AMARELO)
+// =======================================================
 desenha_menu = function(_menu){
     // Desenhando meu menu
     // Pegando o tamanho do meu menu
@@ -114,12 +117,15 @@ desenha_menu = function(_menu){
         // Permitindo a seleção
         // Checando se a seleção está no texto atual
         if(menus_sel[pag] == i){
-            _cor = c_green;
+            // MUDANÇA DE COR: Azul Ciano Neon super visível e sem conflito de cor
+            _cor = make_color_rgb(0, 180, 255); 
             _marg_x = marg_val;
-			
         }
         var _texto = _menu[i][0];
-        draw_text_color(20 + _marg_x,(_alt / 2) - _alt_menu / 2 + (i * _espaco_y), _texto, _cor, _cor, _cor, _cor, 1);
+        
+        // Renderiza a sombra original intacta e depois o texto principal por cima
+        draw_text_color(20 + _marg_x + 2, (_alt / 2) - _alt_menu / 2 + (i * _espaco_y) + 2, _texto, c_black, c_black, c_black, c_black, 0.7);
+        draw_text_color(20 + _marg_x, (_alt / 2) - _alt_menu / 2 + (i * _espaco_y), _texto, _cor, _cor, _cor, _cor, 1);
     }
     
     // Desenhando o outro lado do menu (as opções quando elas existirem)
@@ -132,17 +138,16 @@ desenha_menu = function(_menu){
             case menu_acoe.ajustes_saves:
             {
                 // Desenhando as opções do lado direito
-                // Salvando o índice onde eu estou
                 var _indice = _menu[i][3];
                 var _txt = _menu[i][4][_indice];
-                // Eu só posso ir para a esquerda somente se eu não estou no índice 0
                 var _esq = _indice > 0 ? "<< " : "";
-                // Eu só posso ir para a direita se somente se eu ainda não estou no final do vetor
                 var _dir = _indice < array_length(_menu[i][4]) - 1 ? " >>" : "";
                 
                 var _cor = c_white;
-                // Se eu estou nessa opção, então eu mudo de cor
+                // Se eu estou nessa opção alterando o valor, ela fica vermelha
                 if(alterando && menus_sel[pag] == i) _cor = c_red;
+                
+                draw_text_color(_larg / 2 + 2, (_alt / 2) - _alt_menu / 2 + (i * _espaco_y) + 2, _esq + _txt + _dir, c_black, c_black, c_black, c_black, 0.7);
                 draw_text_color(_larg / 2, (_alt / 2) - _alt_menu / 2 + (i * _espaco_y), _esq + _txt + _dir, _cor, _cor, _cor, _cor, 1);
                 
                 break;
@@ -152,13 +157,13 @@ desenha_menu = function(_menu){
     // Resetando os meus draw set 
     draw_set_font(-1);
     define_align(-1,-1);
-	draw_set_color(c_white);
-	draw_set_alpha(1);
-	draw_set_font(-1);
-	
-
+    draw_set_color(c_white);
+    draw_set_alpha(1);
 }
 
+// =======================================================
+// MÉTODO ATUALIZADO: LOGICA DO ESC EM DUAS ETAPAS FIXADA
+// =======================================================
 controla_menu = function(_menu){
     // Pegando as teclas
     var _up, _down, _avanca, _recua, _left, _right;
@@ -191,8 +196,19 @@ controla_menu = function(_menu){
                 MenuSound = MenuSound.HOVER;
             }
         }
+        
+        // 1ª ETAPA DO ESC: Se você já NÃO está alterando os slots e apertar ESC, volta pro principal
+        if (_recua) {
+            // Nota: Usamos a posição real do array (2) em vez da variável menus_lista para evitar bugs
+            if (pag != 0) { 
+                pag = 0; // Volta direto para a página principal (menu_principal)
+                with(obj_sound){ alarm[0] = 1; }
+                exit;
+            }
+        }
+        
     } else {
-        // Ou seja, eu estou alterando as opções
+        // Ou seja, eu estou alterando as opções (Escolhendo os slots de save)
         _animar = false;
 
         // Se eu apertar para esquerda ou para direita
@@ -205,13 +221,13 @@ controla_menu = function(_menu){
             menus[pag][_sel][3] = clamp(menus[pag][_sel][3], 0, _limite);
         }
 
-        // ✅ Se eu apertar ESC enquanto estou alterando, simplesmente cancela a alteração
+        // 2ª ETAPA DO ESC: Se você estiver alterando o slot e der ESC, cancela a seleção e volta pro texto "Saves"
         if (_recua) {
             alterando = false;
             with(obj_sound){
                 alarm[0] = 1;
-                //MenuSound = MenuSound.BACK;
             }
+            exit; // Interrompe para não fechar a tela inteira no mesmo frame
         }
     }
     
@@ -219,8 +235,8 @@ controla_menu = function(_menu){
     if (_avanca)
     {
         with(obj_sound){
-            alarm[0] =1;
-            MenuSound = MenuSound.SELECT
+            alarm[0] = 1;
+            MenuSound = MenuSound.SELECT;
         }
         
         switch(_menu[_sel][1])
@@ -247,12 +263,11 @@ controla_menu = function(_menu){
         }
     }
     
-    // Aumentando sempre o marg_val (^^) só retorna true se apertei um dos dois ou se apertei os dois
+    // Aumentando sempre o marg_val
     if(_animar){
         marg_val = marg_total * valor_ac(ac_margem, _up ^^ _down, 0);
     }
 }
-
 #endregion
 
 inicia_jogo = function() {
@@ -261,14 +276,25 @@ inicia_jogo = function() {
 	
 }
 volta_menu = function(){
+	// Para toda música
+	audio_stop_all();
 	
-	 if (audio_is_playing(snd_background)) {
-	                audio_stop_sound(snd_background);  // Para a música de protótipo
-	            }
-				
-	instance_destroy(obj_player)
-	instance_create_layer(x,y, "transicao",obj_transicao_2)
-	obj_transicao_2.destino = rm_menu;
+	// Destrói TUDO exceto obj_menu e obj_transicao_2
+	with (all) {
+		if (object_index != obj_menu && object_index != obj_transicao_2) {
+			instance_destroy();
+		}
+	}
+	
+	// Reseta variáveis globais do gameplay
+	global.game_over = false;
+	global.game_paused = false;
+	global.dialogo = false;
+	global.menu_existe = false;
+	
+	// Cria transição pro menu
+	var _trans = instance_create_layer(x, y, "transicao", obj_transicao_2);
+	_trans.destino = rm_menu;
 }
 
 fecha_jogo = function() {
@@ -452,5 +478,32 @@ menus = [menu_principal, menu_opcoes, menu_carregar, menu_tela, menu_dificuldade
 // Salvando a seleção de cada menu
 menus_sel = array_create(array_length(menus), 0);
 alterando = false;
+// =====================================================================
+// SÓ ADICIONE ISSO NO FINAL DO SEU CREATE (Abaixo de alterando = false;)
+// =====================================================================
 
+// 1. Inicialização das Estrelas Fixas (Nascem apenas na região do céu)
+max_estrelas = 60; 
+estrelas = array_create(max_estrelas);
 
+for (var i = 0; i < max_estrelas; i++) {
+    estrelas[i] = {
+        x: random(room_width),          
+        y: random(room_height * 0.40),  // Garante que nascem só no céu roxo
+        brilho: random_range(0.2, 1),   
+        vel: random_range(0.01, 0.05)   
+    };
+}
+
+// 2. Sistema de Partículas para o Rastro do Mouse (Poeira Verde Leve)
+part_sys = part_system_create();
+part_emit = part_emitter_create(part_sys);
+
+part_type = part_type_create();
+part_type_shape(part_type, pt_shape_pixel);     // Pontinhos de 1 pixel
+part_type_size(part_type, 1, 2, 0, 0);          
+part_type_color1(part_type, make_color_rgb(50, 255, 110)); // Verde vibrante de alto contraste
+part_type_alpha3(part_type, 0.8, 0.4, 0);       
+part_type_life(part_type, 15, 30);              
+part_type_speed(part_type, 0.1, 0.5, 0, 0);     
+part_type_direction(part_type, 0, 360, 0, 0);

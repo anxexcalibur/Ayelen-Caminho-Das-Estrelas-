@@ -1,4 +1,4 @@
-// Desenhar um retângulo na tela inteira no Draw GUI
+ // Desenhar um retângulo na tela inteira no Draw GUI
 draw_set_color(c_black);
 draw_set_alpha(alpha); // alpha entre 0 e 1
 

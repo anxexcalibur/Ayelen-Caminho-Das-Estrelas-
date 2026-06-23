@@ -2,9 +2,9 @@
   "$GMSprite":"v2",
   "%Name":"caverna_png",
   "bboxMode":0,
-  "bbox_bottom":379,
+  "bbox_bottom":1023,
   "bbox_left":0,
-  "bbox_right":979,
+  "bbox_right":1535,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"87bb241b-b33b-47f1-a5eb-59d04042bd4e","name":"87bb241b-b33b-47f1-a5eb-59d04042bd4e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ec910f6f-1bce-4dd8-b575-6c0d182591d7","name":"ec910f6f-1bce-4dd8-b575-6c0d182591d7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":380,
+  "height":1024,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"537a0bd0-eb19-4374-b1dd-efcfeb2a55b7","blendMode":0,"displayName":"default","isLocked":false,"name":"537a0bd0-eb19-4374-b1dd-efcfeb2a55b7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"1e44563a-5216-454a-9e83-46de9ede50f9","blendMode":0,"displayName":"default","isLocked":false,"name":"1e44563a-5216-454a-9e83-46de9ede50f9","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"caverna_png",
   "nineSlice":null,
@@ -68,7 +68,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"87bb241b-b33b-47f1-a5eb-59d04042bd4e","path":"sprites/caverna_png/caverna_png.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"d5e806db-d85e-42f3-9af7-fd02a5bb6d2f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ec910f6f-1bce-4dd8-b575-6c0d182591d7","path":"sprites/caverna_png/caverna_png.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"566c2b90-b16c-479a-bb00-49401a83bf22","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -84,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":980,
+  "width":1536,
 }

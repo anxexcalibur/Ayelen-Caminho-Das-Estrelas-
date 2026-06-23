@@ -1,0 +1,132 @@
+===============================================
+AYELEN - CAMINHO DAS ESTRELAS
+Registro de Alterações - 2026-06-23
+===============================================
+
+1. PULO DA PIRANHA - ALTURA AUMENTADA
+-------------------------------------
+Arquivo: objects/obj_piranha/Step_0.gml
+O que mudou: A força do pulo foi aumentada de -6 para -10 (vspeed).
+Como funciona: A piranha entra no estado "pulando" quando o jogador
+está a menos de 300px. O vspeed negativo faz ela subir. Com -10
+ao invés de -6, o pulo sobe consideravelmente mais alto.
+Onde encontrar: No case "parado", linha do vspeed = -10.
+Comportamento: Piranha pula mais alto ao detectar o jogador por perto,
+ciclo: caindo -> parado -> pulando -> caindo -> parado (repete).
+
+2. COLISÃO PIRANHA + ÁGUA MORTAL - CORRIGIDO
+----------------------------------------------
+Arquivo: objects/obj_agua_mortal/Collision_obj_entidade.gml
+O que mudou: Adicionada verificação para que a piranha NÃO seja
+morta ao tocar na água mortal.
+Como funciona: A piranha herda de obj_entidade, e a água tinha um
+evento de colisão com obj_entidade que setava other.estado = "morto".
+Isso matava a piranha instantaneamente. Agora verifica:
+  if (other.object_index != obj_piranha)
+Onde encontrar: Collision_obj_entidade.gml dentro de obj_agua_mortal.
+Efeito: A piranha agora vive na água e pode pular normalmente.
+
+3. SISTEMA DE NOME DAS FASES - NOVO
+--------------------------------------
+Arquivos:
+  - objects/obj_controller/Create_0.gml (mapeamento de salas)
+  - objects/obj_controller/Step_0.gml (detecção de troca de sala)
+  - objects/obj_message/Draw_0.gml (exibição com balão)
+  - objects/obj_message/Step_1.gml (sistema legado desabilitado)
+
+Mapeamento de salas para nomes:
+  rm_prototipo         -> "Mundo Comum"
+  rm_prototipo_level2  -> "Travessia de Limiar"
+  rm_prototipo_level3  -> "Aproximação da Caverna Oculta"
+  rm_prototipo_bossroom -> "Caverna Oculta"
+
+Como funciona:
+  - obj_controller Create_0: Cria um ds_map "global.nomes_fases"
+    mapeando cada sala ao seu nome.
+  - obj_controller Step_0: Detecta quando a sala muda (room != sala_anterior).
+    Quando muda, seta obj_message.text1 com o nome da fase e ativa
+    a exibição (mostra_message = true).
+  - obj_message Draw_0: Desenha um balão retangular escuro com borda,
+    texto dourado centralizado com sombra. Suporta text1 e text2.
+  - obj_message Step_1: Sistema legado desabilitado (era "Nível 1! cruza o limiar").
+
+Onde encontrar: Cada vez que o jogador entra em uma nova sala, o nome
+aparece no centro da tela com fade in/out automático.
+
+4. CORREÇÃO DO CRASH DO OBJ_STAR_1
+------------------------------------
+Arquivo: objects/obj_star_1/Step_0.gml
+O que mudou:
+  a) Removido show_message() que bloqueava o jogo (causava freeze/crash)
+  b) Corrigido uso de global.nome_jogador -> global.player_name
+     (a variável correta do projeto)
+  c) Adicionada verificação: variable_global_exists("player_name")
+
+Causa do crash: O show_message() era uma chamada bloqueante que
+pausava o GameMaker até o clique do usuário. Além disso,
+global.nome_jogador não existia em todos os contextos.
+Onde encontrar: Step_0.gml do obj_star_1, ao pressionar "F" perto da estrela.
+
+5. FEEDBACK DE COLETA DE ESTRELA - BALÃO DE DIÁLOGO
+------------------------------------------------------
+Arquivos:
+  - objects/obj_star_1/Step_0.gml (gera a mensagem)
+  - objects/obj_message/Draw_0.gml (desenha o balão)
+
+Mensagem: "Ótimo! Recuperamos a estrela {NOME}. Agora parte da vila
+pode ficar mais tranquila."
+onde {NOME} é o nome da estrela coletada (ex: Aldebaran, Betelgeuse, etc.)
+
+Como funciona:
+  - Ao coletar a estrela (tecla F), o código lê o nome da estrela
+    de global.estrelas[star_index].nome
+  - Monta a frase e seta em obj_message.text1
+  - obj_message Draw_0 desenha um balão retangular escuro (roxo escuro)
+    com borda, texto dourado centralizado com sombra preta
+  - Alpha faz fade in (20 frames) e fade out (após 60 frames)
+  - A mensagem aparece no centro da tela sobre a câmera
+
+Onde encontrar: Ao pressionar F perto de qualquer estrela (obj_star_1).
+
+6. MÚSICA DO GAME OVER - RETOMA DE ONDE PAROU
+-----------------------------------------------
+Arquivos:
+  - objects/obj_sound/Create_0.gml (novas variáveis de posição)
+  - objects/obj_sound/Step_0.gml (salva posições antes de parar)
+  - objects/obj_sound/Alarm_0.gml (retoma posições salvas)
+
+Variáveis adicionadas em Create_0:
+  pos_musica_fase1, pos_musica_fase2, pos_musica_fase3,
+  pos_musica_boss, pos_musica_cutscene, pos_musica_main
+
+Como funciona:
+  a) Quando game_over = true, ANTES de chamar audio_stop_all(),
+     o sistema salva a posição atual de cada música que está tocando
+     usando audio_sound_get_track_position().
+  b) Na seção inferior do Step_0, ao parar músicas durante game_over,
+     as posições também são salvas (redundância de segurança).
+  c) Quando o jogador pressiona ENTER e a sala recarrega,
+     obj_sound Alarm_0 detecta qual música a sala precisa.
+     Antes de tocar, verifica se há posição salva > 0.
+     Se houver, after audio_play_sound, chama
+     audio_sound_set_track_position() para retomar de onde parou.
+  d) Após retomar, a posição salva é zerada (pos_musica_X = 0)
+     para não afetar mortes futuras.
+
+Onde encontrar: Fluxo completo: morto -> game over -> ENTER ->
+room_goto -> Room Start (Other_2) -> alarm[0] = 2 -> Alarm_0
+retoma a música da posição salva.
+
+===============================================
+ARQUIVOS MODIFICADOS:
+===============================================
+1. objects/obj_piranha/Step_0.gml               (pulo mais alto)
+2. objects/obj_agua_mortal/Collision_obj_entidade.gml (piranha imune)
+3. objects/obj_controller/Create_0.gml           (nomes das fases)
+4. objects/obj_controller/Step_0.gml             (detecção de sala)
+5. objects/obj_star_1/Step_0.gml                 (crash fix + feedback)
+6. objects/obj_message/Draw_0.gml                (balão de texto)
+7. objects/obj_message/Step_1.gml                (legado desabilitado)
+8. objects/obj_sound/Create_0.gml                (posições de música)
+9. objects/obj_sound/Step_0.gml                  (salva antes de parar)
+10. objects/obj_sound/Alarm_0.gml                (retoma posições)

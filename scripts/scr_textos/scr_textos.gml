@@ -1,388 +1,267 @@
-// Função principal para controle dos diálogos entre NPCs e jogadores
 function scr_textos(){
-	
-	
-	switch (npc_nome) {
-		
-		case "Piata":
-			switch (obj_pai.estado_npc) {
-				case 0:
-					ds_grid_add_text("btc", spr_piata_rosto, 0, "Piatã");
-					obj_player.etapa_historia = 1;
-				break;
-				case 1:
-					ds_grid_add_text("Ayelen, minhas forças são frágeis e o peso dos anos me consome, mas meu coração permanece firme.", spr_piata_rosto, 0, "Piatã");
-					ds_grid_add_text("Sinto a conexão das estrelas me guiando, mesmo em meu estado frágil.", spr_piata_rosto, 0, "Piatã");
-					ds_grid_add_text("Ayelen: Pai, estou preocupada com tudo o que aconteceu. A vila está arruinada.", spr_ayelen_face, 1, "Ayelen");
-					ds_grid_add_text("Piatã: A vila foi saqueada, graças ao jovem guerreiro que resolveu brincar de herói sem preparo.", spr_piata_rosto, 0, "Piatã");
-					ds_grid_add_text("Ayelen: Ele é imprudente, mas agora precisamos seguir em frente. O céu pede algo de nós.", spr_ayelen_face, 1, "Ayelen");
-					ds_grid_add_text("Piatã: Mas agora não é hora de rir de crianças imprudentes; o céu pede seu sangue e seu amor.", spr_piata_rosto, 0, "Piatã");
-					ds_grid_add_text("Ayelen: O que você quer dizer com isso, pai? O que as estrelas esperam de mim?", spr_ayelen_face, 1, "Ayelen");
-					ds_grid_add_text("Piatã: Você carrega a luz em seu coração, minha filha. Confio em você para completar isso.", spr_piata_rosto, 0, "Piatã");
-					ds_grid_add_text("Piatã: Vá fazer o ritual  ritual. O céu nos chama.", spr_piata_rosto, 0, "Piatã");
-					
-					obj_player.etapa_historia++;
-					 // Avança para o próximo estado
-					
-					break;
 
-				case 2:
-					ds_grid_add_text("Agora que estás consciente, prepare-se para buscar os segredos das estrelas.", spr_piata_rosto, 0, "Piatã");
-					 // Avança para outro estado após progresso
-					break;
-				case 3:
-					ds_grid_add_text("faça o ritual!", spr_piata_rosto, 0, "Piatã");
-					 // Avança para outro estado após progresso
-				break;
+    switch (npc_nome) {
 
-	
-				case 4:
-				    ds_grid_add_text("O caminho à sua frente é sombrio, Ayelen, mas também repleto de esperança.", spr_piata_rosto, 0, "Piatã");
-				    ds_grid_add_text("Os antigos sussurram sobre o 'caverna de ', um lugar escondido onde a luz nunca tocou.", spr_piata_rosto, 0, "Piatã");
+        case "Piata":
+            switch (obj_pai.estado_npc) {
+                case 0:
+                    ds_grid_add_text("btc", spr_piata_rosto, 0, "Piatã");
+                    obj_player.etapa_historia = 1;
+                break;
 
-				    ds_grid_add_text("'Coração da Noite'? Esse nome parece... inquietante. O que encontrarei lá?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Lá repousam os ecos de nossos ancestrais e, com eles, respostas que o mundo ainda desconhece.", spr_piata_rosto, 0, "Piatã");
-				    ds_grid_add_text("Mas Ayelen, a escuridão que mora ali testa não apenas a coragem, mas a verdade dentro de cada um.", spr_piata_rosto, 0, "Piatã");
+                case 1:
+                    ds_grid_add_text("Ayelen. Meu corpo é velho, mas a voz ainda pesa. Escute.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("As estrelas me puxam toda noite. O tempo encolheu. E o que falta fazer... é muito.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Pai, a vila virou cinza. Os rios tão com gosto de morte. O povo treme. Não sei se aguento isso sozinha.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ka'tupytã sangra. E parte do sangue é de quem devia proteger. Ubiratã abriu a porta.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Ele é nosso, pai. Perdido, mas nosso. Dá pra trazer de volta?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Dá. Mas não com pena — com verdade. Eles usaram o paternalismo contra nós. Não vamos fazer igual com os nossos. Ele precisa enxergar, não ser levado pela mão.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("E as insígnias? Sem elas, o povo não lê o céu. Perde a roça, a festa, a cura.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Por isso você vai, filha. O céu tá mudo sobre Ka'tupytã. Você vai devolver a memória que arrancaram.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Faz o ritual. Escuta os antigos. E lembra: você não vai só — você carrega 500 anos de luta nas costas.", spr_piata_rosto, 0, "Piatã");
+                    obj_player.etapa_historia++;
+                break;
 
-				    ds_grid_add_text("Então não é a escuridão que devemos temer, mas o que ela revela de nós mesmos...", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Sim, filha das estrelas. Muitos chegaram lá, mas poucos regressaram com o coração íntegro.", spr_piata_rosto, 0, "Piatã");
+                case 2:
+                    ds_grid_add_text("Consciência sem ação é peso morto. Saber ancestral que não vira luta é cinza na memória. Usa, filha.", spr_piata_rosto, 0, "Piatã");
+                break;
 
-				    ds_grid_add_text("Pai, não posso! Você está doente... e se eu partir? Quem cuidará de você?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Minha filha... o destino de Ka’tupytã pesa mais do que minhas enfermidades.", spr_piata_rosto, 0, "Piatã");
+                case 3:
+                    ds_grid_add_text("Faz o ritual, Ayelen. O povo espera. A terra também.", spr_piata_rosto, 0, "Piatã");
+                break;
 
-				    ds_grid_add_text("Você não está entendendo! Se algo acontecer comigo, e com você nesse estado...", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayelen, você é a única. A magia de Ubiratã ainda vive — uma maldição que corrompe a alma dos guerreiros mais fortes.", spr_piata_rosto, 0, "Piatã");
+                case 4:
+                    ds_grid_add_text("O caminho é escuro — mas escuridão nenhuma apagou quem tem fogo dentro. Os antigos chamam de Coração da Noite.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Lá tão as respostas que a história oficial enterrou. Quem somos. O que roubaram. O que ainda dá pra pegar de volta.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Coração da Noite... já no nome tem aviso. O que vou encontrar lá, pai?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Você mesma. A parte que o colonizador tentou matar junto com a língua, o ritual, a terra. Muitos chegaram. Poucos voltaram inteiros.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Então o que me protege?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("O coletivo. Ubiratã perdeu isso — por isso a sombra dele consome tudo. Você não perdeu. É a diferença.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("E se eu cair? Você tá doente, pai. Quem cuida de Ka'tupytã?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ka'tupytã se vira. Sempre se virou — antes do capitão, do diretor de índios, da FUNAI. O conselho tá de pé até hoje.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Mas Ubiratã... dizem que ele corrompeu guerreiros. Que o veneno dele espalha.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("É o veneno do individualismo. O mesmo que a cidade usa há 500 anos: dinheiro, poder, a promessa de ser alguém.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("E eu sou imune?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Você cresceu na aldeia. Na solidariedade. Na terra que não é de ninguém. Isso não compra. E não corrompe fácil.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Se eu falhar, pai?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Então Ka'tupytã perde mais uma batalha numa guerra de 500 anos. Mas essa guerra nunca terminou com uma derrota. E não vai terminar agora.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Não vou deixar. Não enquanto eu puder lutar.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Então vai, filha. Pé no chão, olho no horizonte. A esperança inteira de Ka'tupytã anda com você.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Vou buscar as insígnias. Vou enfrentar o Ubiratã. Pela aldeia, pela terra, por quem veio antes e quem ainda vem.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Que Nhanderu clareie cada passo. E lembra: mente organizada vence qualquer arma que eles tenham.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Procura Poiarã. As mãos dele sabem o que você precisa carregar. Ele te dá o que falta.", spr_piata_rosto, 0, "Piatã");
+                    obj_player.etapa_historia++;
+                break;
 
-				    ds_grid_add_text("Uma maldição?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Sim... Ubiratã consome aqueles que ousam enfrentá-lo. Soldados inteiros perderam-se em desespero e escuridão. Ele se tornou uma sombra viva, amaldiçoando todos ao redor.", spr_piata_rosto, 0, "Piatã");
+                case 5:
+                    ds_grid_add_text("Pai... o peso. Parece que o céu inteiro caiu num ombro só. E se eu não for suficiente?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Nenhum guerreiro carrega sozinho. Se o peso é de um, é porque o coletivo ainda não se mexeu. Organiza o povo e o peso se divide.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("E o medo? Isso não passa.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Medo é honesto. É o corpo dizendo que o jogo é real. Quem não sente medo não entende o perigo. Sente — e vai assim mesmo.", spr_piata_rosto, 0, "Piatã");
+                break;
 
-				    ds_grid_add_text("Então como eu poderia enfrentá-lo? Sou apenas uma filha da vila!", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Porque a Deusa Bianca lhe concedeu imunidade. Sua luz protege a sua mente contra o veneno de Ubiratã. Somente você pode desafiá-lo sem perder quem é.", spr_piata_rosto, 0, "Piatã");
+                case 6:
+                    ds_grid_add_text("Ka'tupytã não precisa da Ayelen perfeita. Precisa da Ayelen de verdade — que tropeça e levanta, que duvida e age.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("Não me sinto pronta, pai.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Guerreiro nenhum se sente pronto na véspera. Prontidão vem no caminho, não antes.", spr_piata_rosto, 0, "Piatã");
+                    ds_grid_add_text("...", spr_ayelen_face, 1, "Ayelen");
+                break;
+            }
+        break;
 
-				    ds_grid_add_text("Eu... sou imune? A Deusa Bianca... ela sabia?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Sim, minha filha. É o que chamam de o Dom das Estrelas. Só os puros e escolhidos resistem às sombras de Ubiratã.", spr_piata_rosto, 0, "Piatã");
-				    ds_grid_add_text("Ninguém mais pode. Foi por isso que tantos tombaram antes mesmo de tocar sua espada.", spr_piata_rosto, 0, "Piatã");
+        case "Ancianemimby":
+            switch (obj_nemimby_orientadora.estado_npc) {
+                case 0:{
+                    ds_grid_add_text("Encontra seu pai, Ayelen. Ele tem o que dizer.", spr_xama_rosto, 0, "Nemimby");
+                break;
+                }
+                case 1:{
+                    ds_grid_add_text("Seu pai espera. Vai.", spr_xama_rosto, 0, "Nemimby");
+                break;
+                }
+                case 2:
+                    ds_grid_add_text("Sente esse vento? Não é vento. São ossos coçando. Os antigos tão se remexendo — e não é por saudade.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Tô pronta, Nemimby. Fala o que precisa.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Primeiro, silêncio. Não o silêncio de quem tem medo — o de quem escuta. A floresta fala. Você parou de ouvir quando a cidade entrou na aldeia.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Tô ouvindo. Sinto o chão diferente hoje.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Bom. Agora oferece tua intenção. Ancestral não ouve quem fala pela garganta — ouve quem fala pelo ventre, pelo sangue, pela convicção.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Minha intenção é clara: entender o que foi destruído e o que ainda dá pra salvar. Saber como lutar sem perder quem sou.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Então segura firme. O ritual começa. O que você vai ver não é ilusão — é memória. A nossa. A que a história oficial enterrou.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Vai pra fogueira. Bebe o chá. Conhecimento tradicional não se aprende em livro — se bebe, se vive, se incorpora.", spr_xama_rosto, 0, "Nemimby");
+                    obj_player.etapa_historia++;
+                break;
 
-				    ds_grid_add_text("Pai... mesmo assim, é uma missão que carrega o peso da morte. E se eu falhar?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Então Ka’tupytã morrerá. Eu morrerei. Mas pior, Bianca será silenciada. A escuridão de Ubiratã se espalhará e consumirá as estrelas do firmamento.", spr_piata_rosto, 0, "Piatã");
+                case 3:
+                    ds_grid_add_text("O que vem é pesado, Ayelen — mas pesado que nem terra de roça. Não que nem corrente.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Os antigos chamam de Coração da Noite o lugar onde a gente guardou o que não podia dizer em voz alta por 500 anos. Lá tão as respostas.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("E o que eu encontro nessas respostas?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("A verdade sobre quem somos. Não o que portugueses escreveram. Não o que a FUNAI registrou. O que nós mesmos sabemos.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Pra chegar lá, preciso das insígnias. E elas estão guardadas.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Precisa dos Olhos de Tupã. Pedras sagradas espalhadas pela floresta antiga. Sentinelas de madeira protegem — Espíritos das Raízes.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Eles não lutam. Eles testam. Se quem vem tem paciência, respeito, consciência de que a floresta não é de ninguém.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("E se eu falhar no teste?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("As raízes fecham. O tempo se perde. A memória continua enterrada. Mas você não vai falhar — porque você sabe o que está em jogo.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Vou encontrar os Olhos de Tupã. Vou abrir o Coração da Noite. Vou trazer de volta o que roubaram de Ka'tupytã.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Céu e terra estão com você, Ayelen. Escuta a floresta — ela conhece caminho que mapa nenhum registrou.", spr_xama_rosto, 0, "Nemimby");
+                    obj_player.etapa_historia++;
+                break;
 
-				    ds_grid_add_text("Eu não posso deixar que isso aconteça. Não... enquanto o Dom das Estrelas ainda brilha em mim.", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Então vá, minha filha. Vá sabendo que a esperança de uma vila inteira anda com você... e que estou orgulhoso.", spr_piata_rosto, 0, "Piatã");
+                case 4:
+                case 5:
+                    ds_grid_add_text("Chegou a hora, Ayelen. Não tem mais preparo — só caminho.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("O mundo lá fora é armadilha. Mas também tem aliado que ainda não apareceu. Confia no processo coletivo.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Você nunca tá sozinha. Atrás de você: 500 anos de resistência. Na frente: demarcação, dignidade, memória.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Quando a dúvida apertar — e vai apertar — lembra do que é sagrado: a terra. O coletivo. A vida sem tutela.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Que os ancestrais clareiem cada passo. E que a gente se encontre de novo numa Ka'tupytã de pé.", spr_xama_rosto, 0, "Nemimby");
+                break;
 
-				    ds_grid_add_text("Vou encontrar os Olhos de Tupã e enfrentar Ubiratã, por você, pela vila, pela Estrela Dalva.", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Que Bianca ilumine cada um de seus passos, minha filha. Jamais se esqueça... sua mente é a chave para vencer o inimigo.", spr_piata_rosto, 0, "Piatã");
-					ds_grid_add_text("Você deve buscar Poiarã, o artesão da tribo. Dizem que suas mãos moldam não apenas objetos, mas também o destino daqueles que cruzam seu caminho. Ele pode te guiar para além do que seus olhos alcançam.", spr_piata_rosto, 0, "Piatã");
-					obj_player.etapa_historia++;
-					break;
-					case 5:
-					{
-						ds_grid_add_text("Me sinto sobre carregada pai, sinto que os céus exigem de mais de mim, me sinto afundando em um rio de cobranças, não sei se consigo fazer isso", spr_ayelen_face, 1, "Ayelen");
-					    ds_grid_add_text("Ouça, pequena estrela… até os deuses respeitam o tempo. Se os céus exigem demais, mostre a eles que a sua luz brilha por sua própria vontade, não por cobrança", spr_piata_rosto, 0, "Piatã");
-						ds_grid_add_text("alvez eu ainda esteja com medo, talvez ainda me sinta cansada... mas vou seguir em frente. Um passo de cada vez, como você disse.", spr_ayelen_face, 1, "Ayelen");
-						ds_grid_add_text("E, se eu cair, sei que você estará lá, bianca estará lá, para me ajudar a levantar. Isso já me faz sentir um pouco mais forte..", spr_ayelen_face, 1, "Ayelen");
-					break;
-					}
-					case 6:
-						ds_grid_add_text("Vamos Filha, não tenha medo, os Deuses estão com você, não tema, nossa vila precisa de você", spr_piata_rosto, 0, "Piatã");
-						ds_grid_add_text("Não me sinto pronta, pai, mas irei ...", spr_ayelen_face, 1, "Ayelen");
-						ds_grid_add_text("não se preocupe filha, você vai ser preparada ao longo da jornada!", spr_piata_rosto, 0, "Piatã");
-						ds_grid_add_text(" ...", spr_ayelen_face, 1, "Ayelen"); 
-						 // Avança para outro estado após progresso
-					break;
-			}
-		break;
-		case "Ancianemimby":
-				
-				switch (obj_nemimby_orientadora.estado_npc) {
-					
-					case 0:{
-						ds_grid_add_text("Encontre seu pai ayelen", spr_xama_rosto, 0, "Nemimby");
-					
-					break;
-					}
-					case 1:{
-						ds_grid_add_text("Encontre seu pai ayelen", spr_xama_rosto, 0, "Nemimby");
-						break;
-					}
-					case 2:
-						ds_grid_add_text("Ayelen, o véu entre os mundos está mais tênue esta noite. O chamado dos ancestrais ecoa em meu espírito.", spr_xama_rosto, 0, "Nemimby");
-						ds_grid_add_text("É como se o vento sussurrasse segredos antigos. Estou pronta, Nemimby. O que devemos fazer agora?", spr_ayelen_face, 1, "Ayelen");
-            
-			            ds_grid_add_text("Primeiro, precisamos da harmonia. Respire fundo, Ayelen, e permita que a floresta cante em sua alma.", spr_xama_rosto, 0, "Nemimby");
-			            ds_grid_add_text("O som das folhas, o pulsar do chão... Sim, sinto a conexão se fortalecendo. Estou pronta para o próximo passo.", spr_ayelen_face, 1, "Ayelen");
-            
-					    ds_grid_add_text("Muito bem. Agora, ofereça sua intenção ao universo, com sinceridade e coragem. Só então a bebida nos guiará pelo caminho oculto.", spr_xama_rosto, 0, "Nemimby");
-					    ds_grid_add_text("Minha intenção é clara: quero respostas, Nemimby. Quero entender o que o céu e a terra esperam de mim.", spr_ayelen_face, 1, "Ayelen");
-            
-						ds_grid_add_text("Então segure firme, Ayelen. O ritual começa agora. Não tema o que verá. Tudo é parte do aprendizado.", spr_xama_rosto, 0, "Nemimby");
-						ds_grid_add_text("vá até a fogueira e beba o chá", spr_xama_rosto, 0, "Nemimby");
-						obj_player.etapa_historia++;
-					
-					break;
-					case 3:
-						
-							ds_grid_add_text("O caminho à sua frente é sombrio, Ayelen, mas também repleto de esperança.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Os antigos sussurram sobre o 'Coração da Noite', um lugar escondido onde a luz nunca tocou.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("'Coração da Noite'? Esse nome parece... inquietante. O que encontrarei lá?", spr_ayelen_face, 1, "Ayelen");
+                case 6:
+                    ds_grid_add_text("Ayelen. Ainda aqui? O tempo não espera. Ka'tupytã, muito menos.", spr_xama_rosto, 0, "Nemimby");
+                    ds_grid_add_text("Anda. O povo precisa de ação, não de hesitação.", spr_xama_rosto, 0, "Nemimby");
+                break;
+            }
+        break;
 
-							ds_grid_add_text("Lá repousam os ecos de nossos ancestrais e, com eles, respostas que o mundo ainda desconhece.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Mas Ayelen, a escuridão que mora ali testa não apenas a coragem, mas a verdade dentro de cada um.", spr_xama_rosto, 0, "Nemimby");
+        case "Poiara":
+            switch(obj_player.etapa_historia){
+                case 1:
+                case 2:
+                case 3:
+                case 4: {
+                    ds_grid_add_text("Ayelen. Seu pai chamou. Não demora.", spr_rosto_npc_artesao, 0, "Poiarã");
+                break;
+                }
+                case 5: {
+                    ds_grid_add_text("Ayelen. Seu pai falou da missão. Senta aqui.", spr_rosto_npc_artesao, 0, "Poiarã");
+                    ds_grid_add_text("Eu faço objeto com as mãos. Mas objeto feito à mão carrega intenção. Esse escudo é pensado em você.", spr_rosto_npc_artesao, 0, "Poiarã");
+                    ds_grid_add_text("O que vem pela frente não é luta de corpo só — é luta de consciência. E consciência sem proteção gasta antes da hora.", spr_rosto_npc_artesao, 0, "Poiarã");
+                    ds_grid_add_text("Leva o Escudo Verde. Não é arma de ataque — é arma de persistência. Ele devolve energia quando você precisar continuar.", spr_escudo, 0, "Poiarã");
+                    ds_grid_add_text("Usa com juízo. Não é infinito — como toda proteção coletiva, tem limite se ninguém cuidar.", spr_rosto_npc_artesao, 0, "Poiarã");
+                    ds_grid_add_text("Mas no momento certo, ativado com clareza, pode ser a diferença entre cair e seguir de pé.", spr_rosto_npc_artesao, 0, "Poiarã");
+                    ds_grid_add_text("Vai, Ayelen. Ka'tupytã espera.", spr_rosto_npc_artesao, 0, "Poiarã");
+                    ds_grid_add_text("Sistema: Pressione K para ativar o escudo.", spr_sistema, 0, "Sistema");
+                    obj_player.etapa_historia = 6;
+                break;
+                }
+                case 6: {
+                    ds_grid_add_text("Cada passo na terra ensina o que escola nenhuma dá. Presta atenção no chão — ele fala.", spr_rosto_npc_artesao, 0, "Poiarã");
+                    ds_grid_add_text("As árvores também têm memória. Quando passar, escuta.", spr_rosto_npc_artesao, 0, "Poiarã");
+                break;
+                }
+            }
+        break;
 
-							ds_grid_add_text("Então não é a escuridão que devemos temer, mas o que ela revela de nós mesmos...", spr_ayelen_face, 1, "Ayelen");
-							ds_grid_add_text("Sim, filha das estrelas. Muitos chegaram lá, mas poucos regressaram com o coração íntegro.", spr_xama_rosto, 0, "Nemimby");
+        case "kaua":
+            switch(obj_player.etapa_historia){
+                case 8: {
+                    ds_grid_add_text("Você encontra um guerreiro atrás dum arbusto — exausto, lama até o joelho, o olhar de quem viu coisa que não devia.", spr_sistema, 0, "Narrador");
+                    ds_grid_add_text("Ei! Você é de Ka'tupytã? Ouvi dizer que mandaram alguém... não esperava que fosse... enfim. Ainda bem que veio.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("Sou eu. A aldeia mandou. Você é da Vila do Sol? O que aconteceu aqui é o que eu tô pensando?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Pior. O Caído usou as insígnias pra invocar uma besta do fundo. Nossos guerreiros não tavam preparados — ninguém tava. Maioria fugiu pro sul.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("A besta ainda tá aqui?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Nas grutas. O xamã conseguiu selar a entrada — mas a chave... eu derrubei correndo. Tá ali na frente. Não consigo voltar.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("Entendi. Vou pegar a chave, entrar na gruta, recuperar as insígnias e garantir que essa besta não vire arma de novo.", spr_ayelen_face, 1, "Ayelen");
+                    obj_player.etapa_historia = 9;
+                break;
+                }
+                case 9: {
+                    ds_grid_add_text("Ayelen... já pensou por que isso tudo aconteceu? Não tô falando de destino. Tô falando de causa.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("Tô pensando nisso desde que saí de Ka'tupytã. O Caído não surgiu do nada — algo empurrou ele.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Na minha aldeia, os velhos dizem: a Terra, os espíritos e a gente somos um corpo só. Quando uma parte adoece, as outras sentem.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("O vinhoto que matou os rios não matou só a água — matou a relação do povo com a terra. Quem perde isso, perde o chão debaixo do pé.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("Então a besta não é a causa — é o sintoma. A causa é o esbulho. A invasão. O veneno. A promessa falsa de que a cidade tem coisa melhor pra dar.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Exato. O que a gente chama de Nhandereko — nosso jeito de ser — quando é destruído de fora, às vezes a destruição continua de dentro.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("O Caído não é um monstro. É alguém que perdeu o Nhandereko e ficou com o vazio.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("Então a missão não é só derrotar — é curar. Curar a terra, curar o povo, curar o que a invasão quebrou.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("É isso. E isso é mais difícil do que qualquer luta armada — porque exige olhar pro que falhou na gente também.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("Você tá dizendo que a gente falhou com ele. Com o Ubiratã.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Não só ele. A comunidade falhou. Quando alguém se perde no caminho da acumulação e do individualismo, é porque não achou força suficiente no coletivo pra ficar.", spr_kaua_guarda, 0, "Kauã");
+                    ds_grid_add_text("Duro de ouvir. Mas é verdade.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Vai com isso no peito, Ayelen. Não como culpa — como compromisso. Cuida de você também.", spr_kaua_guarda, 0, "Kauã");
+                break;
+                }
+            }
+        break;
 
-							ds_grid_add_text("O que preciso para chegar até o 'Coração da Noite'?", spr_ayelen_face, 1, "Ayelen");
-							ds_grid_add_text("Precisamos dos Olhos de Tupã, pedras sagradas espalhadas pela floresta antiga, há muito tempo protegidas pelas sentinelas de madeira.", spr_xama_rosto, 0, "Nemimby");
+        case "azel":
+            ds_grid_add_text("Você? Eles mandaram você pra cá? Os velhos perderam o juízo de vez...", spr_kaua_guarda, 0, "Kauã");
+            ds_grid_add_text("A situação é tão grave assim?", spr_ayelen_face, 1, "Ayelen");
+            ds_grid_add_text("Grave? Tem um monstro acordado que devorou metade dos meus guerreiros. Grave é pouco.", spr_kaua_guarda, 0, "Kauã");
+            ds_grid_add_text("Eu sei o que eu vou enfrentar. Tô com medo — não vou mentir. Mas não posso correr. Me escolheram por alguma razão que eu ainda tô tentando entender.", spr_ayelen_face, 1, "Ayelen");
+            ds_grid_add_text("Tá. Respeito isso. Pega aqui — vou botar uma magia na sua lança. Sem isso, você não arranha essa coisa.", spr_kaua_guarda, 0, "Kauã");
+            ds_grid_add_text("Sistema: Projétil desbloqueado. Pressione H para atirar.", spr_sistema, 0, "Sistema");
+        break;
 
-							ds_grid_add_text("Sentinelas de madeira? Você fala dos antigos Espíritos das Raízes, não fala?", spr_ayelen_face, 1, "Ayelen");
+        case "arbusto":
+            ds_grid_add_text("Sistema: A pêra-do-cerrado (Eugenia klotzschiana) cresce nos campos e cerrados do Brasil central. O nome indígena é cabamixá-açú — 'erva que dá fruto que aperta a língua'. Conhecida antes de qualquer botânico europeu chegar aqui.", spr_sistema, 0, "Sistema");
+        break;
 
-							ds_grid_add_text("Sim. Eles observam e guardam. Você precisará de paciência e respeito; só assim revelarão a você o caminho adormecido.", spr_xama_rosto, 0, "Nemimby");
+        case "ceramica":
+            ds_grid_add_text("Sistema: Os povos indígenas foram os primeiros ceramistas desse território. Muito antes de 1500, já dominavam técnicas com argila, fibra vegetal e pigmento orgânico.", spr_sistema, 0, "Sistema");
+            ds_grid_add_text("Sistema: Faziam vasilha pra guardar comida, cozinhar, levar água, fazer ritual. Cerâmica não era ferramenta — era linguagem. Cada traço contava cosmologia, história, identidade.", spr_sistema, 0, "Sistema");
+            ds_grid_add_text("Sistema: Essa tecnologia existia aqui. Foi criada aqui. É desse povo.", spr_sistema, 0, "Sistema");
+        break;
 
-							ds_grid_add_text("E se falhar em conquistá-los?", spr_ayelen_face, 1, "Ayelen");
+        case "estatua_bianca":
+            ds_grid_add_text("Sistema: Estátua da matriarca — guardiã das estrelas e das constelações que guiam Ka'tupytã.", spr_sistema, 0, "Sistema");
+            ds_grid_add_text("Sistema: Pros Tupi-Guarani, figura e estátua não eram decoração — eram presença. Representavam entidade, ancestral, força da natureza que continua agindo.", spr_sistema, 0, "Sistema");
+            ds_grid_add_text("Sistema: Era proteção, marca de território, elo entre o visível e o invisível. A colonização chamou de idolatria. O povo chamava de memória.", spr_sistema, 0, "Sistema");
+        break;
 
-							ds_grid_add_text("Então as árvores se fecharão ao seu redor, e o tempo se tornará uma prisão onde até a luz esquece de existir.", spr_xama_rosto, 0, "Nemimby");
+        case "Ayran":
+            switch(obj_player.etapa_historia){
+                case 6:
+                    obj_guarda.alarm[0] = 1;
+                    ds_grid_add_text("Ayran: Finalmente alguém que presta. Olha o que consegui arrancar dele antes de cair — quer dizer, antes de eu sofrer uma desaceleração súbita não planejada.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Isso é o quê?", spr_ayelen_face, 0, "Ayelen");
+                    ds_grid_add_text("Ayran: Uma estrela petrificada. Dizem que guarda memória de constelação — eu acho que guarda peso, porque quase me derrubou no bolso.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayran: Ah, Ayelen! Bom dia. Que bom que alguém aqui leva esses relatos a sério.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Eu ouvi a versão em que você tropeçou na própria lança. Duas vezes.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: Primeiro: foi ELE quem tropeçou. Segundo: foram duas circunstâncias distintas que coincidiram com o meu chão. Terceiro: perdi o fio da meada nessa defesa.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Conta o que houve com o Ubiratã.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: Luta memorável. Pra ele. Eu contribuí com uma estratégia de recuperação horizontal no terreno — mas antes disso, juro que ele perdeu uns dentes.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Você desmaiou.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: 'Recuperação emergencial em posição supina' é o termo correto. E ele fugiu! Então, no mínimo, empate técnico.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: E pra onde ele foi depois?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: Vila do Sul. Mas a Vila do Sul... já era. Os invasores passaram por lá como o vinhoto passou pelos rios — deixando só silêncio.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Mais um povo destruído. Mais terra tomada.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: Nem o decoro dum discurso de justificativa eles tiveram. Chegaram e destruíram. Igual sempre.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: E esse artefato — você tirou dele na luta?", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: Ele segurava e eu... realizei uma redistribuição estratégica de posse no calor da batalha.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Você roubou.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: 'Roubou' é uma palavra muito colonial pro que aconteceu. Prefiro: recuperei um bem de origem cultural em situação de conflito.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Hahaha. Tá bom. Mas isso aqui é importante — é uma das insígnias. Vou guardar com cuidado.", spr_ayelen_face, 0, "Ayelen");
+                    ds_grid_add_text("Ayran: É. E se perder, vai ter que me ouvir contar a história de como eu quase morri pra conseguir ela mais três vezes.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Incentivo suficiente pra não perder. Valeu, Ayran. De verdade.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: Vai com tudo, Ayelen. Mostra pra eles que Ka'tupytã não acabou — e nunca vai acabar.", spr_rosto_guarda, 0, "Ayran");
+                    obj_player.etapa_historia = 7;
+                break;
 
-							ds_grid_add_text("Vou encontrar os Olhos de Tupã e retornarei com o caminho para o Coração da Noite. Confie em mim.", spr_ayelen_face, 1, "Ayelen");
+                case 7:
+                    ds_grid_add_text("Ayran: Sabe qual é o problema de ter medo perto do rio? O medo chega primeiro que você. As piranhas daqui devoram ele antes de você botar o pé na água.", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Isso não faz sentido nenhum.", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: Faz sentido sim. Você nunca viu uma piranha assustada, pois não?", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: ...", spr_ayelen_face, 1, "Ayelen");
+                    ds_grid_add_text("Ayran: Pois é. Tô coberto de razão. Cientificamente.", spr_rosto_guarda, 0, "Ayran");
+                break;
 
-							ds_grid_add_text("O céu e a terra andam com você, Ayelen. Escute a floresta... e jamais caminhe sozinha no silêncio.", spr_xama_rosto, 0, "Nemimby");
-							obj_player.etapa_historia++;
-						break;
-						case 4:
-							ds_grid_add_text("Ayelen, chegou a hora de seguir o seu caminho.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Lembre-se: o mundo à sua frente está cheio de desafios.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Mas também está cheio de aliados... e lições a serem aprendidas.", spr_xama_rosto, 0, "Nemimby");
-
-							ds_grid_add_text("Você nunca está sozinha. A força das estrelas está com você.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Escute a floresta, sinta o vento, olhe para o céu.", spr_xama_rosto, 0, "Nemimby");
-
-							ds_grid_add_text("Sempre que a dúvida invadir, lembre-se do que é sagrado para você.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("E confie no seu coração, pois ele conhece o caminho.", spr_xama_rosto, 0, "Nemimby");
-
-							ds_grid_add_text("O céu e a terra andam com você, Ayelen.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Que a luz das estrelas a guie... até que nos encontremos novamente.", spr_xama_rosto, 0, "Nemimby");
-						break;
-						case 5:
-							ds_grid_add_text("Ayelen, chegou a hora de seguir o seu caminho.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Lembre-se: o mundo à sua frente está cheio de desafios.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Mas também está cheio de aliados... e lições a serem aprendidas.", spr_xama_rosto, 0, "Nemimby");
-
-							ds_grid_add_text("Você nunca está sozinha. A força das estrelas está com você.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Escute a floresta, sinta o vento, olhe para o céu.", spr_xama_rosto, 0, "Nemimby");
-
-							ds_grid_add_text("Sempre que a dúvida invadir, lembre-se do que é sagrado para você.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("E confie no seu coração, pois ele conhece o caminho.", spr_xama_rosto, 0, "Nemimby");
-
-							ds_grid_add_text("O céu e a terra andam com você, Ayelen.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Que a luz das estrelas a guie... até que nos encontremos novamente.", spr_xama_rosto, 0, "Nemimby");
-						break;
-						case 6:
-							ds_grid_add_text("Ayelen, Oque está fazendo aqui ?.", spr_xama_rosto, 0, "Nemimby");
-							ds_grid_add_text("Apresse-te: o mundo à sua frente está cheio de desafios.", spr_xama_rosto, 0, "Nemimby");
-													
-						break;
-				 }
-
-			break;
-
-		case "Poiara":
-    switch(obj_player.etapa_historia){
-        case 1:
-        case 2:
-        case 3:
-        case 4: {
-            ds_grid_add_text("Ayelen, seu pai está te procurando.", spr_rosto_npc_artesao, 0, "Poiarã");
-            break;
-        }
-        case 5: {
-            ds_grid_add_text("Poiarã: Ah, Ayelen! Você finalmente chegou.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: Seu pai mencionou sua missão importante.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: O desconhecido testa até mesmo os mais fortes.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: Antes que vá... quero ajudá-la.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: Esta jornada não é só de força... é de resiliência.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: Leve isto: o Escudo Verde.", spr_escudo, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: Ele irá protegê-la e devolver parte de sua energia.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: Use-o com sabedoria. Ele não durará para sempre.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: Mas, quando ativado no momento certo... pode salvar sua vida.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: Vá agora, Ayelen. O destino a aguarda.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Pressione K para ativar o escudo.", spr_sistema, 0, "Sistema");
-            obj_player.etapa_historia = 6;
-            break;
-        }
-        case 6: {
-            ds_grid_add_text("Poiarã: O tempo está bom para caminhar, mas lembre-se, cada passo ensina algo novo.", spr_rosto_npc_artesao, 0, "Poiarã");
-            ds_grid_add_text("Poiarã: Lembre-se de ouvir o som das árvores, elas têm muito a contar.", spr_rosto_npc_artesao, 0, "Poiarã");
-            break;
-        }
+                case 8:
+                    ds_grid_add_text("Ayran: Por que a piranha nunca perde uma discussão?", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Não sei. Por quê?", spr_ayelen_face, 0, "Ayelen");
+                    ds_grid_add_text("Ayran: Porque ela sempre tem o último argumento na boca. Hahaha!", spr_rosto_guarda, 0, "Ayran");
+                    ds_grid_add_text("Ayelen: Continua assim e eu vou começar a torcer pela piranha.", spr_ayelen_face, 0, "Ayelen");
+                break;
+            }
+        break;
     }
-    break;
-
-case "kaua":
-    switch(obj_player.etapa_historia){
-        case 8: {
-            ds_grid_add_text("Você se depara com um guerreiro escondido atrás de um arbusto, claramente exausto... e meio sujo de lama.", spr_sistema, 0, "Narrador");
-            ds_grid_add_text("Olá, moça! Ouvi boatos sobre a lendária Katupitan... Não me diga que é você?", spr_kaua_guarda, 0, "Kauã");
-            ds_grid_add_text("Hahaha! Talvez... Fui enviada pela minha vila. Você é da Vila do Sol? Ouvi dizer que ela foi... digamos... bem, destruída.", spr_ayelen_face, 1, "Ayelen");
-            ds_grid_add_text("Sim, infelizmente. O Caído invocou uma besta marítima das lendas com o poder dos artefatos. O infeliz fugiu e a criatura acabou com vários dos nossos guerreiros... A maioria migrou para o sul, onde temos esconderijos.", spr_kaua_guarda, 0, "Kauã");
-            ds_grid_add_text("Espera... Besta? Que papo é esse? Ela ainda está por aqui?", spr_ayelen_face, 1, "Ayelen");
-            ds_grid_add_text("Sim, senhorita! Ela se escondeu nas grutas. Mas fique tranquila, o Xamã selou a porta! Fui encarregado de guardar a chave e... entregar pra você!", spr_kaua_guarda, 0, "Kauã");
-            ds_grid_add_text("Porém... meio que deixei ela cair enquanto fugia. Está ali na frente, mas não tenho a menor coragem de voltar pra pegar!", spr_kaua_guarda, 0, "Kauã");
-            ds_grid_add_text("Beleza, pode deixar! Vou enfrentar essa fera, recuperar as insígnias e ganhar um tempinho extra pra minha vila... e talvez também pra você não morrer de medo!", spr_ayelen_face, 1, "Ayelen");
-            obj_player.etapa_historia = 9;
-            break;
-        }case 9: {
-	    ds_grid_add_text("Kauã: Sabe, Ayelen... talvez tudo isso tenha acontecido porque tinha que acontecer.", spr_kaua_guarda, 0, "Kauã");
-
-	    ds_grid_add_text("Ayelen: Como assim? Você tá dizendo que... era destino?", spr_ayelen_face, 1, "Ayelen");
-
-	    ds_grid_add_text("Kauã: Não só destino. Na nossa aldeia, aprendemos que a Terra, os espíritos e nós... somos um só.", spr_kaua_guarda, 0, "Kauã");
-
-	    ds_grid_add_text("Kauã: Quando esquecemos de escutar a natureza... ela fala mais alto.", spr_kaua_guarda, 0, "Kauã");
-
-	    ds_grid_add_text("Ayelen: Então... essa besta, o caos, a destruição... são respostas?", spr_ayelen_face, 1, "Ayelen");
-
-	    ds_grid_add_text("Kauã: É o que os anciões dizem. O mundo visível é só metade do que existe. O outro lado é o espírito — o Nhandereko, nosso jeito de ser.", spr_kaua_guarda, 0, "Kauã");
-
-	    ds_grid_add_text("Kauã: Quando a alma da aldeia adoece... a floresta sente, os rios respondem.", spr_kaua_guarda, 0, "Kauã");
-
-	    ds_grid_add_text("Ayelen: Então... nossa missão não é só derrotar a besta, né?", spr_ayelen_face, 1, "Ayelen");
-
-	    ds_grid_add_text("Kauã: Não. É curar o que foi ferido... em nós e na Terra.", spr_kaua_guarda, 0, "Kauã");
-
-	    ds_grid_add_text("Ayelen: Bonito... e difícil. Mas vamos lá. Por você, pela aldeia... e pelo espírito da floresta.", spr_ayelen_face, 1, "Ayelen");
-
-	    ds_grid_add_text("Kauã: Lembre-se... não é destino. É que a realidade responde à nossa alma. Se adoecemos e seguimos caminhos de trevas... consequências como essas acontecem.", spr_kaua_guarda, 0, "Kauã");
-		ds_grid_add_text("Ayelen:...", spr_ayelen_face, 1, "Ayelen");
-	    ds_grid_add_text("Ayelen: Difícil de aceitar, mas compreendo a responsabilidade que temos como grupo, falhamos com ele, o caido...", spr_ayelen_face, 1, "Ayelen");
-		ds_grid_add_text("Kauã: sim..., vá cuide se", spr_kaua_guarda, 0, "Kauã");
-    break;
 }
 
-    }
-    break;
-	case"azel":
-	 
-	 ds_grid_add_text("Oque? é vocÊ? estamos perdidos ...", spr_kaua_guarda, 0, "Kauã");
-	 ds_grid_add_text("...", spr_ayelen_face, 1, "Ayelen");
-	 ds_grid_add_text("como esses anciõe enviam uma criança para ca eles ficaram louco ...", spr_kaua_guarda, 0, "Kauã");
-	 ds_grid_add_text("a situação é muito grave ?", spr_ayelen_face, 1, "Ayelen")
-	 ds_grid_add_text("Grave ??, é mais do que grave, tem um monstro acordado que matou todos os meus guerreiros", spr_kaua_guarda, 0, "Kauã");
-	 ds_grid_add_text("Eu sei..., estou com medo, mas não posso fúgir... eles me escolheram por algum motivo", spr_ayelen_face, 1, "Ayelen")
-	 ds_grid_add_text("puff, okay, vou te dar uma mágia para sua lança, nao consiguira derrota-lo assim ", spr_kaua_guarda, 0, "Kauã");
-	 ds_grid_add_text("Sistema: Você desploqueou o projetil Aperte H para atirar.", spr_sistema, 0, "Sistema");
-	break
-
-case "arbusto":
-    ds_grid_add_text("Sistema: A pêra-do-cerrado (Eugenia klotzschiana) é uma fruta rara e pouco conhecida, nativa dos cerrados e campos do Brasil central e sudeste. Seu nome indígena é cabamixá-açú, que significa 'erva que dá fruto que aperta a língua'.", spr_sistema, 0, "Sistema");
-    break;
-
-		case "ceramica":
-			ds_grid_add_text("Sistema: Os povos indígenas foram os primeiros ceramistas do território brasileiro, desenvolvendo técnicas sofisticadas de produção muito antes da chegada dos europeus. ", spr_sistema, 0, "arbusto"); 
-			ds_grid_add_text("Sistema: Usando recursos naturais como argila, fibras vegetais e pigmentos orgânicos, criaram recipientes resistentes para armazenar alimentos, cozinhar, transportar água e até mesmo realizar rituais sagrados. ", spr_sistema, 0, "arbusto");
-			ds_grid_add_text("Sistema: A cerâmica não era apenas uma ferramenta, mas uma linguagem visual que transmitia valores, cosmologias e modos de vida. ", spr_sistema, 0, "arbusto");
-		
-		break;
-		case "estatua_bianca":
-		    ds_grid_add_text("Sistema: Estátua referente à matriarca, deusa das estrelas e constelações que protege a vila.", spr_sistema, 0, "arbusto");
-		    ds_grid_add_text("Sistema: Para os povos indígenas Tupi-Guarani, estátuas e figuras cerâmicas não eram apenas arte — elas representavam entidades espirituais, ancestrais e forças da natureza. Serviam como proteção simbólica, marca de território e conexão com o mundo espiritual.", spr_sistema, 0, "arbusto");
-			ds_grid_add_text("Sistema: Serviam como proteção simbólica, marca de território e conexão com o mundo espiritual.", spr_sistema, 0, "arbusto");
-		break;
-
-		case "Ayran":
-			switch(obj_player.etapa_historia){
-				case 6: 
-					obj_guarda.alarm[0] = 1;
-					ds_grid_add_text("Ayran:  enfim, lutei com ele.. sobre a luta... consegui pegar isso aqui.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: O quê?", spr_ayelen_face, 0, "Ayelen");
-				    ds_grid_add_text("Ayran: parece um artefato Uma estrela petrificada. Dizem que tem magia e tal... mas até agora é só um belo Peso.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayran: Ah, olá ayelen, finalmente alguém que presta atenção nos relatos! Você não tem ideia do que acontece por aqui...", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Considerando que ouvi seu nome em uma história sobre um soldado tropeçando na própria lança... tenho uma ideia sim.", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Ei, ei, isso é injusto! Primeiro, foi ELE quem tropeçou, não eu. Segundo, foram DUAS vezes. Terceiro... bom, eu ia dizer algo esperto aqui, mas perdi a linha de raciocínio.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Como sempre, então. Mas vai, me conta logo, ouvi que você enfrentou Ubiratã.", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Ah, agora sim, uma história digna! Foi uma luta memorável... pelo menos pra ele.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Isso quer dizer que você desmaiou, não é?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Olha, eu chamaria de \"tática de recuperação emergencial no chão\". Mas antes disso, ele perdeu uns dentes, tenho certeza!", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Hahaha, vou fingir que acredito. Mas e depois?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Bom... ele fugiu. Mas juro que parecia menos cabeludo quando saiu correndo. Coincidência? Acho que não.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: E agora ele tá na vila do sul, né?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Tava. Vila do sul já era. Exploradores brancos passaram por lá como uma tempestade de destruição. Nem as histórias escaparam.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: … Então essa é a real.", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: E o pior? Eles nem sabiam fazer um discurso decente de vilão. Que desperdício.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Você realmente esperava que eles tivessem estilo?", spr_ayelen_face, 1, "Ayelen");
-				    
-				    ds_grid_add_text("Ayelen: Espera, você pegou isso na luta contra Ubiratã?!", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Exato! Troféu de guerra! Bom... tecnicamente ele tava segurando e eu meio que... peguei no susto.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Então você roubou no meio da briga?!", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Roubei é uma palavra forte. Eu chamo de “redistribuição estratégica de recursos”.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Hahaha, certo, certo. Mas isso parece importante. Vou guardar como se fosse minha coleção de piadas melhores.", spr_ayelen_face, 0, "Ayelen");
-				    ds_grid_add_text("Ayran: Ei! Minhas piadas são um patrimônio cultural!", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: E por isso mesmo precisam de proteção.", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Tsc, ingrata. Mas falando sério, Ayelen... guarde bem isso. Se perder...", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Você vai ter que inventar uma nova história trágica?", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Exatamente! E sinceramente, minha criatividade anda em baixa.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Ok, ok, já entendi. Mas falando nisso... essa missão só ficou ainda mais importante. Eles acham que podem destruir sem consequência.", spr_ayelen_face, 0, "Ayelen");
-				    ds_grid_add_text("Ayran: Exato. Ensina pra eles quem manda, hein?", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Pode apostar. Ah, e sobre correr? Eu só corro de uma coisa...", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Inimigos?", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Suas piadas!", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Ofendidíssimo Eu sabia.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Haha, valeu pelo aviso, Ayran. Agora, se me der licença, tenho um vilão para caçar.", spr_ayelen_face, 1, "Ayelen");
-				    ds_grid_add_text("Ayran: Vai com tudo, campeã! Mas se precisar de ajuda... quer dizer, tem gente melhor que eu, mas eu sou ótimo pra assistir histórias.", spr_rosto_guarda, 0, "protetor");
-				    ds_grid_add_text("Ayelen: Não duvido. Até mais!", spr_ayelen_face, 1, "Ayelen");
-				    
-				    obj_player.etapa_historia =7;
-				break
-				case 7:
-					ds_grid_add_text("Ayran:  Você não tem ideia do que aquelas piranhas fazem... São tão ferozes que até meu café da manhã ficou com medo!", spr_rosto_guarda, 0, "protetor");
-					ds_grid_add_text("Ayelen: Piranhas? Achei que você só tivesse medo de promoção pra capitão... ou de tomar banho!", spr_ayelen_face, 1, "Ayelen");
-					ds_grid_add_text("Ayran: hahahah", spr_rosto_guarda, 0, "protetor");
-					break
-				case 8:
-					ds_grid_add_text("Ayran: Sabe por que as piranhas nunca jogam conversa fora?", spr_rosto_guarda, 0, "protetor");
-					ds_grid_add_text("Ayelen: Não... Por quê?", spr_ayelen_face, 0, "Ayelen");
-					ds_grid_add_text("Ayran: Porque elas preferem morder a língua! Hahaha!", spr_rosto_guarda, 0, "protetor");
-					ds_grid_add_text("Ayelen: ... Se eu ouvir mais uma dessas, vou começar a torcer pelas piranhas.", spr_ayelen_face, 0, "Ayelen");
-
-				break
-			}
-
-
-
-		break;
-		/*
-		case "pai_despedida":
-			ds_grid_add_text("Minha filha, eu sou velho e já vivi minha jornada.", spr_pai_rosto, 0, "pai");
-			ds_grid_add_text("A sua está apenas começando. Não se prenda ao medo, mas sim à esperança.", spr_pai_rosto, 0, "pai");
-			ds_grid_add_text("Eu prometo voltar com as runas, e quando eu voltar, nossa terra estará em paz novamente.", spr_ayelen_face, 1, "Ayelen");
-			ds_grid_add_text("Eu acredito em você. Vá com a força das estrelas, minha filha.", spr_pai_rosto, 0, "pai");
-		break;
-
-		
-
-		case "npc_secundario2":
-			ds_grid_add_text("Minha avó sempre dizia: 'Nunca confie em um porco-espinho que sorri'. Nunca entendi por quê.", spr_npc_aleatorio, 0, "Habitante");
-			ds_grid_add_text("Mas também nunca vi um porco-espinho sorrindo, então acho que estou seguro.", spr_npc_aleatorio, 0, "Habitante");
-		break;
-
-		case "npc_secundario3":
-			ds_grid_add_text("Sabe, ouvi dizer que os astros podem prever o futuro. Perguntei à Estrela Dalva se eu encontraria amor.", spr_npc_aleatorio, 0, "Jovem Romântico");
-			ds_grid_add_text("Ela me respondeu com um brilho... ou talvez tenha sido só um reflexo. Mas me senti esperançoso!", spr_npc_aleatorio, 0, "Jovem Romântico");
-		break;
-
-		case "npc_secundario4":
-			ds_grid_add_text("Tem algo errado com a plantação. As abóboras começaram a crescer... nas árvores.", spr_npc_aleatorio, 0, "Fazendeiro");
-			ds_grid_add_text("Acho que Tupã está de brincadeira com a gente.", spr_npc_aleatorio, 0, "Fazendeiro");
-		break;*/
-	}
-}
-
-// Função auxiliar para adicionar uma nova linha ao grid
 function ds_grid_add_row(){
-	var _grid = argument[0];
-	ds_grid_resize(_grid, ds_grid_width(_grid), ds_grid_height(_grid) + 1);
-	return ds_grid_height(_grid) - 1;
+    var _grid = argument[0];
+    ds_grid_resize(_grid, ds_grid_width(_grid), ds_grid_height(_grid) + 1);
+    return ds_grid_height(_grid) - 1;
 }
 
-// Função para inserir o texto no grid de diálogo
 function ds_grid_add_text(_texto, _retrato, _lado, _nome) {
     var _grid = texto_grid;
     var _y = ds_grid_add_row(_grid);

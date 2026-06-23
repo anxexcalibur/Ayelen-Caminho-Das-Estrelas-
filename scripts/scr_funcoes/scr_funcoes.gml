@@ -3,6 +3,8 @@
 function scr_funcoes(){
 
 }
+// Coloque isso dentro de um Script limpo (não em um objeto)
+
 /// @function scr_addItem(array, item_id)
 /// @description Adiciona um item a um array se ele ainda não existir.
 /// @param {Array} array O array para modificar.
@@ -353,9 +355,6 @@ function carregar_progresso() {
     }
 }***/
 
-
-
-
 function salvar_checkpoint(_secao_save) {
     
     if (!instance_exists(obj_player)) {
@@ -394,12 +393,123 @@ function salvar_checkpoint(_secao_save) {
     show_debug_message("CHECKPOINT: Jogo salvo na seção [" + _secao_save + "]");
 }
 
+/// @function salvar_progresso_cutscene_2()
+/// @desc Salva o progresso específico da cutscene 2 mantendo pontuação e avançando para etapa 4
+function salvar_progresso_cutscene_2() {
+    ini_open("save.sav");
+    
+    // Pega os valores atuais (se existirem)
+    var pontuacao_atual = 0;
+    var estrelas_atual = 0;
+    var vida_atual = 10;
+    var tiros_atual = 4;
+    var inventario_atual = "[]";
+    
+    // Tenta carregar dados existentes primeiro
+    if (ini_section_exists(global.player_name)) {
+        pontuacao_atual = ini_read_real(global.player_name, "pontuacao", 0);
+        estrelas_atual = ini_read_real(global.player_name, "estrelas_coletadas", 0);
+        vida_atual = ini_read_real(global.player_name, "vida_atual", 10);
+        tiros_atual = ini_read_real(global.player_name, "qtd_tiros", 4);
+        inventario_atual = ini_read_string(global.player_name, "inventario", "[]");
+    }
+    
+    // Se o player existir na cena, usa os valores dele
+    if (instance_exists(obj_player)) {
+        pontuacao_atual = global.pontuacao;
+        estrelas_atual = global.estrelas_coletadas;
+        vida_atual = obj_player.vida_atual;
+        tiros_atual = obj_player.qtd_tiros;
+        
+        if (variable_global_exists("itens_coletados")) {
+            inventario_atual = json_stringify(global.itens_coletados);
+        }
+    }
+    
+    // Salva os dados atualizados
+    ini_write_real(global.player_name, "x_atual", 128.923584);
+    ini_write_real(global.player_name, "y_atual", 328.504913);
+    ini_write_real(global.player_name, "vida_atual", vida_atual);
+    ini_write_real(global.player_name, "sala_atual", rm_prototipo);
+    ini_write_real(global.player_name, "etapa_historia", 4.000000); // Avança para etapa 4
+    ini_write_real(global.player_name, "pontuacao", pontuacao_atual);
+    ini_write_real(global.player_name, "estrelas_coletadas", estrelas_atual);
+    ini_write_real(global.player_name, "qtd_tiros", tiros_atual);
+    ini_write_string(global.player_name, "inventario", inventario_atual);
+    
+    ini_close();
+    
+    show_debug_message("=========================================");
+    show_debug_message("✅ Cutscene 2 finalizada!");
+    show_debug_message("   Jogador: " + global.player_name);
+    show_debug_message("   Etapa: 4");
+    show_debug_message("   Pontuação mantida: " + string(pontuacao_atual));
+    show_debug_message("   Estrelas mantidas: " + string(estrelas_atual));
+    show_debug_message("   Vida mantida: " + string(vida_atual));
+    show_debug_message("   Tiros mantidos: " + string(tiros_atual));
+    show_debug_message("=========================================");
+}
 
-
-
-
-
-
+/// @function carregar_com_nome_jogador(nome_jogador)
+/// @desc Carrega o save específico do jogador pelo nome
+/// @param {string} nome_jogador - Nome do jogador para carregar
+function carregar_com_nome_jogador(nome_jogador) {
+    if (!file_exists("save.sav")) {
+        show_debug_message("❌ Arquivo save.sav não encontrado!");
+        return false;
+    }
+    
+    ini_open("save.sav");
+    
+    // Verifica se a seção do jogador existe
+    if (!ini_section_exists(nome_jogador)) {
+        show_debug_message("❌ Seção " + nome_jogador + " não encontrada!");
+        ini_close();
+        return false;
+    }
+    
+    // Garante que o player existe
+    if (!instance_exists(obj_player)) {
+        instance_create_layer(0, 0, "Instances", obj_player);
+    }
+    
+    // Carrega TODOS os dados do jogador
+    obj_player.x = ini_read_real(nome_jogador, "x_atual", 128);
+    obj_player.y = ini_read_real(nome_jogador, "y_atual", 328);
+    obj_player.vida_atual = ini_read_real(nome_jogador, "vida_atual", 10);
+    obj_player.etapa_historia = ini_read_real(nome_jogador, "etapa_historia", 0);
+    obj_player.qtd_tiros = ini_read_real(nome_jogador, "qtd_tiros", 4);
+    
+    // Carrega dados globais
+    global.pontuacao = ini_read_real(nome_jogador, "pontuacao", 0);
+    global.estrelas_coletadas = ini_read_real(nome_jogador, "estrelas_coletadas", 0);
+    
+    // Carrega inventário
+    var inventory_json = ini_read_string(nome_jogador, "inventario", "[]");
+    if (string_length(inventory_json) > 2) { // Verifica se não está vazio
+        global.itens_coletados = json_parse(inventory_json);
+    } else {
+        global.itens_coletados = [];
+    }
+    
+    // Carrega a sala de destino
+    var sala_destino = ini_read_real(nome_jogador, "sala_atual", rm_prototipo);
+    
+    ini_close();
+    
+    // Vai para a sala
+    room_goto(sala_destino);
+    
+    show_debug_message("=========================================");
+    show_debug_message("✅ Jogo carregado para: " + nome_jogador);
+    show_debug_message("   Etapa: " + string(obj_player.etapa_historia));
+    show_debug_message("   Pontuação: " + string(global.pontuacao));
+    show_debug_message("   Estrelas: " + string(global.estrelas_coletadas));
+    show_debug_message("   Sala: " + string(sala_destino));
+    show_debug_message("=========================================");
+    
+    return true;
+}
 
 global.dificuldade = 1;
 //Enumerator para definir as minhas açoes possiveis no menu
@@ -448,6 +558,43 @@ function define_align(_hor, _ver) {
 //	opcoes,
 //	opcoes_opcoes
 //}
+/// @function salvar_jogador(jogador)
+/// @desc Salva todos os dados importantes do jogador
+/// @param {id} jogador - O objeto jogador
+function salvar_jogador(jogador) {
+    if (!instance_exists(jogador)) {
+        show_debug_message("⚠ ERRO: salvar_jogador - jogador não existe!");
+        return;
+    }
+    
+    // Usa o sistema de checkpoint existente
+    salvar_checkpoint("jogador");
+    
+    // Salva dados adicionais específicos do jogador
+    ini_open("save.sav");
+    
+    // Salva dados que podem não estar no salvar_checkpoint
+    ini_write_real("jogador", "etapa_historia", jogador.etapa_historia);
+    ini_write_real("jogador", "vida_atual", jogador.vida_atual);
+    ini_write_real("jogador", "qtd_tiros", jogador.qtd_tiros);
+    ini_write_real("jogador", "x_atual", jogador.x);
+    ini_write_real("jogador", "y_atual", jogador.y);
+    ini_write_real("jogador", "sala_atual", room);
+    
+    // Salva dados globais
+    ini_write_real("jogador", "pontuacao", global.pontuacao);
+    ini_write_real("jogador", "estrelas_coletadas", global.estrelas_coletadas);
+    
+    // Salva inventário se existir
+    if (variable_global_exists("itens_coletados")) {
+        var _inventory_json = json_stringify(global.itens_coletados);
+        ini_write_string("jogador", "inventario", _inventory_json);
+    }
+    
+    ini_close();
+    
+    show_debug_message("✅ Jogador salvo com sucesso!");
+}
 
 //Pegar o valor da animation curve
 ///@function valor_ac(animation_curve,canal, animar,[canal])

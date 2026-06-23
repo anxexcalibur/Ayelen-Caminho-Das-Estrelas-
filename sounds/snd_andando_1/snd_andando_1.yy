@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.317812,
+  "duration":0.31648526,
   "exportDir":"",
   "name":"snd_andando_1",
   "parent":{

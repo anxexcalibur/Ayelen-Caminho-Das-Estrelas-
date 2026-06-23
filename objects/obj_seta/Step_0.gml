@@ -10,7 +10,7 @@ switch(obj_player.etapa_historia){
 	break;
 	case 2:
 		status = true
-		if room = Casa_guarani_1{
+		if room = rm_cabana{
 			status = false	
 		}else{
 			global.alvo_x = obj_sensor.x;
@@ -20,7 +20,7 @@ switch(obj_player.etapa_historia){
 	break;
 	case 3:
 		status = true
-		if room == Casa_guarani_1{
+		if room == rm_cabana{
 			global.alvo_x = obj_fogueira1.x;
 			global.alvo_y = obj_fogueira1.y;
 		}else{

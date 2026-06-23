@@ -1,114 +1,73 @@
-/*
- Creditos:
- menusound = {
-	Author: Tim Mortimer
-	URL: http://www.archive.org/details/TimMortimer
-	License: Creative Commons Attribution 3.0
-	Distributior: OpenGameArt.org	
- }
+/// @description Sistema de Áudio Central
 
-
-
-*/
-enum MenuSound{
-	NONE,
-	HOVER,
-	SELECT
-} 
-enum playerSound {
+// ═══ ENUMS ═══
+enum MenuSound {
     NONE,
-    JUMP,
-    DAMAGE,
-    PICKUP_ITEM
+    HOVER,
+    SELECT
 }
-trocou = false;
 
-ataque_som_tocou = false;
+// ═══ ESTADO ═══
+menu_sound_state = MenuSound.NONE;
+musica_atual = "none";
 
-// Variáveis globais para controlar qual música está tocando
-// Variáveis globais para controlar a música que está tocando
-// Nenhuma música tocando inicialmente
+// ═══ CONTROLE DE POSIÇÃO (CORRIGIDO) ═══
+// Agora salvamos o tempo absoluto da música
+musica_menu_tempo = 0;           // Tempo salvo em segundos
+musica_menu_esta_tocando = false; // Flag se a música estava tocando
 
-// Create event of obj_sound
-// No Create do obj_som_bg
-global.current_music = "";
+// ═══ POSIÇÕES SALVAS PARA RETOMAR APÓS GAME OVER ═══
+pos_musica_fase1 = 0;
+pos_musica_fase2 = 0;
+pos_musica_fase3 = 0;
+pos_musica_boss = 0;
+pos_musica_cutscene = 0;
+pos_musica_main = 0;
 
+/// @description Inicialização do sistema de som
 
-// Inicializar a música para o estado correto
+// ═══ FLAGS ═══
+som_gameover_tocou = false;
+som_hit_tocou = false;
+som_jump_tocou = false;
+som_attack_tocou = false;
+som_attack_shoot_tocou = false;
+som_andando_tocou = false;
+som_defesa_tocou = false;
+som_cura_tocou = false;
+som_drink_tocou = false;
+som_coletou_tocou = false;
+som_ativou_star_tocou = false;
+passo_timer = 0;
 
-	switch (room) {
-	    case rm_prototipo:
-		 audio_pause_all();  // Pausa qualquer música tocando
-	        if (global.current_music != "prototipo") {
-	            if (audio_is_playing(snd_background_catcines)) {
-	                audio_stop_sound(snd_background_catcines);  // Para a música de catcine
-	            }
-	            if (audio_is_playing(snd_background)) {
-	                audio_stop_sound(snd_background);  // Para a música de protótipo
-	            }
-	            audio_play_sound(snd_background,0.5, 1, true);  // Toca a música para "prototipo" em loop
-	            global.current_music = "prototipo";  // Atualiza a música atual
-	        }
-	        break;
-	    case rm_prototipo_level2:
-	        audio_pause_all();  // Pausa qualquer música tocando
-	        if (global.current_music != "prototipo") {
-	            if (audio_is_playing(snd_background_catcines)) {
-	                audio_stop_sound(snd_background_catcines);  // Para a música de catcine
-	            }
-	            if (audio_is_playing(snd_background)) {
-	                audio_stop_sound(snd_background);  // Para a música de protótipo
-	            }
-	            audio_play_sound(snd_background,0.5, 1, true);  // Toca a música para "prototipo" em loop
-	            global.current_music = "prototipo";  // Atualiza a música atual
-	        }
-	        break;
-
-	    case rm_catcine:
-			audio_pause_all();  // Pausa qualquer música tocando
-	        if (global.current_music != "catcine") {
-	            if (audio_is_playing(snd_background)) {
-	                audio_stop_sound(snd_background);  // Para a música de protótipo
-	            }
-	            if (audio_is_playing(snd_background_catcines)) {
-	                audio_stop_sound(snd_background_catcines);  // Para a música de catcine
-	            }
-	            audio_play_sound(snd_background_catcines, 1, true);  // Toca a música para "catcine" em loop
-	            global.current_music = "catcine";  // Atualiza a música atual
-	        }
-	        break;
-	    case rm_catcine_2:
-	        audio_pause_all();  // Pausa qualquer música tocando
-	        if (global.current_music != "catcine") {
-	            if (audio_is_playing(snd_background)) {
-	                audio_stop_sound(snd_background);  // Para a música de protótipo
-	            }
-	            if (audio_is_playing(snd_background_catcines)) {
-	                audio_stop_sound(snd_background_catcines);  // Para a música de catcine
-	            }
-	            audio_play_sound(snd_background_catcines, 1, true);  // Toca a música para "catcine" em loop
-	            global.current_music = "catcine";  // Atualiza a música atual
-	        }
-	        break;
-
-	    case rm_menu:
-	        audio_pause_all();  // Pausa qualquer música tocando
-	        if (audio_is_playing(snd_background)) {
-	            audio_stop_sound(snd_background);  // Para a música de protótipo
-	        }
-	        if (audio_is_playing(snd_background_catcines)) {
-	            audio_stop_sound(snd_background_catcines);  // Para a música de catcine
-	        }
-	        global.current_music = "none";  // Nenhuma música tocando no menu
-	        break;
-
-	    default:
-	        audio_pause_all();  // Pausa qualquer música tocando
-	        if (audio_is_playing(snd_background)) {
-	            audio_stop_sound(snd_background);  // Para a música de protótipo
-	        }
-	        if (audio_is_playing(snd_background_catcines)) {
-	            audio_stop_sound(snd_background_catcines);  // Para a música de catcine
-	        }
-	        global.current_music = "none";  // Ne
-	}
+// Dispara verificação
+alarm[0] = 2;
+/// @function tocar_musica_fundo(nome_musica)
+/// @desc Toca a música de fundo correta e para as outras
+function tocar_musica_fundo(nome_musica) {
+    // Para todas as músicas atuais
+    if (audio_is_playing(snd_background)) {
+        audio_stop_sound(snd_background);
+    }
+    if (audio_is_playing(snd_background_catcines)) {
+        audio_stop_sound(snd_background_catcines);
+    }
+    if (audio_is_playing(snd_maintheme)) {
+        audio_stop_sound(snd_maintheme);
+    }
+    
+    // Toca a música escolhida
+    switch(nome_musica) {
+        case "prototipo":
+            audio_play_sound(snd_background, 1, true);
+            break;
+        case "catcine":
+            audio_play_sound(snd_background_catcines, 1, true);
+            break;
+        case "main":
+            audio_play_sound(snd_maintheme, 1, true);
+            break;
+    }
+    
+    show_debug_message("🎵 Música tocando: " + nome_musica);
+}

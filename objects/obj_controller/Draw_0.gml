@@ -1,4 +1,8 @@
 /// @description Tela de Game Over - Tema Indígena
+
+// ═══ CORREÇÃO: Usa a variável global com segurança ═══
+
+
 if (game_over)
 {
     var cam_x = camera_get_view_x(view_camera[0]);

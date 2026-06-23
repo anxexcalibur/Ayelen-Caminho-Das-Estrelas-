@@ -1,86 +1,69 @@
-/// @description Comportamento da piranha inimiga
-// Inherit the parent event
+/// @description Comportamento da piranha
 
 event_inherited();
-var _toggle_bateu = true
-// Definição de variáveis principais
-var chao = place_meeting(x, y + 1, obj_agua_mortal);
-var jogador_proximo = (point_distance(x, y, obj_player.x, obj_player.y) < 100);
-var altura_maxima = y - 50; // Define até onde a piranha pode subir
-var velocidade_salto = -6; // Reduzida para tornar o salto mais lento
-var velocidade_queda = 3; // Reduzida para tornar a descida mais lenta
-var tempo_espera = 90; // Tempo de espera entre pulos
 
-if (!chao) {
-    velv += GRAVIDADE * massa;
-} else {
-    velv = 0; // Impede deslizamento na água
+// Checa o jogador com segurança
+var jogador_perto = false;
+if (instance_exists(obj_player)) {
+    jogador_perto = point_distance(x, y, obj_player.x, obj_player.y) < 300;
 }
 
 switch (estado) {
-    case "parado": {
+    case "parado":
+        // Fica travada na água
+        vspeed = 0;
+        gravity = 0;
+        image_yscale = 1;
+        sprite_index = spr_piranha;
+        
+        // Só conta o tempo quando está realmente parada na água
         timer_estado++;
         
-        // Alternando entre os frames do sprite de animação
-		if(!_toggle_bateu){
-			sprite_index = spr_piranha;
-			image_speed = 0.1;
-			image_yscale = 1; // Garante que a piranha esteja na orientação normal
-		}else{
-			sprite_index = spr_piranha_splash;
-			image_speed = 0.1;
-			image_yscale = 1;
-			if (image_index >= image_number - 1){
-				_toggle_bateu = false
-			}
-		}
-        // Se o jogador estiver perto, mudar para "pulando"
-        if (jogador_proximo && timer_estado > tempo_espera) {
-            estado = "pulando";
-            velv = velocidade_salto;
+        // Se o chão (água) sumir do nada
+        if (!place_meeting(x, y + 1, obj_agua_mortal)) {
+            estado = "caindo";
             timer_estado = 0;
         }
         
-        // Definir pulos regulares com tempo controlado
-        if (timer_estado > tempo_espera * 2) {
+        // O Pulo!
+        if (jogador_perto && timer_estado >= tempo_proximo_pulo) {
             estado = "pulando";
-            velv = velocidade_salto;
+            vspeed = -6; // Força do pulo
+            gravity = 0.25;
             timer_estado = 0;
-        }
-		 if (place_meeting(x, y + 1, obj_wall_slide) && velv > 0) {
-             sprite_index = spr_piranha;
         }
         break;
-    }
-	  
-		
-    break;
-    case "pulando": {
-        y += velv;
         
-        // --- LÓGICA PARA INVERTER A SPRITE ---
-        // Se a velocidade vertical for negativa (subindo), a escala é normal.
-        if (velv < 0) {
-            image_yscale = 1;
-        } 
-        // Se a velocidade vertical for positiva (caindo), inverte a sprite.
-        else if (velv > 0) {
-            image_yscale = -1;
-        }
-        // ------------------------------------
-
-        // Quando atinge o ponto mais alto, começa a descer
-        if (y <= altura_maxima) {
-            velv = velocidade_queda;
-        }
+    case "pulando":
+        // Está subindo
+        gravity = 0.25;
+        image_yscale = 1;
         
-        // Retorna ao estado parado ao tocar a água novamente
-        if (place_meeting(x, y + 1, obj_wall_slide) && velv > 0) {
-			_toggle_bateu = true;
+        // Começou a cair
+        if (vspeed >= 0) {
+            estado = "caindo";
+        }
+        break;
+        
+    case "caindo":
+        // Está descendo
+        gravity = 0.25;
+        image_yscale = -1;
+        
+        // Bateu na água
+        if (place_meeting(x, y + vspeed, obj_agua_mortal) || place_meeting(x, y + 1, obj_agua_mortal)) {
+            
+            // Gruda perfeitamente na superfície da água
+            while (!place_meeting(x, y + 1, obj_agua_mortal)) {
+                y += 1;
+            }
+            
+            // Trava e reseta tudo pro próximo pulo
             estado = "parado";
-            velv = 0;
+            vspeed = 0;
+            gravity = 0;
             timer_estado = 0;
+            tempo_proximo_pulo = 30 + irandom(40); 
         }
         break;
-    }
 }

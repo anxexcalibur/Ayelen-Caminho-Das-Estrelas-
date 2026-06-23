@@ -1,3 +1,4 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste edwith
-other.estado  = "morto"
+/// @description Aplica dano ao tocar na água mortal
+if (other.object_index != obj_piranha) {
+    other.estado = "morto";
+}

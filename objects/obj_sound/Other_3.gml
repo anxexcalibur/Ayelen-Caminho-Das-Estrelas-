@@ -1,6 +1,8 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
+/// @description Salva posição da música ao sair de QUALQUER sala
 
-if (room != rm_prototipo && room != rm_prototipo_level2) {
-    audio_stop_sound(snd_background);  // Para a música se não estiver nas rooms especificadas
+// Sempre salva a posição se for música de menu
+if (musica_atual == "menu") {
+    if (audio_is_playing(snd_musica_menu)) {
+        musica_menu_posicao = audio_sound_get_track_position(snd_musica_menu);
+    }
 }

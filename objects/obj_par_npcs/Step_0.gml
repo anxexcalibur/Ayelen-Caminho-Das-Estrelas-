@@ -1,1 +1,3 @@
- estado_npc = obj_player.etapa_historia
+if (instance_exists(obj_player)) {
+    estado_npc = obj_player.etapa_historia;
+}
